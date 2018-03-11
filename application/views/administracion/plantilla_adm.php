@@ -15,15 +15,20 @@
 	    <li><a href="">Usuarios</a>
 	    	<ul class="submenu_panel_admin">
 	    	    <li><a href="">Añadir usuario</a></li>
-	    	    <li><a href="">Modificar - Eliminar usuario</a></li>
+	    	    <li><a href="">Listado</a></li>
 	    	</ul>
 	    </li>
 	    <li><a href="">Productos</a>
 	    	<ul class="submenu_panel_admin">
 	    	    <li><a href="">Añadir producto</a></li>
-	    	    <li><a href="">Modificar - Eliminar producto</a></li>
+	    	    <li><a href="">Listado</a></li>
+	    	    <li><a href="">Tipos</a></li>
+	    	    <li><a href="">Estilos</a></li>
+	    	    <li><a href="">Tallas</a></li>
 	    	</ul>
 	    </li>
+	    <li><a href="">Comentarios</a></li>
+	    <li><a href="">Pedidos</a></li>
 	    <li><a href="">Notificar errores</a></li>
 	</ul>
 </aside>

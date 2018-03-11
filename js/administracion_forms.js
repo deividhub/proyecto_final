@@ -3,9 +3,9 @@
 
 $(document).ready(function(){
 
-	$("#form_tipo_producto").change(function(){
 
 
+$("#form_tipo_producto").change(function(){
 
 ajaxQuery("Administracion/estilos",{"id_tipo_producto":$("#form_tipo_producto").val()})
 .then(function(devuelto){
@@ -15,11 +15,7 @@ ajaxQuery("Administracion/estilos",{"id_tipo_producto":$("#form_tipo_producto").
   	alert("Error datos no encontrados")
 });
 
-
-
-
-
-	})
+})
 
 
 

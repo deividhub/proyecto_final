@@ -132,8 +132,7 @@ function añadir_elemento(){
 	    }});
 	}
 	else{
-		//alert("Selecciona una talla.")
-        showAlert("aaaa")
+		alert("Selecciona una talla.")
 		
 	}
 }
