@@ -1,0 +1,67 @@
+<?php
+
+/*Este controlador es para lo siguiente:
+
+	- Cargará principalmente la vista de la compra con los datos del carrito, un formulario para modificar tus datos y el apartado para introducir tu tarjeta de credito.
+	- Despues del paso anterior llamará a la función "comprobar_compra", que mostrara todos los datos para verificarlos y poder echarte atras o continuar con el pago.
+
+	- al continuar con el pago, mostrará un mensaje de exito, enviará un correo electronico.
+
+*/
+
+
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Compra extends CI_Controller {
+	 function __construct() {
+	    parent::__construct();
+		$this->load->helper('url');
+		$this->load->model('Productos_model');
+	}
+
+
+	public function index()
+	{
+		$this->load->view('vistas_index/head');
+		$this->load->view('vistas_index/header');
+		$this->load->view('compra/productos_comprar');
+
+		$this->load->view('vistas_index/footer');
+	}
+
+
+	public function carrito(){
+		$var['producto']=$this->input->post("id_producto");
+		$talla=$this->input->post("id_talla");
+		$var['id_elemento']=$this->input->post("id_elemento");
+		$talla_producto=$this->Productos_model->obtener_desc_talla_producto($talla);
+		foreach ($talla_producto as $key) {
+			$var['talla']=$key->id_talla;
+			$var['desc_talla']=$key->descripcion;
+		}
+
+		$datos_producto=$this->Productos_model->obtener_precio_producto($var['producto']);
+		foreach ($datos_producto as $key) {
+			$var['precio']=$key->precio;
+			$var['id_tipo_producto']=$key->id_tipo_producto;
+			$var['nombre_producto']=$key->nombre_producto;
+			$var['color']=$key->color;
+			$var['imagen']=base64_encode($key->imagen);
+		}
+		echo json_encode($var);
+	}
+
+
+
+
+
+	public function fin_compra(){
+		$productos=$this->input->post("productos");
+		$id_usuario=$this->input->post("id_usuario");
+		$precio=$this->input->post("precio");
+		$this->Productos_model->generar_pedido($productos,$id_usuario,$precio);
+	}
+
+
+}
