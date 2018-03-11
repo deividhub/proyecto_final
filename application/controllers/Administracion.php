@@ -32,6 +32,7 @@ class Administracion extends CI_Controller {
 
 	public function estilos(){
 		echo json_encode($this->input->post("id_tipo_producto"));
+		
 	}
 
 
