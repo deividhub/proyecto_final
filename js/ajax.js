@@ -8,9 +8,7 @@ function ajaxQuery (url,jsondata){
   	$.post({url:base_url+url,
 		    datatype:"json",
 	       	data:jsondata,
-		    success: function(data){devolver_datos(data)},
-		    error : function(error){rechazar(error)}
-
+		    success: function(data){devolver_datos(data)}
     });
   });
 }

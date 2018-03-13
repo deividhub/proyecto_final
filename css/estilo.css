@@ -605,70 +605,100 @@ flex-direction: column;
 
 /*USUARIO LOGUEADO*/
 /*imagen perfil y carrito*/
+#header_logueado{
+	display: flex;
+	flex-direction: row;
+}
 #ul_index_logueado{
 	display: flex;
-	width: 100%;
-	justify-content: flex-end;
+	width: 20%;
+	background: black;
+	border-bottom: 1px solid gray;
+	align-items: center;
+	justify-items: center;
+	align-content: center;
+	justify-content: center;
 }
 
 #ul_index_logueado .icon_logueado{
-	width: 10%;
+	width: 100%;
 }
 
-#ul_index_logueado .icon_logueado i{
+
+#ul_index_logueado .icon_logueado a i{
+	color: white;
 	font-size: 28px;
-	border: 1px solid black;
-	border-radius: 20px;
-	padding: 2px;
-	cursor: pointer;
 }
 
 
-
-
-/* El tooltip */
-.perfil_tooltip {
-    background:  rgba(243,226,199,1); 
-    border: 2px solid #c1b497;
-    border-radius: 5px;
-    box-shadow: 5px 5px 5px #333;
-    color: black;
-    display: none; 
-    padding: 10px;
-    position: absolute; 
-    z-index: 100;  
-}
-
-.icon_logueado:hover .perfil_tooltip {
-    display: inline;
+.icon_logueado a{
+	    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
 }
 
 
+.icon_logueado a .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 150%;
+    left: 50%;
+    margin-left: -60px;
+}
 
+.icon_logueado a .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
 
+.icon_logueado a:hover .tooltiptext {
+    visibility: visible;
+}
 
+.icon_logueado a i:hover{
+	-webkit-text-fill-color: #c1b497;
 
-
-
-
-
-
-#ul_index_logueado .icon_logueado i:hover{
-	border: 1px solid black;
-	background:  #b3ff99;
 }
 
 #ver_carrito:hover #carrito{
 display: flex;
 }
 
+
+
+
 .nuevo_producto{
 	position: absolute;
-	font-size: 24px;
-	color: green;
+	font-size: 17px;
+	color: white;
 	opacity: 0.8;
 	margin-top: -30px;
 	margin-left: 32px;
+	animation: 0.6s nuevo;
+	visibility: hidden;
+}
+
+@keyframes nuevo{
+	from {
+		visibility: visible;
+		font-size: 17px;
+	}
+	to {
+		font-size: 24px;
+	}
 }
 
 
@@ -980,6 +1010,7 @@ flex-direction: column;
 
 #section_datos_usuario{
 	display: flex;
+	flex-direction: column;
 	width: 70%;
 	justify-content: center;
 }
@@ -987,7 +1018,7 @@ flex-direction: column;
 	display: flex;
 	flex-direction: column;
 	width: 50%;
-	border: 1px solid #337ab7;
+	/*border: 1px solid #337ab7;*/
 	padding: 10px;
 }
 
@@ -997,7 +1028,7 @@ flex-direction: column;
 	margin: 10px 0;
 }
 #section_datos_usuario form #comprar_final{
-	background: #337ab7;
+	/*background: #337ab7;*/
 	color: white;
 	font-size: 24px;
 }
@@ -1010,11 +1041,11 @@ flex-direction: column;
 	flex-direction: column;
 	width: 30%;
 	align-items: center;
-	border: 1px solid black;
+	border: 1px solid #c1b497;
 }
 
 .article_elemento_comprar{
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid #c1b497;
 	display: flex;
 	width: 100%;
 	margin: 10px 0;
@@ -1026,6 +1057,12 @@ flex-direction: column;
 
 .a_total_final{
 font-weight: bold;
+}
+
+
+#section_tarjeta_pago form{
+	display: flex;
+	flex-direction: column;
 }
 /*FIN COMPRANDO PRODUCTOS*/
 

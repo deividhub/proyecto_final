@@ -124,7 +124,9 @@ function añadir_elemento(){
 			$(".section_creacion_articulos article").remove();
 			$("#ul_carrito_total").show();
 			$(".carrito_sin_productos").css("display","none");
-				location.reload();
+			location.reload();
+				$("#ver_carrito").append("<p class='nuevo_producto'>+1</p>")
+
 			generar_elementos_carrito();
 
 
@@ -139,7 +141,6 @@ function añadir_elemento(){
 
 
 function generar_elementos_carrito(){
-	$("#ver_carrito").append("<p class='nuevo_producto'>+"+productos.length+"</p>")
 	$(".section_creacion_articulos .carrito_producto").remove();
 	var objetos=JSON.parse(localStorage.getItem('productos'))
 	$(".section_creacion_articulos").append("<article class='cantidad_elementos_carrito'>Productos totales: "+productos.length+"</article>")

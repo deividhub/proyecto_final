@@ -32,7 +32,12 @@ class Principal extends CI_Controller {
 
 		$this->load->view('vistas_index/head');
 
-		$this->load->view('logueado/header_logueado');
+		//if ($this->session->userdata('AUTHENTIFIED')) {
+			$this->load->view('logueado/header_logueado');
+		//}
+		//else{
+		//	$this->load->view('vistas_index/header');
+		//}
 		$this->load->view('vistas_index/navegacion',$datos);
 		$this->load->view('vistas_index/principal');
 		$this->load->view('vistas_index/footer');
@@ -44,19 +49,23 @@ class Principal extends CI_Controller {
 	}
 
 	public function iniciar_sesion(){
-		// devuelve 2 tipos de datos: redireccion al logueado o error al iniciar sesion.
-		// utilizar md5
+	//llama a la funcion por ajax y devuelve a tu perfil
+
+
+
 	}
 
 
 
 	public function registro(){
+		//llama a la funcion por ajax y devuelve a tu perfil
 		
 	}
 
 
 
 	public function perfil_usuario(){
-		
+
+					
 	}
 }
