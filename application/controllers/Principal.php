@@ -49,23 +49,23 @@ class Principal extends CI_Controller {
 	}
 
 	public function iniciar_sesion(){
-	//llama a la funcion por ajax y devuelve a tu perfil
-
-
-
+		// devuelve 2 tipos de datos: redireccion al logueado o error al iniciar sesion.
+		// utilizar md5
+		$this->load->view('vistas_index/head');
+		$this->load->view('vistas_login/login_client');
 	}
 
 
 
 	public function registro(){
-		//llama a la funcion por ajax y devuelve a tu perfil
-		
+		$this->load->view('vistas_index/head');
+		$this->load->view('registro');		
 	}
 
 
 
 	public function perfil_usuario(){
-
-					
+		$this->load->view('vistas_index/head');
+		$this->load->view('administracion/plantilla_client');
 	}
 }
