@@ -3,21 +3,24 @@
 
 $(document).ready(function(){
 
-
+/*Rellenando selects*/
 
 $("#form_tipo_producto").change(function(){
 
 ajaxQuery("Administracion/estilos",{"id_tipo_producto":$("#form_tipo_producto").val()})
 .then(function(devuelto){
+	$(".op_eliminar").remove();
 	var array=JSON.parse(devuelto);
-  	alert(array)
-}, function(error){
-  	alert("Error datos no encontrados")
+	for(var i=0;i<array.length;i++){
+		$("#form_estilo_producto").append("<option class='op_eliminar' value="+array[i]['id_estilo']+">"+array[i]['descripcion']+"</option>")
+	}
+
 });
 
 })
 
 
+/*Fin Rellenando selects*/
 
 
 
@@ -85,6 +88,11 @@ ajaxQuery("Administracion/estilos",{"id_tipo_producto":$("#form_tipo_producto").
    		if (comprobando==false) {
    			 alert(mensaje)
    			 e.preventDefault();
+	
+   		}
+   		else{
+	   		
+	
    		}
    })
 
@@ -93,11 +101,43 @@ ajaxQuery("Administracion/estilos",{"id_tipo_producto":$("#form_tipo_producto").
 
 
 
-// formulario modificar producto
-// formulario eliminar producto
 
 
-// formulario crear usuario
-// formulario modificar usuario
-// formulario eliminar usuario
+
+/*FORMULARIO EDITAR USUARIO*/
+$("button#edit").click(function(){
+	$("#form_editar_usuario").slideDown(2000);
+	ajaxQuery("Administracion/obtener_usuario",{"id_usuario":$(this).val()})
+		.then(function(devuelto){
+		var array=JSON.parse(devuelto);
+		for(var i=0;i<array.length;i++){
+			$("input[name='nombre']").val(array[0].nombre)
+			$("input[name='apellidos']").val(array[0].apellidos)
+			$("input[name='correo']").val(array[0].correo)
+			$("input[name='fecha_nac']").val(array[0].fecha_nac)
+			$("input[name='telefono']").val(array[0].telefono)
+			$("input[name='domicilio']").val(array[0].domicilio)
+			$("input[name='provincia']").val(array[0].provincia)
+			$("input[name='localidad']").val(array[0].localidad)
+			$("#guardar_cambios_usuario").val(array[0].id_usuario)
+		}
+			
+	});
+})
+
+$("#guardar_cambios_usuario").click(function(){
+	var x=$("#form_editar_usuario").serializeArray()
+		ajaxQuery("Administracion/editar_usuario",x)
+		.then(function(devuelto){
+			alert(devuelto)
+		alert("Datos modificados")
+			
+	});
+})
+
+
+
+
+
+
 });

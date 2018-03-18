@@ -1461,7 +1461,46 @@
 			margin-top: 10px;
 			margin-bottom: 10px;
 		}
+		
 
+		/*---------------*/
+
+
+
+		.configuraciones_panel_admin #form_editar_usuario{
+			border: 1px solid black;
+			display: none;
+			flex-direction: column;
+			width: 50%;
+			margin: auto;
+			margin-top: 20px;
+		}
+
+		/*---------------*/
+
+
+
+		.configuraciones_panel_admin #form_editar_usuario .input_group{
+			display: flex;
+			margin-top: 10px;
+		}
+
+
+		.configuraciones_panel_admin #form_editar_usuario .input_group input{
+			width: 100%;
+			padding: 5px 0;
+		}
+
+		.configuraciones_panel_admin #form_editar_usuario .input_group label{
+			width: 30%;
+		}
+
+		#guardar_cambios_usuario{
+			width: 20%;
+			margin: auto;
+			margin-top: 20px;
+			height: 40px;
+		}
 	/*Fin Panel de administración*/
 
 
