@@ -32,11 +32,11 @@
 	    <li><a href="">Notificar errores</a></li>
 	</ul>
 </aside>
-	<article class="configuraciones_panel_admin">
+	<article class="configuraciones_panel_admin form_oculto">
 		<h1>Gestion de productos</h1>
 		<h2>Añadir un producto</h2>
-		<form class="form_añadir_producto">
-			<input type="text" name="" placeholder="Nombre de producto" id="form_nombre_producto">
+		<form class="form_añadir_producto" action="Administracion/crear_producto" method="POST">
+			<input type="text" name="form_nombre_producto" placeholder="Nombre de producto" id="form_nombre_producto">
 
 			<select name="form_tipo_producto" id="form_tipo_producto">
 				<option value="">Tipo de producto</option>
@@ -49,22 +49,22 @@
 				?>
 			</select>	
 
-			<select name="" id="form_estilo_producto">
+			<select name="form_estilo_producto" id="form_estilo_producto">
 				<option value="0">Estilo</option>
 			</select>
 
-			<input name="text" type="" value="" placeholder="Color" id="form_color_producto"/>
+			<input name="form_color_producto" type="text" value="" placeholder="Color" id="form_color_producto"/>
 
-			<textarea name=""placeholder="Descripcion" id="form_desc_producto"></textarea>
-			<input type="number" name="" placeholder="precio" id="form_precio_producto">
-			<input type="text" name="" placeholder="Composición" id="form_composicion_producto">
-			<select name="" id="form_genero_producto">
+			<textarea name="form_desc_producto"placeholder="Descripcion" id="form_desc_producto"></textarea>
+			<input type="number" name="form_precio_producto" placeholder="precio" id="form_precio_producto">
+			<input type="text" name="form_composicion_producto" placeholder="Composición" id="form_composicion_producto">
+			<select name="form_genero_producto" id="form_genero_producto">
 				<option value="0">Género</option>
-				<option value="1">Hombre</option>
-				<option value="2">Mujer</option>
+				<option value="Hombre">Hombre</option>
+				<option value="Mujer">Mujer</option>
 			</select>	
-			<input type="file" name="" value="" id="form_imagen_producto">
-			<input type="submit" name="" value="Crear Producto" id="btn_crear_producto">
+			<input type="file" name="form_imagen_producto" value="" id="form_imagen_producto">
+			<input type="submit" name="btn_crear_producto" value="Crear Producto" id="btn_crear_producto">
 		</form>
 		<p class="developed">Desarrollado por: Nerea - Pedro - David</p>
 	</article>
@@ -137,7 +137,7 @@
 
 
 
-	<article class="configuraciones_panel_admin form_oculto">
+	<article class="configuraciones_panel_admin">
 		<h1>Gestion de usuario</h1>
 		<h2>Lista de usuarios</h2>
 		<article class="tabla_scroll">
@@ -173,8 +173,8 @@
 								<td>".$usuario->domicilio."</td>
 								<td>".$usuario->provincia."</td>
 								<td>".$usuario->localidad."</td>
-								<td><a href='#'><i class='material-icons button edit'>edit</i></a>
-						        <a href='#'><i class='material-icons button delete'>delete</i></a>
+								<td><button type='button' value='".$usuario->id_usuario."' id='edit'><i class='material-icons button edit'>edit</i></button>
+						        <button type='button'><i class='material-icons button delete'>delete</i></button>
 						      	</td>
 							</tr>";
 						}
@@ -184,6 +184,37 @@
 				</tbody>
 			</table>
 		</article>
+			<form action="" method="POST" accept-charset="utf-8" id="form_editar_usuario">
+				<div class="input_group">
+					<label>Nombre:</label> <input type="text" name="nombre">
+				</div>
+
+				<div class="input_group">
+					<label>Apellidos:</label> <input type="text" name="apellidos">
+				</div>
+
+				<div class="input_group">
+				 	<label>Email:</label> <input type="text" name="correo">
+				</div>
+				<div class="input_group">
+					<label>Fecha nacimiento:</label> <input type="text" name="fecha_nac">
+				</div>
+				<div class="input_group">
+					<label>Telefono:</label> <input type="text" name="telefono">
+				</div>
+				<div class="input_group">
+					<label>Domicilio:</label> <input type="text" name="domicilio">
+				</div>
+				<div class="input_group">
+					<label>Provincia:</label> <input type="text" name="provincia">
+				</div>
+				<div class="input_group">
+					<label>Localidad:</label> <input type="text" name="localidad">
+				</div>
+
+				<button type="button" name="id_usuario" value="" id="guardar_cambios_usuario">Guardar cambios</button>
+
+			</form>
 		<p class="developed">Desarrollado por: Nerea - Pedro - David</p>
 	</article>
 

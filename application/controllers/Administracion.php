@@ -16,6 +16,7 @@ class Administracion extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->model('Productos_model');
 		$this->load->model('Usuario_model');
+		$this->load->model('Administracion_model');
 	}
 
 
@@ -31,11 +32,46 @@ class Administracion extends CI_Controller {
 
 
 	public function estilos(){
-		echo json_encode($this->input->post("id_tipo_producto"));
+		$estilos=$this->Productos_model->obtener_estilo_tipos($this->input->post("id_tipo_producto"));
+
+		echo json_encode($estilos);
 		
 	}
 
+	public function crear_producto(){
+		$producto = array(
+	        'id_tipo_producto' => $this->input->post('form_tipo_producto'),
+	        'nombre_producto' => $this->input->post('form_nombre_producto'),
+	        'color'  => $this->input->post('form_color_producto'),
+	        'id_estilo'  => $this->input->post('form_estilo_producto'),
+	        'precio'  => $this->input->post('form_precio_producto').".0",
+	        'precio_ant'  => '0.0',
+	        'descripcion'  => $this->input->post('form_desc_producto'),
+	        'imagen'  => $this->input->post('form_imagen_producto'),
+	        'composicion'  => $this->input->post('form_composicion_producto'),
+	        'genero'  => $this->input->post('form_genero_producto')
+		);
 
+		//$result=$this->Administracion_model->crear_producto($producto);
+		//
+		echo $this->input->post("form_imagen_producto");	
+	}
+
+
+
+
+
+	public function obtener_usuario(){
+
+		$usuario=$this->Usuario_model->obtener_usuario($this->input->post('id_usuario'));
+		echo json_encode($usuario);
+		
+	}
+
+	public function editar_usuario(){
+		
+		echo json_encode($this->input->post("id_usuario"));
+	}
 
 
 

@@ -12,3 +12,4 @@ function ajaxQuery (url,jsondata){
     });
   });
 }
+

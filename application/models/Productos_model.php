@@ -65,6 +65,11 @@ class Productos_model extends CI_Model {
         }
 
 
+        public function obtener_estilo_tipos($id_tipo){
+                $sql = "SELECT * FROM estilo WHERE id_tipo_producto=$id_tipo";
+                $query=$this->db->query($sql);
+                return $query->result();
+        }
 
 }
 
