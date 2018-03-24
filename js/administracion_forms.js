@@ -2,8 +2,9 @@
 
 
 $(document).ready(function(){
+/*FORM CREAR PRODUCTO*/
 
-/*Rellenando selects*/
+//Rellenando selects
 
 $("#form_tipo_producto").change(function(){
 
@@ -20,11 +21,11 @@ ajaxQuery("Administracion/estilos",{"id_tipo_producto":$("#form_tipo_producto").
 })
 
 
-/*Fin Rellenando selects*/
+//Fin Rellenando selects
 
 
 
-// formulario crear producto
+// comprobando campos correctos
    $("#btn_crear_producto").click(function(e){
 
    	var mensaje="Errores encontrados: \n";
@@ -86,7 +87,7 @@ ajaxQuery("Administracion/estilos",{"id_tipo_producto":$("#form_tipo_producto").
 
    		}
    		if (comprobando==false) {
-   			 alert(mensaje)
+   			 swal("ERROR", mensaje);
    			 e.preventDefault();
 	
    		}
@@ -96,6 +97,7 @@ ajaxQuery("Administracion/estilos",{"id_tipo_producto":$("#form_tipo_producto").
    		}
    })
 
+/*FIN FORM CREAR PRODUCTO*/
 
 
 
@@ -105,7 +107,7 @@ ajaxQuery("Administracion/estilos",{"id_tipo_producto":$("#form_tipo_producto").
 
 
 /*FORMULARIO EDITAR USUARIO*/
-$("button#edit").click(function(){
+$("button#edituser").click(function(){
 	$("#form_editar_usuario").slideDown(2000);
 	ajaxQuery("Administracion/obtener_usuario",{"id_usuario":$(this).val()})
 		.then(function(devuelto){
@@ -119,7 +121,7 @@ $("button#edit").click(function(){
 			$("input[name='domicilio']").val(array[0].domicilio)
 			$("input[name='provincia']").val(array[0].provincia)
 			$("input[name='localidad']").val(array[0].localidad)
-			$("#guardar_cambios_usuario").val(array[0].id_usuario)
+			$("input[name='id_usuario']").val(array[0].id_usuario)
 		}
 			
 	});
@@ -129,11 +131,69 @@ $("#guardar_cambios_usuario").click(function(){
 	var x=$("#form_editar_usuario").serializeArray()
 		ajaxQuery("Administracion/editar_usuario",x)
 		.then(function(devuelto){
-			alert(devuelto)
-		alert("Datos modificados")
+		swal("Operación correcta!", "Datos de "+devuelto+" modificados.", "success");
 			
 	});
 })
+/*FIN FORMULARIO EDITAR USUARIO*/
+
+/*BORRAR USUARIO*/
+$(".deleteuser").click(function(){
+	if(this.value==1){
+   		swal("ERROR", "El administrador no se puede eliminar.");		
+	}
+	else{
+		swal({
+		  title: "Vas a eliminar un usuario, ¿estas seguro?",
+		  text: "Una vez eliminado no se podra recuperar el usuario",
+		  icon: "warning",
+		  buttons: true,
+		  dangerMode: true,
+		})
+		.then((eliminar) => {
+		  if (eliminar) {
+		  	ajaxQuery("Administracion/eliminar_usuario",{"id_usuario":this.value})
+				.then(function(devuelto){			
+			});
+		    swal("¡Usuario eliminado!", {
+		      icon: "success",
+		    });
+		    location.reload();
+		  } else {
+		    swal("Has cancelado la operación.");
+		  }
+		});
+	}
+})
+/*FIN BORRAR USUARIO*/
+
+/*FORMULARIO AÑADIR USUARIO*/
+
+$("#btn_crear_usuario").click(function(){
+	var x=$("#form_crear_usuario").serializeArray()
+		ajaxQuery("Administracion/crear_usuario",x)
+		.then(function(devuelto){
+		swal("Operación correcta!", "Usuario "+devuelto+" creado.", "success");
+		location.reload();
+
+	});
+})
+/*FIN FORMULARIO AÑADIR USUARIO*/
+
+
+
+
+
+/*Mostrar articulo segun click*/
+$(".mostrar").click(function(e){
+	$(".configuraciones_panel_admin").addClass("form_oculto")
+	e.preventDefault();
+	$("."+this.id).removeClass('form_oculto')
+})
+
+
+
+
 
 
 

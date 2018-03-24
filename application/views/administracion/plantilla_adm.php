@@ -14,25 +14,25 @@
 	<ul>
 	    <li><a href="">Usuarios</a>
 	    	<ul class="submenu_panel_admin">
-	    	    <li><a href="">Añadir usuario</a></li>
-	    	    <li><a href="">Listado</a></li>
+	    	    <li class="mostrar" id="crear_user"><a href="">Añadir usuario</a></li>
+	    	    <li class="mostrar" id="list_user"><a href="">Listado</a></li>
 	    	</ul>
 	    </li>
 	    <li><a href="">Productos</a>
 	    	<ul class="submenu_panel_admin">
-	    	    <li><a href="">Añadir producto</a></li>
-	    	    <li><a href="">Listado</a></li>
-	    	    <li><a href="">Tipos</a></li>
-	    	    <li><a href="">Estilos</a></li>
-	    	    <li><a href="">Tallas</a></li>
+	    	    <li class="mostrar" id="crear_product"><a href="">Añadir producto</a></li>
+	    	    <li class="mostrar" id="list_product"><a href="">Listado</a></li>
+	    	    <li class="mostrar" id="list_tipos"><a href="">Tipos</a></li>
+	    	    <li class="mostrar" id="list_estilos"><a href="">Estilos</a></li>
+	    	    <li class="mostrar" id="list_tallas"><a href="">Tallas</a></li>
 	    	</ul>
 	    </li>
-	    <li><a href="">Comentarios</a></li>
-	    <li><a href="">Pedidos</a></li>
-	    <li><a href="">Notificar errores</a></li>
+	    <li class="mostrar" id="list_coment"><a href="">Comentarios</a></li>
+	    <li class="mostrar" id="list_pedidos"><a href="">Pedidos</a></li>
+	    <li><a href="#">Notificar errores</a></li>
 	</ul>
 </aside>
-	<article class="configuraciones_panel_admin form_oculto">
+	<article class="configuraciones_panel_admin form_oculto crear_product">
 		<h1>Gestion de productos</h1>
 		<h2>Añadir un producto</h2>
 		<form class="form_añadir_producto" action="Administracion/crear_producto" method="POST">
@@ -80,7 +80,7 @@
 
 
 
-	<article class="configuraciones_panel_admin form_oculto">
+	<article class="configuraciones_panel_admin form_oculto list_product">
 		<h1>Gestion de productos</h1>
 		<h2>Lista de productos</h2>
 		<article class="tabla_scroll">
@@ -137,7 +137,7 @@
 
 
 
-	<article class="configuraciones_panel_admin">
+	<article class="configuraciones_panel_admin form_oculto list_user">
 		<h1>Gestion de usuario</h1>
 		<h2>Lista de usuarios</h2>
 		<article class="tabla_scroll">
@@ -173,8 +173,8 @@
 								<td>".$usuario->domicilio."</td>
 								<td>".$usuario->provincia."</td>
 								<td>".$usuario->localidad."</td>
-								<td><button type='button' value='".$usuario->id_usuario."' id='edit'><i class='material-icons button edit'>edit</i></button>
-						        <button type='button'><i class='material-icons button delete'>delete</i></button>
+								<td><button type='button' value='".$usuario->id_usuario."' id='edituser'><i class='material-icons button edit'>edit</i></button>
+						        <button type='button' value='".$usuario->id_usuario."' class='deleteuser'><i class='material-icons button delete'>delete</i></button>
 						      	</td>
 							</tr>";
 						}
@@ -211,14 +211,52 @@
 				<div class="input_group">
 					<label>Localidad:</label> <input type="text" name="localidad">
 				</div>
+				<input type="hidden" name="id_usuario" value="">
 
-				<button type="button" name="id_usuario" value="" id="guardar_cambios_usuario">Guardar cambios</button>
+				<button type="button" name="" value="" id="guardar_cambios_usuario">Guardar cambios</button>
 
 			</form>
 		<p class="developed">Desarrollado por: Nerea - Pedro - David</p>
 	</article>
 
 
+
+	<article class="configuraciones_panel_admin form_oculto crear_user">
+		<h1>Gestion de usuarios</h1>
+		<h2>Añadir usuario</h2>
+			<form action="" method="POST" accept-charset="utf-8" id="form_crear_usuario">
+				<div class="input_group">
+					<label>Nombre:</label> <input type="text" name="nombre">
+				</div>
+
+				<div class="input_group">
+					<label>Apellidos:</label> <input type="text" name="apellidos">
+				</div>
+
+				<div class="input_group">
+				 	<label>Email:</label> <input type="text" name="correo">
+				</div>
+				<div class="input_group">
+					<label>Fecha nacimiento:</label> <input type="text" name="fecha_nac">
+				</div>
+				<div class="input_group">
+					<label>Telefono:</label> <input type="text" name="telefono">
+				</div>
+				<div class="input_group">
+					<label>Domicilio:</label> <input type="text" name="domicilio">
+				</div>
+				<div class="input_group">
+					<label>Provincia:</label> <input type="text" name="provincia">
+				</div>
+				<div class="input_group">
+					<label>Localidad:</label> <input type="text" name="localidad">
+				</div>
+
+				<button type="button" name="" value="" id="btn_crear_usuario">Añadir usuario</button>
+
+			</form>
+		<p class="developed">Desarrollado por: Nerea - Pedro - David</p>
+	</article>
 
 
 </section>

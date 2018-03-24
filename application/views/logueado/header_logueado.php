@@ -27,6 +27,7 @@
 					</ul>
 				</div>
 			</li>
+			<li class="cerrar_sesion">Cerrar sesion</li>
 		</ul>
 	</header>
 

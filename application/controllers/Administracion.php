@@ -69,10 +69,40 @@ class Administracion extends CI_Controller {
 	}
 
 	public function editar_usuario(){
-		
-		echo json_encode($this->input->post("id_usuario"));
+		$usuario = array(
+	        'nombre' => $this->input->post('nombre'),
+	        'apellidos'  => $this->input->post('apellidos'),
+	        'correo'  => $this->input->post('correo'),
+	        'fecha_nac'  => $this->input->post('fecha_nac'),
+	        'telefono'  => $this->input->post('telefono'),
+	        'domicilio'  => $this->input->post('domicilio'),
+	        'provincia'  => $this->input->post('provincia'),
+	        'localidad'  => $this->input->post('localidad')
+		);
+		$id=$this->input->post('id_usuario');
+		$this->Administracion_model->editar_usuario($usuario,$id);
+		echo json_encode($this->input->post('nombre'));
 	}
 
+	public function crear_usuario(){
+		$usuario = array(
+	        'id_tipo_usuario' => 2,
+	        'nombre' => $this->input->post('nombre'),
+	        'apellidos'  => $this->input->post('apellidos'),
+	        'correo'  => $this->input->post('correo'),
+	        'contraseña'  => "nuevousuario",
+	        'fecha_nac'  => $this->input->post('fecha_nac'),
+	        'telefono'  => $this->input->post('telefono'),
+	        'domicilio'  => $this->input->post('domicilio'),
+	        'provincia'  => $this->input->post('provincia'),
+	        'localidad'  => $this->input->post('localidad')
+		);
+		$this->Administracion_model->crear_usuario($usuario);
+		echo json_encode($this->input->post('nombre'));
+	}
 
+	public function eliminar_usuario(){
+		$this->Administracion_model->eliminar_usuario($this->input->post("id_usuario"));
+	}
 
 }

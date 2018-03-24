@@ -52,7 +52,10 @@ class Principal extends CI_Controller {
 		// devuelve 2 tipos de datos: redireccion al logueado o error al iniciar sesion.
 		// utilizar md5
 		$this->load->view('vistas_index/head');
+		$this->load->view('logueado/header_logueado');
 		$this->load->view('vistas_login/login_client');
+		$this->load->view('vistas_index/footer');
+
 	}
 
 
