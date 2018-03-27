@@ -18,6 +18,7 @@ class Principal extends CI_Controller {
 	 function __construct() {
 	    parent::__construct();
 		$this->load->helper('url');
+		$this->load->helper('form');
 		$this->load->model('Principal_model');
 		$this->load->model('Productos_model');
 
@@ -29,6 +30,7 @@ class Principal extends CI_Controller {
 		//obtener categorias y estilos.
 		$datos['categorias']=$this->Productos_model->obtener_categorias();
 		$datos['estilos']=$this->Productos_model->obtener_estilos();
+		$datos['productos_rdm']=$this->Productos_model->obtener_productos_rdm();
 
 		$this->load->view('vistas_index/head');
 
@@ -39,13 +41,13 @@ class Principal extends CI_Controller {
 		//	$this->load->view('vistas_index/header');
 		//}
 		$this->load->view('vistas_index/navegacion',$datos);
-		$this->load->view('vistas_index/principal');
+		$this->load->view('vistas_index/principal',$datos);
 		$this->load->view('vistas_index/footer');
 	}
 
 
-	public function formulario_sesion_registro(){
-		
+	public function login_registro(){
+	$this->load->view('vistas_login/loginpedro');
 	}
 
 	public function iniciar_sesion(){
@@ -64,6 +66,7 @@ class Principal extends CI_Controller {
 		$this->load->view('vistas_index/head');
 		$this->load->view('registro');		
 	}
+
 
 
 

@@ -47,7 +47,7 @@ class Compra extends CI_Controller {
 			$var['id_tipo_producto']=$key->id_tipo_producto;
 			$var['nombre_producto']=$key->nombre_producto;
 			$var['color']=$key->color;
-			$var['imagen']=base64_encode($key->imagen);
+			$var['imagen']=$key->imagen;
 		}
 		echo json_encode($var);
 	}
@@ -59,8 +59,9 @@ class Compra extends CI_Controller {
 	public function fin_compra(){
 		$productos=$this->input->post("productos");
 		$id_usuario=$this->input->post("id_usuario");
-		$precio=$this->input->post("precio");
-		$this->Productos_model->generar_pedido($productos,$id_usuario,$precio);
+		$precio=$this->input->post("total");
+		//$this->Productos_model->generar_pedido($productos,$id_usuario,$precio);
+		echo json_encode($productos);
 	}
 
 

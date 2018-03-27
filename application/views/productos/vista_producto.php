@@ -8,7 +8,7 @@ $array_tallas=array();
 $array_stock=array();
 
 foreach ($producto as $key) {
-	$ruta_imagen= '<img src="data:image/jpeg;base64,'.base64_encode($key->imagen).'"/>';
+	$ruta_imagen= '<img src="'.$key->imagen.'"/>';
 	$nombre_producto=$key->nombre_producto;
 	$id_producto=$key->id_producto;
 	$precio=$key->precio;
@@ -28,7 +28,7 @@ foreach ($producto as $key) {
 
 
 
-		<a target="_blank" href="#"><img src="data:image/jpeg;base64,<?php echo base64_encode($key->imagen);?>" alt=""></a>
+		<a target="_blank" href="#"><img src="<?php echo $key->imagen;?>" alt=""></a>
 		<div>
 		<i id="icono_fav" class="material-icons">favorite</i>
 		</div>

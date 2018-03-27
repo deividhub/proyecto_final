@@ -5,27 +5,22 @@
 
 
 <section class="section_imagenes">
-<div class="reversible">
-   <div data-transitions="Ver producto" class="verso"></div>
-   <div data-transitions="" class="cara"><img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1501179310/493869_0GCCT_8842_001_067_0000_Light-Bolsa-con-Cinturn-de-Piel-con-Estampado-Gucci.jpg" alt=""></div>
-</div>
-<div class="reversible">
 
+<?php 
+$cont=0;
+foreach ($productos_rdm as $key) {
+   $imagen=$key->imagen;
+   $enlace=base_url().'index.php/Productos/mostrar_producto/'.$key->id_producto;
+      
+?>
+
+<a href="<?php echo $enlace; ?>" class="reversible">
    <div data-transitions="Ver producto" class="verso"></div>
-   <div data-transitions="" class="cara"><img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1501179310/493869_0GCCT_8842_001_067_0000_Light-Bolsa-con-Cinturn-de-Piel-con-Estampado-Gucci.jpg" alt=""></div>
-</div>
-<div class="reversible">
-   <div data-transitions="Ver producto" class="verso"></div>
-   <div class="cara"><img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1510052412/495665_0GCAT_8163_001_100_0000_Light-Cartera-Maletn-Pequea-de-Piel-con-Estampado-Gucci.jpg" alt=""></div>
-</div>
-<div class="reversible">
-   <div data-transitions="Ver producto" class="verso"></div>
-   <div data-transitions="" class="cara"><img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1510052412/495665_0GCAT_8163_001_100_0000_Light-Cartera-Maletn-Pequea-de-Piel-con-Estampado-Gucci.jpg" alt=""></div>
-</div>
-<div class="reversible">
-   <div data-transitions="Ver producto" class="verso"></div>
-   <div data-transitions="" class="cara"><img src="https://media.gucci.com/style/DarkGray_Center_0_0_800x800/1510052412/495665_0GCAT_8163_001_100_0000_Light-Cartera-Maletn-Pequea-de-Piel-con-Estampado-Gucci.jpg" alt=""></div>
-</div>
+   <div data-transitions="" class="cara"><img src="<?php echo $imagen; ?>" alt=""></div>
+</a>
+<?php
+}
+ ?>
 </section>
 
 

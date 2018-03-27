@@ -21,7 +21,7 @@ $(".mujer").click(function(){
 $(".cerrar_sesion").click(function(){
 	localStorage.removeItem("AUTH");
 	localStorage.removeItem("user");
-	location.reload();
+	location.href='/proyecto_final/index.php/Principal'
 })
 
 });

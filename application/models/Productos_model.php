@@ -20,6 +20,13 @@ class Productos_model extends CI_Model {
         }
 
 
+
+        public function obtener_productos_rdm(){
+
+                $sql = "SELECT * FROM producto  ORDER BY RAND() LIMIT 5";
+                $query=$this->db->query($sql);
+                return $query->result();
+        }
         public function obtener_productos(){
 
                 $sql = "SELECT * FROM producto";

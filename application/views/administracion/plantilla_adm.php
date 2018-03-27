@@ -63,7 +63,7 @@
 				<option value="Hombre">Hombre</option>
 				<option value="Mujer">Mujer</option>
 			</select>	
-			<input type="file" name="form_imagen_producto" value="" id="form_imagen_producto">
+			<input type="file" name="files[]" value="" id="files">
 			<input type="submit" name="btn_crear_producto" value="Crear Producto" id="btn_crear_producto">
 		</form>
 		<p class="developed">Desarrollado por: Nerea - Pedro - David</p>
@@ -71,10 +71,7 @@
 
 
 
-
-
-
-
+	
 
 
 
@@ -105,7 +102,8 @@
 				<?php 
 					if ($listado_completo_productos) {
 						foreach ($listado_completo_productos as $producto) {
-							$ruta_imagen= '<img src="data:image/jpeg;base64,'.base64_encode($producto->imagen).'"/>';
+							$ruta_imagen= '<img src="'.$producto->imagen.'"/>';
+							
 							echo "<tr>
 								<td>".$producto->id_producto."</td>
 								<td>".$producto->nombre_producto."</td>
@@ -161,7 +159,6 @@
 				<?php 
 					if ($listado_completo_usuarios) {
 						foreach ($listado_completo_usuarios as $usuario) {
-							$ruta_imagen= '<img src="data:image/jpeg;base64,'.base64_encode($producto->imagen).'"/>';
 							echo "<tr>
 								<td>".$usuario->id_usuario."</td>
 								<td>".$usuario->nombre."</td>

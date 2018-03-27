@@ -76,7 +76,7 @@ ajaxQuery("Administracion/estilos",{"id_tipo_producto":$("#form_tipo_producto").
    		}
    		imagenes = new Array("gif", "jpg", "JPG","PNG","png","GIF"); 
    		for (var i = 0; i < imagenes.length; i++) {
- 			if (imagenes[i]==$("#form_imagen_producto").val().toString().slice(-3)) {
+ 			if (imagenes[i]==$("#files").val().toString().slice(-3)) {
  				var esimagen=true;
  				break;
  			}
@@ -89,19 +89,43 @@ ajaxQuery("Administracion/estilos",{"id_tipo_producto":$("#form_tipo_producto").
    		if (comprobando==false) {
    			 swal("ERROR", mensaje);
    			 e.preventDefault();
-	
    		}
    		else{
-	   		
+   			e.preventDefault();
+		var json={"nombre_producto":$("#form_nombre_producto").val(),"color":$("#form_color_producto").val(),"id_estilo":$("#form_estilo_producto").val(),"precio":$("#form_precio_producto").val(),"descripcion":$("#form_desc_producto").val(),"composicion":$("#form_composicion_producto").val(),"genero":$("#form_genero_producto").val(),"id_tipo_producto":$("#form_tipo_producto").val(),"imagen":localStorage.imagen_subida}
+	   		ajaxQuery("Administracion/crear_producto",json)
+				.then(function(devuelto){
+					
+				swal("Operación correcta!", "Producto creado");
+
+			});
 	
    		}
    })
 
 /*FIN FORM CREAR PRODUCTO*/
+ document.getElementById('files').addEventListener('change', archivo);
 
-
-
-
+function archivo(evt) {
+      var files = evt.target.files;
+       
+      for (var i = 0, f; f = files[i]; i++) {         
+           if (!f.type.match('image.*')) {
+                continue;
+           }
+       
+           var reader = new FileReader();
+           var img=document.createElement("img")
+           reader.onload = (function(theFile) {
+               return function(e) {
+               	localStorage.setItem("imagen_subida",e.target.result)
+               };
+           })(f);
+ 
+           reader.readAsDataURL(f);
+       }
+}
+ 
 
 
 
@@ -158,7 +182,7 @@ $(".deleteuser").click(function(){
 		    swal("¡Usuario eliminado!", {
 		      icon: "success",
 		    });
-		    location.reload();
+		    //location.reload();
 		  } else {
 		    swal("Has cancelado la operación.");
 		  }
@@ -174,7 +198,7 @@ $("#btn_crear_usuario").click(function(){
 		ajaxQuery("Administracion/crear_usuario",x)
 		.then(function(devuelto){
 		swal("Operación correcta!", "Usuario "+devuelto+" creado.", "success");
-		location.reload();
+		//location.reload();
 
 	});
 })

@@ -1,6 +1,6 @@
 	<nav class="nav_genero">
 		<ul class="ul_logo">
-		    <li>DWNPD</li>
+		    <li><a href="/proyecto_final/index.php/Principal">DWNPD</a></li>
 		</ul>
 	    <ul>
 			<li class="li_activo mujer"><a href="#">Mujer<hr></a></li>

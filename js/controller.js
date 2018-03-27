@@ -1,54 +1,4 @@
 
-/*$(document).ready(function(){
-if(localStorage.array_carrito){
-	var dataObject=[localStorage.getItem('array_carrito')];
-	$("#carrito").append("<article class='carrito_producto'><img><ul><li>"+localStorage.array_carrito[0]['precio']+"</li><li></li></ul></article>")
-
-
-
-
-}
-else{
-	alert("todavia no")
-	var dataObject = [];
-}
-
-
-
-// funcion que le da una clase al boton de la talla para saber que talla se ha elegido
-$(".btn_talla").click(function(){
-	$(".btn_talla").removeClass("btn_activo");
-	$(this).addClass("btn_activo");
-})
-
-var base_url="http://localhost:8080/proyecto_final/";
-$("#btn_añadir_carrito").click(function(){
-
-	if($(".btn_activo").length ){
-		$.post({url: base_url+"index.php/Compra/carrito",
-	        datatype:"json",
-	        data:{'id_producto':$(".li_referencia a").text(),'id_talla':$(".btn_activo").val()},
-	        success: function(devuelto){
-	        //var array=JSON.parse(devuelto);
-	        dataObject.push(devuelto);
-	        localStorage.setItem('array_carrito', JSON.stringify(dataObject));
-	        //alert(localStorage.array_carrito[0])
-
-				// Obtengo el string previamente salvado y luego 
-				
-
-				alert(JSON.parse(localStorage.array_carrito[0]));
-
-	    }});
-	}
-	else{
-		alert("Selecciona talla")
-	}
-
-
-});
-})*/
-
 
 
 
@@ -145,7 +95,7 @@ function generar_elementos_carrito(){
 	var objetos=JSON.parse(localStorage.getItem('productos'))
 	$(".section_creacion_articulos").append("<article class='cantidad_elementos_carrito'>Productos totales: "+productos.length+"</article>")
 	for(var i=0; i<objetos.length; i++){
-		$(".section_creacion_articulos").append("<article class='carrito_producto'><img src='data:image/jpeg;base64,"+objetos[i]['imagen']+"'><ul><li>"+objetos[i]['nombre_producto']+"</li><li>Precio: "+objetos[i]['precio']+"€</li><li>Talla: "+objetos[i]['desc_talla']+"</li><li>"+objetos[i]['color']+"</li><li><button type='button' class='btn_eliminar_producto' value="+objetos[i]['id_elemento']+">Eliminar</button></li></ul></article>")
+		$(".section_creacion_articulos").append("<article class='carrito_producto'><img src='"+objetos[i]['imagen']+"'><ul><li>"+objetos[i]['nombre_producto']+"</li><li>Precio: "+objetos[i]['precio']+"€</li><li>Talla: "+objetos[i]['desc_talla']+"</li><li>"+objetos[i]['color']+"</li><li><button type='button' class='btn_eliminar_producto' value="+objetos[i]['id_elemento']+">Eliminar</button></li></ul></article>")
 	}
 	carrito_precio_total();
 }

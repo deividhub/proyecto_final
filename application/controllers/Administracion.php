@@ -40,21 +40,21 @@ class Administracion extends CI_Controller {
 
 	public function crear_producto(){
 		$producto = array(
-	        'id_tipo_producto' => $this->input->post('form_tipo_producto'),
-	        'nombre_producto' => $this->input->post('form_nombre_producto'),
-	        'color'  => $this->input->post('form_color_producto'),
-	        'id_estilo'  => $this->input->post('form_estilo_producto'),
-	        'precio'  => $this->input->post('form_precio_producto').".0",
+	        'id_tipo_producto' => $this->input->post('id_tipo_producto'),
+	        'nombre_producto' => $this->input->post('nombre_producto'),
+	        'color'  => $this->input->post('color'),
+	        'id_estilo'  => $this->input->post('id_estilo'),
+	        'precio'  => $this->input->post('precio').".0",
 	        'precio_ant'  => '0.0',
-	        'descripcion'  => $this->input->post('form_desc_producto'),
-	        'imagen'  => $this->input->post('form_imagen_producto'),
-	        'composicion'  => $this->input->post('form_composicion_producto'),
-	        'genero'  => $this->input->post('form_genero_producto')
+	        'descripcion'  => $this->input->post('descripcion'),
+	        'imagen'  => $this->input->post('imagen'),
+	        'composicion'  => $this->input->post('composicion'),
+	        'genero'  => $this->input->post('genero')
 		);
-
-		//$result=$this->Administracion_model->crear_producto($producto);
-		//
-		echo $this->input->post("form_imagen_producto");	
+		
+		$result=$this->Administracion_model->crear_producto($producto);
+		
+		//echo json_encode($this->input->post('imagen'));	
 	}
 
 

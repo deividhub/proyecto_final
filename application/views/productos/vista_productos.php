@@ -37,8 +37,7 @@ else{
 		$id_producto= $producto->id_producto;
 		$precio= $producto->precio;
 		$precio_ant= $producto->precio_ant;
-		$imagen='"data:image/jpeg;base64,'.base64_encode($producto->imagen).'"';
-	}
+		$imagen=$producto->imagen;
 ?>
 	<article class="article_producto">
 		<img class="img_hover" src=<?php echo $imagen; ?> alt="">
@@ -49,6 +48,7 @@ else{
 	</article>
 
 <?php 
+}
 }
  ?>
 

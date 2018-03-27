@@ -107,8 +107,11 @@
 		/*---------------*/
 
 
-		.ul_logo li{
+		.ul_logo li a{
 			color: #c1b497;
+					font-size: 34px!important;
+    text-decoration: underline overline;
+
 		}
 
 
@@ -328,7 +331,7 @@
 		/*---------------*/
 
 
-		div.reversible:hover {
+		a.reversible:hover {
 		  transform: rotateY(180deg);
 		}
 
@@ -848,7 +851,7 @@
 		#section_article_productos .article_producto{
 			display: flex;
 			flex-direction: column;
-			width: 40%;
+			width: 30%;
 			margin: 0 0 40px 20px;
 			border: 1px solid gray;
 			background: #c1b497;
@@ -862,6 +865,7 @@
 		
 		#section_article_productos .article_producto .img_hover{
 			width: 100%;
+			height: 400px;
 		}
 
 
@@ -1665,6 +1669,10 @@
 		  color: #dc2a2a;
 		}
 
+		.reponer_stock:hover{
+			color: green;
+		}
+
 
 	/* Fin Tabla general mostrar datos*/
 
@@ -1919,98 +1927,160 @@
 
 		#section_comprobando_compra{
 			display: flex;
-			flex-wrap: nowrap;
 			margin: 20px 0;
+			flex-wrap: wrap;
 		}
 		
+		#section_comprobando_compra section{
+			border-left: 1px dotted black;
+		}
+		/*---------------*/
+		#section_productos_compra{
+			width: 20%;
+			display: flex;
+			flex-direction: column;
+		}
+
+
+
+		/*---------------*/
+
+		.article_elemento_comprar{
+			display: flex;
+			margin-top: 20px;
+			border-top: 1px dotted black;
+		}
+
+
+		/*---------------*/
+
+		.article_elemento_comprar img{
+			width: 100px;
+			height: 100px;
+			margin: 10px 0;
+			border: 0.5px solid black;
+		    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+		}
+
+		/*---------------*/
+		.article_elemento_comprar ul{
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
 
 		/*---------------*/
 
 
-		#section_datos_usuario{
-			display: flex;
-			flex-direction: column;
-			width: 70%;
-			justify-content: center;
+
+		.a_total_final{
+			font-weight: bold;
+			font-size: 24px;
 		}
 
+		.p_total_final{
+			border-top: 1px dashed gray;
+		}
+
+		
+
+		/*---------------*/
+
+		#section_datos_usuario{
+			width: 30%;
+			display: flex;
+			flex-direction: column;
+		}
+		
 
 		/*---------------*/
 
 
 		#section_datos_usuario form{
+			border: 1px solid black;
 			display: flex;
 			flex-direction: column;
-			width: 50%;
-			padding: 10px;
-		}		
-
+			padding: 20px;
+		}
 
 		/*---------------*/
-
 
 		#section_datos_usuario form input{
-			padding: 20px 0;
-			border-radius: 10px;
+			padding: 10px 0;
 			margin: 10px 0;
+			border-radius: 10px;
 		}
-
 
 		/*---------------*/
 
-
-		#section_datos_usuario form #comprar_final{
-			color: white;
-			font-size: 24px;
+		#section_datos_usuario form input:focus{
+			border-radius: 0;
 		}
-		
 
 		/*---------------*/
-
-
-		#section_productos_compra{
+		#section_tarjeta_pago{
+			width: 40%;
+			margin: 40px 0;
 			display: flex;
 			flex-direction: column;
-			width: 30%;
-			align-items: center;
-			border: 1px solid #c1b497;
+
 		}
-		
-
-		/*---------------*/
-
-
-		.article_elemento_comprar{
-			border-bottom: 1px solid #c1b497;
-			display: flex;
-			width: 100%;
-			margin: 10px 0;
-		}
-		
-
-		/*---------------*/
-
-
-		.article_elemento_comprar img{
-			max-height: 100px;
-		}
-		
-
-		/*---------------*/
-
-
-		.a_total_final{
-			font-weight: bold;
-		}
-
-
-		/*---------------*/
-
-
 		#section_tarjeta_pago form{
 			display: flex;
 			flex-direction: column;
+			align-items: center;
+			width: 100%;
+			border: 1px solid black;
 		}
+
+		#section_tarjeta_pago form label{
+			width: 95%;
+		}
+		#section_tarjeta_pago form label p{
+			width: 100%;
+		}
+
+		#section_tarjeta_pago form label input{
+			border-radius: 20px;
+			padding: 10px 0;
+			width: 100%;
+		}
+
+		#section_tarjeta_pago form label input:focus{
+			border-radius: 0px;
+
+		}
+		#section_tarjeta_pago form label input::placeholder, #section_tarjeta_pago form{
+			font-size: 20px;
+		}
+
+		#section_tarjeta_pago #pago_group{
+			display: flex;
+			width: 95%;
+		}
+		#section_tarjeta_pago #pago_group label{
+			width: 45%!important;
+		}	
+
+		#section_tarjeta_pago #pago_group label input{
+			width: 50%!important;
+		}
+
+		#credit_card{
+			font-size: 54px;
+			color: blue;
+		}
+		/*---------------*/
+		/*---------------*/
+		/*---------------*/
+		/*---------------*/
+		/*---------------*/
+		/*---------------*/
+		/*---------------*/
+		/*---------------*/
+		/*---------------*/
 
 
 
