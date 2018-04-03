@@ -3,7 +3,7 @@
 		    <li><a href="/proyecto_final/index.php/Principal">DWNPD</a></li>
 		</ul>
 	    <ul>
-			<li class="li_activo mujer"><a href="#">Mujer<hr></a></li>
+			<li class="mujer"><a href="#">Mujer<hr></a></li>
 			<li class="hombre"><a href="#">Hombre<hr></a></li>
 	    </ul>
 	</nav>

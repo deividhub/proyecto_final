@@ -95,7 +95,7 @@ function generar_elementos_carrito(){
 	var objetos=JSON.parse(localStorage.getItem('productos'))
 	$(".section_creacion_articulos").append("<article class='cantidad_elementos_carrito'>Productos totales: "+productos.length+"</article>")
 	for(var i=0; i<objetos.length; i++){
-		$(".section_creacion_articulos").append("<article class='carrito_producto'><img src='"+objetos[i]['imagen']+"'><ul><li>"+objetos[i]['nombre_producto']+"</li><li>Precio: "+objetos[i]['precio']+"€</li><li>Talla: "+objetos[i]['desc_talla']+"</li><li>"+objetos[i]['color']+"</li><li><button type='button' class='btn_eliminar_producto' value="+objetos[i]['id_elemento']+">Eliminar</button></li></ul></article>")
+		$(".section_creacion_articulos").append("<article class='carrito_producto'><img src='"+objetos[i]['imagen']+"'><ul><li>"+objetos[i]['nombre_producto']+"</li><li>Precio: "+objetos[i]['precio']+"€</li><li>Talla: "+objetos[i]['desc_talla']+"</li><li>"+objetos[i]['color']+"</li><li><button type='button' class='btn_eliminar_producto' value="+objetos[i]['id_elemento']+"><i class='material-icons'>delete_forever</i></button></li></ul></article>")
 	}
 	carrito_precio_total();
 }

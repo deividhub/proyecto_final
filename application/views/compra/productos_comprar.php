@@ -17,14 +17,12 @@
 			<input type="text" name="" placeholder="fecha nacimiento">
 			<input type="text" name="" placeholder="provincia">
 			<input type="text" name="" placeholder="localidad">
-			<input type="checkbox" name="">Acepto los terminos y condiciones de compra. <a href="#">Leer.</a>
-			<input type="submit" name="" value="Proceder al pago" id="comprar_final">
 
 		</form>
 
 	</section>
 	<section id="section_tarjeta_pago">
-		<h1>3. Tus tarjeta de crédito/débito</h1>
+		<h1>3. Tu tarjeta de crédito/débito</h1>
 		<form>
 			<i class="fa fa-cc-visa" id="credit_card"></i>
 			<label><p>Nº Tarjeta</p><input type="text" name="" value="" placeholder="4564 5643 9873 7632"></label>
@@ -33,7 +31,11 @@
 				<label><p>Expedición</p><input type="text" name="" value="" placeholder="11/19"></label>
 				<label><p>CCV</p><input type="text" name="" value="" placeholder="999"></label>
 			</div>
-			<button type="button" name="">Comprar</button>
+					<div id="pago_group">
+
+			<input type="checkbox" name="">Acepto los terminos y condiciones de compra.
+		</div>
+			<button type="submit" name="" id="comprar_final">Pagar</button>
 		</form>
 		
 	</section>

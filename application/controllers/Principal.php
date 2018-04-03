@@ -33,13 +33,7 @@ class Principal extends CI_Controller {
 		$datos['productos_rdm']=$this->Productos_model->obtener_productos_rdm();
 
 		$this->load->view('vistas_index/head');
-
-		//if ($this->session->userdata('AUTHENTIFIED')) {
-			$this->load->view('logueado/header_logueado');
-		//}
-		//else{
-		//	$this->load->view('vistas_index/header');
-		//}
+		$this->load->view('logueado/header_logueado');
 		$this->load->view('vistas_index/navegacion',$datos);
 		$this->load->view('vistas_index/principal',$datos);
 		$this->load->view('vistas_index/footer');

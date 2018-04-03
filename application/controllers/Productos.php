@@ -24,7 +24,7 @@ class Productos extends CI_Controller {
 		$datos['productos']=$this->Productos_model->obtener_productos();
 
 		$this->load->view('vistas_index/head');
-		$this->load->view('vistas_index/header');
+		$this->load->view('logueado/header_logueado');
 		$this->load->view('vistas_index/navegacion',$datos);
 		$this->load->view('productos/vista_productos',$datos);
 		$this->load->view('vistas_index/footer');
@@ -43,7 +43,7 @@ class Productos extends CI_Controller {
 		$datos['productos']=$this->Productos_model->obtener_productos_tipo($id_tipo_producto);
 
 		$this->load->view('vistas_index/head');
-		$this->load->view('vistas_index/header');
+		$this->load->view('logueado/header_logueado');
 		$this->load->view('vistas_index/navegacion',$datos);
 		$this->load->view('productos/vista_productos',$datos);
 		$this->load->view('vistas_index/footer');
@@ -60,7 +60,7 @@ class Productos extends CI_Controller {
 		$datos['productos']=$this->Productos_model->obtener_productos_estilo($id_estilo);
 
 		$this->load->view('vistas_index/head');
-		$this->load->view('vistas_index/header');
+		$this->load->view('logueado/header_logueado');
 		$this->load->view('vistas_index/navegacion',$datos);
 		$this->load->view('productos/vista_productos',$datos);
 		$this->load->view('vistas_index/footer');
@@ -76,7 +76,7 @@ class Productos extends CI_Controller {
 		$id_producto=$this->uri->segment(3);
 		$datos['producto']=$this->Productos_model->obtener_producto($id_producto);
 		$datos['tallas']=$this->Productos_model->obtener_tallas_producto($id_producto);
-
+		$datos['favoritos']=$this->Productos_model->obtener_favoritos($id_producto);
 
 		$this->load->view('vistas_index/head');
 		$this->load->view('logueado/header_logueado');
@@ -87,7 +87,7 @@ class Productos extends CI_Controller {
 
 
 	public function favorito(){
-		
+		$this->Productos_model->favorito($this->input->post("id_producto"),$this->input->post("estado"));
 	}
 
 }

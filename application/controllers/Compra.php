@@ -24,7 +24,7 @@ class Compra extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('vistas_index/head');
-		$this->load->view('vistas_index/header');
+		$this->load->view('logueado/header_logueado');
 		$this->load->view('compra/productos_comprar');
 
 		$this->load->view('vistas_index/footer');
@@ -58,10 +58,12 @@ class Compra extends CI_Controller {
 
 	public function fin_compra(){
 		$productos=$this->input->post("productos");
-		$id_usuario=$this->input->post("id_usuario");
+		$usuario=$this->input->post("usuario");
 		$precio=$this->input->post("total");
-		//$this->Productos_model->generar_pedido($productos,$id_usuario,$precio);
-		echo json_encode($productos);
+		$precio=(int)$precio;
+		$fecha=getdate();
+		$fecha=$fecha['mday']."-".$fecha['mon']."-".$fecha['year']." Hora: ".$fecha['hours'].":".$fecha['minutes'].":".$fecha['seconds'];
+		$this->Productos_model->generar_pedido($productos,$usuario,$precio,$fecha);
 	}
 
 

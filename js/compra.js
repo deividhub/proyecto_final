@@ -21,11 +21,9 @@ e.preventDefault();
 
 		$.post({url: base_url+"index.php/Compra/fin_compra",
 	        datatype:"json",
-	        data:{'total':$(".a_total_final").text(),'id_usuario':2,"productos":localStorage.productos},
+	        data:{'total':$(".a_total_final").text(),'usuario':localStorage.user,"productos":localStorage.productos},
 	        success: function(devuelto){
-	        	alert(JSON.parse(devuelto))
-
-	        //var array=JSON.parse(devuelto);
+	        	swal("Pedido realizado!", "En breves momentos tu pedido será empaquetado. Puedes ver su estado en tu perfil.");
 	    }});
 })
 

@@ -26,6 +26,50 @@
 	/*---------------*/
 
 
+	.loading i{
+		font-size: 250px;
+		color: #c1b497;
+		animation: loading 3s infinite;
+	}
+	.loading a::after{
+		animation: loading-points 1s infinite;
+		content: "...";
+	}
+
+	.loading{
+		display: flex;
+		font-size: 24px;
+		flex-direction: column;
+		align-items: center;
+		color: black;
+		position: absolute;
+		margin: -50% 0 0 40%;
+	}
+
+	@keyframes loading{
+		to {
+			color: black;
+			transform: rotateY(1500deg)
+		}
+	}
+	@keyframes loading-points{
+		10% {
+				content: ".";
+		}		
+
+		50% {
+				content: "..";
+		}		
+
+		100% {
+				content: "...";
+		}
+	}
+
+
+	/*---------------*/
+
+
 	a{
 		text-decoration: none;
 		color: black;
@@ -411,7 +455,7 @@
 		#footer_index{
 			background: #25211e;
 			width: 100%;
-			margin-top: 10px;
+			margin-top: 40px;
 
 		}
 
@@ -490,6 +534,7 @@
 			display: flex;
 			width: 90%;
 			margin: auto;
+			margin-top: 50px;
 		}
 
 	/*Fin Sección producto*/
@@ -556,9 +601,19 @@
 		/*---------------*/
 		
 
+
+		.article_producto_imagen #icono_fav.fav-true{
+			font-size: 32px;
+			-webkit-text-fill-color: lightpink;
+			-webkit-text-stroke: 1px #c1b497;
+			cursor: pointer;
+		}
+		
+		
+		/*---------------*/
 		.article_producto_imagen #icono_fav:hover{
 			font-size: 38px;
-			-webkit-text-fill-color: #c1b497;
+			-webkit-text-fill-color: lightpink;
 			-webkit-text-stroke: 1px black;
 		}
 
@@ -626,6 +681,9 @@
 			margin: 0 10px;
 		}
 		
+		.unica{
+			width: 15%!important;
+		}
 		
 		/*---------------*/
 		
@@ -707,6 +765,7 @@
 			color: white;
 			border: 1px solid black;
 			cursor: pointer;
+			margin-top: 20px;
 
 		}
 		
@@ -957,13 +1016,20 @@
 			color: white;
 			width: 100%;
 		}
+
+
+		/*---------------*/
+
+
 		.cerrar_sesion:hover{
 			cursor: pointer;
 			color: #c1b497;
 
 		}
-		/*---------------*/
 
+
+		/*---------------*/
+		
 
 		#ul_index_logueado .icon_logueado{
 			width: 100%;
@@ -1180,8 +1246,34 @@
 			text-align: center;
 			width: 50%;
 		}
-			
+
+
+		/*---------------*/
+
+
+		.btn_eliminar_producto{
+			background: transparent;
+			border-color: transparent;
+			cursor: pointer;
+		}
+
+
+		/*---------------*/
+
+
+		.btn_eliminar_producto i{
+			font-size: 30px;
+		}	
+
+
+		/*---------------*/
+
+
+		.btn_eliminar_producto:hover i{
+			color: red;
+		}		
 	/*Fin Carrito*/
+
 
 /*FIN USUARIO LOGUEADO*/
 
@@ -1929,12 +2021,43 @@
 			display: flex;
 			margin: 20px 0;
 			flex-wrap: wrap;
+			justify-content: center;
 		}
-		
-		#section_comprobando_compra section{
-			border-left: 1px dotted black;
-		}
+
+
+
 		/*---------------*/
+
+
+				
+		#section_comprobando_compra section{
+			margin-left: 10px;
+		}
+
+
+
+		/*---------------*/
+
+
+				
+		#section_comprobando_compra section:nth-child(1),#section_comprobando_compra section:nth-child(2){
+			border-right: 1px dotted black;
+		}
+
+
+
+		/*---------------*/
+
+
+		
+		#section_comprobando_compra section h1{
+			font-size: 30px;
+		}
+
+
+		/*---------------*/
+
+
 		#section_productos_compra{
 			width: 20%;
 			display: flex;
@@ -1944,6 +2067,7 @@
 
 
 		/*---------------*/
+
 
 		.article_elemento_comprar{
 			display: flex;
@@ -1980,6 +2104,12 @@
 			font-size: 24px;
 		}
 
+
+
+		/*---------------*/
+
+
+		
 		.p_total_final{
 			border-top: 1px dashed gray;
 		}
@@ -1989,7 +2119,7 @@
 		/*---------------*/
 
 		#section_datos_usuario{
-			width: 30%;
+			width: 40%;
 			display: flex;
 			flex-direction: column;
 		}
@@ -1999,13 +2129,14 @@
 
 
 		#section_datos_usuario form{
-			border: 1px solid black;
 			display: flex;
 			flex-direction: column;
 			padding: 20px;
 		}
 
+
 		/*---------------*/
+
 
 		#section_datos_usuario form input{
 			padding: 10px 0;
@@ -2013,20 +2144,30 @@
 			border-radius: 10px;
 		}
 
+
 		/*---------------*/
+
 
 		#section_datos_usuario form input:focus{
 			border-radius: 0;
 		}
 
+
 		/*---------------*/
+
+
 		#section_tarjeta_pago{
-			width: 40%;
-			margin: 40px 0;
+			width: 30%;
 			display: flex;
 			flex-direction: column;
 
 		}
+
+
+		/*---------------*/
+
+
+		
 		#section_tarjeta_pago form{
 			display: flex;
 			flex-direction: column;
@@ -2035,12 +2176,28 @@
 			border: 1px solid black;
 		}
 
+
+		/*---------------*/
+
+
+		
 		#section_tarjeta_pago form label{
 			width: 95%;
 		}
+
+
+		/*---------------*/
+
+
+		
 		#section_tarjeta_pago form label p{
 			width: 100%;
 		}
+
+
+		/*---------------*/
+
+
 
 		#section_tarjeta_pago form label input{
 			border-radius: 20px;
@@ -2048,41 +2205,153 @@
 			width: 100%;
 		}
 
+
+		/*---------------*/
+
+
+		
 		#section_tarjeta_pago form label input:focus{
 			border-radius: 0px;
 
 		}
+
+
+		/*---------------*/
+
+
+		
 		#section_tarjeta_pago form label input::placeholder, #section_tarjeta_pago form{
 			font-size: 20px;
 		}
 
+
+		/*---------------*/
+
+
+		
 		#section_tarjeta_pago #pago_group{
 			display: flex;
 			width: 95%;
+			margin-top: 5px;
 		}
+
+
+		/*---------------*/
+
+
+		
 		#section_tarjeta_pago #pago_group label{
 			width: 45%!important;
 		}	
 
+
+		/*---------------*/
+
+
+		
 		#section_tarjeta_pago #pago_group label input{
 			width: 50%!important;
 		}
 
+
+		/*---------------*/
+
+
+		
 		#credit_card{
 			font-size: 54px;
 			color: blue;
 		}
-		/*---------------*/
-		/*---------------*/
-		/*---------------*/
-		/*---------------*/
-		/*---------------*/
-		/*---------------*/
-		/*---------------*/
-		/*---------------*/
-		/*---------------*/
-
 
 
 /*FIN COMPRANDO PRODUCTOS*/
 
+
+
+
+/*SECCION DE COMENTARIOS*/
+		#section_desplegar_comentario{
+			width: 95%;
+			margin: auto;
+			margin-top: 50px;
+			padding: 5px 0 5px 5px;
+			background: #c1b497;
+			cursor: pointer;
+		}
+		#section_desplegar_comentario h1::after{
+			font-family: FontAwesome;
+		 	content:"  \f107";
+		}	
+		#section_desplegar_comentario  .desplegado::after{
+			font-family: FontAwesome;
+		 	content:"  \f106"!important;
+		}
+		#section_comentarios{
+			width: 95%;
+			margin-top: 20px!important;
+			padding-top: 30px;
+			margin: auto;
+			display: none;
+
+		}
+		#article_poner_comentario{
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+		}
+		#article_poner_comentario form{
+			width: 100%;
+			display: flex;
+			margin-top: 10px;
+			flex-direction: column;
+		}
+		#article_poner_comentario form button{
+			width: 20%;
+			height: 40px;
+			border-color:#c1b497;
+			background: white;
+			transition-duration: 0.7s;
+			cursor: pointer;
+			margin-top: 20px;
+
+		}
+		#article_poner_comentario form button:hover{
+			background: #c1b497;
+			border: 0.5px inset black;
+			color: white;
+		}
+		[name="txt_comentario"]{
+			resize: none;
+			width: 80%;
+			height: 150px;
+		}
+
+
+		.comentario_usuario{
+			margin-bottom: 70px;
+			border-left: 1px solid black;
+			padding-left: 10px;
+		}	
+		.comentario_datos_usuario li{
+			margin-top: 10px;
+		}
+		.comentario_datos_usuario li:nth-child(1)::before{
+			font-family: FontAwesome;
+		 	content:"\f11a       ";
+		 	font-size: 54px;
+		 	font-weight: normal;
+		}
+		.comentario_datos_usuario li:nth-child(1)::after{
+			font-family: FontAwesome;
+		 	content:"       \f086";
+		 	font-weight: normal;
+		}
+		.comentario_datos_usuario li:nth-child(1){
+			font-weight: bold;
+		}
+		.comentario_datos_usuario:hover li:nth-child(1)::before{
+			font-family: FontAwesome;
+		 	content:"\f118       ";
+		 	font-size: 54px;
+		}
+/*FIN DE COMENTARIOS*/

@@ -28,9 +28,19 @@ foreach ($producto as $key) {
 
 
 
-		<a target="_blank" href="#"><img src="<?php echo $key->imagen;?>" alt=""></a>
+		<a target="_blank" href="<?php echo $key->imagen;?>"><img src="<?php echo $key->imagen;?>" alt=""></a>
 		<div>
-		<i id="icono_fav" class="material-icons">favorite</i>
+			<?php 
+			if (count($favoritos)>0) {
+				foreach ($favoritos as $key) {
+					echo "<i id='icono_fav' class='material-icons fav-true'>favorite</i>";
+				}
+			}
+			else{
+				echo "<i id='icono_fav' class='material-icons fav-false'>favorite</i>";
+			}
+			 ?>
+		
 		</div>
 
 
@@ -49,7 +59,13 @@ foreach ($producto as $key) {
 				echo "<button type='button' class='btn_talla' value='$talla' disabled>$valor</button>";
 				}
 				else{
-				echo "<button type='button' class='btn_talla' value='$talla'>$valor</button>";	
+					if ($valor=="Talla unica") {
+						echo "<button type='button' class='btn_talla unica' value='$talla'>Única</button>";
+					}
+					else{
+						echo "<button type='button' class='btn_talla' value='$talla'>$valor</button>";	
+					}
+		
 				}
 
 			}
@@ -78,3 +94,68 @@ foreach ($producto as $key) {
 </section>
 
 
+<section id="section_desplegar_comentario">
+	<h1>Comentarios</h1>
+</section>
+
+<section id="section_comentarios">
+	<article id="article_poner_comentario">
+		<p>Hola Manolo, ¡Comenta este producto!</p>
+		<form>
+			<textarea name="txt_comentario"></textarea>
+			<button type="button">Comentar</button>
+		</form>
+	</article>
+
+	<article id="article_comentarios">
+		<article class="comentario_usuario">
+			<ul class="comentario_datos_usuario">
+				<li>Nerea Lopez</li>
+				<li>2018-03-29 16:44:23</li>
+				<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et.</li>
+			</ul>
+		</article>
+		<article class="comentario_usuario">
+			<ul class="comentario_datos_usuario">
+				<li>Nerea Lopez</li>
+				<li>2018-03-29 16:44:23</li>
+				<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et.</li>
+			</ul>
+		</article>
+		<article class="comentario_usuario">
+			<ul class="comentario_datos_usuario">
+				<li>Nerea Lopez</li>
+				<li>2018-03-29 16:44:23</li>
+				<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et.</li>
+			</ul>
+		</article>
+		<article class="comentario_usuario">
+			<ul class="comentario_datos_usuario">
+				<li>Nerea Lopez</li>
+				<li>2018-03-29 16:44:23</li>
+				<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et.</li>
+			</ul>
+		</article>
+		<article class="comentario_usuario">
+			<ul class="comentario_datos_usuario">
+				<li>Nerea Lopez</li>
+				<li>2018-03-29 16:44:23</li>
+				<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et.</li>
+			</ul>
+		</article>
+		<article class="comentario_usuario">
+			<ul class="comentario_datos_usuario">
+				<li>Nerea Lopez</li>
+				<li>2018-03-29 16:44:23</li>
+				<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et.</li>
+			</ul>
+		</article>
+		<article class="comentario_usuario">
+			<ul class="comentario_datos_usuario">
+				<li>Nerea Lopez</li>
+				<li>2018-03-29 16:44:23</li>
+				<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et.</li>
+			</ul>
+		</article>
+	</article>
+</section>
