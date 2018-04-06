@@ -24,11 +24,9 @@ function myTimer() {
 }
 
 
-
 var visible = false;
 // función de mostrar comentario
 $("#section_desplegar_comentario").click(function(){
-
 
 	if(visible == false)
 	{
@@ -108,6 +106,67 @@ $("#icono_fav.fav-true").click(function(){
 	});
 })
 
+
+
+
+
+/*PAGINATION*/
+var comentarios=[{"pagination":"1","usuario":"Nerea Lopez","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."}]
+comentarios.push({"pagination":"1","usuario":"Nerea Lopez","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
+comentarios.push({"pagination":"1","usuario":"Nerea Lopez","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
+comentarios.push({"pagination":"1","usuario":"Nerea Lopez","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
+comentarios.push({"pagination":"1","usuario":"Nerea Lopez","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
+comentarios.push({"pagination":"1","usuario":"Sexto Lopez","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
+comentarios.push({"pagination":"2","usuario":"Manolo Lama","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
+comentarios.push({"pagination":"2","usuario":"Manolo Lama","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
+comentarios.push({"pagination":"2","usuario":"Manolo Lama","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
+comentarios.push({"pagination":"2","usuario":"Manolo Lama","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
+comentarios.push({"pagination":"2","usuario":"Manolo Lama","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
+comentarios.push({"pagination":"2","usuario":"Manolo Lama","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
+comentarios.push({"pagination":"2","usuario":"Manolo Lama","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
+localStorage.setItem("comentarios",JSON.stringify(comentarios))
+var coment=JSON.parse(localStorage.comentarios);
+
+if(localStorage.comentarios){
+	$("#pagination").append("<ul></ul>")
+	$("#pagination ul").append("<li><a href='#' class='active'>1</a></li>")
+	var paginaciones=coment[coment.length-1].pagination
+	for (var i = 0; i < paginaciones-1; i++) {
+		$("#pagination ul").append("<li><a href='#'>"+parseInt(i+1+1)+"</a></li>")
+	};
+	for (var i = 0; i < coment.length; i++) { 
+		if(coment[i].pagination!=1){
+			break;
+		}
+		$("#article_comentarios").append("<article class='comentario_usuario'><ul class='comentario_datos_usuario'><li>"+coment[i].usuario+"</li><li>"+coment[i].fecha+"</li><li>"+coment[i].texto+"</li></ul></article>")
+	};
+}
+
+$("#pagination ul li a").click(function(e){
+	e.preventDefault();
+
+	$(".comentario_usuario").remove()//vaciar comentarios
+
+	$("#pagination ul li a").removeClass('active')//quitar la clase a los enlaces de paginacion
+
+	$(this).addClass('active')//darle esa clase al clickado para que coja el color
+	for (var i = ($(this).text()-1)*6; i < coment.length; i++) { 
+		//numero clickado de paginacion menos 1 * elementos a aparecer
+		// esto hara que al hacer click en un elemento de paginacion te mostrara los 6 elementos que tengan esa paginacion.
+		if(coment[i].pagination!=$(this).text()){
+
+			break;
+
+		}
+
+	$("#article_comentarios").append("<article class='comentario_usuario'><ul class='comentario_datos_usuario'><li>"+coment[i].usuario+"</li><li>"+coment[i].fecha+"</li><li>"+coment[i].texto+"</li></ul></article>")
+	
+	};
+
+})
+
+
+/* FIN PAGINATION*/
 
 
 });

@@ -108,54 +108,9 @@ foreach ($producto as $key) {
 	</article>
 
 	<article id="article_comentarios">
-		<article class="comentario_usuario">
-			<ul class="comentario_datos_usuario">
-				<li>Nerea Lopez</li>
-				<li>2018-03-29 16:44:23</li>
-				<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et.</li>
-			</ul>
-		</article>
-		<article class="comentario_usuario">
-			<ul class="comentario_datos_usuario">
-				<li>Nerea Lopez</li>
-				<li>2018-03-29 16:44:23</li>
-				<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et.</li>
-			</ul>
-		</article>
-		<article class="comentario_usuario">
-			<ul class="comentario_datos_usuario">
-				<li>Nerea Lopez</li>
-				<li>2018-03-29 16:44:23</li>
-				<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et.</li>
-			</ul>
-		</article>
-		<article class="comentario_usuario">
-			<ul class="comentario_datos_usuario">
-				<li>Nerea Lopez</li>
-				<li>2018-03-29 16:44:23</li>
-				<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et.</li>
-			</ul>
-		</article>
-		<article class="comentario_usuario">
-			<ul class="comentario_datos_usuario">
-				<li>Nerea Lopez</li>
-				<li>2018-03-29 16:44:23</li>
-				<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et.</li>
-			</ul>
-		</article>
-		<article class="comentario_usuario">
-			<ul class="comentario_datos_usuario">
-				<li>Nerea Lopez</li>
-				<li>2018-03-29 16:44:23</li>
-				<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et.</li>
-			</ul>
-		</article>
-		<article class="comentario_usuario">
-			<ul class="comentario_datos_usuario">
-				<li>Nerea Lopez</li>
-				<li>2018-03-29 16:44:23</li>
-				<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et.</li>
-			</ul>
-		</article>
+<section id="pagination">
+
+</section>
 	</article>
+
 </section>

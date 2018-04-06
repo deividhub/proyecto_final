@@ -2355,3 +2355,36 @@
 		 	font-size: 54px;
 		}
 /*FIN DE COMENTARIOS*/
+/*PAGINACION*/
+#pagination {
+    display: flex;
+    width: 100%;
+}
+#pagination ul{
+	width: 100%;
+	display: flex;
+}
+
+#pagination a {
+    color: black;
+     background-color: lightgrey;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+#pagination li {
+    padding: 8px 16px;
+}
+
+
+#pagination a.active {
+    background-color: #c1b497;
+    color: white;
+    border-radius: 3px;
+}
+
+#pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 3px;
+}
+/*FIN PAGINACION*/
