@@ -1500,7 +1500,7 @@
 		/*---------------*/
 
 
-		#aside_panel_admin ul li:hover .submenu_panel_admin{
+		.show-options .submenu_panel_admin{
 			display: block;
 		}
 
@@ -2335,7 +2335,9 @@
 			transition-duration: 0.7s;
 			cursor: pointer;
 			margin-top: 20px;
-
+		}
+		#article_poner_comentario form button:disabled{
+			cursor: not-allowed;
 		}
 		#article_poner_comentario form button:hover{
 			background: #c1b497;

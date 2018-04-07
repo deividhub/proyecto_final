@@ -25,6 +25,7 @@ class Administracion extends CI_Controller {
 		$datos['tipos_producto']=$this->Productos_model->obtener_categorias();
 		$datos['listado_completo_productos']=$this->Productos_model->obtener_productos();
 		$datos['listado_completo_usuarios']=$this->Usuario_model->obtener_usuarios();
+		$datos['listado_completo_comentarios']=$this->Administracion_model->obtener_comentarios();
 		$this->load->view('vistas_index/head');
 		$this->load->view('administracion/plantilla_adm',$datos);
 

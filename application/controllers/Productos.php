@@ -78,6 +78,9 @@ class Productos extends CI_Controller {
 		$datos['tallas']=$this->Productos_model->obtener_tallas_producto($id_producto);
 		$datos['favoritos']=$this->Productos_model->obtener_favoritos($id_producto);
 
+		// obtener si el usuario puede comentar
+		$datos['comentar']=$this->Productos_model->permitir_comentar($id_producto);
+
 		$this->load->view('vistas_index/head');
 		$this->load->view('logueado/header_logueado');
 		$this->load->view('vistas_index/navegacion',$datos);
@@ -88,6 +91,11 @@ class Productos extends CI_Controller {
 
 	public function favorito(){
 		$this->Productos_model->favorito($this->input->post("id_producto"),$this->input->post("estado"));
+	}
+
+	public function comentar(){
+		$this->Productos_model->comentar($this->input->post("id_producto"),$this->input->post("comentario"));
+
 	}
 
 }

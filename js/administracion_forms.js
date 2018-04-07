@@ -2,6 +2,7 @@
 
 
 $(document).ready(function(){
+
 /*FORM CREAR PRODUCTO*/
 
 //Rellenando selects
@@ -107,6 +108,8 @@ ajaxQuery("Administracion/estilos",{"id_tipo_producto":$("#form_tipo_producto").
  document.getElementById('files').addEventListener('change', archivo);
 
 function archivo(evt) {
+	localStorage.removeItem("comentarios")
+
       var files = evt.target.files;
        
       for (var i = 0, f; f = files[i]; i++) {         
@@ -208,13 +211,44 @@ $("#btn_crear_usuario").click(function(){
 
 
 
-/*Mostrar articulo segun click*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Mostrar segun click*/
 $(".mostrar").click(function(e){
 	$(".configuraciones_panel_admin").addClass("form_oculto")
 	e.preventDefault();
 	$("."+this.id).removeClass('form_oculto')
 })
 
+$("#aside_panel_admin ul li").click(function(e){
+	e.preventDefault()
+		$(".show-options").removeClass("show-options")
+		$(this).addClass("show-options")
+
+	
+})
 
 
 

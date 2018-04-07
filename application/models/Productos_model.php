@@ -120,6 +120,20 @@ class Productos_model extends CI_Model {
             return $query->result();
         }
 
+
+        public function permitir_comentar($id_producto){
+            $sql = "SELECT * FROM pedido_producto WHERE id_producto=$id_producto AND id_usuario=2 AND comentario=0";
+            $query=$this->db->query($sql); 
+            return $query->num_rows();
+        }
+
+        public function comentar($id_producto,$comentario){
+            $sql = "INSERT INTO comentario VALUES(NULL,$id_producto,2,'".$comentario."')";
+            $this->db->query($sql); 
+            $sql2 = "UPDATE pedido_producto SET comentario=1 WHERE id_usuario=2 AND id_producto=$id_producto";
+            $this->db->query($sql2); 
+        }
+
 }
 
 

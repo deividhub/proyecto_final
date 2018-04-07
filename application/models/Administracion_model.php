@@ -47,6 +47,11 @@ class Administracion_model extends CI_Model {
           $this->db->delete('usuario');
 
         }
+        public function obtener_comentarios(){
+            $sql = "SELECT * FROM comentario";
+            $query=$this->db->query($sql);
+            return $query->result();
+        }
 }
 
 

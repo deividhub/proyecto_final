@@ -102,8 +102,18 @@ foreach ($producto as $key) {
 	<article id="article_poner_comentario">
 		<p>Hola Manolo, ¡Comenta este producto!</p>
 		<form>
-			<textarea name="txt_comentario"></textarea>
-			<button type="button">Comentar</button>
+			<textarea name="txt_comentario" id="txt_comentario"></textarea>
+
+
+		<?php 
+
+		if ($comentar>0) {
+		echo "<button type='button' id='btn_comentar'>Comentar</button>";
+		}
+		else{
+		echo "<button type='button' disabled>Comentar</button>";
+		}
+ 		?>
 		</form>
 	</article>
 
@@ -114,3 +124,4 @@ foreach ($producto as $key) {
 	</article>
 
 </section>
+

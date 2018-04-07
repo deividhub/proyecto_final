@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+
+
+
 if(!localStorage.conexion){
 	loading();
 	localStorage.setItem("conexion",true)
@@ -168,5 +171,23 @@ $("#pagination ul li a").click(function(e){
 
 /* FIN PAGINATION*/
 
+
+
+
+
+/*Comentar producto*/
+
+
+$("#btn_comentar").click(function(){
+	ajaxQuery("productos/comentar",{"id_producto":$(".li_referencia a").text(),"comentario":$("#txt_comentario").val()})
+	.then(function(devuelto){
+		//setInterval(location.reload(), 2000);
+		swal("¡Has comentado este producto!", "¡Es importante tu opinión!")
+			.then((value) => {
+		  		location.reload();
+		});
+
+	});
+})
 
 });

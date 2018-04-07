@@ -27,7 +27,7 @@
 	    	    <li class="mostrar" id="list_tallas"><a href="">Tallas</a></li>
 	    	</ul>
 	    </li>
-	    <li class="mostrar" id="list_coment"><a href="">Comentarios</a></li>
+	    <li class="mostrar" id="list_coments"><a href="">Comentarios</a></li>
 	    <li class="mostrar" id="list_pedidos"><a href="">Pedidos</a></li>
 	    <li><a href="#">Notificar errores</a></li>
 	</ul>
@@ -254,6 +254,64 @@
 			</form>
 		<p class="developed">Desarrollado por: Nerea - Pedro - David</p>
 	</article>
+
+
+
+
+
+
+<article class="configuraciones_panel_admin form_oculto list_coments">
+		<h1>Lista de comentario</h1>
+		<article class="tabla_scroll">
+			<table class="tabla_muestra_elementos">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Producto</th>
+						<th>Usuario</th>
+						<th>Comentario</th>
+						<th>Acciones</th>
+					</tr>
+				</thead>
+				<tbody>
+				<?php 
+					if ($listado_completo_comentarios) {
+						foreach ($listado_completo_comentarios as $comentario) {
+							
+							echo "<tr>
+								<td>".$comentario->id_comentario."</td>
+								<td>".$comentario->id_producto."</td>		
+								<td>".$comentario->id_usuario."</td>
+								<td>".$comentario->descripcion."</td>
+								<td><a href='#'><i class='material-icons button edit'>edit</i></a>
+						        <a href='#'><i class='material-icons button delete'>delete</i></a>
+						      	</td>
+							</tr>";
+						}
+					}
+
+				 ?>	
+				</tbody>
+			</table>
+		</article>
+		<p class="developed">Desarrollado por: Nerea - Pedro - David</p>
+	</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </section>
