@@ -2006,6 +2006,28 @@
 			margin: 2% 0 2% 0;
 			color: #c1b497;
 		}
+		
+
+		/*---------------*/
+
+
+		.form_client{
+			display: inline-flex;
+			flex-direction: column;
+			margin-bottom: 3%;
+			width: 40%;
+		}
+		
+
+		/*---------------*/
+
+
+		.form_client label{
+			background: #3F3F3F;
+			color: white;
+			margin: 6% 0 2% 0;
+			padding: 1%;
+		}
 
 	/*Fin Panel de cliente*/
 

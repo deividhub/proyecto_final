@@ -29,18 +29,25 @@
 
 			<form class="form_client">
 			
+				<label>Nombre: </label>
 				<input type="text" id="form_nombre_cliente">
 
+				<label>Apellidos: </label>
 				<input type="text" id="form_apellidos_cliente">	
 
+				<label>Fecha nacimiento: </label>
 				<input type="date" id="form_fecha_cliente">
 
+				<label>Domicilio: </label>
 				<input type="text" id="form_domicilio_cliente">
 
+				<label>Provincia: </label>
 				<input type="text" id="form_provincia_cliente">
 
+				<label>Localidad: </label>
 				<input type="text" id="form_localidad_cliente">
 
+				<label>Correo electrónico: </label>
 				<input type="email" id="form_correo_cliente">
 
 			</form>
