@@ -13,6 +13,7 @@
 <script src="<?php echo base_url();?>js/principal.js"></script>
 <script src="<?php echo base_url();?>js/compra.js"></script>
 <script src="<?php echo base_url();?>js/controller.js"></script>
+<script src="<?php echo base_url();?>js/usuario.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>

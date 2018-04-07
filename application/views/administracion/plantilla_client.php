@@ -1,14 +1,5 @@
-<body id="administrar_cliente">
+<section id="administrar_cliente">
 
-	<header>
-
-		<ul>
-		    <li>Perfíl personal</li>
-		    <li><i class="material-icons rounded">person</i></li>
-		    <li><a href="<?php echo base_url();?>index.php/Principal">Volver a la tienda</a></li>
-		</ul>
-
-	</header>
 
 
 	<section>
@@ -49,10 +40,12 @@
 
 				<label>Correo electrónico: </label>
 				<input type="email" id="form_correo_cliente">
+				
+				<button>Guardar</button>				
 
 			</form>
 
-			<p class="developed">Desarrollado por: Nerea - Pedro - David</p>
+			<p class="developed">&copy DWNPD ~ 2018</p>
 
 		</article>
 	
@@ -84,9 +77,8 @@
 		</article>
 		-->
 	</section>
+	</section>
 
-</body>
-</html>
 
 
 

@@ -60,16 +60,6 @@ $(".mujer").click(function(){
 
 
 
-//al iniciar sesion se crean estos elementos
-// localStorage.setItem("AUTH",true) //controla si estas autentificado
- var array=[{"id_usuario":2,"Nombre":"Cliente"}]
- localStorage.setItem("user",JSON.stringify(array)) //aqui se guardan todos los datos del usuario
-$(".cerrar_sesion").click(function(){
-	localStorage.removeItem("AUTH");
-	localStorage.removeItem("user");
-	localStorage.removeItem("productos");
-	location.href='/proyecto_final/index.php/Principal'
-})
 
 
 
@@ -189,5 +179,13 @@ $("#btn_comentar").click(function(){
 
 	});
 })
+
+if (!localStorage.user) {
+	$(".no-coment").text("No puedes comentar, no has iniciado sesión.")
+}
+else{
+	$(".no-coment").text("No puedes comentar, ya has comentado este producto.")
+
+}
 
 });

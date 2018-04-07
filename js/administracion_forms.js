@@ -242,6 +242,7 @@ $(".mostrar").click(function(e){
 	$("."+this.id).removeClass('form_oculto')
 })
 
+
 $("#aside_panel_admin ul li").click(function(e){
 	e.preventDefault()
 		$(".show-options").removeClass("show-options")

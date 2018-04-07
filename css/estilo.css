@@ -300,14 +300,6 @@
 			padding: 10px;
 		}
 
-
-		/*---------------*/
-
-
-		.ul_subcategoria li:hover::after{
-			content: " »";
-		}
-
 	/*Fin Navegador categorías*/
 
 
@@ -1397,7 +1389,7 @@
 		#ul_administracion_header{
 			display: flex;
 			width: 100%;
-			background: #005c99;
+			background: black;
 			color: white;
 			border-bottom: 1px solid gray;
 			padding: 10px 0 0 0;
@@ -1425,7 +1417,7 @@
 
 
 		#ul_administracion_header li:nth-child(2){
-			width: 10%;
+			width: 30%;
 			text-align: right;
 		}
 
@@ -1459,8 +1451,8 @@
 	/*Aside del panel del administrador*/
 
 		#aside_panel_admin{
-			background: #005c99;
-			width: 10%;
+			background: black;
+			width: 100px;
 		}
 		
 
@@ -1478,14 +1470,15 @@
 		#aside_panel_admin ul li{
 			padding: 20px 0 0 0;
 		}
-		
+
 
 		/*---------------*/
 
 
 		.submenu_panel_admin{
 			display: none;
-			background: #007acc;
+			background: #004d80;
+			border: 1px solid black;
 		}
 
 
@@ -1502,6 +1495,10 @@
 
 		.show-options .submenu_panel_admin{
 			display: block;
+			position: absolute;
+			margin-left: 100px;
+			padding: 10px 10px;
+
 		}
 
 
@@ -1878,7 +1875,7 @@
 
 		#login_client input[type="submit"]:hover{
 			background: white;
-			border: 5px solid #c1b497;
+			border: 2px solid #c1b497;
 			padding: 2%;
 			color: black;
 		}
@@ -1895,57 +1892,16 @@
 
 /*ADMINISTRACIÓN USUARIO*/
 
-	/*Header*/
 
-		#administrar_cliente header ul{
-			display: flex;
-			width: 100%;
-			background: black;
-			color: white;
-			border-bottom: 1px solid gray;
-			padding: 10px 0 0 0;
+	/*General*/
+
+		#administrar_cliente{
+			margin-top: 20px;
 		}
 
-
-		/*---------------*/
-
-
-		#administrar_cliente header ul a{
-			color: white;
-
-		}
-		
-
-		/*---------------*/
-
-
-		#administrar_cliente header ul li:nth-child(1){
-			width: 11%;
-		}
-
-		
-		/*---------------*/
-
-
-		#administrar_cliente header ul li:nth-child(2){
-			width: 76%;
-			text-align: left;
-		}
-
-
-		/*---------------*/
-
-
-		#administrar_cliente header ul li:nth-child(3){
-			width: 12%;
-			text-align: right;
-		}
-	
-	/*Fin Header*/
-	
 
 	/*---------------*/
-	
+
 
 	/*Sección*/
 
@@ -1982,6 +1938,14 @@
 			padding: 10px 0;
 		}
 		
+
+		/*---------------*/
+
+
+		#administrar_cliente aside ul li:hover{
+			background: #c1b497;
+		}
+		
 	/*Fin Aside del panel del cliente*/
 	
 
@@ -2003,7 +1967,7 @@
 
 		#datos_personales h1{
 			font-size: 24px;
-			margin: 2% 0 2% 0;
+			margin: 2% 0 1% 0;
 			color: #c1b497;
 		}
 		
@@ -2012,8 +1976,9 @@
 
 
 		.form_client{
-			display: inline-flex;
+			display: flex;
 			flex-direction: column;
+			margin: auto;
 			margin-bottom: 3%;
 			width: 40%;
 		}
@@ -2027,6 +1992,45 @@
 			color: white;
 			margin: 6% 0 2% 0;
 			padding: 1%;
+		}
+
+
+		/*---------------*/
+
+
+		.form_client input:focus{
+			width: 95%;
+			padding: 2%;
+			outline-style:none;
+			border: 2px solid grey;
+			background: #c1b497;
+		}
+
+
+		/*---------------*/
+
+
+		.form_client button{
+			width: 40%;
+			padding: 3%;			
+			background: #c1b497;
+			border: none;
+			margin-top: 5%!important;
+			margin: auto;			
+			transform-style: preserve-3d;
+			color: white;
+			font-weight: bold;
+		}
+
+
+		/*---------------*/
+
+
+		.form_client button:hover{
+			background: white;
+			border: 2px solid #c1b497;
+			padding: 2%;
+			color: black;
 		}
 
 	/*Fin Panel de cliente*/
@@ -2335,9 +2339,6 @@
 			transition-duration: 0.7s;
 			cursor: pointer;
 			margin-top: 20px;
-		}
-		#article_poner_comentario form button:disabled{
-			cursor: not-allowed;
 		}
 		#article_poner_comentario form button:hover{
 			background: #c1b497;

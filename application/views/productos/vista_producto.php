@@ -100,21 +100,20 @@ foreach ($producto as $key) {
 
 <section id="section_comentarios">
 	<article id="article_poner_comentario">
+		<?php 
+			if($comentar>0){
+			
+		 ?>
 		<p>Hola Manolo, ¡Comenta este producto!</p>
 		<form>
 			<textarea name="txt_comentario" id="txt_comentario"></textarea>
-
-
-		<?php 
-
-		if ($comentar>0) {
-		echo "<button type='button' id='btn_comentar'>Comentar</button>";
-		}
-		else{
-		echo "<button type='button' disabled>Comentar</button>";
-		}
- 		?>
+			<button type='button' id='btn_comentar'>Comentar</button>
 		</form>
+		<?php }
+			else{
+				echo "<p class='no-coment'></p>";	
+			}
+		 ?>
 	</article>
 
 	<article id="article_comentarios">

@@ -64,8 +64,13 @@ class Principal extends CI_Controller {
 
 
 
-	public function perfil_usuario(){
+	public function perfil_usuario(){		
+		$datos['categorias']=$this->Productos_model->obtener_categorias();
+		$datos['estilos']=$this->Productos_model->obtener_estilos();
 		$this->load->view('vistas_index/head');
+		$this->load->view('logueado/header_logueado');
+		$this->load->view('vistas_index/navegacion',$datos);
 		$this->load->view('administracion/plantilla_client');
+		$this->load->view('vistas_index/footer');
 	}
 }
