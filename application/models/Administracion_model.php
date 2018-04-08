@@ -30,12 +30,25 @@ class Administracion_model extends CI_Model {
 
 
 
+        public function editar_producto($array_producto,$id){
+          $this->db->where('id_producto', $id);
+          $this->db->update('producto', $array_producto);
+
+        }
+
+         public function eliminar_producto($id){
+
+            $this->db->where('id_producto', $id);
+            $this->db->delete('producto');
+
+          }
         public function editar_usuario($array_usuario,$id){
 
           $this->db->where('id_usuario', $id);
           $this->db->update('usuario', $array_usuario);
 
         }
+
        public function crear_usuario($array_usuario){
 
           $this->db->insert('usuario', $array_usuario);

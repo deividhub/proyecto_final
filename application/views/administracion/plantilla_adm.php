@@ -1,4 +1,4 @@
-<body>
+<body id="body_admin">
 	<header>
 		<ul id="ul_administracion_header">
 		    <li>Panel de Administracion</li>
@@ -116,8 +116,8 @@
 								<td>".$producto->id_estilo."</td>
 								<td>".$producto->composicion."</td>
 								<td>".$ruta_imagen."</td>
-								<td><a href='#'><i class='material-icons button edit'>edit</i></a>
-						        <a href='#'><i class='material-icons button delete'>delete</i></a>
+								<td><button type='button' value='".$producto->id_producto."' id='editproduct'><i class='material-icons button edit'>edit</i></button>
+						        <button type='button' value='".$producto->id_producto."' class='deleteproduct'><i class='material-icons button delete'>delete</i></button>
 						      	</td>
 							</tr>";
 						}
@@ -127,6 +127,40 @@
 				</tbody>
 			</table>
 		</article>
+		<form action="" method="POST" accept-charset="utf-8" id="form_editar_producto" class="edit_form">
+				<div class="input_group">
+					<label>Nombre:</label> <input type="text" name="nombre_producto">
+				</div>
+
+				<div class="input_group">
+					<label>Género:</label> <input type="text" name="genero">
+				</div>
+
+				<div class="input_group">
+				 	<label>Tipo de producto:</label> <input type="text" name="id_tipo_producto">
+				</div>
+				<div class="input_group">
+					<label>color</label> <input type="text" name="color">
+				</div>
+				<div class="input_group">
+					<label>precio:</label> <input type="text" name="precio">
+				</div>
+				<div class="input_group">
+					<label>descripcion:</label> <input type="text" name="descripcion">
+				</div>
+				<div class="input_group">
+					<label>estilo:</label> <input type="text" name="id_estilo">
+				</div>
+				<div class="input_group">
+					<label>composicion:</label> <input type="text" name="composicion">
+				</div>
+				<div class="input_group">
+					<label>Imagen</label><input type="file" name="files[]" value="" id="filesimg">
+				</div>
+				<input type="hidden" name="id_producto" value="">
+				<button type="button" name="" value="" id="guardar_cambios_producto">Guardar cambios</button>
+
+			</form>
 		<p class="developed">Desarrollado por: Nerea - Pedro - David</p>
 	</article>
 
@@ -181,7 +215,7 @@
 				</tbody>
 			</table>
 		</article>
-			<form action="" method="POST" accept-charset="utf-8" id="form_editar_usuario">
+			<form action="" method="POST" accept-charset="utf-8" id="form_editar_usuario" class="edit_form">
 				<div class="input_group">
 					<label>Nombre:</label> <input type="text" name="nombre">
 				</div>

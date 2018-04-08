@@ -1385,7 +1385,9 @@
 
 
 	/*Header*/
-
+		#body_admin{
+			background: lightgray;
+		}
 		#ul_administracion_header{
 			display: flex;
 			width: 100%;
@@ -1529,6 +1531,8 @@
 
 		.configuraciones_panel_admin{
 			width: 90%;
+			box-shadow:5px 5px rgba(76,76,76,0.5);
+			margin: auto;
 			border: 1px solid black;
 			background: #f1f1f1;
 			text-align: center;
@@ -1569,7 +1573,7 @@
 
 
 
-		.configuraciones_panel_admin #form_editar_usuario{
+		.configuraciones_panel_admin .edit_form{
 			border: 1px solid black;
 			display: none;
 			flex-direction: column;
@@ -1582,22 +1586,22 @@
 
 
 
-		.configuraciones_panel_admin #form_editar_usuario .input_group{
+		.configuraciones_panel_admin .edit_form .input_group{
 			display: flex;
 			margin-top: 10px;
 		}
 
 
-		.configuraciones_panel_admin #form_editar_usuario .input_group input{
+		.configuraciones_panel_admin .edit_form .input_group input{
 			width: 100%;
 			padding: 5px 0;
 		}
 
-		.configuraciones_panel_admin #form_editar_usuario .input_group label{
+		.configuraciones_panel_admin .edit_form .input_group label{
 			width: 30%;
 		}
 
-		#guardar_cambios_usuario{
+		.edit_form button{
 			width: 20%;
 			margin: auto;
 			margin-top: 20px;
@@ -1740,6 +1744,16 @@
 		.tabla_muestra_elementos tbody td img{
 			width: 100%;
 		    height: auto;
+		}
+
+		
+		/*--------------*/
+
+
+		.tabla_muestra_elementos tbody td button{
+			border: 0;
+			background: transparent;
+			cursor: pointer;
 		}
 
 		

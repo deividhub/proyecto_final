@@ -130,6 +130,73 @@ function archivo(evt) {
 }
  
 
+/*FORMULARIO EDITAR PRODUCTO*/
+$("button#editproduct").click(function(){
+	$("#form_editar_producto").slideDown(2000);
+	ajaxQuery("Administracion/obtener_producto",{"id_producto":$(this).val()})
+		.then(function(devuelto){
+		var array=JSON.parse(devuelto);
+		for(var i=0;i<array.length;i++){
+			$("input[name='nombre_producto']").val(array[0].nombre_producto)
+			$("input[name='genero']").val(array[0].genero)
+			$("input[name='id_tipo_producto']").val(array[0].id_tipo_producto)
+			$("input[name='color']").val(array[0].color)
+			$("input[name='precio']").val(array[0].precio)
+			$("input[name='descripcion']").val(array[0].descripcion)
+			$("input[name='id_estilo']").val(array[0].id_estilo)
+			$("input[name='composicion']").val(array[0].composicion)
+			$("input[name='id_producto']").val(array[0].id_producto)
+		}
+			
+	});
+})
+
+$("#guardar_cambios_producto").click(function(){
+	var json={"id_producto":$("input[name='id_producto']").val(),"nombre_producto":$("input[name='nombre_producto']").val(),"color":$("input[name='color']").val(),"id_estilo":$("input[name='id_estilo']").val(),"precio":$("input[name='precio']").val(),"descripcion":$("input[name='descripcion']").val(),"composicion":$("input[name='composicion']").val(),"genero":$("input[name='genero']").val(),"id_tipo_producto":$("input[name='id_tipo_producto']").val(),"imagen":localStorage.imagen_subida}
+		ajaxQuery("Administracion/editar_producto",json)
+		.then(function(devuelto){
+		swal("Operación correcta!", "Datos de "+devuelto+" modificados.", "success");
+			
+	});
+})
+
+$("#filesimg").change(archivo);
+/*FIN FORMULARIO EDITAR PRODUCTO*/
+
+/*BORRAR PRODUCTO*/
+$(".deleteproduct").click(function(){
+		swal({
+		  title: "Vas a eliminar un producto, ¿estas seguro?",
+		  text: "Una vez eliminado no se podra recuperar el producto",
+		  icon: "warning",
+		  buttons: true,
+		  dangerMode: true,
+		})
+		.then((eliminar) => {
+		  if (eliminar) {
+		  	ajaxQuery("Administracion/eliminar_producto",{"id_producto":this.value})
+				.then(function(devuelto){			
+			});
+		    swal("¡Producto eliminado!", {
+		      icon: "success",
+		    });
+		    //location.reload();
+		  } else {
+		    swal("Has cancelado la operación.");
+		  }
+		});
+})
+/*FIN BORRAR PRODUCTO*/
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -247,10 +314,7 @@ $("#aside_panel_admin ul li").click(function(e){
 	e.preventDefault()
 		$(".show-options").removeClass("show-options")
 		$(this).addClass("show-options")
-
-	
 })
-
 
 
 

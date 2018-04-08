@@ -58,8 +58,50 @@ class Administracion extends CI_Controller {
 		//echo json_encode($this->input->post('imagen'));	
 	}
 
+	public function obtener_producto(){
+
+		$producto=$this->Productos_model->obtener_producto($this->input->post('id_producto'));
+		echo json_encode($producto);
+		
+	}
+
+	public function editar_producto(){
+		if ($this->input->post('imagen')==null) {
+			$producto = array(
+		        'id_tipo_producto' => $this->input->post('id_tipo_producto'),
+		        'nombre_producto'  => $this->input->post('nombre_producto'),
+		        'color'  => $this->input->post('color'),
+		        'id_estilo'  => $this->input->post('id_estilo'),
+		        'precio'  => $this->input->post('precio'),
+		        'descripcion'  => $this->input->post('descripcion'),
+		        'composicion'  => $this->input->post('composicion'),
+		        'genero'  => $this->input->post('genero'),
+			);
+		}
+		else{
+			$producto = array(
+		        'id_tipo_producto' => $this->input->post('id_tipo_producto'),
+		        'nombre_producto'  => $this->input->post('nombre_producto'),
+		        'color'  => $this->input->post('color'),
+		        'id_estilo'  => $this->input->post('id_estilo'),
+		        'precio'  => $this->input->post('precio'),
+		        'descripcion'  => $this->input->post('descripcion'),
+		        'imagen'  => $this->input->post('imagen'),
+		        'composicion'  => $this->input->post('composicion'),
+		        'genero'  => $this->input->post('genero'),
+			);
+		}
+
+		$id=$this->input->post('id_producto');
+		$this->Administracion_model->editar_producto($producto,$id);
+		echo json_encode($this->input->post('id_producto'));
+		
+	}
 
 
+	public function eliminar_producto(){
+		$this->Administracion_model->eliminar_producto($this->input->post("id_producto"));
+	}
 
 
 	public function obtener_usuario(){
