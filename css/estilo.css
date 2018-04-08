@@ -1455,6 +1455,8 @@
 		#aside_panel_admin{
 			background: black;
 			width: 100px;
+			min-width: 100px;
+			text-align: center;
 		}
 		
 
@@ -1470,7 +1472,8 @@
 
 
 		#aside_panel_admin ul li{
-			padding: 20px 0 0 0;
+			padding: 10px 0;
+			height: 25px;
 		}
 
 
@@ -1479,8 +1482,27 @@
 
 		.submenu_panel_admin{
 			display: none;
-			background: #004d80;
+			background: darkgray;
 			border: 1px solid black;
+			position: absolute;
+			margin-left: 100px;
+			margin-top: -28px;
+			width: 150px;
+		}
+
+
+		/*---------------*/
+
+
+		.submenu_panel_admin::before{
+		   	content: "";
+		    position: absolute;
+		    top: 10px;
+		    right: 100%;
+		    margin-top: -5px;
+		    border-width: 8px;
+		    border-style: solid;
+		    border-color: transparent darkgray transparent transparent;
 		}
 
 
@@ -1497,9 +1519,7 @@
 
 		.show-options .submenu_panel_admin{
 			display: block;
-			position: absolute;
-			margin-left: 100px;
-			padding: 10px 10px;
+
 
 		}
 
@@ -1516,10 +1536,14 @@
 		/*---------------*/
 
 
-		.submenu_panel_admin  li:hover{
-			opacity: 0.8;
-			border: 0!important;
+		.submenu_panel_admin {
+			text-align: center;
 		}
+
+
+
+
+	
 
 	/*Fin Aside del panel del administrador*/
 	
@@ -1530,9 +1554,7 @@
 	/*Panel de administración*/
 
 		.configuraciones_panel_admin{
-			width: 90%;
-			box-shadow:5px 5px rgba(76,76,76,0.5);
-			margin: auto;
+			width: 100%;
 			border: 1px solid black;
 			background: #f1f1f1;
 			text-align: center;
@@ -1694,7 +1716,7 @@
 	
 		.tabla_muestra_elementos{
 		  border-spacing: 0;
-		  border: 2px solid #0092cc;
+		  border: 2px solid #004d80;
 		  width: 80%;
 		  margin:auto;
 		  border-radius: .25rem;
@@ -1705,7 +1727,7 @@
 
 
 		.tabla_muestra_elementos thead{
-			background: #0092cc;
+			background: #004d80;
 			color: white;
 		}
 		
