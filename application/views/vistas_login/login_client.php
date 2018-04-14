@@ -1,3 +1,115 @@
+<?php
+
+//-------------FORMULARIO LOGIN-------------------
+	$form_login = array(
+		'name' => 'form_login',
+		'id' => 'FormLog'
+		);
+	$correo_login = array(	
+		'name' => 'correo',
+		'maxlength' => 30,
+		'size' => 20,
+		'required' => 1,
+		'id' => "correo_log"
+		);
+	$contraseña_login = array(	
+		'name' => 'contraseña',
+		'type' => 'password',
+		'id' => 'contraseña_login',
+		'maxlength' => 20,
+		'size' => 20,
+		'required' => 1
+		);
+
+//-------------FORMULARIO REGISTRO----------------
+	$form_registro = array(
+		'name' => 'form_registro',
+		'id' => 'FormReg'
+		);
+	$correo = array(	
+		'name' => 'correo',
+		'id' => 'correo',
+		'maxlength' => 20,
+		'size' => 20,
+		'required' => 1
+		);
+	$contraseña1 = array(	
+		'name' => 'contraseña1',
+		'id' => 'contraseña1',
+		'class' => 'txtcontraseña',
+		'type' => 'password',
+		'maxlength' => 20,
+		'size' => 20,
+		'required' => 1
+		);
+	$contraseña2 = array(	
+		'name' => 'contraseña2',
+		'id' => 'contraseña2',
+		'class' => 'txtcontraseña',
+		'type' => 'password',
+		'maxlength' => 20,
+		'size' => 20,
+		'required' => 1
+		);
+	$nombre = array(	
+		'name' => 'nombre',
+		'id' => 'nombre',
+		'maxlength' => 20,
+		'class' => 'soloLetras',
+		'size' => 20,
+		'required' => 1
+		);
+	$apellidos = array(	
+		'name' => 'apellidos',
+		'maxlength' => 20,
+		'class' => 'soloLetras',
+		'size' => 20,
+		'required' => 1
+		);
+	$fecha_nac = array(	
+		'name' => 'fecha_nac',
+		'type' => 'date',
+		'required' => 1
+		);
+	$telefono = array(	
+		'name' => 'telefono',
+		'maxlength' => 9,
+		'class' => 'soloNumeros',
+		'id' => 'telefono',
+		'size' => 20,
+		'required' => 1
+		);
+	$domicilio = array(	
+		'name' => 'domicilio',
+		'maxlength' => 20,
+		'size' => 20,
+		'required' => 1
+		);
+	$provincia = array(	
+		'name' => 'provincia',
+		'maxlength' => 20,
+		'class' => 'soloLetras',
+		'size' => 20,
+		'required' => 1
+		);
+	$localidad = array(	
+		'name' => 'localidad',
+		'maxlength' => 20,
+		'class' => 'soloLetras',
+		'size' => 20,
+		'required' => 1
+	);
+	
+	$registrarme = array(	
+		'name' => 'registrarme',
+		'id' => 'Registrarme',
+		'value'=>'Registrarme'
+	);
+
+?>
+
+
+
 <body id="login_client">
 
 	<section id="juntos">
@@ -9,12 +121,21 @@
 			<h1>Inicio de sesión</h1>
 			
 			<hr>
-
-			<form>
-				<input type="email" class="correo" placeholder="ejemplo@ejemplo.com">
-				<input type="password" placeholder="Contraseña">
-				<input type="submit" value="Acceder">			
-			</form>
+	
+		<?php echo form_open('Principal/iniciar_sesion',$form_login);?>
+	
+		<?php echo form_label('Correo: ','correo'); ?>
+		<?php echo form_input($correo_login); ?>
+		<?php echo form_label('Contraseña: ','contraseña'); ?>
+		<div id="pass_group">
+			
+		<?php echo form_input($contraseña_login); ?>
+		<i class="material-icons" id="imgMostrarPass">visibility</i>
+		</div>
+		<?php echo form_submit('Entrar','Entrar','id=btn_iniciar_sesion'); ?>
+	
+		<a href="mensajePass">Recuperar contraseña</a>
+		<?php echo form_close();?>
 			
 			<hr>
 
@@ -28,19 +149,46 @@
 			<h1>Registro</h1>
 			
 			<hr>
+<?php echo form_open('Principal/registro',$form_registro);?>
+			<?php echo form_label('Correo: ','correo'); ?>
+<img src= https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/alert-triangle-red-512.png id="imgAlertaPass2" name="imgAlertaPass" class="imgAlertaPass imgAlerta" title="" hidden="true">
+			<?php echo form_input($correo); ?><img src= https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/alert-triangle-red-512.png id="imgAlertaCorreo" class="imgAlerta" title="" hidden="true">
 
-			<form>
-				
-				<input type="text" placeholder="Nombre">
-				<input type="text" placeholder="Apellidos">
-				<input type="date" placeholder="DD/MM/YYYY">
-				<input type="text" placeholder="Domicilio">
-				<input type="text" placeholder="Provincia">
-				<input type="text" placeholder="Localidad">
-				<input type="email" class="correo" placeholder="ejemplo@ejemplo.com">
-				<input type="password" placeholder="Contraseña">
-				<input type="submit" value="Registrarse">			
-			</form>
+			<?php echo form_label('Contraseña: ','contraseña1'); ?>
+			<?php echo form_input($contraseña1); ?><img src= https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/alert-triangle-red-512.png id="imgAlertaPass" name="imgAlertaPass" class="imgAlertaPass imgAlerta" title="" hidden="true">
+			
+			<?php echo form_label('Repita su contraseña: ','contraseña2'); ?>
+
+			<?php echo form_input($contraseña2); ?>
+			
+		
+			<?php echo form_label('Nombre: ','nombre'); ?>
+			<?php echo form_input($nombre); ?>
+			
+			<?php echo form_label('Apellidos: ','apellidos'); ?>
+			<?php echo form_input($apellidos); ?>
+		
+			<?php echo form_label('Fecha de nacimiento: ','fecha_nac'); ?>
+			<?php echo form_input($fecha_nac); ?>
+			
+			<?php echo form_label('Teléfono: ','telefono'); ?>
+			<?php echo form_input($telefono); ?>
+			
+			<?php echo form_label('Domicilio: ','domicilio'); ?>
+			<?php echo form_input($domicilio); ?>
+			
+			<?php echo form_label('Provincia: ','provincia'); ?>
+			<?php echo form_input($provincia); ?>
+			
+			<?php echo form_label('Localidad: ','localidad'); ?>
+			<?php echo form_input($localidad); ?>
+	
+
+		<span id="mensajeCorreo"></span>
+		<span id="mensaje"></span>
+		<br>
+		<?php echo form_submit($registrarme); ?>
+		<?php echo form_close();?>
 			
 			<hr>
 
@@ -52,4 +200,116 @@
 
 </body>
 
-</html>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+
+		//------DESPLEGAR REGISTRO------------
+		$("#mostrarRegistro").click(function(){
+			if($("#divReg").is(":visible")){
+				$("#divReg").slideUp(1500)
+			}
+			else{
+				$("#divReg").fadeToggle(2000);
+			}
+		});
+
+		
+		//--ZONA DE PRUEBAS----ZONA DE PRUEBAS----ZONA DE PRUEBAS----ZONA DE PRUEBAS----ZONA DE PRUEBAS--
+		$('#correo').on('keyup', function(e){
+			var correo = document.getElementById('correo').value;
+			//alert(correo);
+			$.get('<?php echo base_url(); ?>index.php/Principal/buscar_usuario',{correo:correo}, function(datos){
+				
+				datos2=JSON.parse(datos);
+
+				$.each(datos2,function(indice,valor){
+					
+				});	
+			});
+		});
+		//--ZONA DE PRUEBAS----ZONA DE PRUEBAS----ZONA DE PRUEBAS----ZONA DE PRUEBAS----ZONA DE PRUEBAS--
+	
+
+
+        //------CONTRASEÑAS------------------	
+		$("#Registrarme").click(function(e){
+
+			var primeraContr = document.getElementById('contraseña1');	
+			var segundaContr = document.getElementById('contraseña2');
+			
+			var email = document.getElementById('correo').value;
+			var emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+			
+			if(emailReg.test(email)==false){
+				
+				$("#correo").css("border", "solid 1px red");
+				document.getElementById('imgAlertaCorreo').hidden=false;
+				document.getElementById('imgAlertaCorreo').title = "Correo no válido";
+			}
+			else{
+				document.getElementById('imgAlertaCorreo').hidden=true;
+			}
+
+			if((primeraContr.value.length >16 || primeraContr.value.length <8)||(segundaContr.value.length >16 || segundaContr.value.length <8)){
+				e.preventDefault();
+				document.getElementById('imgAlertaPass').title = "La contraseña debe de tener entre 8 y 16 caracteres";
+				document.getElementById('imgAlertaPass2').title = "La contraseña debe de tener entre 8 y 16 caracteres";
+				$(".imgAlertaPass").css("display", "inline");
+				$(".txtcontraseña").css("border", "solid 1px red");
+			}
+			else{
+				if( segundaContr.value != primeraContr.value){
+					e.preventDefault();
+					document.getElementById('imgAlertaPass').title = "Las contraseñas no coinciden";
+					document.getElementById('imgAlertaPass2').title = "Las contraseñas no coinciden";
+					$(".imgAlertaPass").css("display", "inline");
+					$(".txtcontraseña").css("border", "solid 1px red");
+
+				}else{
+
+					//-------AQUI HACER FUNCIÓN--------//
+
+				}
+			}
+		});
+
+		
+		//------------MOSTRAR CONTRASEÑA-----------------
+		$("#imgMostrarPass").mouseup(function(){
+			$("#contraseña_login").attr('type', 'password');
+		});
+		$("#imgMostrarPass").mousedown(function(){
+			$("#contraseña_login").removeAttr('type');
+		});
+
+
+		//-----------FOCUS/BLUR INPUTS----------
+		$("input").focus(function(){
+			$(this).addClass("sombraInputs");
+		});
+		$("input").blur(function(){
+			$(this).removeClass("sombraInputs");
+		});
+
+		//---------CAMPOS SOLO LETRAS/NUMEROS-----------//
+		$('.soloNumeros').on('input', function(){
+			this.value = this.value.replace(/[^0-9]/g,'');
+		});
+		$('.soloLetras').on('input', function(){
+			this.value = this.value.replace(/[^A-Za-z]/g,'');
+		});
+		
+
+	
+});				
+
+			
+	
+
+</script>

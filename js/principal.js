@@ -7,6 +7,32 @@ if(!localStorage.conexion){
 	loading();
 	localStorage.setItem("conexion",true)
 }
+
+
+
+$("#btn_iniciar_sesion").click(function(e){
+	e.preventDefault()
+
+	ajaxQuery("Principal/iniciar_sesion",{"correo":$("#correo_log").val(),"pass":$("#contraseña_login").val()})
+	.then(function(devuelto){
+		if(devuelto==1){
+		swal("Usuario no encontrado")
+		}
+		else{
+			swal("Accediendo a la plataforma.","Espera unos segundos...")
+			.then((value) => {
+		 		localStorage.setItem("user", devuelto)
+		 		location.href ="../Principal";
+
+		});
+		}
+		
+
+	});
+})
+
+
+
 function loading(){
 	$("body").append("<p class='loading'><i class='material-icons'>remove_from_queue</i><a>Cargando</a></p>")
 	$("body").css("background","#e2dccf")

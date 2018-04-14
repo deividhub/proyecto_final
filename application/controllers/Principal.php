@@ -41,11 +41,7 @@ class Principal extends CI_Controller {
 
 
 	public function login_registro(){
-	$this->load->view('vistas_login/loginpedro');
-	}
-
-	public function iniciar_sesion(){
-		// devuelve 2 tipos de datos: redireccion al logueado o error al iniciar sesion.
+	// devuelve 2 tipos de datos: redireccion al logueado o error al iniciar sesion.
 		// utilizar md5
 		$this->load->view('vistas_index/head');
 		$this->load->view('logueado/header_logueado');
@@ -54,11 +50,77 @@ class Principal extends CI_Controller {
 
 	}
 
+	public function iniciar_sesion(){
+			// devuelve 2 tipos de datos: redireccion al logueado o error al iniciar sesion.
+		
+			$correo = $this->input->post('correo');
+			$contraseña = $this->input->post('pass');
+			$usuario = $this->Principal_model->obtener_usuario($correo,$contraseña);
+
+			if ($usuario!='ERROR'){
+				foreach ($usuario as $usuario2) {
+					if ($usuario2->id_tipo_usuario==1) {
+						echo json_encode(1);
+					}
+					else{
+						$usuario_data = array(
+		               		'nombre' => $usuario2->nombre,
+		               		'correo' => $usuario2->correo,
+		               		'id' => $usuario2->id_usuario,
+		               		'apellidos' => $usuario2->apellidos,
+		               		'fecha' => $usuario2->fecha_nac,
+		               		'telefono' => $usuario2->telefono,
+		               		'domicilio' => $usuario2->domicilio,
+		               		'provincia' => $usuario2->provincia,
+		               		'localidad' => $usuario2->localidad
+		            	);		
+						$this->session->set_userdata($usuario_data); 
+						echo json_encode($usuario);	
+					}
+
+
+
+				}
+			}
+			else{
+				echo json_encode(1);
+			}
+		}
 
 
 	public function registro(){
-		$this->load->view('vistas_index/head');
-		$this->load->view('registro');		
+		$datos['correo'] = $this->input->post('correo');
+		$contraseña= $this->input->post('contraseña1');
+		$datos['contraseña'] = md5($contraseña);
+		$datos['nombre'] = $this->input->post('nombre');
+		$datos['apellidos'] = $this->input->post('apellidos');
+		$datos['fecha_nac'] = $this->input->post('fecha_nac');
+		$datos['telefono'] = $this->input->post('telefono');
+		$datos['domicilio'] = $this->input->post('domicilio');
+		$datos['provincia'] = $this->input->post('provincia');
+		$datos['localidad'] = $this->input->post('localidad');
+
+		/*
+		ini_set( 'sendmail_from', "myself@my.com" ); 
+		ini_set( 'SMTP', "mail.bigpond.com" );  
+		ini_set( 'smtp_port', 25 );
+
+
+		$cabeceras = 'From: webmaster@example.com' . "\r\n" .
+		'Reply-To: webmaster@example.com' . "\r\n" .
+		'X-Mailer: PHP/' . phpversion();
+
+
+		$mensaje= " Nos alegra saber que te has unido a las muchas personas que hoy en día realizan sus compras a traves de nuestra nueva web.";
+
+		$bool = mail("administracion@dwnpd.org","Mensaje registro","pedroetxebarribhi@gmail.com",$cabeceras);
+		if($bool){
+			echo "Mensaje enviado";
+		}else{
+			echo "Mensaje no enviado";
+		}*/
+
+		$this->Principal_model->registrarse($datos);
 	}
 
 
