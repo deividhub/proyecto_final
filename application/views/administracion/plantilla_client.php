@@ -40,6 +40,9 @@
 
 				<label>Correo electrónico: </label>
 				<input type="email" id="form_correo_cliente">
+
+				<label>Teléfono: </label>
+				<input type="text" id="form_telefono_cliente">
 				
 				<button>Guardar</button>				
 

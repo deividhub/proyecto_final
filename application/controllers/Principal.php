@@ -43,8 +43,14 @@ class Principal extends CI_Controller {
 	public function login_registro(){
 	// devuelve 2 tipos de datos: redireccion al logueado o error al iniciar sesion.
 		// utilizar md5
+		//obtener categorias y estilos.
+		$datos['categorias']=$this->Productos_model->obtener_categorias();
+		$datos['estilos']=$this->Productos_model->obtener_estilos();
+		$datos['productos_rdm']=$this->Productos_model->obtener_productos_rdm();
+
 		$this->load->view('vistas_index/head');
 		$this->load->view('logueado/header_logueado');
+		$this->load->view('vistas_index/navegacion',$datos);
 		$this->load->view('vistas_login/login_client');
 		$this->load->view('vistas_index/footer');
 

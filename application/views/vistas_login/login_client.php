@@ -110,7 +110,7 @@
 
 
 
-<body id="login_client">
+<section id="login_client">
 
 	<section id="juntos">
 		
@@ -198,7 +198,7 @@
 
 	</section>
 
-</body>
+</section>
 
 
 

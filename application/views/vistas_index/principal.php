@@ -1,6 +1,8 @@
 	<section id="section_slogan">
-		<h1>¿Quien dijo que no se podia vestir elegante a buen precio?</h1>
-		<h2>¡DWNPD, expertos en el mundo del textil!</h2>
+      <article id="article_img">
+         <h1>Proximamente...</h1>
+         <button>¡Reserva las tuyas!</button>
+      </article>     
 	</section>
 
 
