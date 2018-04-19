@@ -139,13 +139,24 @@ $(".btn_talla").click(function(){
 
 
 $("#btn_pasar_a_caja").click(function(){
+	var array_comprobar=[]
+	var contador=0;
+	var objetos=JSON.parse(localStorage.getItem('productos'))
+	array_comprobar.push({"id_producto":objetos[0]['producto'],"id_talla":objetos[0]['talla'],"count":0})
+
 	if($("#carrito_precio_total").text()<25){
 		alert("Pedido minimo 25€")
 	}
 	else{
-		window.location.assign(base_url+"Index.php/Compra")
+		   var x= objetos.sort(function(a, b) {
+			    return parseInt(a.producto) - parseInt(b.producto);
+			});
+		    console.log(x)
+
+		//window.location.assign(base_url+"Index.php/Compra")
 	}
 })
+
 
 
 })

@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'tienda',
+	'hostname' => 'db4free.net:3307',
+	'username' => 'admindwnpd',
+	'password' => 'adminDWNPD',
+	'database' => 'tiendadwnpd',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

@@ -955,14 +955,23 @@
 		
 		#section_article_productos .article_producto:hover .img_hover{
 			margin: auto;
-			border-radius: 300px;
+			background: transparent;
 			filter: saturate(150%);
+			opacity: 0.8;
 		}
 
 
 		/*---------------*/
 
-		
+
+		#section_article_productos .article_producto:hover{
+			box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+		}
+
+
+		/*---------------*/
+
+	
 		#section_article_productos .article_producto:hover .precio_hover{
 			display: block;
 		}
@@ -973,10 +982,15 @@
 		
 		#section_article_productos .article_producto .precio_hover{
 			display: none;
-			color: white;
+			color: black;
 			position: absolute;
 			font-size: 34px;
+			font-weight: bold;
 			padding: 5px;
+			z-index: 200;
+			border: 1px solid #c1b497;
+			border-top-right-radius: 20px;
+			border-bottom-right-radius: 20px;
 		}
 
 
@@ -987,7 +1001,7 @@
 			color: white;
 			background: black;
 			padding: 10px 0;
-			font-size: 28px;
+			font-size: 18px;
 			cursor: pointer;
 			width: 100%;
 		}
@@ -999,8 +1013,7 @@
 		#section_article_productos .article_producto .btn_ver_producto:hover{
 			color: black;
 			background: white;
-		    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
-		  	border: 5px solid #ddd; 
+		    
 		}
 
 	/*Fin Sección productos*/		

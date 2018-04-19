@@ -40,10 +40,12 @@ else{
 		$imagen=$producto->imagen;
 ?>
 	<article class="article_producto">
-		<img class="img_hover" src=<?php echo $imagen; ?> alt="">
-		<p class="precio_hover"><?php echo $precio; ?>€</p>
 		<a href="<?php echo base_url().'index.php/Productos/mostrar_producto/'.$id_producto;?>">
-			<button type="button" class="btn_ver_producto">Ver producto<i class="material-icons">visibility</i></button>
+					<p class="precio_hover"><?php echo $precio; ?>€</p>
+
+		<img class="img_hover" src=<?php echo $imagen; ?> alt="">
+		
+		<button type="button" class="btn_ver_producto">Ver producto<i class="material-icons">visibility</i></button>
 		</a>
 	</article>
 
