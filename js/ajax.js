@@ -1,3 +1,5 @@
+
+
 var base_url="http://localhost:8080/proyecto_final/index.php/";
 
 
@@ -8,8 +10,12 @@ function ajaxQuery (url,jsondata){
   	$.post({url:base_url+url,
 		    datatype:"json",
 	       	data:jsondata,
-		    success: function(data){devolver_datos(data)}
+   			beforeSend: function(x) {
+				$("body").append("<div class='spinnerDiv'><p>Espere, cargando solicitud</p><p class='spinner'></p><div>")
+	     	},
+		    success: function(data){devolver_datos(data)
+		    	$("body .spinnerDiv").remove()
+}
     });
   });
 }
-

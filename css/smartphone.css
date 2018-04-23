@@ -86,43 +86,9 @@
 	/*Header*/
 
 		#index_ul{
-			width: 100%;
-			display: flex;
-			flex-wrap: nowrap;
-			border-bottom: 1px solid gray;
-			background: black;
+			display: none;
 		}
 
-
-		/*---------------*/
-
-
-		#index_ul li{
-			width: 100%;
-			display: flex;
-			justify-content: center;
-			padding: 5px 0;
-			color: white;
-
-		}
-
-
-		/*---------------*/
-
-
-		#index_ul li a:hover{
-			opacity: 0.7;
-			font-size: 18px;
-			position: absolute;
-		}
-
-
-		/*---------------*/
-
-
-		#index_ul li a{
-			color: white;
-		}
 
 
 	/*Fin Header*/
@@ -134,93 +100,9 @@
 	/*Navegador género*/
 
 		.nav_genero{
-			width: 100%;
-			font-size: 34px;
-			margin: 20px 0;
+			display: none;
 		}
 
-
-		/*---------------*/
-
-
-		.ul_logo{
-			margin: 20px 0;
-		}
-
-
-		/*---------------*/
-
-
-		.ul_logo li a{
-			color: #c1b497;
-					font-size: 34px!important;
-    text-decoration: underline overline;
-
-		}
-
-
-		/*---------------*/
-
-
-		.nav_genero ul{
-			width: 100%;
-			display: flex;
-			flex-wrap: nowrap;
-			justify-content: center;
-		}
-
-
-		/*---------------*/
-
-
-		.nav_genero ul li a{
-			font-size: 22px;
-		}
-
-
-		/*---------------*/
-
-
-		.nav_genero ul li {
-			margin: 0px 10px;
-		}
-
-
-		/*---------------*/
-
-
-		.nav_genero ul li:hover hr {
-			animation: genero 2s;
-		}
-
-
-		/*---------------*/
-
-
-		.nav_genero ul li hr {
-			visibility: hidden;
-			background: black;
-			border: 1px solid black;
-		}
-
-
-		/*---------------*/
-
-
-		.li_activo a hr,.li_activo a{
-			font-weight: bold;
-			visibility: visible!important;
-
-		}
-
-
-		/*---------------*/
-
-
-		@keyframes genero{
-			from{width: 0%;visibility: visible;}
-			to{width: 100%;}
-		}
 
 	/*Fin Navegador género*/
 
@@ -231,11 +113,7 @@
 	/*Navegador categorías*/
 
 		.nav_categorias{
-			display: flex;
-			justify-content: center;
-			border: 1px solid black;
-			padding: 10px 0px;
-			margin: 10px 0;
+			display: none;
 		}
 
 
@@ -244,7 +122,8 @@
 
 		.nav_categorias .ul_categorias{
 			display: flex;
-			width: 80%;
+			flex-direction: column;
+			width: 100%;
 		}
 
 
@@ -252,8 +131,9 @@
 
 
 		.nav_categorias .ul_categorias li{
-			width: 100%;
+			border: 1px solid black;
 			text-align: center;
+			padding: 5px 0;
 		}
 
 
@@ -272,6 +152,7 @@
 
 		.nav_categorias .ul_categorias li:hover{
 			font-weight: bold;
+			background: lightgray;
 		}
 
 
@@ -281,24 +162,15 @@
 		.ul_subcategoria{
 			display: none;
 		 	flex-direction: column;
-		 	padding: 10px;
-		 	width: 10%;
-		 	position: absolute;
-		 	z-index: 200;
-		 	margin-top: -4px;
 		}
-
-
-		/*---------------*/
-
 
 		.ul_subcategoria li{
-			border-bottom: 1px solid black;
-			border-left: 1px solid black;
-			border-right: 1px solid black;
-			background: white;
-			padding: 10px;
-		}
+			border: 0!important;
+			width: 100%;
+			border-bottom: 1px solid lightgrey!important;
+			padding: 5px 0;
+		}		
+		/*---------------*/
 
 	/*Fin Navegador categorías*/
 
@@ -310,7 +182,7 @@
 
 		#section_slogan{
 			width: 100%;
-			height: 600px;
+			height: 200px;
 			margin-bottom: 20px;
 			display: flex;
 			justify-content: center;
@@ -324,10 +196,9 @@
 
 		#section_slogan #article_img{
 			background: url('../img/jeans.jpg') no-repeat;
-			background-size:100%;
+			background-size:100% 100%;
 			width: 100%;
 			filter: saturate(180%);
-			box-shadow: 2px 2px 2px 2px gray;
 			display: flex;
 			flex-direction: column;
 		}		
@@ -347,16 +218,15 @@
 
 
 		#section_slogan button{
-			width: 10%;
 			box-shadow: 2px 2px 2px 2px #80aaff;
 			background: transparent;
+			width: 20%;
 			color: white;
 			border: 0;
 			margin-top: 30px;
 			border-radius: 6px;
 			cursor: pointer;
 			font-size: 20px;
-			margin-left: 50%;
 		}
 
 		#section_slogan button:hover{
@@ -378,6 +248,7 @@
 		.section_imagenes {
 		  perspective: 400px;
 		  display: flex;
+		  flex-direction: column;
 		}
 
 
@@ -391,6 +262,7 @@
 		  margin: 0 auto;
 		  transform-style: preserve-3d;
 		  transition: transform 2s ease;
+		  margin-top: 5px;
 		}
 
 
@@ -505,6 +377,7 @@
 
 		#footer_div{
 			display: flex;
+			flex-direction: column;
 			width: 100%;
 			font-size: 18px;
 			padding: 30px 0;
@@ -516,10 +389,16 @@
 
 		#footer_div ul{
 			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-content: center;
+			align-items: center;
+			justify-content: center;
+			margin-top: 20px;
 		}
 
 
-		/*---------------*/
+		/*---------------*/ 
 
 
 		.footer_titulo{
@@ -1038,46 +917,42 @@
 
 		#ul_index_logueado{
 			display: flex;
-			width: 30%;
+			width: 100%;
 			background: black;
-			border-bottom: 1px solid gray;
 			align-items: center;
-			justify-items: center;
 			align-content: center;
-			justify-content: center;
 		}
-		
-		.cerrar_sesion{
-			color: white;
+
+
+		/*---------------*/		
+		#ul_index_logueado li{
 			width: 100%;
 		}
 
 
 		/*---------------*/
 
+		#drop_menu,.cerrar_sesion{
+			color: white;
+		}
 
-		.cerrar_sesion:hover{
+
+		/*---------------*/
+
+
+		.cerrar_sesion:hover,#drop_menu:hover{
 			cursor: pointer;
 			color: #c1b497;
 
 		}
 
-
-		/*---------------*/
-		
-
-		#ul_index_logueado .icon_logueado{
-			width: 100%;
-		}
-
 		
 
 		/*---------------*/
 
 
-		#ul_index_logueado .icon_logueado a i{
+		#ul_index_logueado a i{
 			color: white;
-			font-size: 28px;
 		}
 
 
@@ -1209,15 +1084,13 @@
 		#carrito{
 			display: none;
 			flex-direction: column;
-			width: 30%;
+			width: 95%;
 			border: 1px solid black;
-			font-size: 17px;
 			position: absolute;
 			background: white;
 			z-index: 20;
-			margin-left: -25%;
-			min-height: 450px;
 			border-top-right-radius: 20px;
+			left: 0;
 		}
 
 
@@ -2518,45 +2391,3 @@
 
 
 
-
-
-/*SPINNER*/
-.spinner{
-	width: 5%;
-	height: 10%;
-	border-top: 5px solid lightgreen;
-	border-radius: 50%;
-	animation: vueltas 1s infinite;
-}
-
-.spinnerDiv{
-	background: red;
-	position: fixed;
-	display: flex;
-	align-content: center;
-	align-items: center;
-	justify-content: center;
-	background: white;
-	z-index: 2000;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	flex-direction: column;
-	
-}
-@keyframes vueltas{
-	30% {
-		border-top: 0;
-		border-right:5px solid lightgreen;
-	}
-	60% {
-		border-right:0;
-		border-bottom: 5px solid lightgreen;
-	}
-
-	100% {
-		border-bottom:0;
-		border-left: 5px solid lightgreen;
-	}
-}
-/*FIN SPINNER*/

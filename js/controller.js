@@ -54,34 +54,49 @@ else{
 
 
 function añadir_elemento(){
+	var exit=false;
 	if($(".btn_activo").length){
 		var id_elemento=1;
-		if(productos.length>0){
-		id_elemento=parseInt(productos[productos.length-1]['id_elemento'])+1;
-		}
-
-
-
-		$.post({url: base_url+"index.php/Compra/carrito",
-	        datatype:"json",
-	        data:{'id_producto':$(".li_referencia a").text(),'id_talla':$(".btn_activo").val(),'id_elemento':id_elemento},
-	        success: function(devuelto){
-
-	        var array=JSON.parse(devuelto);
-	 		productos.push(array);
-			localStorage.setItem('productos',JSON.stringify(productos))
-			var objeto=JSON.parse(localStorage.getItem('productos'))
-			$(".section_creacion_articulos article").remove();
-			$("#ul_carrito_total").show();
-			$(".carrito_sin_productos").css("display","none");
-			location.reload();
+		for (var i = 0; i < productos.length; i++) {
+			if(productos[i]['producto']==$(".li_referencia a").text() && productos[i]['talla']==$(".btn_activo").val()){
+				productos[i]['count']=productos[i]['count']+1
+				exit=true;
 				$("#ver_carrito").append("<p class='nuevo_producto'>+1</p>")
+				localStorage.setItem('productos',JSON.stringify(productos))
+				location.reload()
 
-			generar_elementos_carrito();
+
+			}
+		}
+		if(exit==false){
+
+			if(productos.length>0){
+				id_elemento=parseInt(productos[productos.length-1]['id_elemento'])+1;
+			}
 
 
 
-	    }});
+			$.post({url: base_url+"index.php/Compra/carrito",
+		        datatype:"json",
+		        data:{'id_producto':$(".li_referencia a").text(),'id_talla':$(".btn_activo").val(),'id_elemento':id_elemento}, 
+		        success: function(devuelto){
+
+		        var array=JSON.parse(devuelto);
+		 		productos.push(array);
+				localStorage.setItem('productos',JSON.stringify(productos))
+				var objeto=JSON.parse(localStorage.getItem('productos'))
+				$(".section_creacion_articulos article").remove();
+				$("#ul_carrito_total").show();
+				$(".carrito_sin_productos").css("display","none");
+				location.reload();
+					$("#ver_carrito").append("<p class='nuevo_producto'>+1</p>")
+
+				generar_elementos_carrito();
+
+
+
+		    }});
+		}
 	}
 	else{
 		alert("Selecciona una talla.")
@@ -93,9 +108,13 @@ function añadir_elemento(){
 function generar_elementos_carrito(){
 	$(".section_creacion_articulos .carrito_producto").remove();
 	var objetos=JSON.parse(localStorage.getItem('productos'))
-	$(".section_creacion_articulos").append("<article class='cantidad_elementos_carrito'>Productos totales: "+productos.length+"</article>")
+	var productos_totales=0;
 	for(var i=0; i<objetos.length; i++){
-		$(".section_creacion_articulos").append("<article class='carrito_producto'><img src='"+objetos[i]['imagen']+"'><ul><li>"+objetos[i]['nombre_producto']+"</li><li>Precio: "+objetos[i]['precio']+"€</li><li>Talla: "+objetos[i]['desc_talla']+"</li><li>"+objetos[i]['color']+"</li><li><button type='button' class='btn_eliminar_producto' value="+objetos[i]['id_elemento']+"><i class='material-icons'>delete_forever</i></button></li></ul></article>")
+		productos_totales=productos_totales+objetos[i].count;
+	}
+	$(".section_creacion_articulos").append("<article class='cantidad_elementos_carrito'>Productos totales: "+productos_totales+"</article>")
+	for(var i=0; i<objetos.length; i++){
+		$(".section_creacion_articulos").append("<article class='carrito_producto'><img src='"+objetos[i]['imagen']+"'><ul><li>"+objetos[i]['nombre_producto']+"</li><li>Precio: "+objetos[i]['precio']+"€</li><li>Talla: "+objetos[i]['desc_talla']+"</li><li>"+objetos[i]['color']+"</li><li>Cantidad:"+objetos[i]['count']+"</li><li><button type='button' class='btn_eliminar_producto' value="+objetos[i]['id_elemento']+"><i class='material-icons'>delete_forever</i></button></li></ul></article>")
 	}
 	carrito_precio_total();
 }
@@ -122,7 +141,7 @@ function carrito_precio_total(){
 	var total=0;
 	var parseint=0;
 	for (var i = 0; i < productos.length; i++) {
-		parseint=parseInt(productos[i]['precio']);
+		parseint=parseInt(productos[i]['precio']*objetos[i]['count']);
 		total=total+parseint;
 	}
 	$("#carrito_precio_total").text(total)
@@ -139,24 +158,26 @@ $(".btn_talla").click(function(){
 
 
 $("#btn_pasar_a_caja").click(function(){
-	var array_comprobar=[]
-	var contador=0;
-	var objetos=JSON.parse(localStorage.getItem('productos'))
-	array_comprobar.push({"id_producto":objetos[0]['producto'],"id_talla":objetos[0]['talla'],"count":0})
 
 	if($("#carrito_precio_total").text()<25){
 		alert("Pedido minimo 25€")
 	}
 	else{
-		   var x= objetos.sort(function(a, b) {
-			    return parseInt(a.producto) - parseInt(b.producto);
-			});
-		    console.log(x)
+			ajaxQuery("Compra/comprobar_stock",{"productos":localStorage.productos})
+		.then(function(devuelto){
+			var array=JSON.parse(devuelto);
+			        if(array==0){
+			        	swal("Vaya..!", "...Parece que "+devuelto+" No tiene suficiento stock!");
+			        }
+			        else{
+						swal("¡Perfecto!", "Te estamos redirigiendo a la plataforma de pago Online.", "success")
+							.then((value) => {
+								window.location.assign(base_url+"Index.php/Compra")
+							});
+			        }
 
-		//window.location.assign(base_url+"Index.php/Compra")
+		});
 	}
 })
-
-
 
 })

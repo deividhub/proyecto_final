@@ -78,6 +78,19 @@ class Productos_model extends CI_Model {
                 return $query->result();
         }
 
+        public function comprobar_stock($producto){
+            $p=json_decode($producto);// codifico
+            for ($i=0; $i <count($p) ; $i++) { 
+                $sql = "SELECT stock FROM talla_producto WHERE id_talla=".$p[$i]->talla." AND id_producto=".$p[$i]->producto."";
+                $query=$this->db->query($sql); 
+                foreach ($query->result() as $key) {
+                    if($key->stock<$p[$i]->count){
+                        return 0;
+                    }
+                }  
+            }
+
+        }
         public function generar_pedido($producto,$usuario,$precio,$fecha){
             $u=json_decode($usuario);// codifico
             $p=json_decode($producto);// codifico
@@ -90,13 +103,13 @@ class Productos_model extends CI_Model {
                 $maximo=$key->maximo;
             }
             for ($i=0; $i <count($p) ; $i++) { 
-                $sql = "INSERT INTO pedido_producto VALUES(NULL,".$maximo.",".$u[0]->id_usuario.",".$p[$i]->producto.",".$p[$i]->precio.",0)";
+                $sql = "INSERT INTO pedido_producto VALUES(NULL,".$maximo.",".$u[0]->id_usuario.",".$p[$i]->producto.",".$p[$i]->precio.",".$p[$i]->count.",0)";
                 $query=$this->db->query($sql);   
             }
 
 
             for ($i=0; $i <count($p) ; $i++) { 
-                $sql = "UPDATE talla_producto SET stock=stock-1 WHERE id_producto=".$p[$i]->producto." AND id_talla=".$p[$i]->talla."";
+                $sql = "UPDATE talla_producto SET stock=stock-".$p[$i]->count." WHERE id_producto=".$p[$i]->producto." AND id_talla=".$p[$i]->talla."";
                 $query=$this->db->query($sql);   
             }
         }

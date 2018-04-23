@@ -1,0 +1,15 @@
+BD en webhost
+-------------------
+user: id5468284_tiendaadm
+Pass: tiendaAdm
+name: id5468284_tienda
+
+la ruta base es solo /proyecto_final/
+
+
+
+Esto es de la App android web
+website152416925196021://
+
+En esta Web se ha desarrollado
+https://essnappy.appypie.com/app/thanks

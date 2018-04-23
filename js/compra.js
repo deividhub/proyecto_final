@@ -5,8 +5,8 @@ var base_url="http://localhost:8080/proyecto_final/";
 	var total=0;
 	var parseint=0;
 	for(var i=0; i<objetos.length; i++){
-		$("#section_productos_compra").append("<article class='article_elemento_comprar'><img src='"+objetos[i]['imagen']+"'><ul><li>"+objetos[i]['nombre_producto']+"</li><li>Precio: "+objetos[i]['precio']+"€</li><li>Talla: "+objetos[i]['desc_talla']+"</li><li>"+objetos[i]['color']+"</li></ul></article>")
-		parseint=parseInt(objetos[i]['precio']);
+		$("#section_productos_compra").append("<article class='article_elemento_comprar'><img src='"+objetos[i]['imagen']+"'><ul><li>"+objetos[i]['nombre_producto']+"</li><li>Precio: "+objetos[i]['precio']+"€</li><li>Talla: "+objetos[i]['desc_talla']+"</li><li>"+objetos[i]['color']+"</li><li>Cantidad: "+objetos[i]['count']+"</li></ul></article>")
+		parseint=parseInt(objetos[i]['precio']*objetos[i]['precio']);
 		total=total+parseint;
 
 	}

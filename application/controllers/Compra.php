@@ -48,6 +48,7 @@ class Compra extends CI_Controller {
 			$var['nombre_producto']=$key->nombre_producto;
 			$var['color']=$key->color;
 			$var['imagen']=$key->imagen;
+			$var['count']=1;
 		}
 		echo json_encode($var);
 	}
@@ -55,6 +56,12 @@ class Compra extends CI_Controller {
 
 
 
+
+	public function comprobar_stock(){
+		$productos=$this->input->post("productos");
+		$viable=$this->Productos_model->comprobar_stock($productos);
+		echo json_encode($viable);
+	}
 
 	public function fin_compra(){
 		$productos=$this->input->post("productos");
