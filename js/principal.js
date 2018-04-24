@@ -19,12 +19,8 @@ $("#btn_iniciar_sesion").click(function(e){
 		swal("Usuario no encontrado")
 		}
 		else{
-			swal("Accediendo a la plataforma.","Espera unos segundos...")
-			.then((value) => {
 		 		localStorage.setItem("user", devuelto)
 		 		location.href ="../Principal";
-
-		});
 		}
 		
 
@@ -35,22 +31,13 @@ $("#btn_iniciar_sesion").click(function(e){
 
 function loading(){
 	$("body").append("<p class='loading'><i class='material-icons'>remove_from_queue</i><a>Cargando</a></p>")
-	$("body").css("background","#e2dccf")
-	$("section").css("visibility","hidden")
-	$("footer").css("visibility","hidden")
-	$("header").css("visibility","hidden")
-	$("nav").css("visibility","hidden")
 	var myVar = setInterval(myTimer, 6000);
 }
 
 function myTimer() {
-	$("section").css("visibility","visible")
-	$("footer").css("visibility","visible")
-	$("header").css("visibility","visible")
-	$("nav").css("visibility","visible")
-	$("body").css("background","transparent")
 	$("body .loading").remove()
 }
+
 
 
 var visible = false;

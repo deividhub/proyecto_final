@@ -27,16 +27,15 @@ $(".form_client #form_telefono_cliente").val(datos_usuario[0].telefono);
 
 
 
-
-
-
-
-
 $(".cerrar_sesion").click(function(){
-	localStorage.removeItem("AUTH");
-	localStorage.removeItem("user");
-	localStorage.removeItem("productos");
-	location.href='/proyecto_final/index.php/Principal'
+
+	swal("¡Hasta pronto!","Sesión cerrada","success")
+	.then((value) => {
+		localStorage.removeItem("AUTH");
+		localStorage.removeItem("user");
+		localStorage.removeItem("productos");
+		location.href='/proyecto_final/index.php/Principal'
+	});
 })
 
 

@@ -11,10 +11,10 @@ function ajaxQuery (url,jsondata){
 		    datatype:"json",
 	       	data:jsondata,
    			beforeSend: function(x) {
-				$("body").append("<div class='spinnerDiv'><p>Espere, cargando solicitud</p><p class='spinner'></p><div>")
+				$("body").append("<div class='spinnerDiv'><div class='spinner-container'><p>Espere, cargando solicitud</p><p class='spinner'></p></div><div>")
 	     	},
 		    success: function(data){devolver_datos(data)
-		    	$("body .spinnerDiv").remove()
+		    $("body .spinnerDiv").remove()
 }
     });
   });
