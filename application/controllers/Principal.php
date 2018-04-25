@@ -21,12 +21,33 @@ class Principal extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->model('Principal_model');
 		$this->load->model('Productos_model');
+		$this->load->library('email');
+		$this->load->helper('email');
 
 	}
 
 
 	public function index()
 	{
+	$configGmail = array(
+		 'protocol' => 'smtp',
+		 'smtp_host' => 'ssl://smtp.gmail.com',
+		 'smtp_port' => 465,
+		 'smtp_user' => 'dwnpdshop@gmail.com',
+		 'smtp_pass' => 'dwnpd2018',
+		 'mailtype' => 'html',
+		 'charset' => 'utf-8',
+		 'newline' => "\r\n"
+		 );    
+		 
+		 //cargamos la configuración para enviar con gmail
+		 $this->email->initialize($configGmail);
+		 
+		 $this->email->from('dwnpdshop@gmail.com');
+		 $this->email->to("david.izkara@gmail.com");
+		 $this->email->subject('Recuperación contraseña DIL');
+		 $this->email->message('<h2>hdhdhdhdh</h2>');
+		 $this->email->send();
 		//obtener categorias y estilos.
 		$datos['categorias']=$this->Productos_model->obtener_categorias();
 		$datos['estilos']=$this->Productos_model->obtener_estilos();

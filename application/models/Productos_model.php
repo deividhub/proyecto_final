@@ -112,6 +112,8 @@ class Productos_model extends CI_Model {
                 $sql = "UPDATE talla_producto SET stock=stock-".$p[$i]->count." WHERE id_producto=".$p[$i]->producto." AND id_talla=".$p[$i]->talla."";
                 $query=$this->db->query($sql);   
             }
+
+
         }
 
 
