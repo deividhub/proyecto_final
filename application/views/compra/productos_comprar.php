@@ -2,12 +2,12 @@
 <section id="section_comprobando_compra">
 
 	<section id="section_productos_compra">
-		<h1>1. Tus productos</h1>
+		<h1>1. Tu cesta</h1>
 	</section>
 
 
 	<section id="section_datos_usuario">
-		<h1>2. Datos de facturación / envio</h1>
+		<h1>2. Datos de facturación/envío</h1>
 		<form id="form_compra_d_u">
 			<input type="text" name="nc" placeholder="nombre" id="nc" readonly>
 			<input type="text" name="ac" placeholder="apellidos" id="ac" readonly>

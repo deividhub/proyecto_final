@@ -23,8 +23,12 @@ class Compra extends CI_Controller {
 
 	public function index()
 	{
+	//obtener categorias y estilos.
+		$datos['categorias']=$this->Productos_model->obtener_categorias();
+		$datos['estilos']=$this->Productos_model->obtener_estilos();
 		$this->load->view('vistas_index/head');
 		$this->load->view('logueado/header_logueado');
+		$this->load->view('vistas_index/navegacion',$datos);
 		$this->load->view('compra/productos_comprar');
 
 		$this->load->view('vistas_index/footer');
