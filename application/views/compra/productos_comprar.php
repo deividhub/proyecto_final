@@ -9,14 +9,29 @@
 	<section id="section_datos_usuario">
 		<h1>2. Datos de facturación/envío</h1>
 		<form id="form_compra_d_u">
-			<input type="text" name="nc" placeholder="nombre" id="nc" readonly>
-			<input type="text" name="ac" placeholder="apellidos" id="ac" readonly>
-			<input type="text" name="dc" placeholder="Direccion" id="dc" readonly>
-			<input type="text" name="cpc" placeholder="codigo postal" id="cpc">
+			<label>Nombre</label>
+			<input type="text" name="nc" placeholder="Nombre" id="nc" readonly>
+			
+			<label>Apellidos</label>
+			<input type="text" name="ac" placeholder="Apellidos" id="ac" readonly>
+			
+			<label>Dirección</label>
+			<input type="text" name="dc" placeholder="Dirección" id="dc" readonly>
+			
+			<label>Código postal</label>
+			<input type="text" name="cpc" placeholder="Código postal" id="cpc">
+			
+			<label>DNI</label>
 			<input type="text" name="dnic" placeholder="DNI" id="dnic">
-			<input type="text" name="fcc" placeholder="fecha nacimiento" id="fcc" readonly>
-			<input type="text" name="pc" placeholder="provincia" id="pc" readonly>
-			<input type="text" name="lc" placeholder="localidad" id="lc" readonly>
+			
+			<label>Fecha nacimiento</label>
+			<input type="text" name="fcc" placeholder="Fecha nacimiento" id="fcc" readonly>
+			
+			<label>Provincia</label>
+			<input type="text" name="pc" placeholder="Provincia" id="pc" readonly>
+			
+			<label>Localidad</label>
+			<input type="text" name="lc" placeholder="Localidad" id="lc" readonly>
 
 		</form>
 

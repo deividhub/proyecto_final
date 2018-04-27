@@ -2180,10 +2180,11 @@
 
 		
 		#section_comprobando_compra section h1{
-			font-size: 30px;
+			font-size: 20px;
 			background: lightgrey;
 			padding: 10px 0;
 			border-radius: 6px;
+			font-weight: normal;
 		}
 
 
@@ -2205,6 +2206,8 @@
 		.article_elemento_comprar{
 			display: flex;
 			margin-top: 20px;
+			padding-bottom: 20px;
+			border-bottom: 0.1px solid lightgrey;
 		}
 
 
@@ -2227,16 +2230,6 @@
 			justify-content: center;
 		}
 
-		/*---------------*/
-
-
-
-		.a_total_final{
-			font-weight: bold;
-			font-size: 24px;
-		}
-
-
 
 		/*---------------*/
 
@@ -2245,6 +2238,8 @@
 		.p_total_final{
 			width: 100%;
 			text-align: right;
+			margin-top: 15px;
+			font-weight: bold;
 		}
 
 		
@@ -2271,18 +2266,29 @@
 		/*---------------*/
 
 
-		#section_datos_usuario form input{
-			padding: 10px 0;
-			margin: 10px 0;
-			border-radius: 10px;
+		#section_datos_usuario form label{
+			color: #c1b497;
+			margin-bottom: 0;
 		}
 
 
 		/*---------------*/
 
 
-		#section_datos_usuario form input:focus{
-			border-radius: 0;
+		#section_datos_usuario form input{
+			padding: 10px 0;
+			border: 0;
+			border-bottom: 1px solid lightgrey;
+			margin-bottom: 20px;
+		}
+
+
+		/*---------------*/
+
+
+		#cpc:focus, #dnic:focus{
+			outline-style:none;
+			border-bottom: 1px solid black;
 		}
 
 
@@ -2332,9 +2338,10 @@
 
 
 		#section_tarjeta_pago form label input{
-			border-radius: 20px;
 			padding: 10px 0;
 			width: 100%;
+			border: 0;
+			border-bottom: 1px solid lightgrey;
 		}
 
 

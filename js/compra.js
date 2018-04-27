@@ -10,7 +10,7 @@ var base_url="http://localhost:8080/proyecto_final/";
 		total=total+parseint;
 
 	}
-		$("#section_productos_compra").append("<p class='p_total_final'>PRECIO TOTAL<a class='a_total_final'> "+total+"</a>€</p>")
+		$("#section_productos_compra").append("<p class='p_total_final'>Precio total: <a class='a_total_final'> "+total+"</a>€</p>")
 
 
 
