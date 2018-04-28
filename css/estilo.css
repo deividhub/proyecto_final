@@ -249,7 +249,7 @@
 			justify-content: center;
 			border: 1px solid black;
 			padding: 10px 0px;
-			margin: 10px 0;
+			margin: 10px 0 20px 0;
 		}
 
 
@@ -322,63 +322,102 @@
 
 	/*Sección del slogan*/
 
-		#section_slogan{
-			width: 100%;
-			height: 600px;
-			margin-bottom: 20px;
-			display: flex;
-			justify-content: center;
-			font-style: italic;
-
+		#section_slogan {
+			box-shadow: 0px 4px 10px #9d9d9d;
+			max-width: 100%;
 		}
 
 
 		/*---------------*/
 
 
-		#section_slogan #article_img{
-			background: url('../img/jeans.jpg') no-repeat;
-			background-size:100%;
-			width: 100%;
-			filter: saturate(180%);
-			box-shadow: 2px 2px 2px 2px gray;
-			display: flex;
-			flex-direction: column;
-		}		
-
-
-		/*---------------*/
-
-
-		#section_slogan h1{
-			color: white;
-			margin-top: 20px;
-			font-size: 22px;
+		#section_slogan ul {
+			width: 1000%;
+			height: auto;
+			position: relative;
+			list-style: none;
+			left: 0;
+			margin: 0;
+			padding: 0;
+			line-height: 0;
+		    animation: slider 15s infinite;		  
 		}
 
 
 		/*---------------*/
 
 
-		#section_slogan button{
+		#section_slogan li {
 			width: 10%;
-			box-shadow: 2px 2px 2px 2px #80aaff;
-			background: transparent;
-			color: white;
-			border: 0;
-			margin-top: 30px;
-			border-radius: 6px;
-			cursor: pointer;
+			list-style: none;
+			float: left;
+			margin: 0;
+			padding: 0;
+		}
+
+
+		/*---------------*/
+
+
+		#section_slogan img {
+			width: 100%;
+			height: 500px;
+		}
+
+
+		/*---------------*/
+
+
+		#section_slogan span {
+			position: relative;
+			height: 80px;
+			display: block;
+			margin-top: -80px;
+			background-color:rgba(193,180,151,0.6);
+			margin-bottom: 40px;
+		}
+
+
+		/*---------------*/
+
+
+		#section_slogan span h4,p{
+			padding-top: 30px;
+			padding-left: 45%;
+		}
+
+
+		/*---------------*/
+
+
+		#section_slogan span h4{
+			font-size: 25px;
+		}
+
+
+		/*---------------*/
+
+
+		#section_slogan span p{
 			font-size: 20px;
-			margin-left: 50%;
 		}
 
-		#section_slogan button:hover{
-			background: white;
-			color: black;
-			transition: 2s;
-		}
 
+		/*---------------*/
+
+
+		@keyframes slider {
+			1% {left: 0%; opacity: 1;}
+			18% {left: 0%; opacity: 1}
+			19% {opacity: 0.2;}
+			20% {left: -100%; opacity: 1;}
+			58% {left: -100%; opacity: 1;}
+			59% {opacity: 0.2;}
+			60% {left: -200%; opacity: 1;}
+			98% {left: -200%; opacity: 1;}
+			99% {opacity: 0.5;}
+			100% {left: 0%;}
+		}
 
 
 	/*Fin Sección del slogan*/

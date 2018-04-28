@@ -1,10 +1,32 @@
 	<section id="section_slogan">
       <article id="article_img">
-         <h1>Proximamente...</h1>
-         <button>¡Reserva las tuyas!</button>
-      </article>     
-	</section>
+      </article>  
+      <ul>
+           <li>
+               <img src="../img/slider1.jpg" />
+               <span>
+                   <h4>Colección Mujer</h4>
+                   <p>Lorem ipsum dolor...</p>
+               </span>
+           </li>
 
+           <li>
+               <img src="../img/slider2.jpg" />
+               <span>
+                   <h4>Colección Hombre</h4>
+                   <p>Lorem ipsum dolor...</p>
+               </span>
+           </li>
+
+           <li>
+               <img src="../img/slider3.jpg" />
+               <span>
+                   <h4>Colección Verano</h4>
+                   <p>¡Llega el verano a nuestra tienda!</p>
+               </span>
+           </li>
+       </ul>   
+	</section>
 
 <section class="section_imagenes">
 
