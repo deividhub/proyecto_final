@@ -97,7 +97,10 @@ ajaxQuery("Administracion/estilos",{"id_tipo_producto":$("#form_tipo_producto").
 	   		ajaxQuery("Administracion/crear_producto",json)
 				.then(function(devuelto){
 					
-				swal("Operación correcta!", "Producto creado");
+			swal("Operación correcta!", "Producto creado.", "success")
+				.then((value) => {
+					form_anterior(".crear_product")
+			});	
 
 			});
 	
@@ -155,8 +158,10 @@ $("#guardar_cambios_producto").click(function(){
 	var json={"id_producto":$("input[name='id_producto']").val(),"nombre_producto":$("input[name='nombre_producto']").val(),"color":$("input[name='color']").val(),"id_estilo":$("input[name='id_estilo']").val(),"precio":$("input[name='precio']").val(),"descripcion":$("input[name='descripcion']").val(),"composicion":$("input[name='composicion']").val(),"genero":$("input[name='genero']").val(),"id_tipo_producto":$("input[name='id_tipo_producto']").val(),"imagen":localStorage.imagen_subida}
 		ajaxQuery("Administracion/editar_producto",json)
 		.then(function(devuelto){
-		swal("Operación correcta!", "Datos de "+devuelto+" modificados.", "success");
-			
+		swal("Operación correcta!", "Datos de "+devuelto+" modificados.", "success")
+			.then((value) => {
+				form_anterior(".list_product")
+		});		
 	});
 })
 
@@ -177,9 +182,10 @@ $(".deleteproduct").click(function(){
 		  	ajaxQuery("Administracion/eliminar_producto",{"id_producto":this.value})
 				.then(function(devuelto){			
 			});
-		    swal("¡Producto eliminado!", {
-		      icon: "success",
-		    });
+			swal("Operación correcta!", "Producto eliminado.", "success")
+				.then((value) => {
+					form_anterior(".list_product")
+			});
 		    //location.reload();
 		  } else {
 		    swal("Has cancelado la operación.");
@@ -225,7 +231,10 @@ $("#guardar_cambios_usuario").click(function(){
 	var x=$("#form_editar_usuario").serializeArray()
 		ajaxQuery("Administracion/editar_usuario",x)
 		.then(function(devuelto){
-		swal("Operación correcta!", "Datos de "+devuelto+" modificados.", "success");
+		swal("Operación correcta!", "Datos de "+devuelto+" modificados.", "success")
+			.then((value) => {
+				form_anterior(".list_user")
+		});
 			
 	});
 })
@@ -249,10 +258,11 @@ $(".deleteuser").click(function(){
 		  	ajaxQuery("Administracion/eliminar_usuario",{"id_usuario":this.value})
 				.then(function(devuelto){			
 			});
-		    swal("¡Usuario eliminado!", {
-		      icon: "success",
-		    });
-		    //location.reload();
+			swal("Operación correcta!", "Usuario eliminado", "success")
+				.then((value) => {
+					form_anterior(".list_user")
+			});
+
 		  } else {
 		    swal("Has cancelado la operación.");
 		  }
@@ -267,8 +277,10 @@ $("#btn_crear_usuario").click(function(){
 	var x=$("#form_crear_usuario").serializeArray()
 		ajaxQuery("Administracion/crear_usuario",x)
 		.then(function(devuelto){
-		swal("Operación correcta!", "Usuario "+devuelto+" creado.", "success");
-		//location.reload();
+		swal("Operación correcta!", "Usuario "+devuelto+" creado.", "success")
+			.then((value) => {
+				form_anterior(".crear_user")
+		});
 
 	});
 })
@@ -280,6 +292,96 @@ $("#btn_crear_usuario").click(function(){
 
 
 
+/* FORMULARIO COMENTARIOS*/
+$(".deletecomment").click(function(){
+
+	swal({
+	  title: "Vas a eliminar un comentario, ¿estas seguro?",
+	  text: "Recuerda eliminar solo comentarios ofensivos",
+	  icon: "warning",
+	  buttons: true,
+	  dangerMode: true,
+	})
+	.then((eliminar) => {
+	  if (eliminar) {
+	  	ajaxQuery("Administracion/eliminar_comentario",{"id_comentario":this.value})
+			.then(function(devuelto){			
+		});
+		swal("Operación correcta!", "Comentario eliminado", "success")
+			.then((value) => {
+				form_anterior(".list_coments")
+		});
+
+	  } else {
+	    swal("Has cancelado la operación.");
+	  }
+	});
+})
+/*FIN FORMULARIO COMENTARIOS*/
+
+
+
+
+/*PEDIDOS*/
+var grados=0;
+$(".icon_actualizar_estado").click(function() {
+	var id="."+this.id;
+	
+	if($(id+" select").val()==4 || $(id+" select").val()==5){
+		swal("El pedido ya ha finalizado o ha sido cancelado")
+	}
+
+	else{
+		var estado_nuevo=parseInt($(id+" select").val())+1;
+		ajaxQuery("Administracion/actualizar_pedido",{"pedido":id.substr(-1),"state":estado_nuevo})
+			.then(function(devuelto){			
+		});
+		$(id+" select").css("color","lightgreen")
+		$(id+" select").val(estado_nuevo)
+		grados=grados+360;
+   		$(this).css({'transition' : '1s'});
+    	$(this).css({'transform' : 'rotate('+grados+'deg)'});
+	}
+
+
+
+});
+
+
+
+$(".icon_bloquear_estado").click(function() {
+	var id="."+this.id;
+	if($(id+" select").val()==4 || $(id+" select").val()==5){
+		swal("Este pedido ya ha finalizado o ha sido cancelado")
+	}
+	else{
+		swal({
+		  title: "Vas a cancelar un pedido, ¿estas seguro?",
+		  text: "",
+		  icon: "warning",
+		  buttons: true,
+		  dangerMode: true,
+		})
+		.then((cancelar) => {
+		  if (cancelar) {
+			ajaxQuery("Administracion/actualizar_pedido",{"pedido":id.substr(-1),"state":5})
+				.then(function(devuelto){			
+			});
+			$(id+" select").val(5)
+			$(id+" select").css("color","red")	
+		  } else {
+		    swal("Has cancelado la operación.");
+		  }
+		});
+
+
+	}
+
+
+
+
+});
+/*FIN PEDIDOS*/
 
 
 
@@ -300,13 +402,23 @@ $("#btn_crear_usuario").click(function(){
 
 
 
+/*FUNCIONES COMUNES*/
+function form_anterior(form){
+	localStorage.setItem("actual_form", form)
+	location.reload()
+}
 
+
+if(localStorage.actual_form){
+	$(localStorage.actual_form).removeClass('form_oculto')
+}
 
 /*Mostrar segun click*/
 $(".mostrar").click(function(e){
 	$(".configuraciones_panel_admin").addClass("form_oculto")
 	e.preventDefault();
 	$("."+this.id).removeClass('form_oculto')
+	$(".show-options").removeClass("show-options")
 })
 
 
@@ -315,8 +427,6 @@ $("#aside_panel_admin ul li").click(function(e){
 		$(".show-options").removeClass("show-options")
 		$(this).addClass("show-options")
 })
-
-
 
 
 

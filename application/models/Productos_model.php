@@ -149,6 +149,18 @@ class Productos_model extends CI_Model {
             $this->db->query($sql2); 
         }
 
+        public function obtener_pedidos(){
+            $sql = "SELECT * FROM pedido p, estado_pedido e WHERE p.id_estado=e.id_estado";
+            $query=$this->db->query($sql); 
+            return $query->result();
+        }
+
+        public function obtener_estados(){
+            $sql = "SELECT * FROM estado_pedido";
+            $query=$this->db->query($sql); 
+            return $query->result();
+        }
+
 }
 
 

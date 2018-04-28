@@ -65,6 +65,16 @@ class Administracion_model extends CI_Model {
             $query=$this->db->query($sql);
             return $query->result();
         }
+
+        public function eliminar_comentario($id){
+            $this->db->where('id_comentario', $id);
+            $this->db->delete('comentario');
+        }
+
+        public function actualizar_pedido($id,$state){
+          $sql = "UPDATE pedido SET id_estado=$state WHERE id_pedido=$id";
+          $query=$this->db->query($sql);
+        }
 }
 
 
