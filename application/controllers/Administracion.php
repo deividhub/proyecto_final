@@ -26,6 +26,13 @@ class Administracion extends CI_Controller {
 		$datos['listado_completo_productos']=$this->Productos_model->obtener_productos();
 		$datos['listado_completo_usuarios']=$this->Usuario_model->obtener_usuarios();
 		$datos['listado_completo_comentarios']=$this->Administracion_model->obtener_comentarios();
+		$datos['listado_completo_pedidos']=$this->Productos_model->obtener_pedidos();
+		$datos['estados_pedido']=$this->Productos_model->obtener_estados();
+		$datos['estilos']=$this->Productos_model->obtener_estilos();
+		//$datos['pedido_producto']=$this->Productos_model->obtener_estados();
+		//$datos['talla']=$this->Productos_model->obtener_estados();
+		//$datos['talla_producto']=$this->Productos_model->obtener_estados();
+		$datos['tipo_producto']=$this->Productos_model->obtener_categorias();
 		$this->load->view('vistas_index/head');
 		$this->load->view('administracion/plantilla_adm',$datos);
 
@@ -146,6 +153,17 @@ class Administracion extends CI_Controller {
 
 	public function eliminar_usuario(){
 		$this->Administracion_model->eliminar_usuario($this->input->post("id_usuario"));
+	}
+
+
+
+	public function eliminar_comentario(){
+		$this->Administracion_model->eliminar_comentario($this->input->post("id_comentario"));
+	}
+
+
+	public function actualizar_pedido(){
+		$this->Administracion_model->actualizar_pedido($this->input->post("pedido"),$this->input->post("state"));
 	}
 
 }

@@ -28,8 +28,13 @@
 	    	</ul>
 	    </li>
 	    <li class="mostrar" id="list_coments"><a href="">Comentarios</a></li>
-	    <li class="mostrar" id="list_pedidos"><a href="">Pedidos</a></li>
-	    <li><a href="#">Notificar errores</a></li>
+	    <li ><a href="#">Pedidos</a>
+	    	<ul class="submenu_panel_admin">
+	    	    <li class="mostrar" id="list_pedidos"><a href="">Listado</a></li>
+	    	    <li class="mostrar" id="list_estados"><a href="">Estados</a></li>
+	    	</ul>
+	    </li>
+	    <li class="notify_errors"><a href="#">Notificar errores</a></li>
 	</ul>
 </aside>
 	<article class="configuraciones_panel_admin form_oculto crear_product">
@@ -317,9 +322,56 @@
 								<td>".$comentario->id_producto."</td>		
 								<td>".$comentario->id_usuario."</td>
 								<td>".$comentario->descripcion."</td>
-								<td><a href='#'><i class='material-icons button edit'>edit</i></a>
-						        <a href='#'><i class='material-icons button delete'>delete</i></a>
+								<td><button type='button' value='".$comentario->id_comentario."' class='deletecomment'><i class='material-icons button delete'>delete</i></button>
 						      	</td>
+							</tr>";
+						}
+					}
+
+				 ?>	
+				</tbody>
+			</table>
+		</article>
+		<p class="developed">Desarrollado por: Nerea - Pedro - David</p>
+	</article>
+
+
+
+
+<article class="configuraciones_panel_admin list_pedidos form_oculto">
+		<h1>Lista de pedidos</h1>
+		<article class="tabla_scroll">
+			<table class="tabla_muestra_elementos">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Id Usuario</th>
+						<th>Importe</th>
+						<th>Fecha</th>
+						<th>Estado del pedido</th>
+						<th>Actualizar estado</th>
+						<th>Cancelar pedido</th>
+					</tr>
+				</thead>
+				<tbody>
+				<?php 
+					if($estados_pedido){
+						$estados="";
+						foreach ($estados_pedido as $key) {
+							$estados=$estados."<option value=".$key->id_estado.">Paso ".$key->id_estado."-".$key->desc_estado."</option>";
+						}
+					}
+					if ($listado_completo_pedidos) {
+						foreach ($listado_completo_pedidos as $pedido) {
+							
+							echo "<tr>
+								<td>".$pedido->id_pedido."</td>
+								<td>".$pedido->id_usuario."</td>		
+								<td>".$pedido->precio_total."</td>
+								<td>".$pedido->fecha_pedido."</td>
+								<td class='td_pedido_$pedido->id_pedido'><select disabled id='select_modificar_pedido'><option value=$pedido->id_estado>Paso ".$pedido->id_estado."-".$pedido->desc_estado."</option>".$estados."</select></td>
+								<td><i class='material-icons icon_actualizar_estado' id='td_pedido_$pedido->id_pedido'>update</i></td>
+								<td><i class='material-icons icon_bloquear_estado' id='td_pedido_$pedido->id_pedido'>error</i></td>
 							</tr>";
 						}
 					}
@@ -336,19 +388,102 @@
 
 
 
+<article class="configuraciones_panel_admin list_estados form_oculto">
+		<h1>Lista de estados de un pedido</h1>
+		<article class="tabla_scroll">
+			<table class="tabla_muestra_elementos">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Descripción del estado</th>
+					</tr>
+				</thead>
+				<tbody>
+				<?php 
+
+					if($estados_pedido){
+						foreach ($estados_pedido as $key) {
+							
+							echo "<tr>
+								<td>".$key->id_estado."</td>
+								<td>".$key->desc_estado."</td>		
+							</tr>";
+						}
+					}
+
+				 ?>	
+				</tbody>
+			</table>
+		</article>
+		<p class="developed">Desarrollado por: Nerea - Pedro - David</p>
+	</article>
 
 
 
+<article class="configuraciones_panel_admin list_estilos form_oculto">
+		<h1>Lista de estilos</h1>
+		<article class="tabla_scroll">
+			<table class="tabla_muestra_elementos">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Tipo de producto asociado</th>
+						<th>Descripción</th>
+					</tr>
+				</thead>
+				<tbody>
+				<?php 
+
+					if($estilos){
+						foreach ($estilos as $key) {
+							
+							echo "<tr>
+								<td>".$key->id_estilo."</td>
+								<td>".$key->id_tipo_producto."</td>		
+								<td>".$key->descripcion."</td>		
+							</tr>";
+						}
+					}
+
+				 ?>	
+				</tbody>
+			</table>
+		</article>
+		<p class="developed">Desarrollado por: Nerea - Pedro - David</p>
+	</article>
 
 
+<article class="configuraciones_panel_admin list_tipos form_oculto">
+		<h1>Lista de tipos de productos</h1>
+		<article class="tabla_scroll">
+			<table class="tabla_muestra_elementos">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Descripción</th>
+					</tr>
+				</thead>
+				<tbody>
+				<?php 
 
+					if($tipo_producto){
+						foreach ($tipo_producto as $key) {
+							
+							echo "<tr>
+								<td>".$key->id_tipo_producto."</td>
+								<td>".$key->desc_tipo_producto."</td>		
+							</tr>";
+						}
+					}
 
-
-
-
-
-
+				 ?>	
+				</tbody>
+			</table>
+		</article>
+		<p class="developed">Desarrollado por: Nerea - Pedro - David</p>
+	</article>
 </section>
+
 
 </body>
 </html>

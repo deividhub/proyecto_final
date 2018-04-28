@@ -1509,9 +1509,9 @@
 
 		#aside_panel_admin{
 			background: black;
-			width: 100px;
-			min-width: 100px;
+			width: 10%;
 			text-align: center;
+
 		}
 		
 
@@ -1540,7 +1540,7 @@
 			background: darkgray;
 			border: 1px solid black;
 			position: absolute;
-			margin-left: 100px;
+			margin-left: 10%;
 			margin-top: -28px;
 			width: 150px;
 		}
@@ -1609,12 +1609,13 @@
 	/*Panel de administración*/
 
 		.configuraciones_panel_admin{
-			width: 100%;
+			width: 90%;
 			border: 1px solid black;
 			background: #f1f1f1;
 			text-align: center;
 			display: flex;
 			flex-direction: column;
+
 		}
 		
 		
@@ -1801,7 +1802,6 @@
 		.tabla_muestra_elementos tbody td{
 			padding: 5px 15px;
 		  border-bottom: 2px solid #ddd;
-		  width: 100%;
 
 		}
 		
@@ -1853,6 +1853,17 @@
 			color: green;
 		}
 
+		#select_modificar_pedido{
+			border: 0;
+			height: 20px;
+			color: black;
+			background: transparent; 	
+			-moz-appearance:none;
+			-webkit-appearance:none;
+			-ms-appearance:none;
+			-o-appearance:none;
+			appearance:none;
+		}
 
 	/* Fin Tabla general mostrar datos*/
 
