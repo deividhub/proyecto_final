@@ -6,7 +6,7 @@
                <img src="../img/slider1.jpg" />
                <span>
                    <h4>Colección Mujer</h4>
-                   <p>Lorem ipsum dolor...</p>
+                   <p>¡Mid season sale!</p>
                </span>
            </li>
 
@@ -14,7 +14,7 @@
                <img src="../img/slider2.jpg" />
                <span>
                    <h4>Colección Hombre</h4>
-                   <p>Lorem ipsum dolor...</p>
+                   <p>¡Mid season sale!</p>
                </span>
            </li>
 

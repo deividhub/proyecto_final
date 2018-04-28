@@ -323,8 +323,7 @@
 	/*Sección del slogan*/
 
 		#section_slogan {
-			box-shadow: 0px 4px 10px #9d9d9d;
-			max-width: 100%;
+			overflow: hidden;
 		}
 
 
@@ -335,7 +334,6 @@
 			width: 1000%;
 			height: auto;
 			position: relative;
-			list-style: none;
 			left: 0;
 			margin: 0;
 			padding: 0;
@@ -362,6 +360,8 @@
 		#section_slogan img {
 			width: 100%;
 			height: 500px;
+			box-shadow: 3px 4px 10px #9d9d9d;
+
 		}
 
 
@@ -371,7 +371,11 @@
 		#section_slogan span {
 			position: relative;
 			height: 80px;
-			display: block;
+			display: flex;
+			flex-direction: column;
+			align-content: center;
+			justify-content: center;
+			align-items: center;
 			margin-top: -80px;
 			background-color:rgba(193,180,151,0.6);
 			margin-bottom: 40px;
@@ -381,9 +385,8 @@
 		/*---------------*/
 
 
-		#section_slogan span h4,p{
-			padding-top: 30px;
-			padding-left: 45%;
+		#section_slogan span h4, #section_slogan span p{
+			padding: 15px;
 		}
 
 
@@ -2290,15 +2293,16 @@
 			text-align: right;
 			margin-top: 15px;
 			font-weight: bold;
+			font-size: 20px;
 		}
 
 		
-
 		/*---------------*/
 
 		#section_datos_usuario{
-			width: 45%;
+			width: 40%;
 			display: flex;
+			margin-right: 10%;
 			flex-direction: column;
 		}
 		
@@ -2346,7 +2350,7 @@
 
 
 		#section_tarjeta_pago{
-			width: 45%;
+			width: 40%;
 			display: flex;
 			flex-direction: column;
 
@@ -2371,6 +2375,8 @@
 		
 		#section_tarjeta_pago form label{
 			width: 95%;
+			color: #c1b497;
+			margin-bottom: 0;
 		}
 
 
@@ -2388,29 +2394,11 @@
 
 
 		#section_tarjeta_pago form label input{
-			padding: 10px 0;
 			width: 100%;
+			padding: 10px 0;
 			border: 0;
 			border-bottom: 1px solid lightgrey;
-		}
-
-
-		/*---------------*/
-
-
-		
-		#section_tarjeta_pago form label input:focus{
-			border-radius: 0px;
-
-		}
-
-
-		/*---------------*/
-
-
-		
-		#section_tarjeta_pago form label input::placeholder, #section_tarjeta_pago form{
-			font-size: 20px;
+			margin-bottom: 20px;
 		}
 
 
@@ -2445,11 +2433,34 @@
 
 		/*---------------*/
 
-
 		
-		#credit_card{
-			font-size: 54px;
-			color: blue;
+		#section_tarjeta_pago input:focus{
+			outline-style:none;
+			border-bottom: 1px solid black;
+		}
+
+
+		/*---------------*/
+
+		#tarjetas{
+			font-size: 40px;
+			margin: 20px 0;
+		}
+
+
+		.credit_card:hover{
+			color: #c1b497;
+		}
+		
+		#acept_terms{
+			visibility: hidden;
+		}
+		.done i{
+			font-size: 20px!important;
+			height: 5px!important;
+			width: 5px;
+			border: 1px solid black;
+			display: initial!important;
 		}
 
 
