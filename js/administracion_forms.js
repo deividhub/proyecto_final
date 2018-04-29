@@ -413,20 +413,20 @@ if(localStorage.actual_form){
 	$(localStorage.actual_form).removeClass('form_oculto')
 }
 
+
 /*Mostrar segun click*/
-$(".mostrar").click(function(e){
-	$(".configuraciones_panel_admin").addClass("form_oculto")
-	e.preventDefault();
-	$("."+this.id).removeClass('form_oculto')
-	$(".show-options").removeClass("show-options")
-})
-
-
 $("#aside_panel_admin ul li").click(function(e){
 	e.preventDefault()
 		$(".show-options").removeClass("show-options")
 		$(this).addClass("show-options")
 })
+
+$(document).on('click', '.mostrar', function() {
+	$(".configuraciones_panel_admin").addClass("form_oculto")
+	$("."+this.id).removeClass('form_oculto')
+		$(".show-options").removeClass("show-options")
+
+});
 
 
 

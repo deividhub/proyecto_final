@@ -85,10 +85,9 @@ $(".mujer").click(function(){
 
 
 
-
-
 // funcion favoritos
 $("#icono_fav.fav-false").click(function(){
+	if(localStorage.user){
 	ajaxQuery("productos/favorito",{"id_producto":$(".li_referencia a").text(),"estado":false})
 	.then(function(devuelto){
 		//setInterval(location.reload(), 2000);
@@ -98,6 +97,10 @@ $("#icono_fav.fav-false").click(function(){
 		});
 
 	});
+	}
+	else{
+		swal("¡Registrate y podras elegir productos favoritos!")
+	}
 })
 
 $("#icono_fav.fav-true").click(function(){
@@ -111,9 +114,6 @@ $("#icono_fav.fav-true").click(function(){
 
 	});
 })
-
-
-
 
 
 /*PAGINATION*/
