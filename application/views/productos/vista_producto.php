@@ -26,8 +26,6 @@ foreach ($producto as $key) {
 
 ?>
 
-
-
 		<a target="_blank" href="<?php echo $key->imagen;?>"><img src="<?php echo $key->imagen;?>" alt=""></a>
 		<div>
 			<?php 
