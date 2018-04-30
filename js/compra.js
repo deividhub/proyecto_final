@@ -10,7 +10,7 @@ var base_url="http://localhost:8080/proyecto_final/";
 		total=total+parseint;
 
 	}
-		$("#section_productos_compra").append("<p class='p_total_final'>Precio total: <a class='a_total_final'> "+total+"</a>€</p>")
+		$("#section_productos_compra").append("<p class='p_total_final'>Precio total: <a class='a_total_final'> "+total+"</a>€   </p>")
 
 
 
@@ -26,7 +26,7 @@ $("#form_compra_d_u #pc").val(datos_usuario[0].provincia);
 $("#form_compra_d_u #cc").val(datos_usuario[0].correo);
 $("#form_compra_d_u #tc").val(datos_usuario[0].telefono);
 
-$("#comprar_final").click(function(e){
+$(".comprar_final").click(function(){
 //e.preventDefault();
 if($("#form_compra_d_u #dnic").val().length<9 || $("#form_compra_d_u #cpc").val().length<5){
 	swal("Revisa tus datos personales")

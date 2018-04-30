@@ -2263,7 +2263,9 @@
 
 				
 		#section_comprobando_compra section{
-			margin-left: 10px;
+			border: 1px solid lightgrey;
+			border-radius: 10px;
+
 		}
 
 
@@ -2275,7 +2277,8 @@
 			font-size: 20px;
 			background: lightgrey;
 			padding: 10px 0;
-			border-radius: 6px;
+			border-top-left-radius: 6px;
+			border-top-right-radius: 6px;
 			font-weight: normal;
 		}
 
@@ -2284,10 +2287,11 @@
 
 
 		#section_productos_compra{
-			width: 100%;
+			width: 90%;
 			display: flex;
 			margin: 0 0 50px 0;
 			flex-direction: column;
+
 		}
 
 
@@ -2330,7 +2334,7 @@
 		.p_total_final{
 			width: 100%;
 			text-align: right;
-			margin-top: 15px;
+			margin: 15px 0;
 			font-weight: bold;
 			font-size: 20px;
 		}
@@ -2492,17 +2496,83 @@
 		}
 		
 		#acept_terms{
-			visibility: hidden;
+			margin-right: 20px;
+			cursor: pointer;	
+			font-size: 15px;
 		}
-		.done i{
-			font-size: 20px!important;
-			height: 5px!important;
-			width: 5px;
+
+		#acept_terms:checked::after{
+			padding: 1px;
+			transition: 1s;
+			color: white;
+			background: #c1b497;
 			border: 1px solid black;
-			display: initial!important;
+			font-family: FontAwesome;
+			content: "\f00c";
+			border-radius: 3px;
+
 		}
 
 
+		#acept_terms::after{
+			padding: 1px;
+			background: white;
+			transition: 1s;
+			color: white;
+			border: 1px solid black;
+			font-family: FontAwesome;
+			content: "\f00c";
+			border-radius: 3px;
+		}
+
+		#comprar_final {
+			transform-style: preserve-3d;
+		    border: none;
+		    background: #c1b497;
+		    color: #f2f2f2;
+		    padding: 10px;
+		    font-size: 18px;
+		    border-radius: 5px;
+		    position: relative;
+		    box-sizing: border-box;
+		    transition: all 500ms ease;
+		    margin-top: 20px;
+		    cursor: pointer;
+		}
+
+
+
+		#comprar_final::after {
+		    top: -100%;
+		    left: 0px;
+		    width: 100%;
+		    padding: 10px 0;
+		    position: absolute;
+		    background: grey;
+		    border-radius: 5px;
+			font-family: FontAwesome;
+			content:"  \f07a";
+			transform-origin: left bottom;
+		    transform: rotateX(90deg);
+		}
+
+
+
+		#comprar_final:hover {
+			transform-origin: center bottom;
+			transform: rotateX(-90deg) translateY(100%);
+		}
+
+		.comprar_final{
+			padding: 2px;
+		}
+
+		.terms{
+			margin: 30px auto 0 auto;
+			font-size: 10px;
+			width: 80%;
+			text-align: justify;
+		}
 /*FIN COMPRANDO PRODUCTOS*/
 
 
