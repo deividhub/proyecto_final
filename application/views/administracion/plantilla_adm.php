@@ -24,7 +24,7 @@
 	    	    <li class="mostrar" id="list_product"><a href="">Listado</a></li>
 	    	    <li class="mostrar" id="list_tipos"><a href="">Tipos</a></li>
 	    	    <li class="mostrar" id="list_estilos"><a href="">Estilos</a></li>
-	    	    <li class="mostrar" id="list_tallas"><a href="">Tallas</a></li>
+	    	    <li class="mostrar" id="list_stock"><a href="">Stock</a></li>
 	    	</ul>
 	    </li>
 	    <li class="mostrar" id="list_coments"><a href="">Comentarios</a></li>
@@ -85,8 +85,11 @@
 	<article class="configuraciones_panel_admin form_oculto list_product">
 		<h1>Gestion de productos</h1>
 		<h2>Lista de productos</h2>
-		<article class="tabla_scroll">
-			<table class="tabla_muestra_elementos">
+		<div id="search_div">
+			<input type="text" name=""  class="search-input" id="0" placeholder="Filtra">
+			<i class="material-icons">find_in_page</i>
+		</div>		<article class="tabla_scroll">
+			<table class="tabla_muestra_elementos" id="table-search_0">
 				<thead>
 					<tr>
 						<th>#</th>
@@ -177,8 +180,11 @@
 	<article class="configuraciones_panel_admin form_oculto list_user">
 		<h1>Gestion de usuario</h1>
 		<h2>Lista de usuarios</h2>
-		<article class="tabla_scroll">
-			<table class="tabla_muestra_elementos">
+		<div id="search_div">
+			<input type="text" name=""  class="search-input" id="1" placeholder="Filtra">
+			<i class="material-icons">find_in_page</i>
+		</div>		<article class="tabla_scroll">
+			<table class="tabla_muestra_elementos" id="table-search_1">
 				<thead>
 					<tr>
 						<th>#</th>
@@ -301,8 +307,11 @@
 
 <article class="configuraciones_panel_admin form_oculto list_coments">
 		<h1>Lista de comentario</h1>
-		<article class="tabla_scroll">
-			<table class="tabla_muestra_elementos">
+		<div id="search_div">
+			<input type="text" name=""  class="search-input" id="2" placeholder="Filtra">
+			<i class="material-icons">find_in_page</i>
+		</div>		<article class="tabla_scroll">
+			<table class="tabla_muestra_elementos" id="table-search_2">
 				<thead>
 					<tr>
 						<th>#</th>
@@ -340,8 +349,11 @@
 
 <article class="configuraciones_panel_admin list_pedidos form_oculto">
 		<h1>Lista de pedidos</h1>
-		<article class="tabla_scroll">
-			<table class="tabla_muestra_elementos">
+		<div id="search_div">
+			<input type="text" name=""  class="search-input" id="3" placeholder="Filtra">
+			<i class="material-icons">find_in_page</i>
+		</div>		<article class="tabla_scroll">
+			<table class="tabla_muestra_elementos" id="table-search_3">
 				<thead>
 					<tr>
 						<th>#</th>
@@ -390,8 +402,11 @@
 
 <article class="configuraciones_panel_admin list_estados form_oculto">
 		<h1>Lista de estados de un pedido</h1>
-		<article class="tabla_scroll">
-			<table class="tabla_muestra_elementos">
+		<div id="search_div">
+			<input type="text" name=""  class="search-input" id="4" placeholder="Filtra">
+			<i class="material-icons">find_in_page</i>
+		</div>		<article class="tabla_scroll">
+			<table class="tabla_muestra_elementos" id="table-search_4">
 				<thead>
 					<tr>
 						<th>#</th>
@@ -422,8 +437,11 @@
 
 <article class="configuraciones_panel_admin list_estilos form_oculto">
 		<h1>Lista de estilos</h1>
-		<article class="tabla_scroll">
-			<table class="tabla_muestra_elementos">
+		<div id="search_div">
+			<input type="text" name=""  class="search-input" id="5" placeholder="Filtra">
+			<i class="material-icons">find_in_page</i>
+		</div>		<article class="tabla_scroll">
+			<table class="tabla_muestra_elementos" id="table-search_5">
 				<thead>
 					<tr>
 						<th>#</th>
@@ -455,8 +473,11 @@
 
 <article class="configuraciones_panel_admin list_tipos form_oculto">
 		<h1>Lista de tipos de productos</h1>
-		<article class="tabla_scroll">
-			<table class="tabla_muestra_elementos">
+		<div id="search_div">
+			<input type="text" name=""  class="search-input" id="6" placeholder="Filtra">
+			<i class="material-icons">find_in_page</i>
+		</div>		<article class="tabla_scroll">
+			<table class="tabla_muestra_elementos" id="table-search_6">
 				<thead>
 					<tr>
 						<th>#</th>
@@ -482,6 +503,53 @@
 		</article>
 		<p class="developed">Desarrollado por: Nerea - Pedro - David</p>
 	</article>
+
+<article class="configuraciones_panel_admin list_stock form_oculto">
+		<h1>Stock por producto</h1>
+		<div id="search_div">
+			<input type="text" name=""  class="search-input" id="7" placeholder="Filtra">
+			<i class="material-icons">find_in_page</i>
+		</div>
+		<article class="tabla_scroll">
+			<table class="tabla_muestra_elementos" id="table-search_7">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Talla</th>
+						<th>ID producto</th>
+						<th>Nombre</th>
+						<th>Stock</th>
+						<th>Reponer Stock</th>
+					</tr>
+				</thead>
+				<tbody>
+				<?php 
+
+					if($stock_productos){
+						foreach ($stock_productos as $key) {
+							
+							echo "<tr>
+								<td>".$key->id_talla_producto."</td>
+								<td>".$key->descripcion."</td>
+								<td>".$key->id_producto."</td>
+								<td>".$key->nombre_producto."</td>		
+								<td>".$key->stock."</td>		
+								<td><i class='material-icons upload-icon' id='$key->id_talla_producto'>cloud_upload</i></td>		
+							</tr>";
+						}
+					}
+
+				 ?>	
+				</tbody>
+			</table>
+		</article>
+		<p class="developed">Desarrollado por: Nerea - Pedro - David</p>
+	</article>
+
+
+
+
+
 </section>
 
 

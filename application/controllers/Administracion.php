@@ -31,7 +31,7 @@ class Administracion extends CI_Controller {
 		$datos['estilos']=$this->Productos_model->obtener_estilos();
 		//$datos['pedido_producto']=$this->Productos_model->obtener_estados();
 		//$datos['talla']=$this->Productos_model->obtener_estados();
-		//$datos['talla_producto']=$this->Productos_model->obtener_estados();
+		$datos['stock_productos']=$this->Productos_model->obtener_stock_total();
 		$datos['tipo_producto']=$this->Productos_model->obtener_categorias();
 		$this->load->view('vistas_index/head');
 		$this->load->view('administracion/plantilla_adm',$datos);
@@ -166,4 +166,7 @@ class Administracion extends CI_Controller {
 		$this->Administracion_model->actualizar_pedido($this->input->post("pedido"),$this->input->post("state"));
 	}
 
+	public function actualizar_stock(){
+		$this->Administracion_model->actualizar_stock($this->input->post("id_talla_producto"));
+	}
 }

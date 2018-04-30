@@ -74,6 +74,11 @@ class Administracion_model extends CI_Model {
         public function actualizar_pedido($id,$state){
           $sql = "UPDATE pedido SET id_estado=$state WHERE id_pedido=$id";
           $query=$this->db->query($sql);
+        }    
+
+        public function actualizar_stock($id){
+          $sql = "UPDATE talla_producto SET stock=15 WHERE id_talla_producto=$id";
+          $query=$this->db->query($sql);
         }
 }
 

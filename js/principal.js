@@ -201,4 +201,16 @@ else{
 
 }
 
+
+
+
+
+$("#left").click(function(){
+	alert("message?: DOMString")
+$("#section_slogan ul").css("animation","slider 2s infinite")
+
+})
+
 });
+
+

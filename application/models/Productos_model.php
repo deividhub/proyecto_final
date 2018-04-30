@@ -161,6 +161,12 @@ class Productos_model extends CI_Model {
             return $query->result();
         }
 
+        public function obtener_stock_total(){
+            $sql = "SELECT * FROM talla_producto tp, producto p, talla t WHERE tp.id_producto=p.id_producto AND t.id_talla=tp.id_talla";
+            $query=$this->db->query($sql); 
+            return $query->result();
+        }
+
 }
 
 

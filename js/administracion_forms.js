@@ -385,6 +385,15 @@ $(".icon_bloquear_estado").click(function() {
 
 
 
+$(".upload-icon").click(function(){
+	  	ajaxQuery("Administracion/actualizar_stock",{"id_talla_producto":this.id})
+			.then(function(devuelto){			
+		});
+		swal("Operación correcta!", "Stock actualizado.", "success")
+			.then((value) => {
+				form_anterior(".list_stock")
+		});
+})
 
 
 
@@ -397,7 +406,56 @@ $(".icon_bloquear_estado").click(function() {
 
 
 
+$(document).on('keyup', '.search-input',function(event) {
 
+switch ($(this).attr("id")) {
+	case "0":
+		var search_td=0
+		break;
+	case "1":
+		var search_td=0
+		break;
+	case "2":
+		var search_td=2
+		break;
+	case "3":
+		var search_td=1
+		break;
+	case "4":
+		var search_td=1
+		break;
+	case "5":
+		var search_td=2
+		break;
+	case "6":
+		var search_td=1
+		break;
+	case "7":
+		var search_td=3
+		break;
+
+	default:
+		// statements_def
+		break;
+}
+
+
+
+  var filter, table, tr, td, i;
+  filter = $(this).val().toUpperCase();
+  table = document.getElementById("table-search_"+$(this).attr("id"));
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[search_td];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+});
 
 
 
@@ -424,7 +482,8 @@ $("#aside_panel_admin ul li").click(function(e){
 $(document).on('click', '.mostrar', function() {
 	$(".configuraciones_panel_admin").addClass("form_oculto")
 	$("."+this.id).removeClass('form_oculto')
-		$(".show-options").removeClass("show-options")
+	$("."+this.id).addClass('filter')
+	$(".show-options").removeClass("show-options")
 
 });
 
