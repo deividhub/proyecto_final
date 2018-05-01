@@ -148,7 +148,8 @@
 		<button type="submit" id="btn_iniciar_sesion">Entrar</button>
 		</a>
 	
-		<a href="mensajePass" id="recuperar">Recuperar contraseña</a>
+
+		<a href="#" id="recuperar_pass">Recuperar contraseña</a>
 		<?php echo form_close();?>
 			
 			<hr>

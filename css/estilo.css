@@ -338,6 +338,8 @@
 			margin: 0;
 			padding: 0;
 			line-height: 0;
+			animation: slider 15s infinite;
+			animation-direction: alternate
 		}
 
 
@@ -416,11 +418,8 @@
 			58% {left: -100%; opacity: 1;}
 			59% {opacity: 0.2;}
 			60% {left: -200%; opacity: 1;}
-			98% {left: -200%; opacity: 1;}
-			99% {opacity: 0.5;}
-			100% {left: 0%;}
+			100% {left: -200%; opacity: 1;}
 		}
-
 
 	/*Fin Sección del slogan*/
 
@@ -1238,12 +1237,9 @@
 		header.carrito_header{
 			width: 100%;
 			border-bottom: 1px solid black;
-			padding: 5px 0;
-			font-size: 23px;
-			margin-bottom: 10px;
-		    background: linear-gradient(to right , #c1b497, #ffebcc);
-			border-top-right-radius: 20px;
-			color: white;
+			padding: 20px 0;
+			font-size: 22px;
+			text-align: center;
 		}
 
 
@@ -1251,8 +1247,7 @@
 
 
 		.cantidad_elementos_carrito{
-			font-family: Verdana;
-			margin: 20px 0;
+			padding: 10px 0;
 		}
 
 
@@ -1263,14 +1258,12 @@
 			display: none;
 			flex-direction: column;
 			width: 30%;
-			border: 1px solid black;
+			border: 1px solid lightgray;
 			font-size: 17px;
 			position: absolute;
 			background: white;
 			z-index: 20;
 			margin-left: -25%;
-			min-height: 450px;
-			border-top-right-radius: 20px;
 		}
 
 
@@ -1279,9 +1272,8 @@
 
 		.carrito_producto{
 			display: flex;
-			flex-direction: row;
 			border-bottom: 1px solid lightgrey;
-			margin-bottom: 10%;
+			padding: 20px 0;
 		}
 		
 
@@ -1298,31 +1290,9 @@
 
 
 		#carrito ul{
+			width: 100%;
 			display: flex;
 			flex-direction: column;
-		}
-		
-
-		/*---------------*/
-
-
-		#carrito #btn_pasar_a_caja{
-			background: black;
-			color: white;
-			border: 1px solid black;
-			padding: 10px;
-			cursor: pointer;
-			font-weight: bold;
-		}
-		
-		
-		/*---------------*/
-
-
-		#carrito #btn_pasar_a_caja:hover::after{
-			content: " €";
-			font-size: 20px;
-			color: gold;
 		}
 
 
@@ -1359,7 +1329,65 @@
 
 		.btn_eliminar_producto:hover i{
 			color: red;
-		}		
+		}	
+
+
+		/*---------------*/
+
+
+		.ul_del_producto{
+			display: flex;
+			width: 10%!important;
+			align-items: flex-end;
+			align-content: flex-end;
+			justify-content: center;
+		}	
+
+
+		/*---------------*/
+
+
+		#ul_carrito_total{
+			display: flex;
+			width: 100%;
+			align-items: center;
+			padding: 30px 0;
+
+		}
+
+
+		/*---------------*/
+
+
+		#ul_carrito_total li{
+			margin: 10px 0;
+
+		}
+
+
+		/*---------------*/
+
+
+		#ul_carrito_total li:nth-child(1), #carrito_precio_total{
+			font-size: 24px;
+
+		}
+		#ul_carrito_total li:nth-child(1){
+			border-bottom: 1px solid lightgray;
+
+		}
+
+		/*---------------*/
+
+
+		#carrito #btn_pasar_a_caja{
+			background: black;
+			color: white;
+			border: 1px solid black;
+			padding: 10px;
+			cursor: pointer;
+			font-weight: bold;
+		}
 	/*Fin Carrito*/
 
 
@@ -2907,3 +2935,12 @@
 
 
 /*FIN CONTACTO*/
+#recuperar_pass{
+	margin-top: 20px;
+}
+
+#recuperar_pass::before{
+	font-family: FontAwesome;
+	content: "\f023";
+	font-size: 25px;
+}
