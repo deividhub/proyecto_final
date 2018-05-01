@@ -4,6 +4,7 @@
 		    <li>Panel de Administracion</li>
 		    <li><a href="<?php echo base_url();?>index.php/Principal">Volver a la tienda</a></li>
 		    <li><i class="material-icons rounded">person</i></li>
+		    <li><i class="material-icons exit-app">exit_to_app</i></li>
 		</ul>
 	</header>
 

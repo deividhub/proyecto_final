@@ -1,7 +1,6 @@
 	<section id="section_slogan">
       <article id="article_img">
       </article>  
-      <p id="left">LEFT</p>
       <ul>
            <li>
                <img src="../img/slider1.jpg" />
@@ -27,7 +26,6 @@
                </span>
            </li>
        </ul>  
-       <p>RIGHT</p>
 	</section>
 
 <section class="section_imagenes">

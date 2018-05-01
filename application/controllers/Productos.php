@@ -31,6 +31,30 @@ class Productos extends CI_Controller {
 	}
 
 
+	public function hombre(){
+		$datos['categorias']=$this->Productos_model->obtener_categorias();
+		$datos['estilos']=$this->Productos_model->obtener_estilos();
+		$datos['productos']=$this->Productos_model->obtener_productos_genero("Hombre");
+		$datos['genero']="hombre";
+		$this->load->view('vistas_index/head');
+		$this->load->view('logueado/header_logueado');
+		$this->load->view('vistas_index/navegacion',$datos);
+		$this->load->view('productos/vista_productos',$datos);
+		$this->load->view('vistas_index/footer');
+	}
+
+	public function mujer(){
+		$datos['categorias']=$this->Productos_model->obtener_categorias();
+		$datos['estilos']=$this->Productos_model->obtener_estilos();
+		$datos['productos']=$this->Productos_model->obtener_productos_genero("Mujer");
+		$datos['genero']="mujer";
+
+		$this->load->view('vistas_index/head');
+		$this->load->view('logueado/header_logueado');
+		$this->load->view('vistas_index/navegacion',$datos);
+		$this->load->view('productos/vista_productos',$datos);
+		$this->load->view('vistas_index/footer');
+	}
 
 	// es para mostrar todos los productos segun el tipo que se haya escogido.
 	public function mostrar_productos_tipo(){

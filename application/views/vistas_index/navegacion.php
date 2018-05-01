@@ -3,8 +3,23 @@
 		    <li><a href="/proyecto_final/index.php/Principal">DWNPD</a></li>
 		</ul>
 	    <ul>
-			<li class="mujer"><a href="#">Mujer<hr></a></li>
-			<li class="hombre"><a href="#">Hombre<hr></a></li>
+	    	<?php 
+	    	if(isset($genero)){
+	    		if($genero=="hombre"){
+				echo "<li class='mujer'><a href='#'>Mujer<hr></a></li>";
+				echo "<li class='hombre li_activo'><a href='#'>Hombre<hr></a></li>";
+	    		}
+	    		else{
+				echo "<li class='mujer li_activo'><a href='#'>Mujer<hr></a></li>";
+				echo "<li class='hombre'><a href='#'>Hombre<hr></a></li>";
+	    		}
+	    	} 
+	    	else{
+				echo "<li class='mujer'><a href='#'>Mujer<hr></a></li>";
+				echo "<li class='hombre'><a href='#'>Hombre<hr></a></li>";
+	    	}
+	    	?>
+
 	    </ul>
 	</nav>
 

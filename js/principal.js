@@ -22,8 +22,6 @@ $("#btn_iniciar_sesion").click(function(e){
 		 		localStorage.setItem("user", devuelto)
 		 		location.href ="../Principal";
 		}
-		
-
 	});
 })
 
@@ -63,16 +61,11 @@ $("#section_desplegar_comentario").click(function(){
 
 
 $(".hombre").click(function(){
-	$(this).addClass("li_activo")
-	$(".mujer").removeClass("li_activo")
+	location.href=base_url+"Productos/hombre";
 })
 $(".mujer").click(function(){
-	$(this).addClass("li_activo")
-	$(".hombre").removeClass("li_activo")
+	location.href=base_url+"Productos/mujer";
 })
-
-
-
 
 
 
@@ -200,16 +193,6 @@ else{
 	$(".no-coment").text("No puedes comentar, ya has comentado este producto.")
 
 }
-
-
-
-
-
-$("#left").click(function(){
-	alert("message?: DOMString")
-$("#section_slogan ul").css("animation","slider 2s infinite")
-
-})
 
 });
 

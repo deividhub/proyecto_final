@@ -108,7 +108,7 @@ function generar_elementos_carrito(){
 	}
 	$(".section_creacion_articulos").append("<article class='cantidad_elementos_carrito'>Productos totales: "+productos_totales+"</article>")
 	for(var i=0; i<objetos.length; i++){
-		$(".section_creacion_articulos").append("<article class='carrito_producto'><img src='"+objetos[i]['imagen']+"'><ul><li>"+objetos[i]['nombre_producto']+"</li><li>Precio: "+objetos[i]['precio']+"€</li><li>Talla: "+objetos[i]['desc_talla']+"</li><li>"+objetos[i]['color']+"</li><li>Cantidad:"+objetos[i]['count']+"</li><li><button type='button' class='btn_eliminar_producto' value="+objetos[i]['id_elemento']+"><i class='material-icons'>delete_forever</i></button></li></ul></article>")
+		$(".section_creacion_articulos").append("<article class='carrito_producto'><img src='"+objetos[i]['imagen']+"'><ul><li>"+objetos[i]['nombre_producto']+"</li><li>Talla: "+objetos[i]['desc_talla']+"</li><li>"+objetos[i]['color']+"</li><li>Cantidad:"+objetos[i]['count']+"</li><li>Precio: "+objetos[i]['precio']+"€</li></ul><ul class='ul_del_producto'><li><button type='button' class='btn_eliminar_producto' value="+objetos[i]['id_elemento']+"><i class='material-icons'>delete_forever</i></button></li></ul></article>")
 	}
 	carrito_precio_total();
 }
@@ -119,7 +119,7 @@ $(".btn_eliminar_producto").click(function(){
 	for (var i = 0; i < productos.length; i++) {
 		if($(this).val()==productos[i]['id_elemento']){
 			productos.splice(productos.indexOf(productos[i]),1)
-			alert("Producto retirado del carrito.")
+			swal("Producto retirado del carrito.")
 		}
 	}
 		localStorage.setItem('productos',JSON.stringify(productos))

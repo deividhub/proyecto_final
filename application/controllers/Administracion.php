@@ -15,6 +15,7 @@ class Administracion extends CI_Controller {
 	    parent::__construct();
 		$this->load->helper('url');
 		$this->load->model('Productos_model');
+		$this->load->model('Principal_model');
 		$this->load->model('Usuario_model');
 		$this->load->model('Administracion_model');
 	}
@@ -22,6 +23,9 @@ class Administracion extends CI_Controller {
 
 	public function index()
 	{
+		if($this->session->admin!=true){
+			redirect('Administracion/iniciar_sesion');
+		}
 		$datos['tipos_producto']=$this->Productos_model->obtener_categorias();
 		$datos['listado_completo_productos']=$this->Productos_model->obtener_productos();
 		$datos['listado_completo_usuarios']=$this->Usuario_model->obtener_usuarios();
@@ -38,7 +42,35 @@ class Administracion extends CI_Controller {
 
 	}
 
+	public function iniciar_sesion()
+	{
+		$this->load->view('vistas_index/head');
+		$this->load->view('vistas_login/login_admin');
 
+
+	}
+
+	public function logout(){
+		$this->session->unset_userdata('admin');
+	}
+	public function login()
+	{
+		$usuario=$this->Principal_model->obtener_usuario($this->input->post("correo"),$this->input->post("pass"));
+		if ($usuario!='ERROR'){
+				foreach ($usuario as $usuario2) {
+					if ($usuario2->id_tipo_usuario==2) {
+						echo json_encode(1);
+					}
+					else{		
+						$this->session->set_userdata("admin",true); 
+						echo json_encode($usuario);	
+					}
+				}
+			}
+			else{
+				echo json_encode(1);
+			}
+	}
 	public function estilos(){
 		$estilos=$this->Productos_model->obtener_estilo_tipos($this->input->post("id_tipo_producto"));
 

@@ -20,6 +20,11 @@ class Productos_model extends CI_Model {
         }
 
 
+        public function obtener_productos_genero($genero){
+                $sql = "SELECT * FROM producto WHERE genero='$genero'";
+                $query=$this->db->query($sql);
+                return $query->result();             
+        }
 
         public function obtener_productos_rdm(){
 

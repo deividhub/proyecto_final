@@ -134,7 +134,7 @@
 		</div>
 		<?php echo form_submit('Entrar','Entrar','id=btn_iniciar_sesion'); ?>
 	
-		<a href="mensajePass">Recuperar contraseña</a>
+		<a href="#" id="recuperar_pass">Recuperar contraseña</a>
 		<?php echo form_close();?>
 			
 			<hr>

@@ -144,4 +144,15 @@ class Principal extends CI_Controller {
 		$this->load->view('administracion/plantilla_client');
 		$this->load->view('vistas_index/footer');
 	}
+
+
+	public function recuperar_pass(){
+		$result=$this->Principal_model->recuperar_pass($this->input->post("correo"));
+		if($result=="ERROR"){
+			echo json_encode(1);
+		}
+		else{
+			echo json_encode($result);
+		}
+	}
 }
