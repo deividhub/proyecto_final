@@ -1964,20 +1964,21 @@
 
 
 		/*---------------*/
+		
 
-
-		#titulo{
-			text-align: center;
-			color: #c1b497;
-			margin-top: 3%;
+		#juntos h1{
+			font-size: 20px;
 		}
 
 
 		/*---------------*/
-
-
-		#login_client{
-			background: #E6E6E6;
+		
+		
+		#titulo{
+			text-align: center;
+			color: #c1b497;
+			margin-top: 3%;
+			font-size: 30px!important;
 		}
 
 
@@ -2026,10 +2027,29 @@
 		/*---------------*/
 
 
+		#login_client label{
+			color: black;
+			margin-bottom: 0;
+		}
+
+
+		/*---------------*/
+
+
 		#login_client input{
-			width: 97%;
-			padding: 1%;
-			margin-bottom: 7%;
+			padding: 10px 0;
+			border: 0;
+			border-bottom: 1px solid lightgrey;
+			margin-bottom: 20px;
+		}
+
+
+		/*---------------*/
+
+
+		#login_client input:focus{
+			outline-style:none;
+			border-bottom: 1px solid black;
 		}
 
 
@@ -2042,51 +2062,106 @@
 		}
 
 
-		/*---------------*/
+		/*---------------*/	
 
 
-		#login_client input:focus{
-			width: 95%;
-			padding: 2%;
-			outline-style:none;
-			border: 2px solid grey;
-			background: #c1b497;
-		}
-
-
-		/*---------------*/
-
-
-		#login_client input[type="submit"]{
-			width: 40%;
-			padding: 3%;			
-			background: #c1b497;
-			border: none;
-			margin-bottom: 0;
-			margin-left: 30%;
+		#login_client button {
 			transform-style: preserve-3d;
-			color: white;
-			font-weight: bold;
+		    border: none;
+		    background: #c1b497;
+		    color: #f2f2f2;
+		    padding: 10px;
+		    font-size: 18px;
+		    border-radius: 5px;
+		    position: relative;
+		    box-sizing: border-box;
+		    transition: all 500ms ease;
+		    margin-top: 20px;
+		    cursor: pointer;
+		    width: 100%;
 		}
 
 
-		/*---------------*/
+		/*---------------*/	
 
 
-		#login_client input[type="submit"]:hover{
-			background: white;
-			border: 2px solid #c1b497;
-			padding: 2%;
-			color: black;
+		#btn_iniciar_sesion::after {
+		    top: -100%;
+		    left: 0px;
+		    width: 100%;
+		    padding: 10px 0;
+		    position: absolute;
+		    background: grey;
+		    border-radius: 5px;
+			font-family: FontAwesome;
+			content:"  \f007";
+			transform-origin: left bottom;
+		    transform: rotateX(90deg);
+		    font-size: 23px;
 		}
 
 
-		/*---------------*/
+		/*---------------*/	
+
+
+		#Registrarme::after {
+		    top: -100%;
+		    left: 0px;
+		    width: 100%;
+		    padding: 10px 0;
+		    position: absolute;
+		    background: grey;
+		    border-radius: 5px;
+			font-family: FontAwesome;
+			content:"  \f2b9";
+			transform-origin: left bottom;
+		    transform: rotateX(90deg);
+		    font-size: 23px;
+		}
+
+
+		/*---------------*/	
+
+
+		#login_client button:hover {
+			transform-origin: center bottom;
+			transform: rotateX(-90deg) translateY(100%);
+		}
+
+
+		/*---------------*/	
+
+
+		.botones{
+			padding: 2px;
+		}
+
+
+		/*---------------*/	
+
+
+		
+		#recuperar{
+			margin-top: 20px;
+		}
+
+
+		/*---------------*/	
 
 
 		#pass_group{
 			display: flex;
 		}
+
+
+		/*---------------*/	
+
+
+		#pass_group input{
+			width: 90%;
+		}
+
+
 	/*Fin Login - Registro*/	
 	
 

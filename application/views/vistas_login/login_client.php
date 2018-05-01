@@ -10,7 +10,8 @@
 		'maxlength' => 30,
 		'size' => 20,
 		'required' => 1,
-		'id' => "correo_log"
+		'id' => "correo_log",
+		'placeholder' => 'ejemplo@ejemplo.com'
 		);
 	$contraseña_login = array(	
 		'name' => 'contraseña',
@@ -18,7 +19,8 @@
 		'id' => 'contraseña_login',
 		'maxlength' => 20,
 		'size' => 20,
-		'required' => 1
+		'required' => 1,
+		'placeholder' => '********'
 		);
 
 //-------------FORMULARIO REGISTRO----------------
@@ -31,7 +33,8 @@
 		'id' => 'correo',
 		'maxlength' => 20,
 		'size' => 20,
-		'required' => 1
+		'required' => 1,
+		'placeholder' => 'ejemplo@ejemplo.com'
 		);
 	$contraseña1 = array(	
 		'name' => 'contraseña1',
@@ -40,7 +43,8 @@
 		'type' => 'password',
 		'maxlength' => 20,
 		'size' => 20,
-		'required' => 1
+		'required' => 1,
+		'placeholder' => '********'
 		);
 	$contraseña2 = array(	
 		'name' => 'contraseña2',
@@ -49,7 +53,8 @@
 		'type' => 'password',
 		'maxlength' => 20,
 		'size' => 20,
-		'required' => 1
+		'required' => 1,
+		'placeholder' => '********'
 		);
 	$nombre = array(	
 		'name' => 'nombre',
@@ -57,14 +62,16 @@
 		'maxlength' => 20,
 		'class' => 'soloLetras',
 		'size' => 20,
-		'required' => 1
+		'required' => 1,
+		'placeholder' => 'Nombre'
 		);
 	$apellidos = array(	
 		'name' => 'apellidos',
 		'maxlength' => 20,
 		'class' => 'soloLetras',
 		'size' => 20,
-		'required' => 1
+		'required' => 1,
+		'placeholder' => 'Apellidos'
 		);
 	$fecha_nac = array(	
 		'name' => 'fecha_nac',
@@ -77,27 +84,31 @@
 		'class' => 'soloNumeros',
 		'id' => 'telefono',
 		'size' => 20,
-		'required' => 1
+		'required' => 1,
+		'placeholder' => '666666666'
 		);
 	$domicilio = array(	
 		'name' => 'domicilio',
 		'maxlength' => 20,
 		'size' => 20,
-		'required' => 1
+		'required' => 1,
+		'placeholder' => 'C/Kalea Nº1 1ºA'
 		);
 	$provincia = array(	
 		'name' => 'provincia',
 		'maxlength' => 20,
 		'class' => 'soloLetras',
 		'size' => 20,
-		'required' => 1
+		'required' => 1,
+		'placeholder' => 'Provincia'
 		);
 	$localidad = array(	
 		'name' => 'localidad',
 		'maxlength' => 20,
 		'class' => 'soloLetras',
 		'size' => 20,
-		'required' => 1
+		'required' => 1,
+		'placeholder' => 'Localidad'
 	);
 	
 	$registrarme = array(	
@@ -132,9 +143,12 @@
 		<?php echo form_input($contraseña_login); ?>
 		<i class="material-icons" id="imgMostrarPass">visibility</i>
 		</div>
-		<?php echo form_submit('Entrar','Entrar','id=btn_iniciar_sesion'); ?>
+
+		<a  href="#" class="botones">
+		<button type="submit" id="btn_iniciar_sesion">Entrar</button>
+		</a>
 	
-		<a href="mensajePass">Recuperar contraseña</a>
+		<a href="mensajePass" id="recuperar">Recuperar contraseña</a>
 		<?php echo form_close();?>
 			
 			<hr>
@@ -150,17 +164,29 @@
 			
 			<hr>
 <?php echo form_open('Principal/registro',$form_registro);?>
+
 			<?php echo form_label('Correo: ','correo'); ?>
-<img src= https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/alert-triangle-red-512.png id="imgAlertaPass2" name="imgAlertaPass" class="imgAlertaPass imgAlerta" title="" hidden="true">
-			<?php echo form_input($correo); ?><img src= https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/alert-triangle-red-512.png id="imgAlertaCorreo" class="imgAlerta" title="" hidden="true">
+			<img src= https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/alert-triangle-red-512.png id="imgAlertaPass2" name="imgAlertaPass" class="imgAlertaPass imgAlerta" title="" hidden="true">
+
+			<?php echo form_input($correo); ?>
+
 
 			<?php echo form_label('Contraseña: ','contraseña1'); ?>
-			<?php echo form_input($contraseña1); ?><img src= https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/alert-triangle-red-512.png id="imgAlertaPass" name="imgAlertaPass" class="imgAlertaPass imgAlerta" title="" hidden="true">
-			
-			<?php echo form_label('Repita su contraseña: ','contraseña2'); ?>
+			<img src= https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/alert-triangle-red-512.png id="imgAlertaCorreo" class="imgAlerta" title="" hidden="true">
 
-			<?php echo form_input($contraseña2); ?>
+			<div id="pass_group">
+				<?php echo form_input($contraseña1); ?>		
+				<i class="material-icons" id="imgMostrarPass1">visibility</i>
+			</div>
 			
+
+			<?php echo form_label('Repita su contraseña: ','contraseña2'); ?>
+			<img src= https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/alert-triangle-red-512.png id="imgAlertaPass" name="imgAlertaPass" class="imgAlertaPass imgAlerta" title="" hidden="true">
+
+			<div id="pass_group">
+			<?php echo form_input($contraseña2); ?>
+				<i class="material-icons" id="imgMostrarPass2">visibility</i>
+			</div>
 		
 			<?php echo form_label('Nombre: ','nombre'); ?>
 			<?php echo form_input($nombre); ?>
@@ -187,7 +213,11 @@
 		<span id="mensajeCorreo"></span>
 		<span id="mensaje"></span>
 		<br>
-		<?php echo form_submit($registrarme); ?>
+
+		<a  href="#" class="botones">
+			<button type="submit" id="Registrarme">Registrarme</button>
+		</a>
+
 		<?php echo form_close();?>
 			
 			<hr>
@@ -288,6 +318,21 @@
 			$("#contraseña_login").removeAttr('type');
 		});
 
+
+		$("#imgMostrarPass1").mouseup(function(){
+			$("#contraseña1").attr('type', 'password');
+		});
+		$("#imgMostrarPass1").mousedown(function(){
+			$("#contraseña1").removeAttr('type');
+		});	
+
+
+		$("#imgMostrarPass2").mouseup(function(){
+			$("#contraseña2").attr('type', 'password');
+		});
+		$("#imgMostrarPass2").mousedown(function(){
+			$("#contraseña2").removeAttr('type');
+		});
 
 		//-----------FOCUS/BLUR INPUTS----------
 		$("input").focus(function(){
