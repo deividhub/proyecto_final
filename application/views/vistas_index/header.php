@@ -3,7 +3,7 @@
 		<ul id="index_ul">
 		    <li><a href="#">Envio gratuito a partir de 40€</a></li>
 		    <li><a href="#">Promociones verano</a></li>
-		    <li><a href="#">Contacto</a></li>
+		    <li><a href="<?php echo base_url();?>index.php/Principal/contacto">Contacto</a></li>
 		</ul>
 		<ul id="ul_index_logueado">
 			<li>nabo</li>

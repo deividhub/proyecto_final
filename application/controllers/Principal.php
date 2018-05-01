@@ -144,4 +144,17 @@ class Principal extends CI_Controller {
 		$this->load->view('administracion/plantilla_client');
 		$this->load->view('vistas_index/footer');
 	}
+
+
+
+
+	public function contacto(){		
+		$datos['categorias']=$this->Productos_model->obtener_categorias();
+		$datos['estilos']=$this->Productos_model->obtener_estilos();
+		$this->load->view('vistas_index/head');
+		$this->load->view('logueado/header_logueado');
+		$this->load->view('vistas_index/navegacion',$datos);
+		$this->load->view('contacto/contacto');
+		$this->load->view('vistas_index/footer');
+	}
 }

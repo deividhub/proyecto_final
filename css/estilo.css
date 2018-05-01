@@ -2829,3 +2829,81 @@
 	}
 }
 /*FIN SPINNER*/
+
+
+/*-----------*/
+
+
+/*CONTACTO*/
+
+	#seccion_contacto h1
+	{
+		text-align: center;
+		color: #c1b497;
+		margin: 3% 0;
+		font-size: 30px;
+	}
+
+
+	/*---------------*/
+
+		
+	#contacto{
+		display: inline-flex;
+		flex-direction: column;
+		width: 60%;
+		margin-left: 20%;
+	}
+
+
+	/*---------------*/
+
+		
+	#contacto label{
+		color: #c1b497;
+		margin-bottom: 5px;
+	}
+
+
+	/*---------------*/
+
+
+	#contacto input, #contacto select{
+		padding: 10px 0;
+		border: 0;
+		border-bottom: 1px solid lightgrey;
+		margin-bottom: 20px;
+	}
+
+
+	/*---------------*/
+
+
+	#contacto input:focus, #contacto select:focus{
+		outline-style:none;
+		border-bottom: 1px solid black;
+	}
+
+
+	/*---------------*/
+
+
+	#contacto textarea{
+		padding: 10px;
+		border: 1px solid lightgrey;
+		margin-bottom: 20px;
+		resize: none;
+		height: 100px;
+	}
+
+
+	/*---------------*/
+
+
+	#contacto textarea:focus{
+		outline-style:none;
+		border: 1px solid black;
+	}
+
+
+/*FIN CONTACTO*/
