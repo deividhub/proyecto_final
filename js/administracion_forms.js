@@ -3,10 +3,49 @@
 
 $(document).ready(function(){
 
+/*Login admin*/
+$("#acceso_admin").click(function(e){
+	e.preventDefault()
+	x=$("#acceso_admin_form").serializeArray();
+	console.log(x[0].value)
+	ajaxQuery("Administracion/login",{"correo":x[0].value,"pass":x[1].value})
+	.then(function(devuelto){
+		if(devuelto==1){
+			swal("Acceso denegado")
+		}
+		else{
+				localStorage.removeItem('user');
+				localStorage.removeItem('productos');
+				localStorage.removeItem('comentarios');
+				localStorage.removeItem('actual_form');
+			location.href="../Administracion"
+		}
+
+	});
+})
+/*fin login admin*/
+
+$(".exit-app").click(function(){
+	ajaxQuery("Administracion/logout",{"empty":"empty"})
+	localStorage.removeItem('user');
+	localStorage.removeItem('productos');
+	localStorage.removeItem('comentarios');
+	localStorage.removeItem('actual_form');
+	location.reload()
+})
+
+
+
+
+
+
+
+
+
+
 /*FORM CREAR PRODUCTO*/
 
 //Rellenando selects
-
 $("#form_tipo_producto").change(function(){
 
 ajaxQuery("Administracion/estilos",{"id_tipo_producto":$("#form_tipo_producto").val()})

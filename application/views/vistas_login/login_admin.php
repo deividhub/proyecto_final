@@ -7,10 +7,10 @@
 		
 		<hr>
 
-		<form>
-			<input type="email" class="correo" placeholder="ejemplo@ejemplo.com">
-			<input type="password" placeholder="Contraseña">
-			<input type="submit" value="Acceder">			
+		<form id="acceso_admin_form">
+			<input type="email" name="user_aa" class="correo" placeholder="ejemplo@ejemplo.com">
+			<input type="password" placeholder="Contraseña" name="pass_aa">
+			<input type="submit" value="Acceder" id="acceso_admin">			
 		</form>
 		
 		<hr>

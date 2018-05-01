@@ -3,7 +3,6 @@
 
 class Administracion_model extends CI_Model {
 
-        
         public function crear_producto($producto)
         {		
         		// añadir el producto
