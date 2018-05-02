@@ -153,7 +153,7 @@ class Principal extends CI_Controller {
 		$this->load->view('vistas_index/navegacion',$datos);
 		$this->load->view('contacto/contacto');
 		$this->load->view('vistas_index/footer');
-		
+}
 	public function recuperar_pass(){
 		$result=$this->Principal_model->recuperar_pass($this->input->post("correo"));
 		if($result=="ERROR"){
