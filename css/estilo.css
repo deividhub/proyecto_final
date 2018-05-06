@@ -137,7 +137,12 @@
 			color: white;display: none;
 		}
 
+		/*---------------*/
 
+
+		#movil_logo{
+			color: white;display: none;
+		}
 
 	/*Fin Header*/
 
@@ -1651,6 +1656,14 @@
 		/*---------------*/
 
 
+		.admin_seleccionado{
+			background: #004d80!important;
+		}
+
+
+		/*---------------*/
+
+
 		#aside_panel_admin ul li:hover{
 			background: #004d80;
 			border-bottom: 1px solid white;
@@ -1713,6 +1726,7 @@
 			font-size: 20px;
 			margin-top: 10px;
 			margin-bottom: 10px;
+			color: #004d80;
 		}
 		
 
@@ -1762,14 +1776,68 @@
 
 	/*Formulario añadir producto*/
 
+
 		.form_añadir_producto{
 			display: flex;
 			flex-direction: column;
 			width: 50%;
 			margin: auto;
+			align-items: center;
 		}
-		
-		
+
+
+		/*--------------*/
+
+
+		.form_añadir_producto .input_group{
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+		}
+
+
+		/*--------------*/
+
+
+		.form_añadir_producto label{
+			background: #3F3F3F;
+			color: white;
+			margin: 6% 0 2% 0;
+			padding: 1%;
+		}
+
+
+		/*--------------*/
+
+
+		.form_añadir_producto input{
+			padding: 1%;
+		}
+
+
+		/*--------------*/
+
+
+		.form_añadir_producto input:focus{
+			outline-style: none;
+			border: 2px solid #004d80;
+		}
+
+
+		/*--------------*/
+
+
+		.form_añadir_producto input[type="submit"]{
+			margin-top: 20px;
+			background: #004d80;
+			color: white;
+			padding: 2%;
+			border: none;
+			width: 40%;
+			border-radius: 6px;
+		}
+
+				
 		/*---------------*/
 
 
@@ -1791,18 +1859,6 @@
 		/*---------------*/
 
 
-		.form_añadir_producto input[type="submit"]{
-			background: #0085ba;
-			color: white;
-			border-radius: 20px;
-			width: 20%;
-			margin: auto;
-		}
-		
-
-		/*---------------*/
-
-
 		.form_añadir_producto input:focus::placeholder,.form_añadir_producto textarea:focus::placeholder{
 			color: white;
 		}
@@ -1818,6 +1874,77 @@
 	
 	/*Fin Formulario añadir producto*/
 
+
+	/*---------------*/
+
+
+	/*Formulario añadir usuario*/
+
+		#form_crear_usuario{
+			display: flex;
+			flex-direction: column;
+			width: 50%;
+			margin: auto;
+			align-items: center;
+		}
+
+
+		/*--------------*/
+
+
+		#form_crear_usuario .input_group{
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+		}
+
+
+		/*--------------*/
+
+
+		#form_crear_usuario label{
+			background: #3F3F3F;
+			color: white;
+			margin: 6% 0 2% 0;
+			padding: 1%;
+		}
+
+
+		/*--------------*/
+
+
+		#form_crear_usuario input{
+			padding: 1%;
+		}
+
+
+		/*--------------*/
+
+
+		#form_crear_usuario input:focus{
+			outline-style: none;
+			border: 2px solid #004d80;
+		}
+
+
+		/*--------------*/
+
+
+		#form_crear_usuario button{
+			margin-top: 20px;
+			background: #004d80;
+			color: white;
+			padding: 2%;
+			border: none;
+			width: 40%;
+			border-radius: 6px;
+		}
+		
+
+	/*Fin Formulario añadir usuario*/
+
+
+	/*---------------*/
 
 
 	/*Tabla general mostrar datos*/

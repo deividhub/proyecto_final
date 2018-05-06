@@ -61,7 +61,7 @@
 
 			<input name="form_color_producto" type="text" value="" placeholder="Color" id="form_color_producto"/>
 
-			<textarea name="form_desc_producto"placeholder="Descripcion" id="form_desc_producto"></textarea>
+			<textarea name="form_desc_producto" placeholder="Descripcion" id="form_desc_producto"></textarea>
 			<input type="number" name="form_precio_producto" placeholder="precio" id="form_precio_producto">
 			<input type="text" name="form_composicion_producto" placeholder="Composición" id="form_composicion_producto">
 			<select name="form_genero_producto" id="form_genero_producto">
@@ -76,8 +76,6 @@
 	</article>
 
 
-
-	
 
 
 
@@ -269,30 +267,30 @@
 		<h2>Añadir usuario</h2>
 			<form action="" method="POST" accept-charset="utf-8" id="form_crear_usuario">
 				<div class="input_group">
-					<label>Nombre:</label> <input type="text" name="nombre">
+					<label>Nombre:</label> <input type="text" name="nombre" placeholder="Nombre">
 				</div>
 
 				<div class="input_group">
-					<label>Apellidos:</label> <input type="text" name="apellidos">
+					<label>Apellidos:</label> <input type="text" name="apellidos" placeholder="Apellidos">
 				</div>
 
 				<div class="input_group">
-				 	<label>Email:</label> <input type="text" name="correo">
+				 	<label>Email:</label> <input type="text" name="correo" placeholder="ejemplo@ejemplo.com">
 				</div>
 				<div class="input_group">
-					<label>Fecha nacimiento:</label> <input type="text" name="fecha_nac">
+					<label>Fecha nacimiento:</label> <input type="date" name="fecha_nac" placeholder="23/01/1990">
 				</div>
 				<div class="input_group">
-					<label>Telefono:</label> <input type="text" name="telefono">
+					<label>Telefono:</label> <input type="text" name="telefono" placeholder="666666666">
 				</div>
 				<div class="input_group">
-					<label>Domicilio:</label> <input type="text" name="domicilio">
+					<label>Domicilio:</label> <input type="text" name="domicilio" placeholder="C/Kalea Nº20 1ºA">
 				</div>
 				<div class="input_group">
-					<label>Provincia:</label> <input type="text" name="provincia">
+					<label>Provincia:</label> <input type="text" name="provincia" placeholder="Provincia">
 				</div>
 				<div class="input_group">
-					<label>Localidad:</label> <input type="text" name="localidad">
+					<label>Localidad:</label> <input type="text" name="localidad" placeholder="Localidad">
 				</div>
 
 				<button type="button" name="" value="" id="btn_crear_usuario">Añadir usuario</button>

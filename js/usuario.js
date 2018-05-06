@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 if(!localStorage.user){
 	$(".tooltiptext").text("Inicia sesión")
-	$("#log_perfil a").prop("href", base_url+"/Principal/login_registro")
+	$("#log_perfil a").prop("href", base_url+"Principal/login_registro")
 	$(".cerrar_sesion").hide()
 	$("#btn_pasar_a_caja").prop("disabled","disabled")
 	$("#btn_pasar_a_caja").text("No has iniciado sesión")

@@ -515,7 +515,8 @@ if(localStorage.actual_form){
 $("#aside_panel_admin ul li").click(function(e){
 	e.preventDefault()
 		$(".show-options").removeClass("show-options")
-		$(this).addClass("show-options")
+		$(".admin_seleccionado").removeClass("admin_seleccionado")
+		$(this).addClass("show-options admin_seleccionado")
 })
 
 $(document).on('click', '.mostrar', function() {
