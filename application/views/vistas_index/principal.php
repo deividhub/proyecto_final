@@ -3,7 +3,7 @@
       </article>  
       <ul>
            <li>
-               <img src="../img/slider1.jpg" />
+               <img src="<?php echo base_url(); ?>img/slider1.jpg" />
                <span>
                    <h4>Colección Mujer</h4>
                    <p>¡Mid season sale!</p>
@@ -11,7 +11,7 @@
            </li>
 
            <li>
-               <img src="../img/slider2.jpg" />
+               <img src="<?php echo base_url(); ?>img/slider2.jpg" />
                <span>
                    <h4>Colección Hombre</h4>
                    <p>¡Mid season sale!</p>
@@ -19,7 +19,7 @@
            </li>
 
            <li>
-               <img src="../img/slider3.jpg" />
+               <img src="<?php echo base_url(); ?>img/slider3.jpg" />
                <span>
                    <h4>Colección Verano</h4>
                    <p>¡Llega el verano a nuestra tienda!</p>

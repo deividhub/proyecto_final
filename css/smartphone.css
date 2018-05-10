@@ -103,12 +103,6 @@
 		}
 
 
-		/*---------------*/
-
-		#movil_logo a{
-			color: white;
-		}
-
 
 		/*---------------*/
 
@@ -225,11 +219,14 @@
 	/*Navegador categorías*/
 
 		.nav_categorias{
-			display: flex;
+			display: none;
 			justify-content: center;
-			border: 1px solid black;
-			padding: 10px 0px;
-			margin: 10px 0 20px 0;
+			position: absolute;
+			top: 50px;
+			width: 100%;
+			z-index:200;
+			background: white;
+
 		}
 
 
@@ -238,7 +235,10 @@
 
 		.nav_categorias .ul_categorias{
 			display: flex;
-			width: 80%;
+			flex-direction: column;
+			border: 1px solid black;
+			border-top: none;
+			width: 100%;
 		}
 
 
@@ -248,6 +248,8 @@
 		.nav_categorias .ul_categorias li{
 			width: 100%;
 			text-align: center;
+			border-bottom: 1px solid black;
+			padding: 5px 0 0 0;
 		}
 
 
@@ -257,6 +259,7 @@
 		.nav_categorias .ul_categorias li:hover .ul_subcategoria{
 			display: flex;
 			font-weight: normal;
+			background: white!important;
 
 		}
 
@@ -266,6 +269,8 @@
 
 		.nav_categorias .ul_categorias li:hover{
 			font-weight: bold;
+			background: rgba(193,180,151);
+
 		}
 
 
@@ -275,11 +280,6 @@
 		.ul_subcategoria{
 			display: none;
 		 	flex-direction: column;
-		 	padding: 10px;
-		 	width: 10%;
-		 	position: absolute;
-		 	z-index: 200;
-		 	margin-top: -4px;
 		}
 
 
@@ -287,11 +287,15 @@
 
 
 		.ul_subcategoria li{
-			border-bottom: 1px solid black;
-			border-left: 1px solid black;
-			border-right: 1px solid black;
-			background: white;
-			padding: 10px;
+			border-bottom: none!important;
+		}
+
+		.ul_subcategoria li:nth-child(1){
+			border-top: 1px solid black;
+		}
+		.ul_subcategoria li:hover{
+			font-weight: normal!important;
+			background: rgba(193,180,151,0.6)!important;
 		}
 
 	/*Fin Navegador categorías*/
@@ -340,7 +344,7 @@
 
 		#section_slogan img {
 			width: 100%;
-			height: 500px;
+			height: 250px;
 			box-shadow: 3px 4px 10px #9d9d9d;
 
 		}
@@ -412,6 +416,7 @@
 		.section_imagenes {
 		  perspective: 400px;
 		  display: flex;
+		  flex-wrap: wrap;
 		}
 
 
@@ -422,7 +427,7 @@
 		  position: relative;
 		  width: 150px;
 		  height: 150px;
-		  margin: 0 auto;
+		  margin: 10px auto;
 		  transform-style: preserve-3d;
 		  transition: transform 2s ease;
 		}
@@ -542,6 +547,7 @@
 			width: 100%;
 			font-size: 18px;
 			padding: 30px 0;
+			flex-direction: column;
 		}
 
 
@@ -550,6 +556,11 @@
 
 		#footer_div ul{
 			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-content: center;
+			align-items: center;
+			margin-top: 20px;
 		}
 
 
@@ -588,6 +599,7 @@
 
 		#section_producto{
 			display: flex;
+			flex-direction: column;
 			width: 90%;
 			margin: auto;
 			margin-top: 50px;
@@ -816,7 +828,7 @@
 		#ul_añadir_producto button{
 			width: 50%;
 			padding: 10px 0;
-			font-size: 24px;
+			font-size: 18px;
 			background: black;
 			color: white;
 			border: 1px solid black;
@@ -892,29 +904,10 @@
 	/*Filtros*/
 
 		#aside_filtros{
-			border: 1px solid black;
-			width: 20%;
-			position: fixed;
-			margin-left: 80%;
+			display: none;
 
 		}
 
-
-		/*---------------*/
-
-
-		#aside_filtros #form_filtros{
-			display: flex;
-			flex-direction: column;
-		}
-
-
-		/*---------------*/
-
-		
-		#aside_filtros #form_filtros input,#aside_filtros #form_filtros select,#aside_filtros #form_filtros label{
-			padding: 10px 0;
-		}
 
 
 		/*---------------*/
@@ -932,7 +925,7 @@
 
 		
 		#aside_filtros_2 select{
-			width: 30%;
+			width: 80%;
 			height: 20px;
 		}
 
@@ -954,7 +947,7 @@
 	/*Sección productos*/
 
 		#section_article_productos{
-			width: 80%;
+			width: 100%;
 			display: flex;
 			flex-wrap: wrap;
 		}
@@ -966,7 +959,7 @@
 		#section_article_productos .article_producto{
 			display: flex;
 			flex-direction: column;
-			width: 30%;
+			width: 100%;
 			margin: 0 0 40px 20px;
 			border: 1px solid gray;
 			cursor: pointer;
@@ -1063,6 +1056,7 @@
 		#header_logueado{
 			display: flex;
 			flex-direction: row;
+			height: 50px;
 		}
 
 
@@ -1073,39 +1067,43 @@
 			display: flex;
 			width: 100%;
 			background: black;
-			border-bottom: 1px solid red;
+			border-bottom: 1px solid gray;
 			align-items: center;
 			justify-content: flex-start;
 		}
 
 		
 		#ul_index_logueado li{
-			border: 1px solid blue;
+			display: flex;
+			align-items: center;
+			height: 100%;
 		}
 
+		
+		#ul_index_logueado li i{
+			font-size: 30px;
+		}
 
 		#drop_menu{
-
-		}
-
-
-		#movil_logo{
-
+		width: 25%;
 		}
 
 
 		#log_perfil{
-
+		width: 25%;
 		}
 
 
 		#ver_carrito{
+		width: 25%;
 
 		}
 
 
 		.cerrar_sesion{
 			color: white;
+				width: 25%;
+
 		}
 
 
@@ -1124,7 +1122,6 @@
 
 		#ul_index_logueado .icon_logueado a i{
 			color: white;
-			font-size: 28px;
 		}
 
 
@@ -1251,13 +1248,14 @@
 		#carrito{
 			display: none;
 			flex-direction: column;
-			width: 30%;
+			width: 80%;
 			border: 1px solid lightgray;
 			font-size: 17px;
 			position: absolute;
 			background: white;
 			z-index: 20;
-			margin-left: -25%;
+			left: 10%;
+			top: 50px;
 		}
 
 
