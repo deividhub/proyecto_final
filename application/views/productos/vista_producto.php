@@ -49,7 +49,7 @@ foreach ($producto as $key) {
 		    <li class="li_referencia">Referencia: <a href="#"><?php echo $id_producto; ?></a></li>
 		    <li ><?php echo $genero; ?></li>
 		    <li>Precio: <?php echo $precio; ?>€</li>
-		    <li>Talla: 
+		    <li>Talla:<div>
 
 			<?php 	
 			foreach ($array_tallas as $talla => $valor) {
@@ -69,7 +69,7 @@ foreach ($producto as $key) {
 			}
 			 ?>
 
-		    </li>
+		    </div> </li>
 		</ul>
 
 		<ul id="ul_añadir_producto">

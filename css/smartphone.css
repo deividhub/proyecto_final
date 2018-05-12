@@ -738,7 +738,15 @@
 		/*---------------*/
 		
 
+		.ul_datos_genericos li:last-child{
+			display: flex;
+			flex-wrap: wrap;
+		}
+		
+		
+		/*---------------*/
 		.ul_datos_genericos .btn_talla{
+			order: 2;
 			width: 40px;
 			height: 40px;
 			color: white;
@@ -750,7 +758,7 @@
 		}
 		
 		.unica{
-			width: 15%!important;
+			width: 100%!important;
 		}
 		
 		/*---------------*/
@@ -811,6 +819,7 @@
 			display: flex;
 			flex-direction: column;
 			margin-bottom: 10%;
+			align-items: center;
 		}
 		
 		
@@ -819,6 +828,7 @@
 
 		#ul_añadir_producto li{
 			margin: 5px 0;
+			width: 100%;
 		}
 		
 		
@@ -826,7 +836,7 @@
 		
 
 		#ul_añadir_producto button{
-			width: 50%;
+			width: 100%;
 			padding: 10px 0;
 			font-size: 18px;
 			background: black;
@@ -1420,7 +1430,7 @@
 			flex-direction: column;
 			margin: auto;
 			margin-top: 10%;
-			width: 40%;
+			width: 90%;
 			padding: 1%;
 			border: 2px solid #c1b497;
 			box-shadow: 2px 2px 2px 2px grey;
@@ -1511,6 +1521,15 @@
 			color: white;
 			border-bottom: 1px solid gray;
 			padding: 10px 0 0 0;
+			align-items: center;
+		}
+
+
+		/*---------------*/		
+
+
+		#drop_menu_admin{
+			color: white;
 		}
 
 
@@ -1527,7 +1546,7 @@
 
 
 		#ul_administracion_header li:nth-child(1){
-			width: 80%;
+			display: none;
 		}
 
 		
@@ -1535,8 +1554,7 @@
 
 
 		#ul_administracion_header li:nth-child(2){
-			width: 30%;
-			text-align: right;
+			width: 0%;
 		}
 
 
@@ -1544,7 +1562,7 @@
 
 
 		#ul_administracion_header li:nth-child(3){
-			width: 10%;
+			width: 100%;
 			text-align: center;
 		}	
 
@@ -1570,8 +1588,10 @@
 
 		#aside_panel_admin{
 			background: black;
-			width: 10%;
 			text-align: center;
+			width: 100px;
+			display: none;
+			position: absolute;
 
 		}
 		
@@ -1601,7 +1621,7 @@
 			background: darkgray;
 			border: 1px solid black;
 			position: absolute;
-			margin-left: 10%;
+			margin-left: 100px;
 			margin-top: -28px;
 			width: 150px;
 		}
@@ -1670,8 +1690,8 @@
 	/*Panel de administración*/
 
 		.configuraciones_panel_admin{
-			width: 90%;
-			border: 1px solid black;
+			width: 100%;
+			border-bottom: 1px solid black;
 			background: #f1f1f1;
 			text-align: center;
 			display: flex;
@@ -1980,6 +2000,9 @@
 		
 		#juntos{
 			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 		}
 
 
@@ -1998,7 +2021,7 @@
 			text-align: center;
 			color: #c1b497;
 			margin-top: 3%;
-			font-size: 30px!important;
+			font-size: 20px!important;
 		}
 
 
@@ -2010,7 +2033,7 @@
 			display: inline-flex;
 			flex-direction: column;
 			margin-top: 3%;
-			width: 40%;
+			width: 90%;
 			padding: 1%;
 			border: 2px solid #c1b497;
 			box-shadow: 2px 2px 2px 2px grey;
@@ -2346,6 +2369,9 @@
 
 		#section_comprobando_compra{
 			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 100%;
 			margin: 20px 0;
 			flex-wrap: wrap;
 			justify-content: center;
@@ -2360,6 +2386,9 @@
 		#section_comprobando_compra section{
 			border: 1px solid lightgrey;
 			border-radius: 10px;
+			width: 90%;
+			margin: 0 0 50px 0;
+
 
 		}
 
@@ -2384,7 +2413,6 @@
 		#section_productos_compra{
 			width: 90%;
 			display: flex;
-			margin: 0 0 50px 0;
 			flex-direction: column;
 
 		}
@@ -2438,9 +2466,7 @@
 		/*---------------*/
 
 		#section_datos_usuario{
-			width: 40%;
 			display: flex;
-			margin-right: 10%;
 			flex-direction: column;
 		}
 		
@@ -2691,22 +2717,24 @@
 		 	content:"  \f106"!important;
 		}
 		#section_comentarios{
-			width: 95%;
+			width: 100%;
 			margin-top: 20px!important;
 			padding-top: 30px;
 			margin: auto;
 			display: none;
+			flex-direction: column;
 
 		}
 		#article_poner_comentario{
 			width: 100%;
 			display: flex;
 			flex-direction: column;
+			align-items: center;
 		}
 		#article_poner_comentario form{
-			width: 100%;
 			display: flex;
-			margin-top: 10px;
+			width: 100%;
+			align-items: center;
 			flex-direction: column;
 		}
 		#article_poner_comentario form button{
@@ -2727,6 +2755,17 @@
 			resize: none;
 			width: 80%;
 			height: 150px;
+		}
+		
+		.no-coment{
+			border: 1px solid lightgrey;
+			box-shadow: 2px 2px 2px 2px lightgrey;
+			padding: 5px 0;
+		}
+	
+		#article_comentarios{
+			display: flex;
+			flex-direction: column;
 		}
 
 
@@ -2762,6 +2801,7 @@
 #pagination {
     display: flex;
     width: 100%;
+    order: 2;
 }
 #pagination ul{
 	width: 100%;

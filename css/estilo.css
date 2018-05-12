@@ -713,7 +713,15 @@
 			font-size: 20px;
 		}
 		
+
+		/*---------------*/
 		
+
+		.ul_datos_genericos li:last-child{
+			display: flex;
+		}
+		
+				
 		/*---------------*/
 		
 
@@ -756,7 +764,7 @@
 		}
 		
 		.unica{
-			width: 15%!important;
+			width: 100%!important;
 		}
 		
 		/*---------------*/
@@ -1432,6 +1440,14 @@
 			box-shadow: 2px 2px 2px 2px grey;
 		}
 
+	
+		/*---------------*/
+
+
+		#drop_menu_admin{
+			display: none;
+		}
+
 
 		/*---------------*/
 
@@ -1533,7 +1549,7 @@
 
 
 		#ul_administracion_header li:nth-child(1){
-			width: 80%;
+			width: 100%;
 		}
 
 		

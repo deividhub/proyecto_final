@@ -2,8 +2,8 @@
 	<header>
 		<ul id="ul_administracion_header">
 		    <li>Panel de Administracion</li>
+			<li id="drop_menu_admin"><i class="material-icons">menu</i></li>
 		    <li><a href="<?php echo base_url();?>index.php/Principal">Volver a la tienda</a></li>
-		    <li><i class="material-icons rounded">person</i></li>
 		    <li><i class="material-icons exit-app">exit_to_app</i></li>
 		</ul>
 	</header>
@@ -304,7 +304,7 @@
 
 
 
-<article class="configuraciones_panel_admin form_oculto list_coments">
+<article class="configuraciones_panel_admin  list_coments">
 		<h1>Lista de comentario</h1>
 		<div id="search_div">
 			<input type="text" name=""  class="search-input" id="2" placeholder="Filtra">
