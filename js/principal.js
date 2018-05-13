@@ -108,61 +108,82 @@ $("#icono_fav.fav-true").click(function(){
 	});
 })
 
-
 /*PAGINATION*/
-var comentarios=[{"pagination":"1","usuario":"Nerea Lopez","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."}]
-comentarios.push({"pagination":"1","usuario":"Nerea Lopez","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
-comentarios.push({"pagination":"1","usuario":"Nerea Lopez","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
-comentarios.push({"pagination":"1","usuario":"Nerea Lopez","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
-comentarios.push({"pagination":"1","usuario":"Nerea Lopez","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
-comentarios.push({"pagination":"1","usuario":"Sexto Lopez","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
-comentarios.push({"pagination":"2","usuario":"Manolo Lama","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
-comentarios.push({"pagination":"2","usuario":"Manolo Lama","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
-comentarios.push({"pagination":"2","usuario":"Manolo Lama","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
-comentarios.push({"pagination":"2","usuario":"Manolo Lama","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
-comentarios.push({"pagination":"2","usuario":"Manolo Lama","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
-comentarios.push({"pagination":"2","usuario":"Manolo Lama","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
-comentarios.push({"pagination":"2","usuario":"Manolo Lama","fecha":"2018-03-29 16:44:23","texto":"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et."})
-localStorage.setItem("comentarios",JSON.stringify(comentarios))
-var coment=JSON.parse(localStorage.comentarios);
-
-if(localStorage.comentarios){
-	$("#pagination").append("<ul></ul>")
-	$("#pagination ul").append("<li><a href='#' class='active'>1</a></li>")
-	var paginaciones=coment[coment.length-1].pagination
-	for (var i = 0; i < paginaciones-1; i++) {
-		$("#pagination ul").append("<li><a href='#'>"+parseInt(i+1+1)+"</a></li>")
-	};
-	for (var i = 0; i < coment.length; i++) { 
-		if(coment[i].pagination!=1){
-			break;
+if($(".li_referencia a").text().length>0){
+	var comentPromise=ajaxQuery("productos/obtener_comentarios_producto",{"id_producto":$(".li_referencia a").text()})
+			.then(function(devuelto){
+				var array=JSON.parse(devuelto);
+				var paginationNumber=1;
+				var contador=0;
+				var salir=false;
+				for (var i = 0; i < array.length; i++) {
+					array[i].pagination=paginationNumber
+					if(contador==5){
+						paginationNumber++;
+						contador=0;
+						salir=true;
+					}
+					if(salir==false){
+						contador++;
+					}
+					else{
+						salir=false;
+					}
+				};
+				return array
+				//localStorage.setItem("comentarios",JSON.stringify(array))
+	});
+	//var coment=JSON.parse(localStorage.comentarios);
+	comentPromise.then(function(coment){
+			$("#pagination").append("<ul></ul>")
+			if(coment.length==0){
+				$("#pagination ul").append("<li><a href='#'>¡Se el primero en comentar!</a></li>")
+			}
+			else{
+			$("#pagination ul").append("<li><a href='#' class='active'>1</a></li>")
+			var paginaciones=coment[coment.length-1].pagination
+			for (var i = 0; i < paginaciones-1; i++) {
+				$("#pagination ul").append("<li><a href='#'>"+parseInt(i+1+1)+"</a></li>")
+			};
+			for (var i = 0; i < coment.length; i++) { 
+				if(coment[i].pagination!=1){
+					break;
+				}
+				$("#article_comentarios").append("<article class='comentario_usuario'><ul class='comentario_datos_usuario'><li>"+coment[i].nombre+"</li><li>"+coment[i].fecha+"</li><li>"+coment[i].descripcion+"</li></ul></article>")
+			}
 		}
-		$("#article_comentarios").append("<article class='comentario_usuario'><ul class='comentario_datos_usuario'><li>"+coment[i].usuario+"</li><li>"+coment[i].fecha+"</li><li>"+coment[i].texto+"</li></ul></article>")
-	};
+	})
+
+
+
+		
+	
 }
 
-$("#pagination ul li a").click(function(e){
-	e.preventDefault();
 
-	$(".comentario_usuario").remove()//vaciar comentarios
+$(document).on("click", "#pagination ul li a", function(e){
+    e.preventDefault()
+    var textoPagination=$(this).text();
+    $(".comentario_usuario").remove()//vaciar comentarios
+		$("#pagination ul li a").removeClass('active')//quitar la clase a los enlaces de paginacion
+		$(this).addClass('active')//darle esa clase al clickado para que coja el color
+	comentPromise.then(function(coment){
+		
+		for (var i = (textoPagination-1)*6; i < coment.length; i++) { 
+			//numero clickado de paginacion menos 1 * elementos a aparecer
+			// esto hara que al hacer click en un elemento de paginacion te mostrara los 6 elementos que tengan esa paginacion.
+					console.log()
+			if(coment[i].pagination!=textoPagination){
+				break;
+			}
 
-	$("#pagination ul li a").removeClass('active')//quitar la clase a los enlaces de paginacion
+			$("#article_comentarios").append("<article class='comentario_usuario'><ul class='comentario_datos_usuario'><li>"+coment[i].nombre+"</li><li>"+coment[i].fecha+"</li><li>"+coment[i].descripcion+"</li></ul></article>")
+			
+		};
+	})
+});
 
-	$(this).addClass('active')//darle esa clase al clickado para que coja el color
-	for (var i = ($(this).text()-1)*6; i < coment.length; i++) { 
-		//numero clickado de paginacion menos 1 * elementos a aparecer
-		// esto hara que al hacer click en un elemento de paginacion te mostrara los 6 elementos que tengan esa paginacion.
-		if(coment[i].pagination!=$(this).text()){
-
-			break;
-
-		}
-
-	$("#article_comentarios").append("<article class='comentario_usuario'><ul class='comentario_datos_usuario'><li>"+coment[i].usuario+"</li><li>"+coment[i].fecha+"</li><li>"+coment[i].texto+"</li></ul></article>")
 	
-	};
-
-})
 
 
 /* FIN PAGINATION*/

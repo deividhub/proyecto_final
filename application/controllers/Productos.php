@@ -15,6 +15,7 @@ class Productos extends CI_Controller {
 	    parent::__construct();
 		$this->load->helper('url');
 		$this->load->model('Productos_model');
+		$this->load->model('Comentario_model');
 	}
 
 	public function index()
@@ -120,6 +121,11 @@ class Productos extends CI_Controller {
 	public function comentar(){
 		$this->Productos_model->comentar($this->input->post("id_producto"),$this->input->post("comentario"));
 
+	}
+
+	public function obtener_comentarios_producto(){
+		$comentarios=$this->Comentario_model->obtener_comentarios_producto($this->input->post("id_producto"));
+		echo json_encode($comentarios);
 	}
 
 }

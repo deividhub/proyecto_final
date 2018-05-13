@@ -2426,6 +2426,7 @@
 			margin: auto;
 			margin-bottom: 3%;
 			width: 40%;
+		    align-items: center;
 		}
 		
 
@@ -2437,6 +2438,19 @@
 			color: white;
 			margin: 6% 0 2% 0;
 			padding: 1%;
+			width: 90%;
+		}
+		
+
+		/*---------------*/
+
+
+		.form_client input{
+			width: 92%;
+			padding: 10px 0;
+			border: 0;
+			border-bottom: 1px solid lightgrey;
+			margin-bottom: 20px;
 		}
 
 
@@ -2444,11 +2458,8 @@
 
 
 		.form_client input:focus{
-			width: 95%;
-			padding: 2%;
 			outline-style:none;
-			border: 2px solid grey;
-			background: #c1b497;
+			border-bottom: 1px solid black;
 		}
 
 
@@ -2456,26 +2467,47 @@
 
 
 		.form_client button{
-			width: 40%;
-			padding: 3%;			
-			background: #c1b497;
-			border: none;
-			margin-top: 5%!important;
-			margin: auto;			
 			transform-style: preserve-3d;
-			color: white;
-			font-weight: bold;
+		    border: none;
+		    background: #c1b497;
+		    color: #f2f2f2;
+		    padding: 10px;
+		    font-size: 18px;
+		    border-radius: 5px;
+		    position: relative;
+		    box-sizing: border-box;
+		    transition: all 500ms ease;
+		    margin-top: 20px;
+		    cursor: pointer;
+		    width: 40%;
 		}
 
 
-		/*---------------*/
+		/*---------------*/	
 
 
-		.form_client button:hover{
-			background: white;
-			border: 2px solid #c1b497;
-			padding: 2%;
-			color: black;
+		.form_client button::after {
+		    top: -100%;
+		    left: 0px;
+		    width: 100%;
+		    padding: 10px 0;
+		    position: absolute;
+		    background: grey;
+		    border-radius: 5px;
+			font-family: FontAwesome;
+			content:"  \f0c7";
+			transform-origin: left bottom;
+		    transform: rotateX(90deg);
+		    font-size: 23px;
+		}
+
+
+		/*---------------*/	
+
+
+		.form_client button:hover {
+			transform-origin: center bottom;
+			transform: rotateX(-90deg) translateY(100%);
 		}
 
 	/*Fin Panel de cliente*/
@@ -2843,7 +2875,7 @@
 
 		}
 		#article_poner_comentario{
-			width: 100%;
+			width: 50%;
 			display: flex;
 			flex-direction: column;
 		}
@@ -2901,6 +2933,10 @@
 		 	content:"\f118       ";
 		 	font-size: 54px;
 		}
+
+		#article_comentarios{
+			width: 50%;
+		}
 /*FIN DE COMENTARIOS*/
 /*PAGINACION*/
 #pagination {
@@ -2932,8 +2968,10 @@
 
 #pagination a:hover:not(.active) {
     background-color: #ddd;
-    border-radius: 3px;
+    border-radius: 6px;
 }
+
+
 /*FIN PAGINACION*/
 
 

@@ -148,7 +148,9 @@ class Productos_model extends CI_Model {
         }
 
         public function comentar($id_producto,$comentario){
-            $sql = "INSERT INTO comentario VALUES(NULL,$id_producto,2,'".$comentario."')";
+            $fecha=getdate();
+            $fecha=$fecha['mday']."-".$fecha['mon']."-".$fecha['year'];
+            $sql = "INSERT INTO comentario VALUES(NULL,$id_producto,2,'".$comentario."',$fecha)";
             $this->db->query($sql); 
             $sql2 = "UPDATE pedido_producto SET comentario=1 WHERE id_usuario=2 AND id_producto=$id_producto";
             $this->db->query($sql2); 
