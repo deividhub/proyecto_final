@@ -42,34 +42,64 @@
 		<h1>Gestion de productos</h1>
 		<h2>Añadir un producto</h2>
 		<form class="form_añadir_producto" action="Administracion/crear_producto" method="POST">
-			<input type="text" name="form_nombre_producto" placeholder="Nombre de producto" id="form_nombre_producto">
+			
+				<div class="input_group">
+					<label>Nombre de producto</label> 
+					<input type="text" name="form_nombre_producto" placeholder="Nombre de producto" id="form_nombre_producto">
+				</div>
+				<div class="input_group">
+					<label>Tipo de producto</label> 
+					<select name="form_tipo_producto" id="form_tipo_producto">
+						<option value="">Tipo de producto</option>
+						<?php
+						 if($tipos_producto){
+						 	foreach ($tipos_producto as $key) {
+						 		echo "<option value='".$key->id_tipo_producto."'>".$key->desc_tipo_producto."</option>";
+						 	}
+						} 
+						?>
+					</select>	
+				</div>
+				<div class="input_group">
+					<label>Estilo de producto</label> 
+					<select name="form_estilo_producto" id="form_estilo_producto">
+						<option value="0">Estilo</option>
+					</select>
+				</div>
+				<div class="input_group">
+					<label>Color</label> 
+					<input name="form_color_producto" type="text" value="" placeholder="Color" id="form_color_producto"/>
+				</div>
+				<div class="input_group">
+					<label>Descripción (mínimo 10 caracteres)</label> 
+					<textarea name="form_desc_producto" placeholder="Descripcion" id="form_desc_producto"></textarea>
+				</div>
+				<div class="input_group">
+					<label>Precio</label> 
+					<input type="number" name="form_precio_producto" placeholder="precio" id="form_precio_producto">
+				</div>
+				<div class="input_group">
+					<label>Composición </label> 
+					<input type="text" name="form_composicion_producto" placeholder="Composición" id="form_composicion_producto">				
+				</div>							
+				<div class="input_group">
+					<label>Género</label> 
+					<select name="form_genero_producto" id="form_genero_producto">
+						<option value="0">Género</option>
+						<option value="Hombre">Hombre</option>
+						<option value="Mujer">Mujer</option>
+					</select>				
+				</div>
 
-			<select name="form_tipo_producto" id="form_tipo_producto">
-				<option value="">Tipo de producto</option>
-				<?php
-				 if($tipos_producto){
-				 	foreach ($tipos_producto as $key) {
-				 		echo "<option value='".$key->id_tipo_producto."'>".$key->desc_tipo_producto."</option>";
-				 	}
-				} 
-				?>
-			</select>	
+				<div class="input_group">
+					<label>Imagen</label> 		
+					<input type="file" name="files[]" value="" id="files">				
+				</div>				
 
-			<select name="form_estilo_producto" id="form_estilo_producto">
-				<option value="0">Estilo</option>
-			</select>
-
-			<input name="form_color_producto" type="text" value="" placeholder="Color" id="form_color_producto"/>
-
-			<textarea name="form_desc_producto" placeholder="Descripcion" id="form_desc_producto"></textarea>
-			<input type="number" name="form_precio_producto" placeholder="precio" id="form_precio_producto">
-			<input type="text" name="form_composicion_producto" placeholder="Composición" id="form_composicion_producto">
-			<select name="form_genero_producto" id="form_genero_producto">
-				<option value="0">Género</option>
-				<option value="Hombre">Hombre</option>
-				<option value="Mujer">Mujer</option>
-			</select>	
-			<input type="file" name="files[]" value="" id="files">
+			
+			
+			
+			
 			<input type="submit" name="btn_crear_producto" value="Crear Producto" id="btn_crear_producto">
 		</form>
 		<p class="developed">Desarrollado por: Nerea - Pedro - David</p>
@@ -85,7 +115,7 @@
 		<h1>Gestion de productos</h1>
 		<h2>Lista de productos</h2>
 		<div id="search_div">
-			<input type="text" name=""  class="search-input" id="0" placeholder="Filtra">
+			<input type="text" name=""  class="search-input" id="0" placeholder="Busca por 'Nombre'">
 			<i class="material-icons">find_in_page</i>
 		</div>		<article class="tabla_scroll">
 			<table class="tabla_muestra_elementos" id="table-search_0">
@@ -180,7 +210,7 @@
 		<h1>Gestion de usuario</h1>
 		<h2>Lista de usuarios</h2>
 		<div id="search_div">
-			<input type="text" name=""  class="search-input" id="1" placeholder="Filtra">
+			<input type="text" name=""  class="search-input" id="1" placeholder="Busca por 'Correo'">
 			<i class="material-icons">find_in_page</i>
 		</div>		<article class="tabla_scroll">
 			<table class="tabla_muestra_elementos" id="table-search_1">
@@ -307,7 +337,7 @@
 <article class="configuraciones_panel_admin  list_coments">
 		<h1>Lista de comentario</h1>
 		<div id="search_div">
-			<input type="text" name=""  class="search-input" id="2" placeholder="Filtra">
+			<input type="text" name=""  class="search-input" id="2" placeholder="Busca por 'Usuario'">
 			<i class="material-icons">find_in_page</i>
 		</div>		<article class="tabla_scroll">
 			<table class="tabla_muestra_elementos" id="table-search_2">
@@ -349,7 +379,7 @@
 <article class="configuraciones_panel_admin list_pedidos form_oculto">
 		<h1>Lista de pedidos</h1>
 		<div id="search_div">
-			<input type="text" name=""  class="search-input" id="3" placeholder="Filtra">
+			<input type="text" name=""  class="search-input" id="3" placeholder="Busca por 'ID Usuario'">
 			<i class="material-icons">find_in_page</i>
 		</div>		<article class="tabla_scroll">
 			<table class="tabla_muestra_elementos" id="table-search_3">
@@ -402,7 +432,7 @@
 <article class="configuraciones_panel_admin list_estados form_oculto">
 		<h1>Lista de estados de un pedido</h1>
 		<div id="search_div">
-			<input type="text" name=""  class="search-input" id="4" placeholder="Filtra">
+			<input type="text" name=""  class="search-input" id="4" placeholder="Busca por 'Descripción'">
 			<i class="material-icons">find_in_page</i>
 		</div>		<article class="tabla_scroll">
 			<table class="tabla_muestra_elementos" id="table-search_4">
@@ -437,7 +467,7 @@
 <article class="configuraciones_panel_admin list_estilos form_oculto">
 		<h1>Lista de estilos</h1>
 		<div id="search_div">
-			<input type="text" name=""  class="search-input" id="5" placeholder="Filtra">
+			<input type="text" name=""  class="search-input" id="5" placeholder="Busca por 'Descripción'">
 			<i class="material-icons">find_in_page</i>
 		</div>		<article class="tabla_scroll">
 			<table class="tabla_muestra_elementos" id="table-search_5">
@@ -473,7 +503,7 @@
 <article class="configuraciones_panel_admin list_tipos form_oculto">
 		<h1>Lista de tipos de productos</h1>
 		<div id="search_div">
-			<input type="text" name=""  class="search-input" id="6" placeholder="Filtra">
+			<input type="text" name=""  class="search-input" id="6" placeholder="Busca por 'Descripción'">
 			<i class="material-icons">find_in_page</i>
 		</div>		<article class="tabla_scroll">
 			<table class="tabla_muestra_elementos" id="table-search_6">
@@ -506,7 +536,7 @@
 <article class="configuraciones_panel_admin list_stock form_oculto">
 		<h1>Stock por producto</h1>
 		<div id="search_div">
-			<input type="text" name=""  class="search-input" id="7" placeholder="Filtra">
+			<input type="text" name=""  class="search-input" id="7" placeholder="Busca por 'Nombre'">
 			<i class="material-icons">find_in_page</i>
 		</div>
 		<article class="tabla_scroll">

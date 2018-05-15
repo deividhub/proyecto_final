@@ -1716,6 +1716,7 @@
 		.developed{
 			font-style: italic;
 			text-align: right;
+			margin-top: 20px;
 			font-family: "Times New Roman"			
 		}
 		
@@ -1725,6 +1726,7 @@
 
 		.configuraciones_panel_admin h1{
 			font-size: 24px;
+			margin-top: 30px;
 		}
 		
 
@@ -2004,6 +2006,8 @@
 
 		.tabla_scroll{
 			overflow-x: scroll;
+			width: 90%;
+			margin: auto;
 		}
 		
 
@@ -2013,7 +2017,7 @@
 		.tabla_muestra_elementos{
 		  border-spacing: 0;
 		  border: 2px solid #004d80;
-		  width: 80%;
+		  width: 100%;
 		  margin:auto;
 		  border-radius: .25rem;
 		}		

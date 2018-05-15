@@ -71,8 +71,8 @@ ajaxQuery("Administracion/estilos",{"id_tipo_producto":$("#form_tipo_producto").
    	var mensaje="Errores encontrados: \n";
    	var comprobando=true;
 
-	    if ($("#form_nombre_producto").val().length<10) {
-	    	mensaje=mensaje+"Mínimo 5 caracteres\n";
+	    if ($("#form_nombre_producto").val().length<5) {
+	    	mensaje=mensaje+"El nombre debe tener mínimo 5 caracteres\n";
 	    	comprobando=false;
 	   	}
 
@@ -90,21 +90,21 @@ ajaxQuery("Administracion/estilos",{"id_tipo_producto":$("#form_tipo_producto").
    		}
 
 	   	if ($("#form_desc_producto").val().length<10) {
-	   		mensaje=mensaje+"Mínimo 10 caracteres\n";
+	   		mensaje=mensaje+"La descripción debe tener mínimo 10 caracteres\n";
 	   			    	comprobando=false;
 
 
 	   	}
 
 	   	if ($("#form_precio_producto").val()<1) {
-	  	   	mensaje=mensaje+"Precio incorrecto.\n";
+	  	   	mensaje=mensaje+"El precio no puede ser negativo.\n";
 	  	   		    	comprobando=false;
 
 
 	   	}
 
 	   	if ($("#form_composicion_producto").val().length<5) {
-	   		mensaje=mensaje+"Mínimo 5 caracteres.\n";
+	   		mensaje=mensaje+"La composición debe tener mínimo 5 caracteres.\n";
 	   			    	comprobando=false;
 
 
@@ -448,28 +448,52 @@ $(".upload-icon").click(function(){
 $(document).on('keyup', '.search-input',function(event) {
 
 switch ($(this).attr("id")) {
+
+	/*Productos*/
 	case "0":
-		var search_td=0
+		/*Filtra por "Nombre"*/
+		var search_td=1
 		break;
+
+	/*Usuarios*/
 	case "1":
-		var search_td=0
+		/*Filtra por "Correo"*/
+		var search_td=4
 		break;
+
+	/*Comentarios*/
 	case "2":
+		/*Filtra por "Usuario"*/
 		var search_td=2
 		break;
+
+	/*Tipos de producto*/
 	case "3":
+		/*Filtra por "Descripción"*/
 		var search_td=1
 		break;
+
+	/*Estado pedido*/
 	case "4":
+		/*Filtra por "Descripción"*/
 		var search_td=1
 		break;
+
+	/*Estilos*/
 	case "5":
+		/*Filtra por "Descripción"*/
 		var search_td=2
 		break;
+
+	/*Pedidos*/
 	case "6":
+		/*Filtra por "ID Usuario"*/
 		var search_td=1
 		break;
+
+	/*Stock*/
 	case "7":
+		/*Filtra por "Nombre"*/
 		var search_td=3
 		break;
 
