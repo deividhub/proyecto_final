@@ -3066,7 +3066,8 @@
 
 		
 	#contacto label{
-		color: #c1b497;
+		color: darkgrey;
+		font-weight: bold;
 		margin-bottom: 5px;
 	}
 
@@ -3078,7 +3079,7 @@
 		padding: 10px 0;
 		border: 0;
 		border-bottom: 1px solid lightgrey;
-		margin-bottom: 20px;
+		margin-bottom: 30px;
 	}
 
 
@@ -3112,7 +3113,85 @@
 	}
 
 
+	/*---------------*/
+
+
+	#botones_contacto{
+		display: inline-flex;
+	}
+
+
+	/*---------------*/
+
+
+	#contacto button{
+		transform-style: preserve-3d;
+	    border: none;
+	    background: #c1b497;
+	    color: #f2f2f2;
+	    padding: 10px;
+	    font-size: 18px;
+	    border-radius: 5px;
+	    position: relative;
+	    box-sizing: border-box;
+	    transition: all 500ms ease;
+	    margin-top: 20px;
+	    cursor: pointer;
+	    width: 35%;
+	    margin-left: 10%;
+	}
+
+
+	/*---------------*/	
+
+
+	#enviar_contacto::after {
+	    top: -100%;
+	    left: 0px;
+	    width: 100%;
+	    padding: 10px 0;
+	    position: absolute;
+	    background: grey;
+	    border-radius: 5px;
+		font-family: FontAwesome;
+		content:"  \f14d";
+		transform-origin: left bottom;
+	    transform: rotateX(90deg);
+	    font-size: 23px;
+	}
+
+
+	/*---------------*/	
+
+
+	#limpiar_contacto::after {
+	    top: -100%;
+	    left: 0px;
+	    width: 100%;
+	    padding: 10px 0;
+	    position: absolute;
+	    background: grey;
+	    border-radius: 5px;
+		font-family: FontAwesome;
+		content:"  \f1b8";
+		transform-origin: left bottom;
+	    transform: rotateX(90deg);
+	    font-size: 23px;
+	}
+
+
+	/*---------------*/	
+
+
+	#contacto button:hover {
+		transform-origin: center bottom;
+		transform: rotateX(-90deg) translateY(100%);
+	}
+
+
 /*FIN CONTACTO*/
+
+
 #recuperar_pass{
 	margin-top: 20px;
 }

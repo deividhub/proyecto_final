@@ -5,12 +5,11 @@
 	<form id="contacto">
 		
 		<label>Nombre</label>
-		<input type="text" placeholder="Nombre" required></input>
+		<input type="text" id="inputNombre" placeholder="Nombre" required></input>
 
 		<label>Dirección de correo electrónico</label>
 		<img src= https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/alert-triangle-red-512.png id="imgAlertaCorreo" class="imgAlerta" title="" hidden="true">
-		<input type="text" placeholder="ejemplo@ejemplo.com" required
-		id="correo_contacto"></input>
+		<input type="text" placeholder="ejemplo@ejemplo.com" id="correo_contacto" required></input>
 
 		<label>Motivo de contacto</label>
 		<select id="select_contacto">
@@ -22,8 +21,10 @@
 		<label>Mensaje</label>
 		<textarea placeholder="Introduzca su mensaje." required></textarea>
 		
-		<button id="enviar_contacto" type="submit">Enviar</button>
-		<button id="limpiar_contacto">Limpiar</button>
+		<section id="botones_contacto">			
+			<button id="enviar_contacto" type="submit">Enviar</button>
+			<button id="limpiar_contacto">Limpiar</button>
+		</section>
 
 	</form>
 
@@ -46,6 +47,12 @@
 		else{
 			document.getElementById('imgAlertaCorreo').hidden=true;
 		}
+	}
+	
+
+	$("#limpiar_contacto").click(function(e){
+		
+	
 	}
 
 </script>
