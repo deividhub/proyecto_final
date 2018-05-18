@@ -557,8 +557,8 @@
 
 		#footer_div{
 			display: flex;
-			width: 100%;
-			font-size: 18px;
+			width: 90%;
+			margin: auto;
 			padding: 30px 0;
 		}
 
@@ -568,6 +568,10 @@
 
 		#footer_div ul{
 			width: 100%;
+		}
+
+		#footer_div li{
+			margin-top: 10px;
 		}
 
 
@@ -590,6 +594,7 @@
 			width: 100%;
 			justify-content:  center;
 			padding: 20px 0;
+			background: black;
 		}
 
 	/*Fin Footer*/
@@ -1015,8 +1020,7 @@
 		#section_article_productos .article_producto:hover .img_hover{
 			margin: auto;
 			background: transparent;
-			filter: saturate(150%);
-			opacity: 0.8;
+			opacity: 0.5;
 		}
 
 
@@ -1045,9 +1049,10 @@
 			position: absolute;
 			font-size: 34px;
 			font-weight: bold;
+			background: white;
 			padding: 5px;
 			z-index: 200;
-			border: 1px solid #c1b497;
+			border: 2px outset #c1b497;
 			border-top-right-radius: 20px;
 			border-bottom-right-radius: 20px;
 		}
@@ -1059,19 +1064,30 @@
 		#section_article_productos .article_producto .btn_ver_producto{
 			color: white;
 			background: black;
+			border: none;
 			padding: 10px 0;
 			font-size: 18px;
 			cursor: pointer;
 			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 
 
 		/*---------------*/
 
-		
+		#section_article_productos .article_producto .btn_ver_producto i{
+			width: 10%;
+		}
+
+
+		/*---------------*/
+
+
 		#section_article_productos .article_producto .btn_ver_producto:hover{
 			color: black;
-			background: white;
+			background: #c1b497;
 		    
 		}
 
@@ -1666,7 +1682,7 @@
 
 
 		.admin_seleccionado{
-			background: #004d80!important;
+			background: #c1b497!important;
 		}
 
 
@@ -1674,7 +1690,7 @@
 
 
 		#aside_panel_admin ul li:hover{
-			background: #004d80;
+			background: #c1b497;
 			border-bottom: 1px solid white;
 		}
 
@@ -1737,7 +1753,7 @@
 			font-size: 20px;
 			margin-top: 10px;
 			margin-bottom: 10px;
-			color: #004d80;
+			color: #c1b497;
 		}
 		
 
@@ -1823,16 +1839,18 @@
 
 		.form_añadir_producto input{
 			padding: 1%;
+
 		}
 
 
 		/*--------------*/
 
 
-		.form_añadir_producto input:focus{
+		.form_añadir_producto input:focus, .form_añadir_producto textarea:focus, .form_añadir_producto select:focus{
 			outline-style: none;
-			border: 2px solid #004d80;
+			border-bottom: 1px solid #c1b497!important;
 		}
+
 
 
 		/*--------------*/
@@ -1840,7 +1858,7 @@
 
 		.form_añadir_producto input[type="submit"]{
 			margin-top: 20px;
-			background: #004d80;
+			background: #c1b497;
 			color: white;
 			padding: 2%;
 			border: none;
@@ -1855,6 +1873,8 @@
 		.form_añadir_producto input,.form_añadir_producto textarea,.form_añadir_producto select{
 			padding: 10px;
 			resize: none;
+			border: none;
+			border-bottom: 1px solid lightgrey!important;
 		}
 
 
@@ -1863,25 +1883,14 @@
 
 		.form_añadir_producto input[type="file"]{
 			border: 1px solid gray;
-
+			border: none;
+			border-bottom: 1px solid black!important;
 		}
 
 
 		/*---------------*/
 
 
-		.form_añadir_producto input:focus::placeholder,.form_añadir_producto textarea:focus::placeholder{
-			color: white;
-		}
-		
-
-		/*--------------*/
-
-
-		.form_añadir_producto input:focus,.form_añadir_producto select:focus,.form_añadir_producto textarea:focus{
-			background: #0085ba;
-			color: white;
-		}
 	
 	/*Fin Formulario añadir producto*/
 
@@ -1934,7 +1943,7 @@
 
 		#form_crear_usuario input:focus{
 			outline-style: none;
-			border: 2px solid #004d80;
+			border: 2px solid #c1b497;
 		}
 
 
@@ -1943,7 +1952,7 @@
 
 		#form_crear_usuario button{
 			margin-top: 20px;
-			background: #004d80;
+			background: #c1b497;
 			color: white;
 			padding: 2%;
 			border: none;
@@ -2016,7 +2025,7 @@
 	
 		.tabla_muestra_elementos{
 		  border-spacing: 0;
-		  border: 2px solid #004d80;
+		  border: 2px solid #c1b497;
 		  width: 100%;
 		  margin:auto;
 		  border-radius: .25rem;
@@ -2027,7 +2036,7 @@
 
 
 		.tabla_muestra_elementos thead{
-			background: #004d80;
+			background: #c1b497;
 			color: white;
 		}
 		

@@ -35,7 +35,6 @@
 	    	    <li class="mostrar" id="list_estados"><a href="">Estados</a></li>
 	    	</ul>
 	    </li>
-	    <li class="notify_errors"><a href="#">Notificar errores</a></li>
 	</ul>
 </aside>
 	<article class="configuraciones_panel_admin form_oculto crear_product">

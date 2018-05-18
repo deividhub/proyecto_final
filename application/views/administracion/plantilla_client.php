@@ -9,7 +9,7 @@
 			<ul>
 			    <li><a href="">Datos personales</a></li>
 			    <li><a href="">Pedidos</a></li>
-			    <li><a href="">Notificar errores</a></li>
+			    <li><a href="<?php echo base_url();?>index.php/Principal/contacto">Contacto</a></li>
 			</ul>
 
 		</aside>

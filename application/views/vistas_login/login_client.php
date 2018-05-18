@@ -167,13 +167,13 @@
 <?php echo form_open('Principal/registro',$form_registro);?>
 
 			<?php echo form_label('Correo: ','correo'); ?>
-			<img src= https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/alert-triangle-red-512.png id="imgAlertaPass2" name="imgAlertaPass" class="imgAlertaPass imgAlerta" title="" hidden="true">
-
+	
+		<img src= https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/alert-triangle-red-512.png id="imgAlertaCorreo" class="imgAlertaPass" title="" hidden="true">
 			<?php echo form_input($correo); ?>
 
 
 			<?php echo form_label('Contraseña: ','contraseña1'); ?>
-			<img src= https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/alert-triangle-red-512.png id="imgAlertaCorreo" class="imgAlerta" title="" hidden="true">
+			<img src= https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/alert-triangle-red-512.png id="imgAlertaPass2" name="imgAlerta" class="imgAlertaPass imgAlerta" title="" hidden="true">
 
 			<div id="pass_group">
 				<?php echo form_input($contraseña1); ?>		
@@ -182,7 +182,7 @@
 			
 
 			<?php echo form_label('Repita su contraseña: ','contraseña2'); ?>
-			<img src= https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/alert-triangle-red-512.png id="imgAlertaPass" name="imgAlertaPass" class="imgAlertaPass imgAlerta" title="" hidden="true">
+			<img src= https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/alert-triangle-red-512.png id="imgAlertaPass" name="imgAlertaPass2" class="imgAlertaPass imgAlerta" title="" hidden="true">
 
 			<div id="pass_group">
 			<?php echo form_input($contraseña2); ?>

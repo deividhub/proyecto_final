@@ -130,6 +130,7 @@ class Principal extends CI_Controller {
 		}*/
 
 		$this->Principal_model->registrarse($datos);
+		redirect('Principal');
 	}
 
 
