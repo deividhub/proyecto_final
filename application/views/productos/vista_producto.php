@@ -74,7 +74,6 @@ foreach ($producto as $key) {
 
 		<ul id="ul_añadir_producto">
 		    <li><button type="button" id="btn_añadir_carrito">Añadir al carrito</button></li>
-		    <li><button type="button">¡Comprar ya!</button></li>
 		</ul>
 		<ul id="ul_producto_descripcion">
 		    <li><h2>Descripción</h2></li>
@@ -102,7 +101,7 @@ foreach ($producto as $key) {
 			if($comentar>0){
 			
 		 ?>
-		<p>Hola Manolo, ¡Comenta este producto!</p>
+		<p>Hola <?php echo $this->session->userdata('nombre');?>, ¡Comenta este producto!</p>
 		<form>
 			<textarea name="txt_comentario" id="txt_comentario"></textarea>
 			<button type='button' id='btn_comentar'>Comentar</button>

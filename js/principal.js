@@ -211,7 +211,7 @@ if (!localStorage.user) {
 	$(".no-coment").text("No puedes comentar, no has iniciado sesión.")
 }
 else{
-	$(".no-coment").text("No puedes comentar, ya has comentado este producto.")
+	$(".no-coment").text("Compra este producto para poder comentar")
 
 }
 

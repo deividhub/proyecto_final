@@ -71,7 +71,7 @@
 				<input type="checkbox" name="" id="acept_terms" required>Acepto los terminos y condiciones de compra. *
 			</div>
 			<a  href="#" class="comprar_final">
-				<button type="submit" name="" id="comprar_final">Realizar pedido</button>
+				<button type="button" name="" id="comprar_final">Realizar pedido</button>
 			</a>
 		</form>
 		<p class="terms">* Los datos personales que nos aporte serán objeto de tratamiento en un fichero con las finalidades de, entre otros supuestos que se podrán especificar en cada caso, atender las solicitudes que nos plantee, remitirle la información solicitada, así como en su caso, gestionar su acceso a determinados servicios o funcionalidades del Sitio Web, por parte de DWNPD S.A., con domicilio social en Calle Kalea, Edificio 101, 48001, Bilbao (España).</p>

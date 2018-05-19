@@ -119,11 +119,14 @@ $(".btn_eliminar_producto").click(function(){
 	for (var i = 0; i < productos.length; i++) {
 		if($(this).val()==productos[i]['id_elemento']){
 			productos.splice(productos.indexOf(productos[i]),1)
-			swal("Producto retirado del carrito.")
 		}
 	}
+	swal("Producto retirado del carrito.")
+		.then((value) => {
 		localStorage.setItem('productos',JSON.stringify(productos))
 location.reload();
+
+	});
 
 });
 
@@ -154,7 +157,7 @@ $(".btn_talla").click(function(){
 $("#btn_pasar_a_caja").click(function(){
 
 	if($("#carrito_precio_total").text()<25){
-		alert("Pedido minimo 25€")
+		swal("Pedido minimo 25€")
 	}
 	else{
 			ajaxQuery("Compra/comprobar_stock",{"productos":localStorage.productos})

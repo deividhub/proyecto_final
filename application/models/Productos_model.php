@@ -33,8 +33,13 @@ class Productos_model extends CI_Model {
                 return $query->result();
         }
         public function obtener_productos(){
-
-                $sql = "SELECT * FROM producto";
+                if($this->session->userdata('genero')){
+                    $genero=$this->session->userdata('genero');
+                    $sql = "SELECT * FROM producto WHERE genero='".$genero."'";
+                }
+                else{
+                    $sql = "SELECT * FROM producto";
+                }
                 $query=$this->db->query($sql);
                 return $query->result();
         }
@@ -53,13 +58,25 @@ class Productos_model extends CI_Model {
         }
 
         public function obtener_productos_tipo($id_tipo_producto){
-                $sql = "SELECT * FROM producto WHERE id_tipo_producto=$id_tipo_producto";
+                if($this->session->userdata('genero')){
+                    $genero=$this->session->userdata('genero');
+                    $sql = "SELECT * FROM producto WHERE id_tipo_producto=$id_tipo_producto AND genero='".$genero."'";
+                }
+                else{
+                    $sql = "SELECT * FROM producto WHERE id_tipo_producto=$id_tipo_producto";
+                }
                 $query=$this->db->query($sql);
                 return $query->result();
         }
 
         public function obtener_productos_estilo($id_estilo){
-                $sql = "SELECT * FROM producto WHERE id_estilo=$id_estilo";
+                if($this->session->userdata('genero')){
+                    $genero=$this->session->userdata('genero');
+                    $sql = "SELECT * FROM producto WHERE id_estilo=$id_estilo AND genero='".$genero."'";
+                }
+                else{
+                    $sql = "SELECT * FROM producto WHERE id_estilo=$id_estilo";
+                }
                 $query=$this->db->query($sql);
                 return $query->result();
         }
@@ -142,18 +159,27 @@ class Productos_model extends CI_Model {
 
 
         public function permitir_comentar($id_producto){
-            $sql = "SELECT * FROM pedido_producto WHERE id_producto=$id_producto AND id_usuario=2 AND comentario=0";
+            $sql = "SELECT * FROM pedido_producto WHERE id_producto=$id_producto AND id_usuario=".$this->session->userdata('id')." AND comentario=0";
             $query=$this->db->query($sql); 
             return $query->num_rows();
         }
 
-        public function comentar($id_producto,$comentario){
-            $fecha=getdate();
-            $fecha=$fecha['mday']."-".$fecha['mon']."-".$fecha['year'];
-            $sql = "INSERT INTO comentario VALUES(NULL,$id_producto,2,'".$comentario."',$fecha)";
+        public function comentar($id_producto,$comentario,$fecha){
+        
+            $sql = "INSERT INTO comentario VALUES(NULL,$id_producto,".$this->session->userdata('id').",'".$comentario."','".$fecha."')";
             $this->db->query($sql); 
-            $sql2 = "UPDATE pedido_producto SET comentario=1 WHERE id_usuario=2 AND id_producto=$id_producto";
+
+
+            $select="SELECT * FROM pedido_producto WHERE id_usuario=".$this->session->userdata('id')." AND id_producto=$id_producto AND comentario=0";
+            $query=$this->db->query($select); 
+            foreach($query->result() as $key){
+                $pedido_producto= $key->id_pedido_producto;
+            }
+
+            $sql2 = "UPDATE pedido_producto SET comentario=1 WHERE id_usuario=".$this->session->userdata('id')." AND id_producto=$id_producto AND id_pedido_producto=$pedido_producto";
             $this->db->query($sql2); 
+
+
         }
 
         public function obtener_pedidos(){

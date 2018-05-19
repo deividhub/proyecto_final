@@ -29,7 +29,8 @@ class Principal extends CI_Controller {
 
 	public function index()
 	{
-	
+			$this->session->unset_userdata('genero');
+
 		//obtener categorias y estilos.
 		$datos['categorias']=$this->Productos_model->obtener_categorias();
 		$datos['estilos']=$this->Productos_model->obtener_estilos();
@@ -40,6 +41,7 @@ class Principal extends CI_Controller {
 		$this->load->view('vistas_index/navegacion',$datos);
 		$this->load->view('vistas_index/principal',$datos);
 		$this->load->view('vistas_index/footer');
+
 	}
 
 

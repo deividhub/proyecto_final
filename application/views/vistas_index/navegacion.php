@@ -4,20 +4,18 @@
 		</ul>
 	    <ul>
 	    	<?php 
-	    	if(isset($genero)){
-	    		if($genero=="hombre"){
+	    		if($this->session->userdata('genero')=="Hombre"){
 				echo "<li class='mujer'><a href='#'>Mujer<hr></a></li>";
 				echo "<li class='hombre li_activo'><a href='#'>Hombre<hr></a></li>";
 	    		}
-	    		else{
+	    		else if($this->session->userdata('genero')=="Mujer"){
 				echo "<li class='mujer li_activo'><a href='#'>Mujer<hr></a></li>";
 				echo "<li class='hombre'><a href='#'>Hombre<hr></a></li>";
 	    		}
-	    	} 
-	    	else{
-				echo "<li class='mujer'><a href='#'>Mujer<hr></a></li>";
-				echo "<li class='hombre'><a href='#'>Hombre<hr></a></li>";
-	    	}
+		    	else{
+					echo "<li class='mujer'><a href='#'>Mujer<hr></a></li>";
+					echo "<li class='hombre'><a href='#'>Hombre<hr></a></li>";
+		    	}
 	    	?>
 
 	    </ul>
@@ -48,15 +46,14 @@ foreach ($categorias as $key) {
 						}
 					}
 				?>
-
 				</ul>
 	        </li>
 
 <?php
 	}
+   echo "<li><a href=".base_url()."index.php/Productos>Ver todo</a></li>";
 
  ?>
-
 	    </ul>
 	</nav>
 

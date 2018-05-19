@@ -33,10 +33,11 @@ class Productos extends CI_Controller {
 
 
 	public function hombre(){
+
+		$this->session->set_userdata('genero','Hombre'); 
 		$datos['categorias']=$this->Productos_model->obtener_categorias();
 		$datos['estilos']=$this->Productos_model->obtener_estilos();
 		$datos['productos']=$this->Productos_model->obtener_productos_genero("Hombre");
-		$datos['genero']="hombre";
 		$this->load->view('vistas_index/head');
 		$this->load->view('logueado/header_logueado');
 		$this->load->view('vistas_index/navegacion',$datos);
@@ -45,11 +46,10 @@ class Productos extends CI_Controller {
 	}
 
 	public function mujer(){
+		$this->session->set_userdata('genero','Mujer'); 
 		$datos['categorias']=$this->Productos_model->obtener_categorias();
 		$datos['estilos']=$this->Productos_model->obtener_estilos();
 		$datos['productos']=$this->Productos_model->obtener_productos_genero("Mujer");
-		$datos['genero']="mujer";
-
 		$this->load->view('vistas_index/head');
 		$this->load->view('logueado/header_logueado');
 		$this->load->view('vistas_index/navegacion',$datos);
@@ -119,7 +119,9 @@ class Productos extends CI_Controller {
 	}
 
 	public function comentar(){
-		$this->Productos_model->comentar($this->input->post("id_producto"),$this->input->post("comentario"));
+		$fecha=getdate();
+        $fecha=$fecha['year']."-".$fecha['mon']."-".$fecha['mday'];
+		$this->Productos_model->comentar($this->input->post("id_producto"),$this->input->post("comentario"),$fecha);
 
 	}
 
