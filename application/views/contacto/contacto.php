@@ -5,11 +5,12 @@
 	<form id="contacto">
 		
 		<label>Nombre</label>
-		<input type="text" id="inputNombre" placeholder="Nombre" required></input>
+		<img src= https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/alert-triangle-red-512.png id="imgAlertaNombreContacto" class="imgAlerta" title="" hidden="true">
+		<input type="text" id="nombre_contacto" placeholder="Nombre"></input>
 
 		<label>Dirección de correo electrónico</label>
-		<img src= https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/alert-triangle-red-512.png id="imgAlertaCorreo" class="imgAlerta" title="" hidden="true">
-		<input type="text" placeholder="ejemplo@ejemplo.com" id="correo_contacto" required></input>
+		<img src= https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/alert-triangle-red-512.png id="imgAlertaCorreoContacto" class="imgAlerta" title="" hidden="true">
+		<input type="text" placeholder="ejemplo@ejemplo.com" id="correo_contacto"></input>
 
 		<label>Motivo de contacto</label>
 		<select id="select_contacto">
@@ -19,40 +20,14 @@
 		</select>
 
 		<label>Mensaje</label>
-		<textarea placeholder="Introduzca su mensaje." required></textarea>
+		<img src= https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/alert-triangle-red-512.png id="imgAlertaMensajeContacto" class="imgAlerta" title="" hidden="true">
+		<textarea id="mensaje_contacto" placeholder="Introduzca su mensaje."></textarea>
 		
 		<section id="botones_contacto">			
-			<button id="enviar_contacto" type="submit">Enviar</button>
+			<button id="enviar_contacto">Enviar</button>
 			<button id="limpiar_contacto">Limpiar</button>
 		</section>
 
 	</form>
 
 </section>
-
-
-<script>
-	
-	$("#enviar_contacto").click(function(e){
-		
-		var email = document.getElementById('correo_contacto').value;
-		var emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-		
-		if(emailReg.test(email)==false){
-			
-			$("#correo_contacto").css("border", "solid 1px red");
-			document.getElementById('imgAlertaCorreo').hidden=false;
-			document.getElementById('imgAlertaCorreo').title = "Correo no válido";
-		}
-		else{
-			document.getElementById('imgAlertaCorreo').hidden=true;
-		}
-	}
-	
-
-	$("#limpiar_contacto").click(function(e){
-		
-	
-	}
-
-</script>
