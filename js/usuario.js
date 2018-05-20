@@ -62,20 +62,26 @@ swal("Introduce tu correo electronico:", {
 
 $(".cerrar_sesion").click(function(){
 
-	swal("¡Hasta pronto!","Sesión cerrada","success")
-	.then((value) => {
-		localStorage.removeItem("user");
-		localStorage.removeItem("productos");
-		location.href='/proyecto_final/index.php/Principal/cerrar_sesion'
-		// Hay que borrar la sesion de codeigniter
+  ajaxQuery("Principal/cerrar_sesion")
+	.then(function(devuelto){
+		console.log(devuelto)
+		swal("¡Hasta pronto!","Sesión cerrada","success")
+		.then((value) => {
+			localStorage.removeItem("user");
+			localStorage.removeItem("productos");
+			location.href='/proyecto_final/index.php/Principal'
+		});
+
 	});
+
 })
 
 
+ajaxQuery("Principal/comprobar_login")
+.then(function(devuelto){
+	if(devuelto=="false"){
+		localStorage.removeItem('user')
+	}
 
-
-
-
-
-
+});
 });
