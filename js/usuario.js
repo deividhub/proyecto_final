@@ -64,10 +64,10 @@ $(".cerrar_sesion").click(function(){
 
 	swal("¡Hasta pronto!","Sesión cerrada","success")
 	.then((value) => {
-		localStorage.removeItem("AUTH");
 		localStorage.removeItem("user");
 		localStorage.removeItem("productos");
-		location.href='/proyecto_final/index.php/Principal'
+		location.href='/proyecto_final/index.php/Principal/cerrar_sesion'
+		// Hay que borrar la sesion de codeigniter
 	});
 })
 

@@ -159,9 +159,15 @@ class Productos_model extends CI_Model {
 
 
         public function permitir_comentar($id_producto){
-            $sql = "SELECT * FROM pedido_producto WHERE id_producto=$id_producto AND id_usuario=".$this->session->userdata('id')." AND comentario=0";
-            $query=$this->db->query($sql); 
-            return $query->num_rows();
+            if($this->session->userdata('id')){
+                $sql = "SELECT * FROM pedido_producto WHERE id_producto=$id_producto AND id_usuario=".$this->session->userdata('id')." AND comentario=0";
+                $query=$this->db->query($sql); 
+                return $query->num_rows();   
+            }
+            else{
+                return 0;
+            }
+
         }
 
         public function comentar($id_producto,$comentario,$fecha){
