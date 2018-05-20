@@ -23,6 +23,9 @@ class Compra extends CI_Controller {
 
 	public function index()
 	{
+		if(!$this->session->userdata('id')){
+			redirect('Principal/no_permitido');
+		}	
 	//obtener categorias y estilos.
 		$datos['categorias']=$this->Productos_model->obtener_categorias();
 		$datos['estilos']=$this->Productos_model->obtener_estilos();

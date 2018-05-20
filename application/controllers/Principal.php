@@ -138,7 +138,10 @@ class Principal extends CI_Controller {
 
 
 
-	public function perfil_usuario(){		
+	public function perfil_usuario(){
+		if(!$this->session->userdata('id')){
+			redirect('Principal/no_permitido');
+		}	
 		$datos['categorias']=$this->Productos_model->obtener_categorias();
 		$datos['estilos']=$this->Productos_model->obtener_estilos();
 		$this->load->view('vistas_index/head');
@@ -165,5 +168,32 @@ class Principal extends CI_Controller {
 		else{
 			echo json_encode($result);
 		}
+	}
+
+	public function cerrar_sesion(){
+		$array_items = array('nombre', 'correo','id','apellidos','fecha','telefono','domicilio','provincia','localidad');
+		$this->session->unset_userdata($array_items);
+		echo json_encode($this->session->userdata());
+	}
+
+	public function comprobar_login(){
+		if($this->session->userdata('id')){
+			echo json_encode(true);
+		}
+		else{
+			echo json_encode(false);
+
+		}
+	}
+
+
+	public function no_permitido(){
+		$datos['categorias']=$this->Productos_model->obtener_categorias();
+		$datos['estilos']=$this->Productos_model->obtener_estilos();
+		$this->load->view('vistas_index/head');
+		$this->load->view('logueado/header_logueado');
+		$this->load->view('vistas_index/navegacion',$datos);
+		$this->load->view('index.html');
+		$this->load->view('vistas_index/footer');		
 	}
 }
