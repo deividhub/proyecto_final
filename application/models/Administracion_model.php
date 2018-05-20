@@ -79,6 +79,28 @@ class Administracion_model extends CI_Model {
           $sql = "UPDATE talla_producto SET stock=15 WHERE id_talla_producto=$id";
           $query=$this->db->query($sql);
         }
+
+
+       public function recuperar_pass($id){
+            $sql = "SELECT * FROM usuario WHERE id_usuario=$id";
+            $query=$this->db->query($sql);
+            if($query->num_rows()>0){
+                $pass=getdate();
+                $pass=$pass['0'];
+                $pass=md5($pass);
+                $pass=substr($pass,-6);
+                $sql2 = "UPDATE usuario SET contraseña='".md5($pass)."' WHERE id_usuario=$id";
+                $this->db->query($sql2);
+                return $pass;
+
+            }
+            else{
+                return "ERROR";
+            }
+        }
+
+
+
 }
 
 

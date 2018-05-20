@@ -27,7 +27,7 @@ class Administracion extends CI_Controller {
 			redirect('Administracion/iniciar_sesion');
 		}
 		$datos['tipos_producto']=$this->Productos_model->obtener_categorias();
-		$datos['listado_completo_productos']=$this->Productos_model->obtener_productos();
+		$datos['listado_completo_productos']=$this->Productos_model->obtener_productos_adm();
 		$datos['listado_completo_usuarios']=$this->Usuario_model->obtener_usuarios();
 		$datos['listado_completo_comentarios']=$this->Administracion_model->obtener_comentarios();
 		$datos['listado_completo_pedidos']=$this->Productos_model->obtener_pedidos();
@@ -200,5 +200,13 @@ class Administracion extends CI_Controller {
 
 	public function actualizar_stock(){
 		$this->Administracion_model->actualizar_stock($this->input->post("id_talla_producto"));
+	}
+
+
+
+
+	public function recuperar_pass(){
+		$result=$this->Administracion_model->recuperar_pass($this->input->post("id_usuario"));
+		echo json_encode($result);
 	}
 }

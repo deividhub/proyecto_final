@@ -309,7 +309,37 @@ $(".deleteuser").click(function(){
 	}
 })
 /*FIN BORRAR USUARIO*/
+/*INICIO RECUPERAR CONTRASEÑA*/
+$(".restore_pass").click(function(){
+	if(this.value==1){
+   		swal("ERROR", "Al administrador no se le puede cambiar la contraseña.");		
+	}
+	else{
+		swal({
+		  title: "Vas a proceder a recuperar una contraseña, ¿estas seguro?",
+		  text: "Está contraseña se le enviará al usuario a su correo electronico",
+		  icon: "warning",
+		  buttons: true,
+		  dangerMode: true,
+		})
+		.then((eliminar) => {
+		  if (eliminar) {
+		  	ajaxQuery("Administracion/recuperar_pass",{"id_usuario":this.value})
+				.then(function(devuelto){	
+				console.log(devuelto)		
+			});
+			swal("Operación correcta!", "Contraseña modificada", "success")
+				.then((value) => {
+					form_anterior(".list_user")
+			});
 
+		  } else {
+		    swal("Has cancelado la operación.");
+		  }
+		});
+	}
+})
+/*FIN RECUPERAR CONTRASEÑA*/
 /*FORMULARIO AÑADIR USUARIO*/
 
 $("#btn_crear_usuario").click(function(){

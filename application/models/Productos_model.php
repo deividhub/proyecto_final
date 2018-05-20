@@ -43,7 +43,12 @@ class Productos_model extends CI_Model {
                 $query=$this->db->query($sql);
                 return $query->result();
         }
-
+        public function obtener_productos_adm(){
+           
+                $sql = "SELECT * FROM producto";
+                $query=$this->db->query($sql);
+                return $query->result();
+        }
         public function obtener_producto($id_producto){
 
                     $sql = "SELECT * FROM producto WHERE id_producto=$id_producto";
@@ -102,14 +107,25 @@ class Productos_model extends CI_Model {
 
         public function comprobar_stock($producto){
             $p=json_decode($producto);// codifico
+            $array_sin_stock=Array();
+            $contador_s_s=0;
             for ($i=0; $i <count($p) ; $i++) { 
-                $sql = "SELECT stock FROM talla_producto WHERE id_talla=".$p[$i]->talla." AND id_producto=".$p[$i]->producto."";
+                $sql = "SELECT * FROM talla_producto WHERE id_talla=".$p[$i]->talla." AND id_producto=".$p[$i]->producto."";
                 $query=$this->db->query($sql); 
                 foreach ($query->result() as $key) {
                     if($key->stock<$p[$i]->count){
-                        return 0;
+                        $array_sin_stock[$contador_s_s]=$key->id_producto;
+                        $contador_s_s++;
                     }
                 }  
+            }
+
+            if (count($array_sin_stock)>0)
+            {
+               return $array_sin_stock;
+            }
+            else{
+                return 0;
             }
 
         }

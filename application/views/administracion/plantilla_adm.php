@@ -244,7 +244,12 @@
 								<td>".$usuario->provincia."</td>
 								<td>".$usuario->localidad."</td>
 								<td><button type='button' value='".$usuario->id_usuario."' id='edituser'><i class='material-icons button edit'>edit</i></button>
-						        <button type='button' value='".$usuario->id_usuario."' class='deleteuser'><i class='material-icons button delete'>delete</i></button>
+						        <button type='button' value='".$usuario->id_usuario."' class='deleteuser'>
+						        	<i class='material-icons button delete'>delete</i>
+						        </button>
+						        <button type='button' class='restore_pass' value='".$usuario->id_usuario."'>
+						        	<i class='material-icons'>security</i>
+						        </button>
 						      	</td>
 							</tr>";
 						}
@@ -333,7 +338,7 @@
 
 
 
-<article class="configuraciones_panel_admin  list_coments">
+<article class="configuraciones_panel_admin  list_coments form_oculto">
 		<h1>Lista de comentario</h1>
 		<div id="search_div">
 			<input type="text" name=""  class="search-input" id="2" placeholder="Busca por 'Usuario'">

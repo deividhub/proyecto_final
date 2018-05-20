@@ -163,14 +163,16 @@ $("#btn_pasar_a_caja").click(function(){
 			ajaxQuery("Compra/comprobar_stock",{"productos":localStorage.productos})
 		.then(function(devuelto){
 			var array=JSON.parse(devuelto);
+			console.log(array)
 			        if(array==0){
-			        	swal("Vaya..!", "...Parece que "+devuelto+" No tiene suficiento stock!");
-			        }
-			        else{
-						swal("¡Perfecto!", "Te estamos redirigiendo a la plataforma de pago Online.", "success")
+			 			swal("¡Perfecto!", "Te estamos redirigiendo a la plataforma de pago Online.", "success")
 							.then((value) => {
 								window.location.assign(base_url+"Index.php/Compra")
-							});
+						});
+			        }
+			        else{
+			        	swal("Vaya..!", "...Parece que "+devuelto+" No tiene suficiento stock!");
+
 			        }
 
 		});
