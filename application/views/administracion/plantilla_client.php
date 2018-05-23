@@ -18,33 +18,33 @@
 
 			<h1>Gestión de datos personales</h1>
 
-			<form class="form_client">
+			<form class="form_client" id="form_client">
 			
 				<label>Nombre: </label>
-				<input type="text" id="form_nombre_cliente">
+				<input type="text" id="form_nombre_cliente" name="nombre">
 
 				<label>Apellidos: </label>
-				<input type="text" id="form_apellidos_cliente">	
+				<input type="text" id="form_apellidos_cliente" name="apellidos">	
 
 				<label>Fecha nacimiento: </label>
-				<input type="date" id="form_fecha_cliente">
+				<input type="date" id="form_fecha_cliente" name="fecha">
 
 				<label>Domicilio: </label>
-				<input type="text" id="form_domicilio_cliente">
+				<input type="text" id="form_domicilio_cliente" name="domicilio">
 
 				<label>Provincia: </label>
-				<input type="text" id="form_provincia_cliente">
+				<input type="text" id="form_provincia_cliente" name="provincia">
 
 				<label>Localidad: </label>
-				<input type="text" id="form_localidad_cliente">
+				<input type="text" id="form_localidad_cliente" name="localidad">
 
 				<label>Correo electrónico: </label>
-				<input type="email" id="form_correo_cliente">
+				<input type="email" id="form_correo_cliente" name="correo">
 
 				<label>Teléfono: </label>
-				<input type="text" id="form_telefono_cliente">
+				<input type="text" id="form_telefono_cliente" name="telefono">
 				
-				<button>Guardar</button>				
+				<button type='submit' id="btn_guardar_datos">Guardar</button>				
 
 			</form>
 

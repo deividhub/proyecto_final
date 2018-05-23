@@ -92,8 +92,71 @@ ajaxQuery("Principal/comprobar_login")
 });
 
 
+/*Editar usuario*/
 
+$("#btn_guardar_datos").click(function(e){
 
+	e.preventDefault();
+	var error = false;
+	var mensaje = "";
+	var datos_usuario = $("#form_client").serializeArray()
+
+	if(datos_usuario[0].value.length == 0){
+		error = true;
+		mensaje = "El nombre no puede estar vacío. \n";
+	}	
+
+	if(datos_usuario[1].value.length == 0){
+		error = true;
+		mensaje += "Los apellidos no pueden estar vacíos. \n";
+	}
+
+	if(datos_usuario[2].value == ""){
+		error = true;
+		mensaje += "La fecha no puede estar vacía. \n";
+	}	
+
+	if(datos_usuario[3].value.length < 6){
+		error = true;
+		mensaje += "El domicilio tiene que tener una dirección completa. \n";
+	}
+
+	if(datos_usuario[4].value.length == 0){
+		error = true;
+		mensaje += "La provincia no pueden estar vacía. \n";
+	}
+
+	if(datos_usuario[5].value.length == 0){
+		error = true;
+		mensaje += "La localidad no puede estar vacía. \n";
+	}	
+
+	if(datos_usuario[6].value.length < 6){
+		error = true;
+		mensaje += "El correo tiene que tener un formato correcto (ejemplo@ejemplo.com). \n";
+	}
+
+	if(datos_usuario[7].value.length < 9){
+		error = true;
+		mensaje += "El teléfono tiene que tener 9 números. \n";
+	}
+
+	if(error){
+		swal({
+			type: 'error',
+			title: 'Oops...',
+			text: mensaje,
+		})
+	}
+
+	else
+	{
+
+	}
+
+})
+
+/*Fin editar usuario*/
 
 
 /*FUNCIONES PANEL USUARIO*/

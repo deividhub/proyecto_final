@@ -48,7 +48,7 @@ class Usuario extends CI_Controller {
 	}
 
 	// funcion para la contraseña
-	public funcion recuperar_contrasena(){
+	public function recuperar_contrasena(){
 		$pass = $this->input->post("pass");
 		$this->Usuario_model->recuperar_contrasena($pass);
 		echo json_encode("¡Contraseña modificada con exito!");
