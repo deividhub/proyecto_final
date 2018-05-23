@@ -20,7 +20,7 @@
 	</ul>
 	<ul>
 	    <li><a href="#" class="footer_titulo">Descarga la APP</a></li>
-	    <li><a  class="fa fa-android" href="#"> Android APP</a></li>
+	    <li><a  class="fa fa-android" href="<?php echo base_url();?>downloads/DWNPD_android_app.apk" download> Android APP</a></li>
 	    <li><a  class="fa fa-apple" href="#"> iOS APP</a></li>
 	</ul>
 

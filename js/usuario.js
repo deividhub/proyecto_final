@@ -38,11 +38,16 @@ $(".form_client #form_telefono_cliente").val(datos_usuario[0].telefono);
 
 
 $("#recuperar_pass").click(function(e){
-swal("Introduce tu correo electronico:", {
-  content: "input",
-})
-.then((value) => {
-	  ajaxQuery("Principal/recuperar_pass",{"correo":value})
+swal({
+  title: 'Introduce tu correo electronico:',
+  input: 'email',
+
+  showCancelButton: true,
+  confirmButtonText: 'Recuperar',
+  showLoaderOnConfirm: true,
+}).then((result) => {
+  if (result.value) {
+   	  ajaxQuery("Principal/recuperar_pass",{"correo":result.value})
 		.then(function(devuelto){
 			alert(devuelto+"  usuario.js linea 47 borrar")
 			if(devuelto==1){
@@ -54,8 +59,9 @@ swal("Introduce tu correo electronico:", {
 			}
 			
 
-		});
 	});
+  }
+})
 });
 
 
@@ -84,4 +90,87 @@ ajaxQuery("Principal/comprobar_login")
 	}
 
 });
+
+
+
+
+
+
+/*FUNCIONES PANEL USUARIO*/
+
+/*
+ajaxQuery("Usuario/pedidos")
+.then(function(devuelto){
+	var array_pedidos=JSON.parse(devuelto);
+	for (var i = 0; i < array_pedidos.length; i++) {
+
+		ajaxQuery("Usuario/productos_del_pedido",{"id_pedido":array_pedidos[i].id_pedido})
+		.then(function(devuelto){
+			var array_productos=JSON.parse(devuelto);
+
+		});
+
+	}
 });
+
+
+ajaxQuery("Usuario/favoritos")
+.then(function(devuelto){
+	var array_favoritos=JSON.parse(devuelto);
+
+});
+
+
+ajaxQuery("Usuario/obtener_comentarios")
+.then(function(devuelto){
+	var array_comentarios=JSON.parse(devuelto);
+
+});
+
+
+swal.mixin({
+  input: 'password',
+  confirmButtonText: 'Siguiente &rarr;',
+  cancelButtonText: 'Cancelar',
+  showCancelButton: true,
+  progressSteps: ['1', '2']
+}).queue([
+  {
+    title: 'Recuperar contraseña',
+    text: 'Introduce una nueva contraseña'
+  },
+  'Introducela de nuevo',
+]).then((result) => {
+  if (result.value) {
+  	if(result.value[0]==result.value[1]){
+  		ajaxQuery("Usuario/recuperar_contrasena",{"pass":result.value[1]})
+			.then(function(devuelto){
+				swal({
+			      title: '¡Perfecto!',
+			      html:
+			        'Tu contraseña ha sido modificada con exito.',
+			      confirmButtonText: 'Ok!'
+			    })
+
+		});
+  	}
+  	else{
+  		swal({
+		  type: 'error',
+		  title: 'Oops...',
+		  text: '¡Las contraseñas no coinciden!',
+		  footer: '<a href>Intentalo de nuevo</a>',
+		})
+  	}
+  }
+})
+
+
+*/
+
+
+});
+
+
+
+

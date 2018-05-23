@@ -963,7 +963,7 @@
 		
 		#aside_filtros_2 select{
 			width: 30%;
-			height: 20px;
+			padding: 10px;
 		}
 
 
@@ -971,8 +971,8 @@
 
 		
 		#aside_filtros_2 select:focus{
-			background: #0085ba;
-			color: white;
+			outline-style: none;
+			border-radius: 12px;
 		}
 
 	/*Fin Filtros*/
@@ -984,9 +984,11 @@
 	/*Sección productos*/
 
 		#section_article_productos{
-			width: 80%;
+			width: 100%;
 			display: flex;
 			flex-wrap: wrap;
+			overflow-y: auto;
+
 		}
 
 
@@ -1046,12 +1048,11 @@
 			display: none;
 			color: black;
 			position: absolute;
-			font-size: 34px;
-			font-weight: bold;
+			font-size: 24px;
 			background: white;
 			padding: 5px;
 			z-index: 200;
-			border: 2px outset #c1b497;
+			border: 1px outset #c1b497;
 			border-top-right-radius: 20px;
 			border-bottom-right-radius: 20px;
 		}
@@ -3176,9 +3177,28 @@
 
 
 .acceso_denegado{
-	text-align: center;
+	width: 80%;
+	margin: 30px auto auto auto;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid lightgrey;
+	padding: 5%;
+	box-shadow: 2px 2px 2px 2px lightgrey;
+}
+
+
+.privacidad{
+	width: 80%;
+	margin: 30px auto auto auto;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid lightgrey;
+	padding: 5%;
+	box-shadow: 2px 2px 2px 2px lightgrey;
+}
+
+.title_privacidad{
 	width: 100%;
-	background: #c1b497;
-	padding: 10px 0;
-	font-size: 34px;
+	text-align: center;
+	margin-bottom: 20px;
 }

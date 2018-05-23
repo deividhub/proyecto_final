@@ -1,13 +1,3 @@
-	<script>
-         if(typeof(sessionStorage.getItem("primeravez"))=='undefined'){
-             sessionStorage.setItem("primeravez");
-             swal("¿Aún no te has registrado?", {
-              content: "Hazlo rápidamente pulsando -Aquí-"
-            });
-         }
-        
-</script>
-
 
   <section id="section_slogan">
       <article id="article_img">

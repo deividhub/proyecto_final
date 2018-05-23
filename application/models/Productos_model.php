@@ -28,7 +28,7 @@ class Productos_model extends CI_Model {
 
         public function obtener_productos_rdm(){
 
-                $sql = "SELECT * FROM producto  ORDER BY RAND() LIMIT 5";
+                $sql = "SELECT * FROM producto  ORDER BY RAND() LIMIT 4";
                 $query=$this->db->query($sql);
                 return $query->result();
         }
@@ -156,21 +156,26 @@ class Productos_model extends CI_Model {
 
 
         public function favorito($producto,$estado){
-            if ($estado=="true") {
-                $sql = "DELETE FROM favorito WHERE id_producto=$producto AND id_usuario=2";
+            if($this->session->userdata('id')){
+                if ($estado=="true") {
+                $sql = "DELETE FROM favorito WHERE id_producto=$producto AND id_usuario=".$this->session->userdata('id')."";
                
             }
             else{
-                $sql = "INSERT INTO favorito VALUES(NULL,2,$producto)";
+                $sql = "INSERT INTO favorito VALUES(NULL,".$this->session->userdata('id').",$producto)";
             }
                 $query=$this->db->query($sql); 
 
+            }
+            
         }
         public function obtener_favoritos($id_producto){
+            if($this->session->userdata('id')){
+                $sql = "SELECT * FROM favorito WHERE id_producto=$id_producto AND id_usuario=".$this->session->userdata('id')."";
+                $query=$this->db->query($sql); 
+                return $query->result();     
+            }
 
-            $sql = "SELECT * FROM favorito WHERE id_producto=$id_producto";
-            $query=$this->db->query($sql); 
-            return $query->result();
         }
 
 

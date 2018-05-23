@@ -132,8 +132,21 @@ class Principal extends CI_Controller {
 		}*/
 
 		$this->Principal_model->registrarse($datos);
-		redirect('Principal');
+		$this->session->set_userdata("registrado",true); 
+		redirect('Principal/login_registro');
 	}
+
+	public function registrado(){
+		if($this->session->userdata("registrado")){
+			echo json_encode(true);
+			$this->session->unset_userdata("registrado");
+
+		}
+		else{
+			echo json_encode(false);
+		}
+	}
+
 
 
 
