@@ -41,10 +41,13 @@ $("#recuperar_pass").click(function(e){
 swal({
   title: 'Introduce tu correo electronico:',
   input: 'email',
-
+  inputPlaceholder: 'dwnpd@dwnpd.com',
   showCancelButton: true,
   confirmButtonText: 'Recuperar',
   showLoaderOnConfirm: true,
+    inputValidator: (value) => {
+    return !value && '¡Introduce un correo válido!'
+  }
 }).then((result) => {
   if (result.value) {
    	  ajaxQuery("Principal/recuperar_pass",{"correo":result.value})

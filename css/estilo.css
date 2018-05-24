@@ -987,6 +987,7 @@
 			width: 100%;
 			display: flex;
 			flex-wrap: wrap;
+			justify-content: center;
 			overflow-y: auto;
 
 		}
@@ -998,9 +999,9 @@
 		#section_article_productos .article_producto{
 			display: flex;
 			flex-direction: column;
-			width: 30%;
+			width: 20%;
 			margin: 0 0 40px 20px;
-			border: 1px solid gray;
+			border: 1px solid lightgrey;
 			cursor: pointer;
 
 		}
@@ -1008,10 +1009,52 @@
 
 		/*---------------*/
 
-		
+
+		#caracteristicas_t_p{
+			display: none;
+			align-items: center;
+			height: 30px;
+			justify-content: center;
+			border: 1px solid lightgrey;
+			padding: 10px 0;
+			background: white;
+			margin-top: -50px;
+			z-index: 100;
+			border-top-left-radius: 6px;
+			border-top-right-radius: 6px;
+			animation: precio_ver 1s;
+
+		}
+		@keyframes precio_ver{
+			from {
+				margin-top: -20px;
+				height: 0px;
+
+			}
+			to {
+				height: 30px;
+				margin-top: -50px;
+			}
+		}
+
+		/*---------------*/
+
+
+		.nombre_producto{
+			color: #c1b497;
+			height: 30px;
+			text-align: center;
+			font-size: 24px;
+			padding: 5px 0 0 0;
+			
+		}
+
+
+		/*---------------*/
+	
 		#section_article_productos .article_producto .img_hover{
 			width: 100%;
-			height: 400px;
+			height: 300px;
 		}
 
 
@@ -1029,56 +1072,49 @@
 
 
 		#section_article_productos .article_producto:hover{
-			box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+			box-shadow: 0 1px 1px 1px rgba(0, 140, 186, 0.5);
 		}
 
 
 		/*---------------*/
 
-	
-		#section_article_productos .article_producto:hover .precio_hover{
-			display: block;
-		}
 
 
-		/*---------------*/
-
-		
-		#section_article_productos .article_producto .precio_hover{
-			display: none;
-			color: black;
-			position: absolute;
-			font-size: 24px;
-			background: white;
-			padding: 5px;
-			z-index: 200;
-			border: 1px outset #c1b497;
-			border-top-right-radius: 20px;
-			border-bottom-right-radius: 20px;
-		}
-
-
-		/*---------------*/
-
-		
-		#section_article_productos .article_producto .btn_ver_producto{
-			color: white;
-			background: black;
-			border: none;
-			padding: 10px 0;
-			font-size: 18px;
-			cursor: pointer;
-			width: 100%;
+		#section_article_productos .article_producto:hover #caracteristicas_t_p{
 			display: flex;
-			justify-content: center;
-			align-items: center;
+
+		}
+
+
+		/*---------------*/		
+		#section_article_productos .article_producto .precio_hover{
+			width: 100%;
+			text-align: center;
+		}
+
+		.tachado{
+			text-decoration: line-through;
+		}
+		/*---------------*/
+
+		#section_article_productos .article_producto .btn_ver_producto{
+			width: 100%;
 		}
 
 
 		/*---------------*/
 
-		#section_article_productos .article_producto .btn_ver_producto i{
-			width: 10%;
+
+		#section_article_productos .article_producto button{
+			display: flex;
+			border: none;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			background: #c1b497;
+						border-radius: 6px;
+
+			cursor: pointer
 		}
 
 
@@ -1087,7 +1123,7 @@
 
 		#section_article_productos .article_producto .btn_ver_producto:hover{
 			color: black;
-			background: #c1b497;
+
 		    
 		}
 
@@ -2621,6 +2657,17 @@
 			margin: 15px 0;
 			font-weight: bold;
 			font-size: 20px;
+		}
+
+		
+		/*---------------*/
+		
+
+		.p_envio{
+			width: 100%;
+			text-align: right;
+			margin: 5px 0;
+			font-size: 18px;
 		}
 
 		

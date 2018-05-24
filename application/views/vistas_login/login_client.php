@@ -282,6 +282,7 @@
 				$("#correo").css("border", "solid 1px red");
 				document.getElementById('imgAlertaCorreo').hidden=false;
 				document.getElementById('imgAlertaCorreo').title = "Correo no válido";
+				swal("Comprueba los datos")
 			}
 			else{
 				document.getElementById('imgAlertaCorreo').hidden=true;
@@ -293,6 +294,8 @@
 				document.getElementById('imgAlertaPass2').title = "La contraseña debe de tener entre 8 y 16 caracteres";
 				$(".imgAlertaPass").css("display", "inline");
 				$(".txtcontraseña").css("border", "solid 1px red");
+				swal("Comprueba los datos")
+
 			}
 			else{
 				if( segundaContr.value != primeraContr.value){
@@ -301,6 +304,7 @@
 					document.getElementById('imgAlertaPass2').title = "Las contraseñas no coinciden";
 					$(".imgAlertaPass").css("display", "inline");
 					$(".txtcontraseña").css("border", "solid 1px red");
+					swal("Comprueba los datos")
 
 				}else{
 

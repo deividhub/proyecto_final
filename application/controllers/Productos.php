@@ -23,7 +23,6 @@ class Productos extends CI_Controller {
 		$datos['categorias']=$this->Productos_model->obtener_categorias();
 		$datos['estilos']=$this->Productos_model->obtener_estilos();
 		$datos['productos']=$this->Productos_model->obtener_productos();
-
 		$this->load->view('vistas_index/head');
 		$this->load->view('logueado/header_logueado');
 		$this->load->view('vistas_index/navegacion',$datos);
@@ -61,8 +60,6 @@ class Productos extends CI_Controller {
 	public function mostrar_productos_tipo(){
 		$datos['categorias']=$this->Productos_model->obtener_categorias();
 		$datos['estilos']=$this->Productos_model->obtener_estilos();
-
-
 		
 		$id_tipo_producto=$this->uri->segment(3);
 		$datos['productos']=$this->Productos_model->obtener_productos_tipo($id_tipo_producto);
@@ -78,7 +75,6 @@ class Productos extends CI_Controller {
 	public function mostrar_productos_estilo(){
 		$datos['categorias']=$this->Productos_model->obtener_categorias();
 		$datos['estilos']=$this->Productos_model->obtener_estilos();
-
 
 		
 		$id_estilo=$this->uri->segment(3);

@@ -42,6 +42,7 @@ class Principal extends CI_Controller {
 		$this->load->view('vistas_index/principal',$datos);
 		$this->load->view('vistas_index/footer');
 
+
 	}
 
 

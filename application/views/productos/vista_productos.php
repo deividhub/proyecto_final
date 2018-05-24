@@ -41,12 +41,18 @@ else{
 ?>
 	<article class="article_producto">
 		<a href="<?php echo base_url().'index.php/Productos/mostrar_producto/'.$id_producto;?>">
-					<p class="precio_hover"><?php echo $precio; ?>€</p>
 
-		<img class="img_hover" src=<?php echo $imagen; ?> alt="">
-		
-		<button type="button" class="btn_ver_producto">Ver producto<i class="material-icons">visibility</i></button>
+			<img class="img_hover" src=<?php echo $imagen; ?> alt="">
 		</a>
+		<hr>
+		<p class="nombre_producto"><?php echo $producto->nombre_producto;?></p>
+		<div id="caracteristicas_t_p">
+			<p class="precio_hover tachado"><?php echo $precio; ?>€</p>
+			<p class="precio_hover"><?php echo $precio_ant; ?>€</p>
+			<a class="btn_ver_producto" href="<?php echo base_url().'index.php/Productos/mostrar_producto/'.$id_producto;?>">
+				<button type="button" >Ver producto <i class="material-icons">visibility</i></button>
+			</a>
+		</div>
 	</article>
 
 <?php 
