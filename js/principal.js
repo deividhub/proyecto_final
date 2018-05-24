@@ -246,6 +246,27 @@ else{
 
 }
 
+
+
+/* Ordenar por precio*/
+$("#aside_filtros_2 select").change(function(){
+	if($(this).val()==1){
+		var posicionador=0;
+		$(".article_producto").each(function(index) {
+	      $(this).css('order',""+posicionador+"")
+	      posicionador++;
+	  	});
+	}
+	else{
+		var x = $(".article_producto")
+		var posicionador=x.length;
+		$(".article_producto").each(function(index) {
+	      $(this).css('order',""+posicionador+"")
+	      posicionador--;
+	  	});
+	}
+})
+
 });
 
 

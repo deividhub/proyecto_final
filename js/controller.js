@@ -163,7 +163,6 @@ $("#btn_pasar_a_caja").click(function(){
 			ajaxQuery("Compra/comprobar_stock",{"productos":localStorage.productos})
 		.then(function(devuelto){
 			var array=JSON.parse(devuelto);
-			console.log(array)
 			        if(array==0){
 			 			swal("¡Perfecto!", "Te estamos redirigiendo a la plataforma de pago Online.", "success")
 							.then((value) => {
@@ -171,8 +170,17 @@ $("#btn_pasar_a_caja").click(function(){
 						});
 			        }
 			        else{
-			        	swal("Vaya..!", "...Parece que "+devuelto+" No tiene suficiento stock!");
+			        	var mensaje ="";
+			        	for (var i = 0; i < array.length; i++) {
+			        		mensaje+="<b>Producto:</b> "+array[i]['nombre']+" <b>Talla:</b> "+array[i]['talla']+" <br><b>Quedan</b> "+array[i]['stock']+"<br>"
+			        	}
 
+						swal({
+						  type: 'error',
+						  title: 'Vaya...',
+						  text: 'Parece que los siguientes productos no tienen suficiente stock',
+						  footer: '<p>'+mensaje+'</p>',
+						})
 			        }
 
 		});

@@ -103,49 +103,53 @@ $("#btn_guardar_datos").click(function(e){
 
 	if(datos_usuario[0].value.length == 0){
 		error = true;
-		mensaje = "El nombre no puede estar vacío. \n";
+		mensaje = "<p>El nombre no puede estar vacío. </p>";
 	}	
 
 	if(datos_usuario[1].value.length == 0){
 		error = true;
-		mensaje += "Los apellidos no pueden estar vacíos. \n";
+		mensaje += "<p>Los apellidos no pueden estar vacíos. </p>";
+	}
+	else if(datos_usuario[1].value.trim().split(" ").length<2){
+		error = true;
+		mensaje += '<p>Introduce 2 apellidos. </p>'
 	}
 
 	if(datos_usuario[2].value == ""){
 		error = true;
-		mensaje += "La fecha no puede estar vacía. \n";
+		mensaje += "<p>La fecha no puede estar vacía. </p>";
 	}	
 
 	if(datos_usuario[3].value.length < 6){
 		error = true;
-		mensaje += "El domicilio tiene que tener una dirección completa. \n";
+		mensaje += "<p>El domicilio tiene que tener una dirección completa. </p>";
 	}
 
 	if(datos_usuario[4].value.length == 0){
 		error = true;
-		mensaje += "La provincia no pueden estar vacía. \n";
+		mensaje += "<p>La provincia no pueden estar vacía. </p>";
 	}
 
 	if(datos_usuario[5].value.length == 0){
 		error = true;
-		mensaje += "La localidad no puede estar vacía. \n";
+		mensaje += "<p>La localidad no puede estar vacía. </p>";
 	}	
 
 	if(datos_usuario[6].value.length < 6){
 		error = true;
-		mensaje += "El correo tiene que tener un formato correcto (ejemplo@ejemplo.com). \n";
+		mensaje += "<p>El correo tiene que tener un formato correcto (ejemplo@ejemplo.com). </p>";
 	}
 
 	if(datos_usuario[7].value.length < 9){
 		error = true;
-		mensaje += "El teléfono tiene que tener 9 números. \n";
+		mensaje += "<p>El teléfono tiene que tener 9 números. </p>";
 	}
 
 	if(error){
 		swal({
 			type: 'error',
 			title: 'Oops...',
-			text: mensaje,
+			html: mensaje,
 		})
 	}
 

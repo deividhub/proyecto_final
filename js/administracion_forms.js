@@ -197,7 +197,7 @@ $("#guardar_cambios_producto").click(function(){
 	var json={"id_producto":$("input[name='id_producto']").val(),"nombre_producto":$("input[name='nombre_producto']").val(),"color":$("input[name='color']").val(),"id_estilo":$("input[name='id_estilo']").val(),"precio":$("input[name='precio']").val(),"descripcion":$("input[name='descripcion']").val(),"composicion":$("input[name='composicion']").val(),"genero":$("input[name='genero']").val(),"id_tipo_producto":$("input[name='id_tipo_producto']").val(),"imagen":localStorage.imagen_subida}
 		ajaxQuery("Administracion/editar_producto",json)
 		.then(function(devuelto){
-		swal("Operación correcta!", "Datos de "+devuelto+" modificados.", "success")
+		swal("Operación correcta!", "Datos de "+$("input[name='nombre_producto']").val()+" modificados.", "success")
 			.then((value) => {
 				form_anterior(".list_product")
 		});		
@@ -209,27 +209,48 @@ $("#filesimg").change(archivo);
 
 /*BORRAR PRODUCTO*/
 $(".deleteproduct").click(function(){
-		swal({
-		  title: "Vas a eliminar un producto, ¿estas seguro?",
-		  text: "Una vez eliminado no se podra recuperar el producto",
-		  icon: "warning",
-		  buttons: true,
-		  dangerMode: true,
+		const swalWithBootstrapButtons = swal.mixin({
+		  confirmButtonClass: 'btn btn-success',
+		  cancelButtonClass: 'btn btn-danger',
+		  buttonsStyling: true,
 		})
-		.then((eliminar) => {
-		  if (eliminar) {
+
+		swalWithBootstrapButtons({
+		  title: 'Vas a eliminar un producto, ¿estas seguro?',
+		  text: "Una vez eliminado no se podra recuperar el producto",
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonText: 'Si, Eliminar',
+		  cancelButtonText: 'Cancelar operación',
+		  reverseButtons: true
+		}).then((eliminar) => {
+		  if (eliminar.value) {
 		  	ajaxQuery("Administracion/eliminar_producto",{"id_producto":this.value})
 				.then(function(devuelto){			
 			});
-			swal("Operación correcta!", "Producto eliminado.", "success")
-				.then((value) => {
+				
+		    swalWithBootstrapButtons(
+		      '¡Operación correcta!',
+		      'Producto eliminado.',
+		      'success'
+		    ).then((value) => {
 					form_anterior(".list_product")
 			});
-		    //location.reload();
-		  } else {
-		    swal("Has cancelado la operación.");
+		  } else if (
+		    // Read more about handling dismissals
+		    eliminar.dismiss === swal.DismissReason.cancel
+		  ) {
+		    swalWithBootstrapButtons(
+		      'Operación cancelada',
+		      'No has eliminado el producto',
+		      'error'
+		    )
 		  }
-		});
+		})
+
+
+
+
 })
 /*FIN BORRAR PRODUCTO*/
 
@@ -285,27 +306,44 @@ $(".deleteuser").click(function(){
    		swal("ERROR", "El administrador no se puede eliminar.");		
 	}
 	else{
-		swal({
-		  title: "Vas a eliminar un usuario, ¿estas seguro?",
-		  text: "Una vez eliminado no se podra recuperar el usuario",
-		  icon: "warning",
-		  buttons: true,
-		  dangerMode: true,
+		const swalWithBootstrapButtons = swal.mixin({
+		  confirmButtonClass: 'btn btn-success',
+		  cancelButtonClass: 'btn btn-danger',
+		  buttonsStyling: true,
 		})
-		.then((eliminar) => {
-		  if (eliminar) {
+
+		swalWithBootstrapButtons({
+		  title: 'Vas a eliminar un usuario, ¿estas seguro?',
+		  text: "Una vez eliminado no se podra recuperar el usuario",
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonText: 'Si, Eliminar',
+		  cancelButtonText: 'Cancelar operación',
+		  reverseButtons: true
+		}).then((eliminar) => {
+		  if (eliminar.value) {
 		  	ajaxQuery("Administracion/eliminar_usuario",{"id_usuario":this.value})
 				.then(function(devuelto){			
 			});
-			swal("Operación correcta!", "Usuario eliminado", "success")
-				.then((value) => {
+				
+		    swalWithBootstrapButtons(
+		      '¡Operación correcta!',
+		      'Usuario eliminado.',
+		      'success'
+		    ).then((value) => {
 					form_anterior(".list_user")
 			});
-
-		  } else {
-		    swal("Has cancelado la operación.");
+		  } else if (
+		    // Read more about handling dismissals
+		    eliminar.dismiss === swal.DismissReason.cancel
+		  ) {
+		    swalWithBootstrapButtons(
+		      'Operación cancelada',
+		      'No has eliminado el usuario',
+		      'error'
+		    )
 		  }
-		});
+		})
 	}
 })
 /*FIN BORRAR USUARIO*/
@@ -315,28 +353,46 @@ $(".restore_pass").click(function(){
    		swal("ERROR", "Al administrador no se le puede cambiar la contraseña.");		
 	}
 	else{
-		swal({
-		  title: "Vas a proceder a recuperar una contraseña, ¿estas seguro?",
-		  text: "Está contraseña se le enviará al usuario a su correo electronico",
-		  icon: "warning",
-		  buttons: true,
-		  dangerMode: true,
+
+		const swalWithBootstrapButtons = swal.mixin({
+		  confirmButtonClass: 'btn btn-success',
+		  cancelButtonClass: 'btn btn-danger',
+		  buttonsStyling: true,
 		})
-		.then((eliminar) => {
-		  if (eliminar) {
+
+		swalWithBootstrapButtons({
+		  title: 'Vas a proceder a recuperar una contraseña, ¿estas seguro?',
+		  text: "Está contraseña se le enviará al usuario a su correo electronico",
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonText: 'Si, Eliminar',
+		  cancelButtonText: 'Cancelar operación',
+		  reverseButtons: true
+		}).then((eliminar) => {
+		  if (eliminar.value) {
 		  	ajaxQuery("Administracion/recuperar_pass",{"id_usuario":this.value})
 				.then(function(devuelto){	
 				console.log(devuelto)		
 			});
-			swal("Operación correcta!", "Contraseña modificada", "success")
-				.then((value) => {
+				
+		    swalWithBootstrapButtons(
+		      '¡Operación correcta!',
+		      'Contraseña modificada.',
+		      'success'
+		    ).then((value) => {
 					form_anterior(".list_user")
 			});
-
-		  } else {
-		    swal("Has cancelado la operación.");
+		  } else if (
+		    // Read more about handling dismissals
+		    eliminar.dismiss === swal.DismissReason.cancel
+		  ) {
+		    swalWithBootstrapButtons(
+		      'Operación cancelada',
+		      'No has modificado la contraseña',
+		      'error'
+		    )
 		  }
-		});
+		})
 	}
 })
 /*FIN RECUPERAR CONTRASEÑA*/
@@ -364,27 +420,50 @@ $("#btn_crear_usuario").click(function(){
 /* FORMULARIO COMENTARIOS*/
 $(".deletecomment").click(function(){
 
-	swal({
-	  title: "Vas a eliminar un comentario, ¿estas seguro?",
-	  text: "Recuerda eliminar solo comentarios ofensivos",
-	  icon: "warning",
-	  buttons: true,
-	  dangerMode: true,
-	})
-	.then((eliminar) => {
-	  if (eliminar) {
-	  	ajaxQuery("Administracion/eliminar_comentario",{"id_comentario":this.value})
-			.then(function(devuelto){			
-		});
-		swal("Operación correcta!", "Comentario eliminado", "success")
-			.then((value) => {
-				form_anterior(".list_coments")
-		});
+		const swalWithBootstrapButtons = swal.mixin({
+		  confirmButtonClass: 'btn btn-success',
+		  cancelButtonClass: 'btn btn-danger',
+		  buttonsStyling: true,
+		})
 
-	  } else {
-	    swal("Has cancelado la operación.");
-	  }
-	});
+		swalWithBootstrapButtons({
+		  title: 'Vas a eliminar un comentario, ¿estas seguro?',
+		  text: "Recuerda eliminar solo comentarios ofensivos",
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonText: 'Si, Eliminar',
+		  cancelButtonText: 'Cancelar operación',
+		  reverseButtons: true
+		}).then((eliminar) => {
+		  if (eliminar.value) {
+		  	ajaxQuery("Administracion/eliminar_comentario",{"id_comentario":this.value})
+				.then(function(devuelto){			
+			});
+				
+		    swalWithBootstrapButtons(
+		      '¡Operación correcta!',
+		      'Comentario eliminado.',
+		      'success'
+		    ).then((value) => {
+					form_anterior(".list_coments")
+			});
+		  } else if (
+		    // Read more about handling dismissals
+		    eliminar.dismiss === swal.DismissReason.cancel
+		  ) {
+		    swalWithBootstrapButtons(
+		      'Operación cancelada',
+		      'No has eliminado el comentario',
+		      'error'
+		    )
+		  }
+		})
+
+
+
+
+
+
 })
 /*FIN FORMULARIO COMENTARIOS*/
 
@@ -443,7 +522,38 @@ $(".icon_bloquear_estado").click(function() {
 		  }
 		});
 
+		const swalWithBootstrapButtons = swal.mixin({
+		  confirmButtonClass: 'btn btn-success',
+		  cancelButtonClass: 'btn btn-danger',
+		  buttonsStyling: true,
+		})
 
+		swalWithBootstrapButtons({
+		  title: 'Vas a cancelar un pedido, ¿estas seguro?',
+		  text: "",
+		  type: 'warning',
+		  showCancelButton: true,
+		  confirmButtonText: 'Si, Eliminar',
+		  cancelButtonText: 'Cancelar operación',
+		  reverseButtons: true
+		}).then((eliminar) => {
+		  if (eliminar.value) {
+		  	ajaxQuery("Administracion/actualizar_pedido",{"pedido":id.substr(-1),"state":5})
+				.then(function(devuelto){			
+			});
+			$(id+" select").val(5)
+			$(id+" select").css("color","red")	
+		  } else if (
+		    // Read more about handling dismissals
+		    eliminar.dismiss === swal.DismissReason.cancel
+		  ) {
+		    swalWithBootstrapButtons(
+		      'Operación cancelada',
+		      'No has cancelado el pedido',
+		      'error'
+		    )
+		  }
+		})
 	}
 
 
