@@ -25,6 +25,7 @@ $(".form_client #form_localidad_cliente").val(datos_usuario[0].localidad);
 $(".form_client #form_provincia_cliente").val(datos_usuario[0].provincia);
 $(".form_client #form_correo_cliente").val(datos_usuario[0].correo);
 $(".form_client #form_telefono_cliente").val(datos_usuario[0].telefono);
+$(".form_client #id_usuario").val(datos_usuario[0].id_usuario);
 }
 
 
@@ -156,9 +157,19 @@ $("#btn_guardar_datos").click(function(e){
 		})
 	}
 
-	else
-	{
+	else{
 
+		var json = {}
+		for (var i = 0; i < datos_usuario.length; i++) {
+			json[i]=datos_usuario[i];
+		}
+		console.log(json)
+
+		ajaxQuery("Usuario/guardar_datos",json)
+		.then(function(devuelto){
+			
+
+		});
 	}
 
 })

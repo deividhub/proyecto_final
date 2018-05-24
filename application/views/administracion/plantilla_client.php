@@ -27,7 +27,7 @@
 				<input type="text" id="form_apellidos_cliente" name="apellidos">	
 
 				<label>Fecha nacimiento: </label>
-				<input type="date" id="form_fecha_cliente" name="fecha">
+				<input type="date" id="form_fecha_cliente" name="fecha_nac">
 
 				<label>Domicilio: </label>
 				<input type="text" id="form_domicilio_cliente" name="domicilio">
@@ -43,6 +43,7 @@
 
 				<label>Teléfono: </label>
 				<input type="text" id="form_telefono_cliente" name="telefono">
+				<input type="hidden" name="id_usuario" id="id_usuario">
 				
 				<button type='submit' id="btn_guardar_datos">Guardar</button>				
 

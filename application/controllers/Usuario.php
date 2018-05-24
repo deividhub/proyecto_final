@@ -18,6 +18,7 @@ class Usuario extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->model('Usuario_model');
 		$this->load->model('Comentario_model');
+		$this->load->model('Administracion_model');
 	}
 
 	// solo llamar a la funcion
@@ -54,5 +55,20 @@ class Usuario extends CI_Controller {
 		echo json_encode("¡Contraseña modificada con exito!");
 	}
 
+	public function guardar_datos(){
+		$usuario = array(
+	        'nombre' => $this->input->post('nombre'),
+	        'apellidos'  => $this->input->post('apellidos'),
+	        'correo'  => $this->input->post('correo'),
+	        'fecha_nac'  => $this->input->post('fecha_nac'),
+	        'telefono'  => $this->input->post('telefono'),
+	        'domicilio'  => $this->input->post('domicilio'),
+	        'provincia'  => $this->input->post('provincia'),
+	        'localidad'  => $this->input->post('localidad')
+		);
+		$id=$this->input->post('id_usuario');
+		$this->Administracion_model->editar_usuario($usuario,$id);
+		echo json_encode($this->input->post('nombre'));
+	}
 
 }
