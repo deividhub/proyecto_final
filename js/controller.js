@@ -115,6 +115,8 @@ function generar_elementos_carrito(){
 		else{
 			precio=objetos[i]['precio']
 		}
+		console.log(precio+"njdd")
+		console.log("njdd")
 		$(".section_creacion_articulos").append("<article class='carrito_producto'><img src='"+objetos[i]['imagen']+"'><ul><li>"+objetos[i]['nombre_producto']+"</li><li>Talla: "+objetos[i]['desc_talla']+"</li><li>"+objetos[i]['color']+"</li><li>Cantidad:"+objetos[i]['count']+"</li><li>Precio: "+precio+"€</li></ul><ul class='ul_del_producto'><li><button type='button' class='btn_eliminar_producto' value="+objetos[i]['id_elemento']+"><i class='material-icons'>delete_forever</i></button></li></ul></article>")
 	}
 	carrito_precio_total();

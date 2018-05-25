@@ -167,14 +167,58 @@ $("#btn_guardar_datos").click(function(e){
 
 		ajaxQuery("Usuario/guardar_datos",json)
 		.then(function(devuelto){
-			
-
+			swal({
+			  position: 'top-end',
+			  type: 'success',
+			  title: 'Datos modificados',
+			  showConfirmButton: false,
+			  timer: 1500
+			})
 		});
 	}
 
 })
 
 /*Fin editar usuario*/
+
+$("#btn_rec_contraseña").click(function(){
+	swal.mixin({
+		  input: 'password',
+		  confirmButtonText: 'Siguiente &rarr;',
+		  cancelButtonText: 'Cancelar',
+		  showCancelButton: true,
+		  progressSteps: ['1', '2']
+		}).queue([
+		  {
+		    title: 'Recuperar contraseña',
+		    text: 'Introduce una nueva contraseña'
+		  },
+		  'Introducela de nuevo',
+		]).then((result) => {
+		  if (result.value) {
+		  	if(result.value[0]==result.value[1]){
+		  		ajaxQuery("Usuario/recuperar_contrasena",{"pass":result.value[1]})
+					.then(function(devuelto){
+						swal({
+					      title: '¡Perfecto!',
+					      html:
+					        'Tu contraseña ha sido modificada con exito.',
+					      confirmButtonText: 'Ok!'
+					    })
+
+				});
+		  	}
+		  	else{
+		  		swal({
+				  type: 'error',
+				  title: 'Oops...',
+				  text: '¡Las contraseñas no coinciden!',
+				})
+		  	}
+		  }
+	})
+})
+
 
 
 /*FUNCIONES PANEL USUARIO*/
@@ -195,11 +239,7 @@ ajaxQuery("Usuario/pedidos")
 });
 
 
-ajaxQuery("Usuario/favoritos")
-.then(function(devuelto){
-	var array_favoritos=JSON.parse(devuelto);
 
-});
 
 
 ajaxQuery("Usuario/obtener_comentarios")
@@ -209,45 +249,24 @@ ajaxQuery("Usuario/obtener_comentarios")
 });
 
 
-swal.mixin({
-  input: 'password',
-  confirmButtonText: 'Siguiente &rarr;',
-  cancelButtonText: 'Cancelar',
-  showCancelButton: true,
-  progressSteps: ['1', '2']
-}).queue([
-  {
-    title: 'Recuperar contraseña',
-    text: 'Introduce una nueva contraseña'
-  },
-  'Introducela de nuevo',
-]).then((result) => {
-  if (result.value) {
-  	if(result.value[0]==result.value[1]){
-  		ajaxQuery("Usuario/recuperar_contrasena",{"pass":result.value[1]})
-			.then(function(devuelto){
-				swal({
-			      title: '¡Perfecto!',
-			      html:
-			        'Tu contraseña ha sido modificada con exito.',
-			      confirmButtonText: 'Ok!'
-			    })
-
-		});
-  	}
-  	else{
-  		swal({
-		  type: 'error',
-		  title: 'Oops...',
-		  text: '¡Las contraseñas no coinciden!',
-		  footer: '<a href>Intentalo de nuevo</a>',
-		})
-  	}
-  }
-})
 
 
 */
+
+$(".favoritos_cliente").click(function(){
+	ajaxQuery("Usuario/favoritos")
+	.then(function(devuelto){
+		var array_favoritos=JSON.parse(devuelto);
+
+		for (var i = 0; i < array_favoritos.length; i++) {
+			
+			$("#productos_favoritos_scroll").append("<article id='favorito_cliente'><a href=''><img src='"+array_favoritos[i].imagen+"'></a><article id='informacion_favorito'><p><b>Nombre:</b> "+array_favoritos[i].nombre_producto+"</p><p><b>Descripción:</b> "+array_favoritos[i].descripcion+"</p><p><b>Composición:</b> "+array_favoritos[i].composicion+"</p><p><b>Color:</b> "+array_favoritos[i].color+"</p><p><b>Género:</b> "+array_favoritos[i].genero+"</p><p><b>Precio:</b> "+array_favoritos[i].precio+"</p></article></article>");
+			$("#productos_favoritos_scroll").append("<article id='favorito_cliente'><a href=''><img src='"+array_favoritos[i].imagen+"'></a><article id='informacion_favorito'><p><b>Nombre:</b> "+array_favoritos[i].nombre_producto+"</p><p><b>Descripción:</b> "+array_favoritos[i].descripcion+"</p><p><b>Composición:</b> "+array_favoritos[i].composicion+"</p><p><b>Color:</b> "+array_favoritos[i].color+"</p><p><b>Género:</b> "+array_favoritos[i].genero+"</p><p><b>Precio:</b> "+array_favoritos[i].precio+"</p></article></article>");
+			$("#productos_favoritos_scroll").append("<article id='favorito_cliente'><a href=''><img src='"+array_favoritos[i].imagen+"'></a><article id='informacion_favorito'><p><b>Nombre:</b> "+array_favoritos[i].nombre_producto+"</p><p><b>Descripción:</b> "+array_favoritos[i].descripcion+"</p><p><b>Composición:</b> "+array_favoritos[i].composicion+"</p><p><b>Color:</b> "+array_favoritos[i].color+"</p><p><b>Género:</b> "+array_favoritos[i].genero+"</p><p><b>Precio:</b> "+array_favoritos[i].precio+"</p></article></article>");
+		}
+
+	});
+})
 
 
 });

@@ -2468,7 +2468,7 @@
 
 
 		#administrar_cliente aside ul li{
-			padding: 10px 0;
+			padding: 10px 0 10px 10px;
 		}
 		
 
@@ -2478,6 +2478,25 @@
 		#administrar_cliente aside ul li:hover{
 			background: #c1b497;
 		}
+		
+
+		/*---------------*/
+
+
+		#administrar_cliente h1{
+			font-size: 24px;
+			margin: 2% 0 1% 0;
+			color: #c1b497;
+		}
+		
+
+		/*---------------*/
+
+
+		.ocultar_cliente{
+			display: none;
+		}
+
 		
 	/*Fin Aside del panel del cliente*/
 	
@@ -2492,16 +2511,6 @@
 			border: 1px solid black;
 			background: #f1f1f1;
 			text-align: center;
-		}
-		
-
-		/*---------------*/
-
-
-		#datos_personales h1{
-			font-size: 24px;
-			margin: 2% 0 1% 0;
-			color: #c1b497;
 		}
 		
 
@@ -2526,7 +2535,7 @@
 			color: white;
 			margin: 6% 0 2% 0;
 			padding: 1%;
-			width: 90%;
+			width: 100%;
 		}
 		
 
@@ -2534,7 +2543,7 @@
 
 
 		.form_client input{
-			width: 92%;
+			width: 100%;
 			padding: 10px 0;
 			border: 0;
 			border-bottom: 1px solid lightgrey;
@@ -2554,7 +2563,17 @@
 		/*---------------*/
 
 
-		.form_client button{
+		.form_client section{
+			width: 100%;
+			display: flex;
+			justify-content: space-around;
+		}
+
+
+		/*---------------*/
+
+
+		.form_client #btn_guardar_datos{
 			transform-style: preserve-3d;
 		    border: none;
 		    background: #c1b497;
@@ -2567,14 +2586,14 @@
 		    transition: all 500ms ease;
 		    margin-top: 20px;
 		    cursor: pointer;
-		    width: 40%;
+		    width: 45%;
 		}
 
 
 		/*---------------*/	
 
 
-		.form_client button::after {
+		.form_client  #btn_guardar_datos::after{
 		    top: -100%;
 		    left: 0px;
 		    width: 100%;
@@ -2593,12 +2612,133 @@
 		/*---------------*/	
 
 
-		.form_client button:hover {
+		.form_client #btn_guardar_datos:hover {
+			transform-origin: center bottom;
+			transform: rotateX(-90deg) translateY(100%);
+		}
+
+
+		/*---------------*/
+
+
+		.form_client #btn_rec_contraseña{
+			transform-style: preserve-3d;
+		    border: none;
+		    background: grey;
+		    color: #f2f2f2;
+		    padding: 10px;
+		    font-size: 18px;
+		    border-radius: 5px;
+		    position: relative;
+		    box-sizing: border-box;
+		    transition: all 500ms ease;
+		    margin-top: 20px;
+		    cursor: pointer;
+		    width: 45%;
+		}
+
+
+		/*---------------*/	
+
+
+		.form_client  #btn_rec_contraseña::after{
+		    top: -100%;
+		    left: 0px;
+		    width: 100%;
+		    padding: 10px 0;
+		    position: absolute;
+		    background: #c1b497;
+		    border-radius: 5px;
+			font-family: FontAwesome;
+			content:"  \f13e";
+			transform-origin: left bottom;
+		    transform: rotateX(90deg);
+		    font-size: 23px;
+		}
+
+
+		/*---------------*/	
+
+
+		.form_client #btn_rec_contraseña:hover {
 			transform-origin: center bottom;
 			transform: rotateX(-90deg) translateY(100%);
 		}
 
 	/*Fin Panel de cliente*/
+
+
+	/*---------------*/
+
+
+	/*Panel pedidos*/
+
+	/*Fin panel pedidos*/
+
+
+	/*---------------*/
+
+
+	/*Panel comentarios*/
+
+	/*Fin panel comentarios*/
+
+
+	/*---------------*/
+
+
+	/*Panel favoritos*/
+
+		#favoritos_cliente{
+			width: 85%;
+			border: 1px solid black;
+			background: #f1f1f1;
+			text-align: center;
+		}
+
+
+		/*---------------*/	
+
+
+		#productos_favoritos{
+			width: 70%;
+			border: 1px solid black;
+			height: 400px;
+			z-index: 200;
+			overflow: hidden;
+			margin: auto;
+		}
+
+		/*---------------*/	
+
+
+		#productos_favoritos_scroll{
+			overflow-y: scroll;
+			height: 400px;
+			width: 100%;
+			margin-right: -100px;
+			padding-right: 100px;
+
+
+
+		}
+
+
+
+		#favorito_cliente{
+			width: 100%;
+			display: flex;
+			justify-content: space-around;
+			margin: 20px 0;
+			padding-bottom: 20px;
+			border-bottom: 2px solid #c1b497;
+		}
+
+		#favorito_cliente img{
+			width: 100px;
+			height: 100px;
+		}
+	/*Fin panel favoritos*/
 
 /*FIN ADMINISTRACIÓN USUARIO*/
 
