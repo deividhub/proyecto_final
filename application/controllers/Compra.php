@@ -18,6 +18,8 @@ class Compra extends CI_Controller {
 	    parent::__construct();
 		$this->load->helper('url');
 		$this->load->model('Productos_model');
+		$this->load->library('Pdf');
+
 	}
 
 
@@ -51,6 +53,7 @@ class Compra extends CI_Controller {
 		$datos_producto=$this->Productos_model->obtener_precio_producto($var['producto']);
 		foreach ($datos_producto as $key) {
 			$var['precio']=$key->precio;
+			$var['precio_ant']=$key->precio_ant;
 			$var['id_tipo_producto']=$key->id_tipo_producto;
 			$var['nombre_producto']=$key->nombre_producto;
 			$var['color']=$key->color;
@@ -71,13 +74,47 @@ class Compra extends CI_Controller {
 	}
 
 	public function fin_compra(){
-		$productos=$this->input->post("productos");
-		$usuario=$this->input->post("usuario");
-		$precio=$this->input->post("total");
-		$precio=(int)$precio;
-		$fecha=getdate();
-		$fecha=$fecha['mday']."-".$fecha['mon']."-".$fecha['year']." Hora: ".$fecha['hours'].":".$fecha['minutes'].":".$fecha['seconds'];
-		$this->Productos_model->generar_pedido($productos,$usuario,$precio,$fecha);
+		//$productos=$this->input->post("productos");
+		//$usuario=$this->input->post("usuario");
+		//$precio=$this->input->post("total");
+		//$precio=(int)$precio;
+		//$fecha=getdate();
+		//$fecha=$fecha['mday']."-".$fecha['mon']."-".$fecha['year']." Hora: ".$fecha['hours'].":".$fecha['minutes'].":".$fecha['seconds'];
+		//$this->Productos_model->generar_pedido($productos,$usuario,$precio,$fecha);
+
+        $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->SetCreator(PDF_CREATOR);
+        $pdf->SetAuthor('DWNPD');
+        $pdf->SetTitle('Tu pedido');
+        $pdf->SetSubject('');
+        $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+        $pdf->setFooterData($tc = array(0, 64, 0), $lc = array(0, 64, 128));
+        $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+        $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+        $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+        $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+        $pdf->setFontSubsetting(true);
+        $pdf->SetFont('freemono', '', 14, '', true);
+        $pdf->AddPage();
+        $pdf->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => array(196, 196, 196), 'opacity' => 1, 'blend_mode' => 'Normal'));
+
+
+        //preparamos y maquetamos el contenido a crear
+        $html = '';
+        $html .= "<style type=text/css>";
+        $html .= "</style>";
+        $html .= "<h2>PRUEBA</h2>";
+
+        
+
+        $pdf->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 1, $fill = 0, $reseth = true, $align = '', $autopadding = true);
+        $nombre_archivo = utf8_decode("Pedido.pdf");
+		echo json_encode($pdf->Output($nombre_archivo, 'I')); //Envía como salida del documento  
+
 	}
 
 

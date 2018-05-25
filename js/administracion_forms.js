@@ -180,10 +180,11 @@ $("button#editproduct").click(function(){
 		var array=JSON.parse(devuelto);
 		for(var i=0;i<array.length;i++){
 			$("input[name='nombre_producto']").val(array[0].nombre_producto)
-			$("input[name='genero']").val(array[0].genero)
+			$("select[name='genero']").val(array[0].genero)
 			$("input[name='id_tipo_producto']").val(array[0].id_tipo_producto)
 			$("input[name='color']").val(array[0].color)
 			$("input[name='precio']").val(array[0].precio)
+			$("input[name='precio_oferta']").val(array[0].precio_ant)
 			$("input[name='descripcion']").val(array[0].descripcion)
 			$("input[name='id_estilo']").val(array[0].id_estilo)
 			$("input[name='composicion']").val(array[0].composicion)
@@ -193,15 +194,96 @@ $("button#editproduct").click(function(){
 	});
 })
 
-$("#guardar_cambios_producto").click(function(){
-	var json={"id_producto":$("input[name='id_producto']").val(),"nombre_producto":$("input[name='nombre_producto']").val(),"color":$("input[name='color']").val(),"id_estilo":$("input[name='id_estilo']").val(),"precio":$("input[name='precio']").val(),"descripcion":$("input[name='descripcion']").val(),"composicion":$("input[name='composicion']").val(),"genero":$("input[name='genero']").val(),"id_tipo_producto":$("input[name='id_tipo_producto']").val(),"imagen":localStorage.imagen_subida}
-		ajaxQuery("Administracion/editar_producto",json)
-		.then(function(devuelto){
-		swal("Operación correcta!", "Datos de "+$("input[name='nombre_producto']").val()+" modificados.", "success")
-			.then((value) => {
-				form_anterior(".list_product")
-		});		
-	});
+$("#guardar_cambios_producto").click(function(e){
+
+var mensaje="Errores encontrados: \n";
+   	var comprobando=true;
+
+	    if ($("input[name='nombre_producto']").val().length<5) {
+	    	mensaje=mensaje+"El nombre debe tener mínimo 5 caracteres\n";
+	    	comprobando=false;
+	   	}
+
+	   	if ($("input[name='id_estilo']").val().length==0) {
+	   		mensaje=mensaje+"No has seleccionado un estilo\n";
+	   			    	comprobando=false;
+
+   		}
+
+   		if ($("input[name='color']").val().length<3) {
+	   		mensaje=mensaje+"No has introducido un color valido\n";
+	   			    	comprobando=false;
+
+
+   		}
+
+	   	if ($("input[name='descripcion']").val().length<10) {
+	   		mensaje=mensaje+"La descripción debe tener mínimo 10 caracteres\n";
+	   			    	comprobando=false;
+
+
+	   	}
+
+	   	if ($("input[name='precio']").val()<1) {
+	  	   	mensaje=mensaje+"El precio no puede ser negativo.\n";
+	  	   		    	comprobando=false;
+	   	}
+	   	
+	   	if($("input[name='precio_oferta']").val()>$("input[name='precio']").val()){
+	   		mensaje=mensaje+" El precio en oferta no puede superar al precio inicial";
+	   		comprobando = false;
+	   	}
+	   	if($("input[name='precio_oferta']").val()<0){
+	  	   	mensaje=mensaje+"El precio en oferta no puede ser negativo.\n";
+	  	   		    	comprobando=false;
+	   	}
+
+	   	if ($("input[name='composicion']").val().length<5) {
+	   		mensaje=mensaje+"La composición debe tener mínimo 5 caracteres.\n";
+	   			    	comprobando=false;
+
+
+	   	}
+ 	   	if ($("select[name='genero']").val()==0) {
+	   		mensaje=mensaje+"No has seleccionado género.\n";
+	   			    	comprobando=false;
+
+   		}
+
+   		if($("#files").val()=="" || $("#files").val()==null){
+   			var esimagen=true;
+   		}
+   		else{
+	   		imagenes = new Array("gif", "jpg", "JPG","PNG","png","GIF"); 
+	   		for (var i = 0; i < imagenes.length; i++) {
+	 			if (imagenes[i]==$("#files").val().toString().slice(-3)) {
+	 				var esimagen=true;
+	 				break;
+	 			}
+	   		}
+   		}
+   		if (esimagen!=true) {
+   			mensaje = mensaje +"Una imagen valida debe tener como extensión .gif, .png o .jpg";
+   				    	comprobando=false;
+
+   		}
+   		if (comprobando==false) {
+   			 swal("ERROR", mensaje);
+   			 e.preventDefault();
+   		}
+   		else{
+   			e.preventDefault();
+			var json={"id_producto":$("input[name='id_producto']").val(),"precio_oferta":$("input[name='precio_oferta']").val(),"nombre_producto":$("input[name='nombre_producto']").val(),"color":$("input[name='color']").val(),"id_estilo":$("input[name='id_estilo']").val(),"precio":$("input[name='precio']").val(),"descripcion":$("input[name='descripcion']").val(),"composicion":$("input[name='composicion']").val(),"genero":$("select[name='genero']").val(),"id_tipo_producto":$("input[name='id_tipo_producto']").val(),"imagen":localStorage.imagen_subida}
+				ajaxQuery("Administracion/editar_producto",json)
+				.then(function(devuelto){
+				swal("Operación correcta!", "Datos de "+$("input[name='nombre_producto']").val()+" modificados.", "success")
+					.then((value) => {
+						form_anterior(".list_product")
+				});		
+			});
+	
+   		}
+
 })
 
 $("#filesimg").change(archivo);

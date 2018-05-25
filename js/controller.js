@@ -103,12 +103,19 @@ function generar_elementos_carrito(){
 	$(".section_creacion_articulos .carrito_producto").remove();
 	var objetos=JSON.parse(localStorage.getItem('productos'))
 	var productos_totales=0;
+	var precio = 0;
 	for(var i=0; i<objetos.length; i++){
 		productos_totales=productos_totales+objetos[i].count;
 	}
 	$(".section_creacion_articulos").append("<article class='cantidad_elementos_carrito'>Productos totales: "+productos_totales+"</article>")
 	for(var i=0; i<objetos.length; i++){
-		$(".section_creacion_articulos").append("<article class='carrito_producto'><img src='"+objetos[i]['imagen']+"'><ul><li>"+objetos[i]['nombre_producto']+"</li><li>Talla: "+objetos[i]['desc_talla']+"</li><li>"+objetos[i]['color']+"</li><li>Cantidad:"+objetos[i]['count']+"</li><li>Precio: "+objetos[i]['precio']+"€</li></ul><ul class='ul_del_producto'><li><button type='button' class='btn_eliminar_producto' value="+objetos[i]['id_elemento']+"><i class='material-icons'>delete_forever</i></button></li></ul></article>")
+		if(objetos[i]['precio_ant']!=0){
+			 precio=objetos[i]['precio_ant']
+		}
+		else{
+			precio=objetos[i]['precio']
+		}
+		$(".section_creacion_articulos").append("<article class='carrito_producto'><img src='"+objetos[i]['imagen']+"'><ul><li>"+objetos[i]['nombre_producto']+"</li><li>Talla: "+objetos[i]['desc_talla']+"</li><li>"+objetos[i]['color']+"</li><li>Cantidad:"+objetos[i]['count']+"</li><li>Precio: "+precio+"€</li></ul><ul class='ul_del_producto'><li><button type='button' class='btn_eliminar_producto' value="+objetos[i]['id_elemento']+"><i class='material-icons'>delete_forever</i></button></li></ul></article>")
 	}
 	carrito_precio_total();
 }
@@ -137,8 +144,15 @@ function carrito_precio_total(){
 	//carrito_precio_total
 	var total=0;
 	var parseint=0;
+	var precio=0;
 	for (var i = 0; i < productos.length; i++) {
-		parseint=parseInt(productos[i]['precio']*objetos[i]['count']);
+		if(productos[i]['precio_ant']!=0){
+			precio=productos[i]['precio_ant']
+		}
+		else{
+			precio=productos[i]['precio']
+		}
+		parseint=parseInt(precio*objetos[i]['count']);
 		total=total+parseint;
 	}
 	$("#carrito_precio_total").text(total)

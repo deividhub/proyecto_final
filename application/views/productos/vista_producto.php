@@ -12,6 +12,7 @@ foreach ($producto as $key) {
 	$nombre_producto=$key->nombre_producto;
 	$id_producto=$key->id_producto;
 	$precio=$key->precio;
+	$precio_ant=$key->precio_ant;
 	$genero=$key->genero;
 	$desc=$key->descripcion;
 
@@ -48,7 +49,16 @@ foreach ($producto as $key) {
 		    <li class="li_titulo"><?php echo $nombre_producto; ?></li>
 		    <li class="li_referencia">Referencia: <a href="#"><?php echo $id_producto; ?></a></li>
 		    <li ><?php echo $genero; ?></li>
-		    <li>Precio: <?php echo $precio; ?>€</li>
+		    <li>Precio: <?php
+		    	if($precio_ant!=0){
+					echo $precio_ant;
+		   		 }
+		   		 else{
+		   		 		     	echo $precio; 
+
+		   		}
+
+		     ?>€</li>
 		    <li>Talla:<div>
 
 			<?php 	

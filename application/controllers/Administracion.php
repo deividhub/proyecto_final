@@ -105,6 +105,8 @@ class Administracion extends CI_Controller {
 	}
 
 	public function editar_producto(){
+
+
 		if ($this->input->post('imagen')==null) {
 			$producto = array(
 		        'id_tipo_producto' => $this->input->post('id_tipo_producto'),
@@ -112,6 +114,7 @@ class Administracion extends CI_Controller {
 		        'color'  => $this->input->post('color'),
 		        'id_estilo'  => $this->input->post('id_estilo'),
 		        'precio'  => $this->input->post('precio'),
+		        'precio_ant'  => $this->input->post('precio_oferta'),
 		        'descripcion'  => $this->input->post('descripcion'),
 		        'composicion'  => $this->input->post('composicion'),
 		        'genero'  => $this->input->post('genero'),
@@ -124,6 +127,7 @@ class Administracion extends CI_Controller {
 		        'color'  => $this->input->post('color'),
 		        'id_estilo'  => $this->input->post('id_estilo'),
 		        'precio'  => $this->input->post('precio'),
+		        'precio_ant'  => $this->input->post('precio_oferta'),
 		        'descripcion'  => $this->input->post('descripcion'),
 		        'imagen'  => $this->input->post('imagen'),
 		        'composicion'  => $this->input->post('composicion'),

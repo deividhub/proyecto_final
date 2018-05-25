@@ -1094,6 +1094,7 @@
 
 		.tachado{
 			text-decoration: line-through;
+			color: red;
 		}
 		/*---------------*/
 
@@ -1106,13 +1107,10 @@
 
 
 		#section_article_productos .article_producto button{
-			display: flex;
 			border: none;
-			align-items: center;
-			justify-content: center;
-			width: 100%;
+			width: 50px;
 			background: #c1b497;
-						border-radius: 6px;
+			border-radius: 6px;
 
 			cursor: pointer
 		}
@@ -1254,7 +1252,48 @@
 
 	/*Fin Tooltip*/
 	
-	
+
+	/*Tooltip ver producto*/
+
+	.ver_p_tooltip {
+		visibility: hidden;
+	    width: 120px;
+	    background-color: black;
+	    color: white;
+	    text-align: center;
+	    border-radius: 6px;
+	    padding: 5px 0;
+	    position: absolute;
+	    z-index: 1;
+	    margin: 30px 0 0 -75px;
+	}
+		
+
+		/*---------------*/
+
+
+		.ver_p_tooltip::after {
+		    content: "";
+		    position: absolute;
+		    bottom: 100%;
+		    left: 50%;
+		    margin-left: -5px;
+		    border-width: 5px;
+		    border-style: solid;
+		    border-color: transparent transparent black transparent;
+		}
+		
+
+		/*---------------*/
+		
+		.btn_ver_producto:hover .ver_p_tooltip {
+			visibility: visible;
+		}
+
+			
+
+
+	/*Fin Tooltip*/	
 	/*---------------*/
 
 	

@@ -47,10 +47,19 @@ else{
 		<hr>
 		<p class="nombre_producto"><?php echo $producto->nombre_producto;?></p>
 		<div id="caracteristicas_t_p">
-			<p class="precio_hover tachado"><?php echo $precio; ?>€</p>
-			<p class="precio_hover"><?php echo $precio_ant; ?>€</p>
+			<?php
+				if($precio_ant!=0){
+					echo "<p class='precio_hover tachado'> $precio €</p>";
+					echo "<p class='precio_hover'> $precio_ant €</p>";
+				}
+
+				else{
+					echo "<p class='precio_hover'> $precio €</p>";
+				}
+
+			?>
 			<a class="btn_ver_producto" href="<?php echo base_url().'index.php/Productos/mostrar_producto/'.$id_producto;?>">
-				<button type="button" >Ver producto <i class="material-icons">visibility</i></button>
+				<button type="button" ><i class="material-icons">visibility</i><span class="ver_p_tooltip">Ver producto</span></button>
 			</a>
 		</div>
 	</article>

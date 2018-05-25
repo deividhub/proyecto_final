@@ -126,7 +126,7 @@
 						<th>Genero</th>
 						<th>Color</th>
 						<th>Precio</th>
-						<th>Precio anterior</th>
+						<th>Precio en oferta</th>
 						<th>Descripción</th>
 						<th>Estilo</th>
 						<th>Composición</th>
@@ -169,26 +169,35 @@
 				</div>
 
 				<div class="input_group">
-					<label>Género:</label> <input type="text" name="genero">
+										<label>Género:</label> 
+
+					<select name="genero">
+						<option value="0">Selecciona un genero</option>
+						<option value="Hombre">Hombre</option>
+						<option value="Mujer">Mujer</option>
+					</select>
 				</div>
 
 				<div class="input_group">
 				 	<label>Tipo de producto:</label> <input type="text" name="id_tipo_producto">
 				</div>
 				<div class="input_group">
-					<label>color</label> <input type="text" name="color">
+					<label>Color</label> <input type="text" name="color">
 				</div>
 				<div class="input_group">
-					<label>precio:</label> <input type="text" name="precio">
+					<label>Precio:</label> <input type="number" name="precio">
 				</div>
 				<div class="input_group">
-					<label>descripcion:</label> <input type="text" name="descripcion">
+					<label>Precio oferta:</label> <input type="number" name="precio_oferta">
 				</div>
 				<div class="input_group">
-					<label>estilo:</label> <input type="text" name="id_estilo">
+					<label>Descripción:</label> <input type="text" name="descripcion">
 				</div>
 				<div class="input_group">
-					<label>composicion:</label> <input type="text" name="composicion">
+					<label>Estilo:</label> <input type="text" name="id_estilo">
+				</div>
+				<div class="input_group">
+					<label>Composición:</label> <input type="text" name="composicion">
 				</div>
 				<div class="input_group">
 					<label>Imagen</label><input type="file" name="files[]" value="" id="filesimg">
