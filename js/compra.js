@@ -61,7 +61,7 @@ $("#form_compra_d_u #tc").val(datos_usuario[0].telefono);
 // cuando clickas para comprar
 $(".comprar_final").click(function(){
 
-	if($(".a_final_precio").text()<25){
+	/*if($(".a_final_precio").text()<25){
 		swal({
 		  type: 'error',
 		  title: 'Oops...',
@@ -77,10 +77,11 @@ $(".comprar_final").click(function(){
 		swal("Revisa tu tarjeta de credito, los datos no coinciden")
 	}
 
-	else{
-		/*var xhr = new XMLHttpRequest();
+	else{*/
+		var xhr = new XMLHttpRequest();
 	    xhr.open('POST', base_url+'index.php/Compra/fin_compra', true);
 	    xhr.responseType = 'blob';
+		xhr.setRequestHeader("Content-type", "application/json")
 
 	    xhr.onload = function(e) {
 	      if (this.status == 200) {
@@ -88,13 +89,19 @@ $(".comprar_final").click(function(){
 	        var link = document.createElement('a');
 	        link.href = window.URL.createObjectURL(blob);
 	        link.download = "report.pdf";
-	        link.click();       
-	      }
-	    };*/
+	        link.click();    
+	        swal("Pedido realizado!", "En breves momentos tu pedido será empaquetado, ya te hemos mandado un correo electronico con los datos. Puedes ver su estado en tu perfil y también te hemos generado un documento con datos sobre tu pedido mira en tu carpeta de descargas.")
+				.then((value) => {
+					//localStorage.removeItem("productos")
 
+			 		//location.href="Principal"
+
+			});   
+	      }
+	    };
 		xhr.send(JSON.stringify({'total':$(".a_final_precio").text(),'usuario':localStorage.user,"productos":localStorage.productos})); 
 	
-		$.post({url: base_url+"index.php/Compra/fin_compra",
+		/*$.post({url: base_url+"index.php/Compra/fin_compra",
 		        datatype:"json",
 		  	    data:{'total':$(".a_final_precio").text(),'usuario':localStorage.user,"productos":localStorage.productos},
 		   	    success: function(devuelto){
@@ -105,8 +112,8 @@ $(".comprar_final").click(function(){
 			 		//location.href="Principal"
 
 				});
-		}});
-	}
+		}});*/
+	//}
 
 	
 })
