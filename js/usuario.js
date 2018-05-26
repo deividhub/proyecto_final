@@ -110,12 +110,41 @@ $(document).ready(function(){
 
 		})
 
-
 		ajaxQuery("Principal/comprobar_login")
 		.then(function(devuelto){
 			if(devuelto=="false"){
 				localStorage.removeItem('user')
 			}
+			if(!localStorage.user){
+				ajaxQuery("Principal/cerrar_sesion")
+				.then(function(devuelto){
+					if(sessionStorage.getItem("primeravez")==null && !sessionStorage.conexion){
+
+						 sessionStorage.setItem("conexion",true)
+					     sessionStorage.setItem("primeravez",true);
+							swal({
+						  	  title: "!Bienvenido¡",
+							  type: 'info',
+							  html: "¿Aún no te has registrado? ¡Hazlo rápidamente ahora!",
+							  showCloseButton: true,
+							  showCancelButton: true,
+							  focusConfirm: false,
+							  confirmButtonText:
+							    '<i class="fa fa-thumbs-up"></i> Registrar',
+							  confirmButtonAriaLabel: 'Thumbs up, great!',
+							  cancelButtonText:
+							  '<i class="fa fa-thumbs-down"></i> Mejor después',
+							  cancelButtonAriaLabel: 'Thumbs down',
+							}).then((result) => {
+							  if(result.value==true){
+							  	location.href=base_url+"Principal/login_registro"
+							  }
+							})
+					 }
+				});
+			}
+
+
 
 		});
 
@@ -366,8 +395,8 @@ $(document).ready(function(){
 
 					/*Rellena el article con los pedidos*/
 					$("#pedido_cliente").append("<article><p><b>Estado:</b> "+array_pedidos[i].desc_estado+"</p></article>");
-					<h1>Pedido nº "+array_pedidos[i].id_pedido+"</h1>
-					<p><p>
+					//<h1>Pedido nº "+array_pedidos[i].id_pedido+"</h1>
+					//<p><p>
 				}
 			});
 		})

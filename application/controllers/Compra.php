@@ -170,6 +170,197 @@ class Compra extends CI_Controller {
         $nombre_archivo = utf8_decode("Pedido.pdf");
 		$pdf->Output($nombre_archivo, 'D');
 
+
+
+
+		$configGmail = array(
+		 'protocol' => 'smtp',
+		 'smtp_host' => 'ssl://smtp.gmail.com',
+		 'smtp_port' => 465,
+		 'smtp_user' => 'dwnpdshop@gmail.com',
+		 'smtp_pass' => 'dwnpd2018',
+		 'mailtype' => 'html',
+		 'charset' => 'utf-8',
+		 'newline' => "\r\n"
+		 );    
+		 
+		 //cargamos la configuración para enviar con gmail
+		 $this->email->initialize($configGmail);
+		 
+		 $this->email->from('dwnpdshop@gmail.com');
+		 $this->email->to("david.izkara@gmail.com");
+		 $this->email->subject('Recuperación contraseña DIL');
+		 $this->email->message('<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+ul{
+	list-style: none;
+}
+
+footer{
+	width: 100%;
+	background: black;
+	color: white;
+	display: flex;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+header{
+	border-bottom: 1px solid lightgrey;
+	font-size: 24px;
+	background: black;
+	color: white;
+}
+
+#download_image{
+	width: 100px;
+	cursor: pointer;
+	animation: resplandor 2s infinite;
+	filter: drop-shadow(5px 5px 250px lightgrey);
+
+}
+@keyframes resplandor{
+	to {
+filter: drop-shadow(5px 5px 10px lightgrey);
+	}
+}
+
+
+#imagen_details{
+display: flex;
+}
+#imagen_details img{
+width: 100px;
+}
+
+#imagen_details ul{
+margin:20px 0;
+width: 100%;
+border-bottom: 1px solid lightgrey;
+}
+#final{
+	text-align: right;
+	font-weight: bold;
+	font-size: 20px;
+}
+.titulo{
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.articulo{
+	width: 80%;
+	margin:  20px auto 20px auto;
+	box-shadow: 2px 2px 2px 2px lightgrey;
+	border: 1px solid #c1b497;
+}
+
+
+footer ul{
+	width: 100%;
+	text-align: center;
+}
+
+.logo {
+	color: #c1b497;
+	font-size: 34px!important;
+	text-align: center;
+	text-decoration: underline overline;
+}
+
+
+.saludo{
+	font-size: 20px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+#envio_details li::before{
+content: " -";
+}</style>
+</head>
+<body>
+	<header id="header" class="">
+		<p class="logo">DWNPD-SHOP</p>
+	</header><!-- /header -->
+	<section>
+		<p class="saludo">Hola Manolo estos son los detalles de tu pedido</p>
+		<article id="productos" class="articulo">
+			<ul>
+			    <li class="titulo">Productos comprados</li>
+			</ul>
+			<article id="imagen_details">
+				<ul>
+				    <li><img src="icon.png"></li>
+				</ul>	
+				<ul>
+				    <li>Camiseta chulisima</li>
+				    <li>Color: rojo</li>
+				    <li>Talla: XS</li>
+				    <li>Precio 12.99 €</li>
+				</ul>
+			</article>
+			<article id="imagen_details">
+				<ul>
+				    <li><img src="icon.png"></li>
+				</ul>	
+				<ul>
+				    <li>Camiseta chulisima</li>
+				    <li>Color: rojo</li>
+				    <li>Talla: XS</li>
+				    <li>Precio 12.99 €</li>
+				</ul>
+			</article>
+			<article id="final">
+				<ul>
+				    <li>Precio final del pedido 25€</li>
+				</ul>
+			</article>
+
+		</article>
+
+		<article id="envio" class="articulo">
+			<ul>
+			    <li class="titulo">Detalles del envio</li>
+			</ul>
+			<article id="envio_details">
+				<ul>
+				    <li>El envio sera realizado por ELM 24/7</li>
+				    <li>Desde tu perfil podrás acceder a los detalles del envio.</li>
+				    <li>La empresa encargada del transporte te enviará un email del progreso de tu pedido.</li>
+				    <li>Si el pedido no llega en 2-3 días laborales contacta con elmenvios@gmail.com.</li>
+				</ul>
+			</article>
+
+		</article>
+	</section>
+	<footer>
+		<ul>
+		    <li>¡Traemos nueva App!</li>
+		    <li>¡Descargala aqui abajo!</li>
+		    <li><img src="icon.png" id="download_image"></li>
+		</ul>
+		<ul>
+		    <li>&copy DWNPD-SHOP 2018</li>
+		    <li class="logo">DWNPD</li>
+		</ul>
+		
+	</footer>
+</body>
+</html>');
+		 $this->email->send();
+
+
+
+
+
+
+
 	}
 
 }

@@ -3,10 +3,6 @@ $(document).ready(function(){
 
 
 
-if(!localStorage.conexion){
-	loading();
-	localStorage.setItem("conexion",true)
-}
 ajaxQuery("Principal/registrado")
 .then(function(devuelto){
 	if(devuelto=="true"){
@@ -18,27 +14,7 @@ ajaxQuery("Principal/registrado")
 	})
 	}
 });
-if(sessionStorage.getItem("primeravez")==null){
-     sessionStorage.setItem("primeravez",true);
-		swal({
-	  	  title: "!Bienvenido¡",
-		  type: 'info',
-		  html: "¿Aún no te has registrado? ¡Hazlo rápidamente ahora!",
-		  showCloseButton: true,
-		  showCancelButton: true,
-		  focusConfirm: false,
-		  confirmButtonText:
-		    '<i class="fa fa-thumbs-up"></i> Registrar',
-		  confirmButtonAriaLabel: 'Thumbs up, great!',
-		  cancelButtonText:
-		  '<i class="fa fa-thumbs-down"></i> Mejor después',
-		  cancelButtonAriaLabel: 'Thumbs down',
-		}).then((result) => {
-		  if(result.value==true){
-		  	location.href=base_url+"Principal/login_registro"
-		  }
-		})
- }
+
 
 
 $("#btn_iniciar_sesion").click(function(e){
@@ -57,15 +33,6 @@ $("#btn_iniciar_sesion").click(function(e){
 })
 
 
-
-function loading(){
-	$("body").append("<p class='loading'><i class='material-icons'>remove_from_queue</i><a>Cargando</a></p>")
-	var myVar = setInterval(myTimer, 6000);
-}
-
-function myTimer() {
-	$("body .loading").remove()
-}
 
 
 
