@@ -29,7 +29,28 @@ class Principal extends CI_Controller {
 
 	public function index()
 	{
-			$this->session->unset_userdata('genero');
+
+
+   /*$confing =array(
+    'protocol'=>'smtp',
+    'smtp_host'=>"smtp.gmail.com",
+    'smtp_port'=>'465',
+    'smtp_user'=>"dwnpdshop@gmail.com",
+    'smtp_pass'=>"dwnpd2018",
+    'smtp_crypto'=>'ssl',              
+    'mailtype'=>'html', 
+     'validate' => true
+ 
+    );
+    $this->email->initialize($confing);
+    $this->email->set_newline("\r\n");
+    $this->email->from('dwnpdshop@gmail.com');
+    $this->email->to("david.izkara@gmail.com");
+    $this->email->subject('You Subject');
+    $this->email->message("hoolllaaaa");
+    $this->email->send();*/
+		
+    $this->session->unset_userdata('genero');
 
 		//obtener categorias y estilos.
 		$datos['categorias']=$this->Productos_model->obtener_categorias();

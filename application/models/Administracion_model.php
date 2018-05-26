@@ -36,10 +36,8 @@ class Administracion_model extends CI_Model {
         }
 
          public function eliminar_producto($id){
-
-            $this->db->where('id_producto', $id);
-            $this->db->delete('producto');
-
+            $sql = "UPDATE producto SET estado='ELIMINADO' WHERE id_producto=$id";
+            $query=$this->db->query($sql);
           }
         public function editar_usuario($array_usuario,$id){
 
@@ -54,9 +52,8 @@ class Administracion_model extends CI_Model {
 
         }
         public function eliminar_usuario($id){
-
-          $this->db->where('id_usuario', $id);
-          $this->db->delete('usuario');
+          $sql = "UPDATE usuario SET estado='ELIMINADO' WHERE id_usuario=$id";
+          $query=$this->db->query($sql);
 
         }
         public function obtener_comentarios(){

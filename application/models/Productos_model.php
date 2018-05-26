@@ -21,24 +21,24 @@ class Productos_model extends CI_Model {
 
 
         public function obtener_productos_genero($genero){
-                $sql = "SELECT * FROM producto WHERE genero='$genero' ORDER BY precio";
+                $sql = "SELECT * FROM producto WHERE genero='$genero' AND estado='ACTIVO' ORDER BY precio";
                 $query=$this->db->query($sql);
                 return $query->result();             
         }
 
         public function obtener_productos_rdm(){
 
-                $sql = "SELECT * FROM producto  ORDER BY RAND() LIMIT 4";
+                $sql = "SELECT * FROM producto WHERE estado='ACTIVO' ORDER BY RAND() LIMIT 4";
                 $query=$this->db->query($sql);
                 return $query->result();
         }
         public function obtener_productos(){
                 if($this->session->userdata('genero')){
                     $genero=$this->session->userdata('genero');
-                    $sql = "SELECT * FROM producto WHERE genero='".$genero."' ORDER BY precio";
+                    $sql = "SELECT * FROM producto WHERE genero='".$genero."' AND estado='ACTIVO' ORDER BY precio";
                 }
                 else{
-                    $sql = "SELECT * FROM producto ORDER BY precio";
+                    $sql = "SELECT * FROM producto WHERE estado='ACTIVO' ORDER BY precio";
                 }
                 $query=$this->db->query($sql);
                 return $query->result();
@@ -65,10 +65,10 @@ class Productos_model extends CI_Model {
         public function obtener_productos_tipo($id_tipo_producto){
                 if($this->session->userdata('genero')){
                     $genero=$this->session->userdata('genero');
-                    $sql = "SELECT * FROM producto WHERE id_tipo_producto=$id_tipo_producto AND genero='".$genero."' ORDER BY precio";
+                    $sql = "SELECT * FROM producto WHERE id_tipo_producto=$id_tipo_producto AND estado='ACTIVO' AND genero='".$genero."' ORDER BY precio";
                 }
                 else{
-                    $sql = "SELECT * FROM producto WHERE id_tipo_producto=$id_tipo_producto ORDER BY precio";
+                    $sql = "SELECT * FROM producto WHERE id_tipo_producto=$id_tipo_producto AND estado='ACTIVO' ORDER BY precio";
                 }
                 $query=$this->db->query($sql);
                 return $query->result();
@@ -77,10 +77,10 @@ class Productos_model extends CI_Model {
         public function obtener_productos_estilo($id_estilo){
                 if($this->session->userdata('genero')){
                     $genero=$this->session->userdata('genero');
-                    $sql = "SELECT * FROM producto WHERE id_estilo=$id_estilo AND genero='".$genero."' ORDER BY precio";
+                    $sql = "SELECT * FROM producto WHERE id_estilo=$id_estilo AND estado='ACTIVO' AND genero='".$genero."' ORDER BY precio";
                 }
                 else{
-                    $sql = "SELECT * FROM producto WHERE id_estilo=$id_estilo ORDER BY precio";
+                    $sql = "SELECT * FROM producto WHERE id_estilo=$id_estilo AND estado='ACTIVO' ORDER BY precio";
                 }
                 $query=$this->db->query($sql);
                 return $query->result();

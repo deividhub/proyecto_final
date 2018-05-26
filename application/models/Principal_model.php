@@ -4,7 +4,7 @@
 class Principal_model extends CI_Model {
 
       public function obtener_usuario($correo,$pass){
-         	$sql = "SELECT * FROM usuario WHERE correo='".$correo."' and contraseña='".md5($pass)."'";
+         	$sql = "SELECT * FROM usuario WHERE correo='".$correo."' and contraseña='".md5($pass)."' AND estado='ACTIVO'";
             $query=$this->db->query($sql);
             if($query->num_rows()>0){
                 return $query->result();
@@ -32,7 +32,7 @@ class Principal_model extends CI_Model {
         }
 
         public function recuperar_pass($correo){
-            $sql = "SELECT * FROM usuario WHERE correo='".$correo."'";
+            $sql = "SELECT * FROM usuario WHERE correo='".$correo."' AND estado='ACTIVO'";
             $query=$this->db->query($sql);
             if($query->num_rows()>0){
                 $pass=getdate();

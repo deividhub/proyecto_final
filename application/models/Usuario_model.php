@@ -51,6 +51,12 @@ class Usuario_model extends CI_Model {
                 $sql = "UPDATE usuario SET contraseña='".$pass."' WHERE id_usuario=".$this->session->userdata('id')."";
                 $query=$this->db->query($sql);
         }
+
+
+        public function baja(){
+                $sql = "UPDATE usuario SET correo=NULL, contraseña='".md5("12345")."', nombre=NULL, apellidos=NULL, fecha_nac=NULL, telefono=NULL, domicilio=NULL, provincia=NULL, localidad=NULL, estado='ELIMINADO' WHERE id_usuario=".$this->session->userdata('id')."";
+                $query=$this->db->query($sql);           
+        }
 }
 
 
