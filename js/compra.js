@@ -61,7 +61,7 @@ $("#form_compra_d_u #tc").val(datos_usuario[0].telefono);
 // cuando clickas para comprar
 $(".comprar_final").click(function(){
 
-	/*if($(".a_final_precio").text()<25){
+	if($(".a_final_precio").text()<25){
 		swal({
 		  type: 'error',
 		  title: 'Oops...',
@@ -76,8 +76,11 @@ $(".comprar_final").click(function(){
 	else if($("#credit_number").val().length<16|| $("#credit_number").val().length>16 || $("#credit_person").val().length<8 || $("#credit_exp").val().length<5 || $("#credit_exp").val().length>5 || $("#credit_ccv").val().length<3 || $("#credit_ccv").val().length>3){
 		swal("Revisa tu tarjeta de credito, los datos no coinciden")
 	}
+	else if($("#acept_terms:checked").length==0){
+		swal("Acepta los terminos y condiciones");
+	}
 
-	else{*/
+	else{
 		var xhr = new XMLHttpRequest();
 	    xhr.open('POST', base_url+'index.php/Compra/fin_compra', true);
 	    xhr.responseType = 'blob';
@@ -88,7 +91,7 @@ $(".comprar_final").click(function(){
 	        var blob = new Blob([this.response], {type: 'application/pdf'});
 	        var link = document.createElement('a');
 	        link.href = window.URL.createObjectURL(blob);
-	        link.download = "report.pdf";
+	        link.download = "detalles_pedido.pdf";
 	        link.click();    
 	        swal("Pedido realizado!", "En breves momentos tu pedido será empaquetado, ya te hemos mandado un correo electronico con los datos. Puedes ver su estado en tu perfil y también te hemos generado un documento con datos sobre tu pedido mira en tu carpeta de descargas.")
 				.then((value) => {
@@ -113,7 +116,7 @@ $(".comprar_final").click(function(){
 
 				});
 		}});*/
-	//}
+	}
 
 	
 })

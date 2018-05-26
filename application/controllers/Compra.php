@@ -86,15 +86,16 @@ class Compra extends CI_Controller {
 		$precio=(int)$precio;		
 		$fecha=getdate();
 		$fecha=$fecha['mday']."-".$fecha['mon']."-".$fecha['year']." Hora: ".$fecha['hours'].":".$fecha['minutes'].":".$fecha['seconds'];
-		//$this->Productos_model->generar_pedido($productos,$usuario,$precio,$fecha);
-                $productos_pdf=json_decode($productos);
+		$this->Productos_model->generar_pedido($productos,$usuario,$precio,$fecha);
+        $productos_pdf=json_decode($productos);
+        $numero_pedido=$this->Productos_model->count_pedidos();
 
-      for ($i=0; $i <count($productos_pdf) ; $i++) { 
+      /*for ($i=0; $i <count($productos_pdf) ; $i++) { 
 		$baseFromJavascript = $productos_pdf[$i]->imagen;
 		$data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $baseFromJavascript));
 		$filepath = $_SERVER['DOCUMENT_ROOT']."proyecto_final/images_pedido/".$productos_pdf[$i]->producto.".jpg"; // or image.jpg
 		file_put_contents($filepath,$data);
-        }
+        }*/
 
 
 
@@ -123,24 +124,22 @@ class Compra extends CI_Controller {
         //preparamos y maquetamos el contenido a crear
         $html = '';
         $html .= "<style type=text/css>";
-        $html .= "div{width: 100%;border: 1px solid lightgrey;}";
+        $html .= "div{width: 100%;border: 1px solid lightgrey;margin:30px 0;}";
         $html .= "</style>";
-        $html .= "<h3>Pedido numero 39</h2>";
+        $html .= "<h3>Pedido numero $numero_pedido</h2>";
         $html .= "<h4>Hola ".$this->session->userdata("nombre")." ".$this->session->userdata("apellidos").", estos son los detalles de tu pedido</h2>";
         $html .= "<hr>";
         $html .= "<p>Datos generales:</p>";
-        $html .= "<ul>";
-        $html .= "<li>Fecha del pedido:".$fecha."</li>";
-        $html .= "<li>Entrega prevista: 2-3 dias laborales</li>";
-        $html .= "<li>Empresa encargada de la entrega: ELM 24/7</li>";
-        $html .= "<li>Importe :".$precio." €</li>";
-        $html .= "</ul>";
+        $html .= "<p>Fecha del pedido:".$fecha."</p>";
+        $html .= "<p>Entrega prevista: 2-3 dias laborales</p>";
+        $html .= "<p>Empresa encargada de la entrega: ELM 24/7</p>";
+        $html .= "<p>Importe :".$precio." €</p>";
 
         $html .= "<hr>";
         $html .= "<p>Productos comprados:</p>";
         $html .= "<div id='productos'></div>";
 
-        $contador_pos_imagen=100;
+        //$contador_pos_imagen=200;
         for ($i=0; $i <count($productos_pdf) ; $i++) { 
         	$html .= "<div id='producto'>";
         	$html .= "<p>Nombre del producto: ".$productos_pdf[$i]->nombre_producto."</p>";
@@ -149,12 +148,19 @@ class Compra extends CI_Controller {
         	$html .= "<p>Precio oferta: ".$productos_pdf[$i]->precio_ant."</p>";
         	$html .= "<p>Color: ".$productos_pdf[$i]->color."</p>";
         	$html .= "<p>Cantidad: ".$productos_pdf[$i]->count."</p>";
-        	$html .= "<img src='".$_SERVER['DOCUMENT_ROOT']."proyecto_final/images_pedido/".$productos_pdf[$i]->producto.".jpg'>";
-        	 $pdf->Image($_SERVER['DOCUMENT_ROOT']."proyecto_final/images_pedido/".$productos_pdf[$i]->producto.".jpg", 150, $contador_pos_imagen, 25, 25);
+        	//$html .= $pdf->Image($_SERVER['DOCUMENT_ROOT']."proyecto_final/images_pedido/".$productos_pdf[$i]->producto.".jpg","" , "", 25, 25);
         	$html .= "</div>";
-        	$contador_pos_imagen+=50;
+        	//$contador_pos_imagen+=50;
         }
 
+        $html .= "<div id='productos'>Detalles del envio";
+        $html .= "<p>El pedido aún no ha sido empaquetado, según vaya avanzando el proceso te mandaremos un correo electronico</p>";
+        $html .= "</div>";
+
+
+        $html .= "<footer>";
+        $html .= "<p>¡Gracias por confiar en nosotros!</p>";
+        $html .= "</footer>";
  
 
 

@@ -229,6 +229,14 @@ class Productos_model extends CI_Model {
             return $query->result();
         }
 
+        public function count_pedidos(){
+            $sql = "SELECT count(*) cantidad FROM pedido";
+            $query=$this->db->query($sql); 
+            foreach($query->result() as $key){
+                return $key->cantidad;
+            }
+        }
+
 }
 
 
