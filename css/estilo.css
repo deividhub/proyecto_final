@@ -165,9 +165,17 @@
 
 		.ul_logo li a{
 			color: #c1b497;
-					font-size: 34px!important;
-    text-decoration: underline overline;
+			font-size: 34px!important;
+    		text-decoration: underline overline;
+		}
 
+
+		/*---------------*/
+
+
+		.ul_logo li a:hover{
+			filter: drop-shadow(30px 10px 2px #c1b497);
+			transition: 2s;	
 		}
 
 
@@ -987,8 +995,6 @@
 			width: 100%;
 			display: flex;
 			flex-wrap: wrap;
-			justify-content: center;
-			overflow-y: auto;
 
 		}
 
@@ -999,7 +1005,7 @@
 		#section_article_productos .article_producto{
 			display: flex;
 			flex-direction: column;
-			width: 20%;
+			width: 23%;
 			margin: 0 0 40px 20px;
 			border: 1px solid lightgrey;
 			cursor: pointer;
@@ -1013,7 +1019,7 @@
 		#caracteristicas_t_p{
 			display: none;
 			align-items: center;
-			height: 30px;
+			height: 40px;
 			justify-content: center;
 			border: 1px solid lightgrey;
 			padding: 10px 0;
@@ -1042,10 +1048,12 @@
 
 		.nombre_producto{
 			color: #c1b497;
-			height: 30px;
+			height: 40px;
 			text-align: center;
-			font-size: 24px;
+			font-size: 18px;
 			padding: 5px 0 0 0;
+			word-break: break-all;
+
 			
 		}
 
@@ -1387,6 +1395,7 @@
 
 
 		#carrito ul{
+    		word-break: break-all;
 			width: 100%;
 			display: flex;
 			flex-direction: column;
@@ -2705,8 +2714,11 @@
 			border: 1px solid black;
 			height: 400px;
 			z-index: 200;
+			background: white;
 			overflow: hidden;
 			margin: auto;
+			box-shadow: inset 0px -30px 8px 0px black;
+
 		}
 
 		/*---------------*/	
@@ -2737,6 +2749,7 @@
 		#favorito_cliente img{
 			width: 100px;
 			height: 100px;
+			z-index: -1;
 		}
 	/*Fin panel favoritos*/
 
