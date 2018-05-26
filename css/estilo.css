@@ -2497,6 +2497,10 @@
 			display: none;
 		}
 
+		.seleccionado_cliente{
+			background: #c1b497;
+		}
+
 		
 	/*Fin Aside del panel del cliente*/
 	
