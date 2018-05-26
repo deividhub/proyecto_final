@@ -71,4 +71,11 @@ class Usuario extends CI_Controller {
 		echo json_encode($this->input->post('nombre'));
 	}
 
+	public function baja(){
+		$this->Usuario_model->baja();
+		$array_items = array('nombre', 'correo','id','apellidos','fecha','telefono','domicilio','provincia','localidad');
+		$this->session->unset_userdata($array_items);
+		//redirect("Principal");
+	}
+
 }

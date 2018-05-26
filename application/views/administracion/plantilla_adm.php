@@ -131,6 +131,7 @@
 						<th>Estilo</th>
 						<th>Composición</th>
 						<th>Imagen</th>
+						<th>Estado</th>
 						<th>Acciones</th>
 					</tr>
 				</thead>
@@ -152,6 +153,7 @@
 								<td>".$producto->id_estilo."</td>
 								<td>".$producto->composicion."</td>
 								<td>".$ruta_imagen."</td>
+								<td>".$producto->estado."</td>
 								<td><button type='button' value='".$producto->id_producto."' id='editproduct'><i class='material-icons button edit'>edit</i></button>
 						        <button type='button' value='".$producto->id_producto."' class='deleteproduct'><i class='material-icons button delete'>delete</i></button>
 						      	</td>
@@ -234,6 +236,7 @@
 						<th>Domicilio</th>
 						<th>Provincia</th>
 						<th>Localidad</th>
+						<th>Estado</th>
 						<th>Acciones</th>
 					</tr>
 				</thead>
@@ -252,6 +255,7 @@
 								<td>".$usuario->domicilio."</td>
 								<td>".$usuario->provincia."</td>
 								<td>".$usuario->localidad."</td>
+								<td>".$usuario->estado."</td>
 								<td><button type='button' value='".$usuario->id_usuario."' id='edituser'><i class='material-icons button edit'>edit</i></button>
 						        <button type='button' value='".$usuario->id_usuario."' class='deleteuser'>
 						        	<i class='material-icons button delete'>delete</i>
