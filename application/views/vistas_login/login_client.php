@@ -96,19 +96,13 @@
 		);
 	$provincia = array(	
 		'name' => 'provincia',
-		'maxlength' => 20,
-		'class' => 'soloLetras',
-		'size' => 20,
 		'required' => 1,
-		'placeholder' => 'Provincia'
+		'id' => 'provincia_registro'
 		);
 	$localidad = array(	
 		'name' => 'localidad',
-		'maxlength' => 20,
-		'class' => 'soloLetras',
-		'size' => 20,
 		'required' => 1,
-		'placeholder' => 'Localidad'
+		'id' => 'localidad_registro'
 	);
 	
 	$registrarme = array(	
@@ -205,10 +199,10 @@
 			<?php echo form_input($domicilio); ?>
 			
 			<?php echo form_label('Provincia: ','provincia'); ?>
-			<?php echo form_input($provincia); ?>
+			<?php echo form_dropdown($provincia); ?>
 			
 			<?php echo form_label('Localidad: ','localidad'); ?>
-			<?php echo form_input($localidad); ?>
+			<?php echo form_dropdown($localidad); ?>
 	
 
 		<span id="mensajeCorreo"></span>
@@ -348,11 +342,16 @@
 		});
 
 		//---------CAMPOS SOLO LETRAS/NUMEROS-----------//
-		$('.soloNumeros').on('input', function(){
+		$('.soloNumeros').on('input', function(e){
 			this.value = this.value.replace(/[^0-9]/g,'');
 		});
-		$('.soloLetras').on('input', function(){
-			this.value = this.value.replace(/[^A-Za-z]/g,'');
+		$('.soloLetras').on('keyup', function(e){
+    	var codigo = e.which || e.keyCode;
+    	if(codigo!=32){
+    					this.value = this.value.replace(/[^A-Za-z]/g,' ');
+
+    	}
+
 		});
 		
 

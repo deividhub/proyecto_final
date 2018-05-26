@@ -27,25 +27,89 @@ $(document).ready(function(){
 			$("#btn_pasar_a_caja").text("No has iniciado sesión")
 		}
 
-		//al iniciar sesion se crean estos elementos
-		// localStorage.setItem("AUTH",true) //controla si estas autentificado
-		 //var array=[{"id_usuario":2,"Nombre":"Cliente","apellidos":"ape apello","correo":"abcd@gmail.com","fecha_nacimiento":"2001-01-01","domicilio":"c/Kalea","provincia":"Bizkaia","localidad":"Bilbao"}]
-		 //localStorage.setItem("user",JSON.stringify(array)) //aqui se guardan todos los datos del usuario
-		 
 
-		if(localStorage.user){
+		/*----------*/
 
-			var datos_usuario = JSON.parse(localStorage.user)
-			// cargar perfil usuario
-			$(".form_client #form_nombre_cliente").val(datos_usuario[0].nombre);
-			$(".form_client #form_apellidos_cliente").val(datos_usuario[0].apellidos);
-			$(".form_client #form_fecha_cliente").val(datos_usuario[0].fecha_nac);
-			$(".form_client #form_domicilio_cliente").val(datos_usuario[0].domicilio);
-			$(".form_client #form_localidad_cliente").val(datos_usuario[0].localidad);
-			$(".form_client #form_provincia_cliente").val(datos_usuario[0].provincia);
-			$(".form_client #form_correo_cliente").val(datos_usuario[0].correo);
-			$(".form_client #form_telefono_cliente").val(datos_usuario[0].telefono);
-			$(".form_client #id_usuario").val(datos_usuario[0].id_usuario);
+
+		/*Carga los datos del usuario y su provincia*/
+		ajaxQuery("Principal/cargar_provincias")
+			.then(function(devuelto){
+				$("#provincia_registro").append("<option value='abc'>Selecciona una provincia</option>")
+				var array=JSON.parse(devuelto)
+				for (var i = 0; i < array.length; i++) {
+					$("#form_provincia_cliente").append("<option value="+array[i].id+">"+array[i].provincia+"</option>")
+					$("#provincia_registro").append("<option value="+array[i].id+">"+array[i].provincia+"</option>")
+					if(localStorage.user){
+
+						var datos_usuario = JSON.parse(localStorage.user)
+						// cargar perfil usuario
+						$(".form_client #form_nombre_cliente").val(datos_usuario[0].nombre);
+						$(".form_client #form_apellidos_cliente").val(datos_usuario[0].apellidos);
+						$(".form_client #form_fecha_cliente").val(datos_usuario[0].fecha_nac);
+						$(".form_client #form_domicilio_cliente").val(datos_usuario[0].domicilio);
+						$(".form_client #form_correo_cliente").val(datos_usuario[0].correo);
+						$(".form_client #form_telefono_cliente").val(datos_usuario[0].telefono);
+						$(".form_client #id_usuario").val(datos_usuario[0].id_usuario);
+						document.getElementById("form_provincia_cliente").value = datos_usuario[0].provincia;
+
+						carga_localidades();
+					}
+				}
+		});
+
+
+		/*----------*/
+
+
+		/*AL CAMBIAR PROVINCIA DATOS USUARIO*/
+		$("#form_provincia_cliente").change(function(){
+									var datos_usuario = JSON.parse(localStorage.user)
+
+			 ajaxQuery("Principal/cargar_localidades",{"provincia":$("#form_provincia_cliente").val()})
+			.then(function(devuelto){
+				$("#form_localidad_cliente").empty()
+				var array=JSON.parse(devuelto)
+				for (var i = 0; i < array.length; i++) {
+					$("#form_localidad_cliente").append("<option value="+array[i].id+">"+array[i].municipio+"</option>")
+				}
+				
+
+			});		
+		})
+
+		/*AL CAMBIAR PROVINCIA REGISTRO*/
+		$("#provincia_registro").change(function(){
+
+			 ajaxQuery("Principal/cargar_localidades",{"provincia":$("#provincia_registro").val()})
+			.then(function(devuelto){
+				$("#localidad_registro").empty()
+				var array=JSON.parse(devuelto)
+				for (var i = 0; i < array.length; i++) {
+					$("#localidad_registro").append("<option value="+array[i].id+">"+array[i].municipio+"</option>")
+				}
+				
+
+			});		
+		})
+
+		/*----------*/
+
+
+		/*Carga las localidades de la provincia elegida*/
+		function carga_localidades(){
+						var datos_usuario = JSON.parse(localStorage.user)
+
+			 ajaxQuery("Principal/cargar_localidades",{"provincia":$("#form_provincia_cliente").val()})
+			.then(function(devuelto){
+				$("#form_localidad_cliente").empty()
+				var array=JSON.parse(devuelto)
+				for (var i = 0; i < array.length; i++) {
+					$("#form_localidad_cliente").append("<option value="+array[i].id+">"+array[i].municipio+"</option>")
+				}
+				
+				document.getElementById("form_localidad_cliente").value = datos_usuario[0].localidad;
+
+			});			
 		}
 
 	/*FIN COMPROBACIÓN INICIO DE SESIÓN*/
@@ -191,7 +255,8 @@ $(document).ready(function(){
 
 		/*ASIDE*/
 
-			$(".datos_personales").click(function(){
+			$(".datos_personales").click(function(e){
+				e.preventDefault()
 
 				/*Hacer que se quede marcado sólo "Datos personales" en el aside*/
 				$(".datos_personales").addClass("seleccionado_cliente");
@@ -244,16 +309,6 @@ $(document).ready(function(){
 				if(datos_usuario[3].value.length < 6){
 					error = true;
 					mensaje += "<p>El domicilio tiene que tener una dirección completa. </p>";
-				}
-
-				if(datos_usuario[4].value.length == 0){
-					error = true;
-					mensaje += "<p>La provincia no pueden estar vacía. </p>";
-				}
-
-				if(datos_usuario[5].value.length == 0){
-					error = true;
-					mensaje += "<p>La localidad no puede estar vacía. </p>";
 				}	
 
 				if(datos_usuario[6].value.length < 6){
@@ -282,7 +337,7 @@ $(document).ready(function(){
 					}
 					console.log(json)
 
-					ajaxQuery("Usuario/guardar_datos",json)
+					ajaxQuery("Usuario/guardar_datos",{"nombre":json[0].value,"apellidos":json[1].value,"fecha_nac":json[2].value,"domicilio":json[3].value,"provincia":json[4].value,"localidad":json[5].value,"correo":json[6].value,"telefono":json[7].value,"id_usuario":json[8].value})
 					.then(function(devuelto){
 						swal({
 						  position: 'top-end',
@@ -290,7 +345,13 @@ $(document).ready(function(){
 						  title: 'Datos modificados',
 						  showConfirmButton: false,
 						  timer: 1500
-						})
+						})	
+
+						ajaxQuery("Usuario/obtener_datos")
+						.then(function(datos_actualizados){
+								 	localStorage.setItem("user", datos_actualizados);
+							})
+
 					});
 				}
 
@@ -352,7 +413,8 @@ $(document).ready(function(){
 
 	/*PEDIDOS*/
 
-		$(".pedidos_cliente").click(function(){
+		$(".pedidos_cliente").click(function(e){
+			e.preventDefault()
 
 			/*Hacer que se quede marcado sólo "Pedidos" en el aside*/
 			$(".datos_personales").removeClass("seleccionado_cliente");
@@ -373,30 +435,34 @@ $(document).ready(function(){
 			.then(function(devuelto){
 
 				var array_pedidos=JSON.parse(devuelto);
+				$("#pedido_cliente_tabla .nueva").remove();
 				for (var i = 0; i < array_pedidos.length; i++) {
 
-					ajaxQuery("Usuario/productos_del_pedido",{"id_pedido":array_pedidos[i].id_pedido})
-					.then(function(devuelto){
-						var array_productos=JSON.parse(devuelto);
-
-					});
-
-					/*
-					
-						Nº Pedido: id_pedido (array_pedidos)
-						Fecha: fecha_pedido (array_pedidos)
-						Estado: desc_estado (array_pedidos)
-						Producto: nombre_producto (array_productos)
-						Imágen: imagen (array_productos)
-						Precio: precio (array_productos)
-						Precio total: precio_total (array_pedidos)
-
-					*/
-
 					/*Rellena el article con los pedidos*/
-					$("#pedido_cliente").append("<article><p><b>Estado:</b> "+array_pedidos[i].desc_estado+"</p></article>");
-					//<h1>Pedido nº "+array_pedidos[i].id_pedido+"</h1>
-					//<p><p>
+					$("#pedido_cliente_tabla tbody").append("<tr class='nueva'><td>"+array_pedidos[i].id_pedido+"</td><td>"+array_pedidos[i].fecha_pedido+"</td><td>"+array_pedidos[i].desc_estado+"</td><td>"+array_pedidos[i].precio_total+"</td><td><button class='btn_tabla_pedidos' value="+array_pedidos[i].id_pedido+">Detalles...</button></td></tr>");
+
+				}
+			});
+		})
+
+
+		/*----------*/
+
+
+		$(document).on("click",".btn_tabla_pedidos",function(){
+				
+
+			ajaxQuery("Usuario/productos_del_pedido",{"id_pedido":this.value})
+
+			.then(function(devuelto){
+
+				var array_productos=JSON.parse(devuelto);
+				$("body").append("<article id='productos_pedido_cliente'></article>")
+
+				for (var i = 0; i < array_productos.length; i++) {
+
+					$("#productos_pedido_cliente").append("<article id='productos_pedido_cliente2'><img src='"+array_productos[i].imagen+"'><article id='informacion_pedido'><p><b>Nombre: </b>"+array_productos[i].nombre_producto+"</p><p><b>Precio: </b>"+array_productos[i].precio+"</p></article></article>")
+										
 				}
 			});
 		})
@@ -409,7 +475,8 @@ $(document).ready(function(){
 
 	/*FAVORITOS*/
 
-		$(".favoritos_cliente").click(function(){
+		$(".favoritos_cliente").click(function(e){
+			e.preventDefault()
 
 			/*Hacer que se quede marcado sólo "Favoritos" en el aside*/
 			$(".datos_personales").removeClass("seleccionado_cliente");
@@ -430,7 +497,7 @@ $(document).ready(function(){
 			.then(function(devuelto){
 
 				var array_favoritos=JSON.parse(devuelto);
-
+				$("#productos_favoritos_scroll #favorito_cliente").remove()
 				for (var i = 0; i < array_favoritos.length; i++) {
 					
 					/*Rellena el article con los productos favoritos*/

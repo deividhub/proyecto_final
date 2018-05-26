@@ -231,4 +231,17 @@ class Principal extends CI_Controller {
 		$this->load->view('index.html');
 		$this->load->view('vistas_index/footer');		
 	}
+
+
+
+	public function cargar_provincias(){
+		echo json_encode($this->Principal_model->cargar_provincias());
+	}	
+	public function cargar_localidades(){
+		$id_provincia=$this->input->post("provincia");
+		
+		echo json_encode($this->Principal_model->cargar_localidades($id_provincia));
+	}
+
+
 }

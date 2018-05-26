@@ -26,7 +26,7 @@ class Principal_model extends CI_Model {
                 $provincia = $datos['provincia'];
                 $localidad = $datos['localidad'];
 
-                $sql = "INSERT INTO usuario VALUES('$id_usuario','$id_tipo_usuario','$correo','$contraseña','$nombre','$apellidos','$fecha_nac','$telefono','$domicilio','$provincia','$localidad')";
+                $sql = "INSERT INTO usuario VALUES('$id_usuario','$id_tipo_usuario','$correo','$contraseña','$nombre','$apellidos','$fecha_nac','$telefono','$domicilio','$provincia','$localidad','ACTIVO')";
                 $query=$this->db->query($sql);
                 
         }
@@ -50,6 +50,20 @@ class Principal_model extends CI_Model {
         }
 
 
+
+        public function cargar_provincias(){
+            $sql = "SELECT * FROM provincias ORDER BY provincia";
+            $query=$this->db->query($sql);
+            return $query->result();
+            
+        } 
+
+        public function cargar_localidades($id){
+            $sql = "SELECT * FROM municipios WHERE provincia_id=$id ORDER BY municipio";
+            $query=$this->db->query($sql);
+            return $query->result();
+            
+        }             
 
 }
 

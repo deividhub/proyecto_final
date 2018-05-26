@@ -27,7 +27,7 @@ class Usuario_model extends CI_Model {
         // select para obtener los pedidos
         public function obtener_pedidos_usuario(){
 
-                $sql = "SELECT * FROM pedido, estado_pedido WHERE id_usuario=".$this->session->userdata('id')." AND pedido.id_estado= estado_pedido.id_estado ORDER BY pedido.id_estado ASC";
+                $sql = "SELECT * FROM pedido, estado_pedido WHERE id_usuario=".$this->session->userdata('id')." AND pedido.id_estado= estado_pedido.id_estado ORDER BY pedido.id_pedido ASC";
                 $query=$this->db->query($sql);
                 return $query->result();   
         }

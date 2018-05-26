@@ -68,7 +68,6 @@ class Usuario extends CI_Controller {
 		);
 		$id=$this->input->post('id_usuario');
 		$this->Administracion_model->editar_usuario($usuario,$id);
-		echo json_encode($this->input->post('nombre'));
 	}
 
 	public function baja(){
@@ -76,6 +75,10 @@ class Usuario extends CI_Controller {
 		$array_items = array('nombre', 'correo','id','apellidos','fecha','telefono','domicilio','provincia','localidad');
 		$this->session->unset_userdata($array_items);
 		//redirect("Principal");
+	}
+
+	public function obtener_datos(){
+		echo json_encode($this->Usuario_model->obtener_usuario($this->session->userdata('id')));
 	}
 
 }

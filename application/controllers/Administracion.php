@@ -90,7 +90,8 @@ class Administracion extends CI_Controller {
 	        'descripcion'  => $this->input->post('descripcion'),
 	        'imagen'  => $this->input->post('imagen'),
 	        'composicion'  => $this->input->post('composicion'),
-	        'genero'  => $this->input->post('genero')
+	        'genero'  => $this->input->post('genero'),
+	        'estado'  => 'ACTIVO'
 		);
 		
 		$result=$this->Administracion_model->crear_producto($producto);
@@ -182,7 +183,8 @@ class Administracion extends CI_Controller {
 	        'telefono'  => $this->input->post('telefono'),
 	        'domicilio'  => $this->input->post('domicilio'),
 	        'provincia'  => $this->input->post('provincia'),
-	        'localidad'  => $this->input->post('localidad')
+	        'localidad'  => $this->input->post('localidad'),
+	        'estado'  => 'ACTIVO'
 		);
 		$this->Administracion_model->crear_usuario($usuario);
 		echo json_encode($this->input->post('nombre'));

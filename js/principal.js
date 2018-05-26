@@ -2,7 +2,6 @@ $(document).ready(function(){
 
 
 
-
 ajaxQuery("Principal/registrado")
 .then(function(devuelto){
 	if(devuelto=="true"){

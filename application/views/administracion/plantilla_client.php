@@ -37,10 +37,12 @@
 					<input type="text" id="form_domicilio_cliente" name="domicilio">
 
 					<label>Provincia: </label>
-					<input type="text" id="form_provincia_cliente" name="provincia">
+					<select name="provincia" id="form_provincia_cliente">
+					</select>
 
 					<label>Localidad: </label>
-					<input type="text" id="form_localidad_cliente" name="localidad">
+					<select name="localidad" id="form_localidad_cliente">
+					</select>
 
 					<label>Correo electrónico: </label>
 					<input type="email" id="form_correo_cliente" name="correo">
@@ -72,9 +74,23 @@
 
 				<h1>Estos son tus pedidos</h1>
 
-				<article id="pedido_cliente">
+				<div class="tabla_scroll">
+					<table id="pedido_cliente_tabla" class="tabla_muestra_elementos">
+					
+						<thead>
+							<th>Nº Pedido</th>
+							<th>Fecha</th>
+							<th>Estado</th>
+							<th>Precio total</th>
+							<th>Mostrar productos</th>
+						</thead>
 
-				</article>
+						<tbody>
+							
+						</tbody>				
+
+					</table>
+				</div>
 
 				<p class="developed">Desarrollado por: Nerea - Pedro - David</p>
 				
