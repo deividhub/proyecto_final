@@ -2343,12 +2343,7 @@
 
 		/*---------------*/
 
-		#registro select{
-			padding: 10px 0;
-		}
 
-
-		/*---------------*/
 		#login_client hr{
 			border: 0.5px solid #c1b497;
 			margin-top: 5%;
@@ -2586,7 +2581,7 @@
 
 		#administrar_cliente h1{
 			font-size: 24px;
-			margin: 2% 0 2% 0;
+			margin: 2% 0 1% 0;
 			color: #c1b497;
 		}
 		
@@ -2640,7 +2635,7 @@
 			color: white;
 			margin: 6% 0 2% 0;
 			padding: 1%;
-			width: 98%;
+			width: 100%;
 		}
 		
 
@@ -2660,27 +2655,6 @@
 
 
 		.form_client input:focus{
-			outline-style:none;
-			border-bottom: 1px solid black;
-		}
-
-
-		/*---------------*/
-
-
-		.form_client select{
-			width: 100%;
-			padding: 10px 0;
-			border: 0;
-			border-bottom: 1px solid lightgrey;
-			margin-bottom: 20px;
-		}
-
-
-		/*---------------*/
-
-
-		.form_client select:focus{
 			outline-style:none;
 			border-bottom: 1px solid black;
 		}
@@ -2799,6 +2773,7 @@
 
 	/*Panel pedidos*/
 
+<<<<<<< HEAD
 		#pedidos_cliente{
 			width: 85%;
 			border: 1px solid black;
@@ -2948,7 +2923,6 @@
 
 		}
 
-		/*---------------*/	
 
 
 		#favorito_cliente{
@@ -2960,15 +2934,11 @@
 			border-bottom: 2px solid #c1b497;
 		}
 
-		/*---------------*/	
-
-
 		#favorito_cliente img{
 			width: 100px;
 			height: 100px;
 			z-index: -1;
 		}
-
 	/*Fin panel favoritos*/
 
 /*FIN ADMINISTRACIÓN USUARIO*/
@@ -3663,3 +3633,61 @@
 .apple-not-allowed{
 	cursor: not-allowed;
 }
+/*MENSAJE CAMBIO DE CONTRASEÑA*/
+
+#cajaExterior{
+	border: 1px outset black;
+	border-radius: 10px;
+	padding: 3%;
+	max-width: 620px;
+	margin: auto;
+	-webkit-box-shadow: 10px 10px 18px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 18px 0px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 18px 0px rgba(0,0,0,0.75);
+	animation:aparecer 2s;	
+}
+#caja1CC{
+	animation:aparecer 2s;
+	animation-delay: 1s;
+	opacity: 0;
+	animation-fill-mode: forwards;
+}
+#caja2CC{
+	margin-top: 2%;
+	width: 100%;
+	text-align: center;
+	animation:aparecer 2s;
+	animation-delay: 2s;
+	opacity: 0;
+	animation-fill-mode: forwards;
+}
+#caja3CC{
+	margin-top: 3%;
+	border:2px yellow outset;
+	border-radius: 10px;
+	padding: 2%;
+	padding-top: 0px;
+	background-color: rgba(255,211,56,0.3);
+	animation:aparecer 2s;
+	animation-delay: 3s;
+	opacity: 0;
+	animation-fill-mode: forwards;
+}
+#caja4CC{
+	width: 100%;
+	text-align: right;
+	margin-top: 4%;
+	animation:aparecer 2s;
+	animation-delay: 4s;
+	opacity: 0;
+	animation-fill-mode: forwards;
+}
+@keyframes aparecer {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.imgCC{
+	width: 20px;
+}
+
+/*FIN MENSAJE CAMBIO DE CONTRASEÑA*/
