@@ -2976,3 +2976,58 @@
 	content: "\f023";
 	font-size: 25px;
 }
+
+
+/*MENSAJE CAMBIO DE CONTRASEÑA*/
+
+#cajaExterior{
+	border: 1px outset black;
+	border-radius: 10px;
+	padding: 3%;
+	animation:aparecer 2s;
+	font-size: 13px;
+}
+#caja1CC{
+	animation:aparecer 2s;
+	animation-delay: 1s;
+	opacity: 0;
+	animation-fill-mode: forwards;
+}
+#caja2CC{
+	margin-top: 2%;
+	width: 100%;
+	text-align: center;
+	animation:aparecer 2s;
+	animation-delay: 2s;
+	opacity: 0;
+	animation-fill-mode: forwards;
+}
+#caja3CC{
+	margin-top: 3%;
+	border:2px yellow outset;
+	border-radius: 10px;
+	padding: 2%;
+	padding-top: 0px;
+	background-color: rgba(255,211,56,0.3);
+	animation:aparecer 2s;
+	animation-delay: 3s;
+	opacity: 0;
+	animation-fill-mode: forwards;
+}
+#caja4CC{
+	width: 100%;
+	text-align: right;
+	margin-top: 4%;
+	animation:aparecer 2s;
+	animation-delay: 4s;
+	opacity: 0;
+	animation-fill-mode: forwards;
+}
+@keyframes aparecer {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.imgCC{
+	width: 15px;
+}
+/*FIN MENSAJE CAMBIO DE CONTRASEÑA*/
