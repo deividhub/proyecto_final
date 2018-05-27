@@ -166,6 +166,7 @@
 			</table>
 		</article>
 		<form action="" method="POST" accept-charset="utf-8" id="form_editar_producto" class="edit_form">
+				<h1>Edición de producto</h1>
 				<div class="input_group">
 					<label>Nombre:</label> <input type="text" name="nombre_producto">
 				</div>
@@ -273,6 +274,8 @@
 			</table>
 		</article>
 			<form action="" method="POST" accept-charset="utf-8" id="form_editar_usuario" class="edit_form">
+				<h1>Edición de usuario</h1>
+
 				<div class="input_group">
 					<label>Nombre:</label> <input type="text" name="nombre">
 				</div>
@@ -294,10 +297,11 @@
 					<label>Domicilio:</label> <input type="text" name="domicilio">
 				</div>
 				<div class="input_group">
-					<label>Provincia:</label> <input type="text" name="provincia">
+					<label>Provincia:</label> <select name="provincia"></select>
 				</div>
 				<div class="input_group">
-					<label>Localidad:</label> <input type="text" name="localidad">
+					<label>Localidad:</label><select id="probando" name="localidad"></select>
+					
 				</div>
 				<input type="hidden" name="id_usuario" value="">
 
@@ -322,7 +326,7 @@
 				</div>
 
 				<div class="input_group">
-				 	<label>Email:</label> <input type="text" name="correo" placeholder="ejemplo@ejemplo.com">
+				 	<label>Email:</label> <input type="email" name="correo" placeholder="ejemplo@ejemplo.com">
 				</div>
 				<div class="input_group">
 					<label>Fecha nacimiento:</label> <input type="date" name="fecha_nac" placeholder="23/01/1990">
@@ -334,10 +338,10 @@
 					<label>Domicilio:</label> <input type="text" name="domicilio" placeholder="C/Kalea Nº20 1ºA">
 				</div>
 				<div class="input_group">
-					<label>Provincia:</label> <input type="text" name="provincia" placeholder="Provincia">
+					<label>Provincia:</label><select name="provincia"></select>
 				</div>
 				<div class="input_group">
-					<label>Localidad:</label> <input type="text" name="localidad" placeholder="Localidad">
+					<label>Localidad:</label><select name="localidad"></select>
 				</div>
 
 				<button type="button" name="" value="" id="btn_crear_usuario">Añadir usuario</button>

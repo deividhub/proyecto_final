@@ -4,7 +4,18 @@
 class Principal_model extends CI_Model {
 
       public function obtener_usuario($correo,$pass){
-         	$sql = "SELECT * FROM usuario WHERE correo='".$correo."' and contraseña='".md5($pass)."' AND estado='ACTIVO'";
+        $sql="SELECT id_usuario,id_tipo_usuario, correo, contraseña, nombre, apellidos, fecha_nac, telefono, domicilio, u.provincia provincia, u.localidad localidad, estado, p.provincia n_provincia, municipio FROM usuario u,provincias p, municipios m WHERE  p.id=u.provincia AND u.localidad=m.id AND correo='".$correo."' and contraseña='".md5($pass)."' AND estado='ACTIVO'";
+            $query=$this->db->query($sql);
+            if($query->num_rows()>0){
+                return $query->result();
+            }
+            else{
+                return "ERROR";
+            }
+        }
+
+        public function obtener_usuario_admin($correo,$pass){
+        $sql="SELECT * FROM usuario WHERE correo='".$correo."' and contraseña='".md5($pass)."' AND estado='ACTIVO'";
             $query=$this->db->query($sql);
             if($query->num_rows()>0){
                 return $query->result();

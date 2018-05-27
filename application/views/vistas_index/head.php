@@ -5,7 +5,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>DWNPD-SHOP</title>
 	<link rel="stylesheet" media="screen and (min-width:800px)" href="<?php echo base_url();?>css/estilo.css">
-	<link rel="stylesheet" media="screen and (max-width:799px)" href="<?php echo base_url();?>css/smartphone.css">
+	<link rel="stylesheet" media="screen and (max-width:799px) and (min-width: 600px)" href="<?php echo base_url();?>css/tablet.css">
+	<link rel="stylesheet" media="screen and (max-width:599px)" href="<?php echo base_url();?>css/smartphone.css">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

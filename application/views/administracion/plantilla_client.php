@@ -8,7 +8,6 @@
 			<ul>
 			    <li class="datos_personales seleccionado_cliente"><a href="#">Datos personales</a></li>
 			    <li class="pedidos_cliente seleccionado_cliente"><a href="#">Pedidos</a></li>
-			    <li class="comentarios_cliente seleccionado_cliente"><a href="#">Comentarios</a></li>
 			    <li class="favoritos_cliente  seleccionado_cliente"><a href="#">Favoritos</a></li>
 			    <li><a href="<?php echo base_url();?>index.php/Principal/contacto">Contacto</a></li>
 			</ul>
@@ -97,40 +96,6 @@
 			</article>
 		
 		<!-- FIN PEDIDOS -->
-
-
-		<!-------------------------------->
-
-		
-		<!-- COMENTARIOS -->
-
-			<article id="comentarios_cliente" class="ocultar_cliente">
-
-				<h1>Gestión de pedidos</h1>
-
-				<form class="form_client">
-				
-					<input type="text" id="form_nombre_cliente">
-
-					<input type="text" id="form_apellidos_cliente">	
-
-					<input type="date" id="form_fecha_cliente">
-
-					<input type="text" id="form_domicilio_cliente">
-
-					<input type="text" id="form_provincia_cliente">
-
-					<input type="text" id="form_localidad_cliente">
-
-					<input type="email" id="form_correo_cliente">
-
-				</form>
-
-				<p class="developed">Desarrollado por: Nerea - Pedro - David</p>
-				
-			</article>
-		
-		<!-- FIN COMENTARIOS -->
 
 
 		<!-------------------------------->

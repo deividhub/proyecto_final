@@ -50,8 +50,8 @@ $("#form_compra_d_u #nc").val(datos_usuario[0].nombre);
 $("#form_compra_d_u #ac").val(datos_usuario[0].apellidos);
 $("#form_compra_d_u #fcc").val(datos_usuario[0].fecha_nac);
 $("#form_compra_d_u #dc").val(datos_usuario[0].domicilio);
-$("#form_compra_d_u #lc").val(datos_usuario[0].localidad);
-$("#form_compra_d_u #pc").val(datos_usuario[0].provincia);
+$("#form_compra_d_u #lc").val(datos_usuario[0].municipio);
+$("#form_compra_d_u #pc").val(datos_usuario[0].n_provincia);
 $("#form_compra_d_u #cc").val(datos_usuario[0].correo);
 $("#form_compra_d_u #tc").val(datos_usuario[0].telefono);
 

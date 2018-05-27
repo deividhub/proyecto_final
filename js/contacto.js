@@ -11,12 +11,9 @@ $(document).ready(function(){
 
    		/*Nombre*/
 	    if ($("#nombre_contacto").val().length==0) {
-	    	alert("d");
 	    	mensaje=mensaje+"El nombre no puede estar vacío.\n";
 	    	comprobando=false;
 			$("#nombre_contacto").css("border", "solid 1px red");
-			document.getElementById('imgAlertaNombreContacto').hidden=false;
-			document.getElementById('imgAlertaNombreContacto').title = "Nombre no válido";
 	   	}
 
 
@@ -28,20 +25,7 @@ $(document).ready(function(){
 	    	mensaje=mensaje+"El correo no puede estar vacío.\n";
 	    	comprobando=false;
 			$("#correo_contacto").css("border", "solid 1px red");
-			document.getElementById('imgAlertaCorreoContacto').hidden=false;
-			document.getElementById('imgAlertaCorreoContacto').title = "Correo no válido";
 	   	}
-
-		var emailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-			
-		else if(emailReg.test($("#correo_contacto").val())==false){
-				
-	    	mensaje=mensaje+"El correo tiene que tener el formato correcto (ejemplo@ejemplo.com).\n";
-	    	comprobando=false;
-			$("#correo_contacto").css("border", "solid 1px red");
-			document.getElementById('imgAlertaCorreoContacto').hidden=false;
-			document.getElementById('imgAlertaCorreoContacto').title = "Correo no válido";
-		}
 
 
 	   	/*----------*/
@@ -52,8 +36,6 @@ $(document).ready(function(){
 	    	mensaje=mensaje+"El mensaje no puede estar vacío.\n";
 	    	comprobando=false;
 			$("#mensaje_contacto").css("border", "solid 1px red");
-			document.getElementById('imgAlertaMensajeContacto').hidden=false;
-			document.getElementById('imgAlertaMensajeContacto').title = "Mensaje no válido";
 	   	}
 
 
@@ -78,7 +60,6 @@ $(document).ready(function(){
 					
 				swal("¡Operación correcta!", "Mensaje enviado.", "success")
 					.then((value) => {
-						form_anterior("#contacto")
 				});	
 
 			});

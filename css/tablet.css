@@ -717,6 +717,14 @@
             font-size: 20px;
         }
         
+
+        /*---------------*/
+        
+
+        .ul_datos_genericos li:last-child{
+            display: flex;
+        }
+        
         
         /*---------------*/
         
@@ -748,15 +756,7 @@
         /*---------------*/
         
 
-        .ul_datos_genericos li:last-child{
-            display: flex;
-            flex-wrap: wrap;
-        }
-        
-        
-        /*---------------*/
         .ul_datos_genericos .btn_talla{
-            order: 2;
             width: 40px;
             height: 40px;
             color: white;
@@ -764,7 +764,7 @@
             font-size: 24px;
             cursor: pointer;
             border: 1px solid lightgray;
-            margin: 15px 8px;
+            margin: 0 10px;
         }
         
         .unica{
@@ -990,7 +990,7 @@
             width: 100%;
             display: flex;
             flex-direction: column;
-
+            align-items: center;
         }       
 
 
@@ -1000,7 +1000,7 @@
         #section_article_productos .article_producto{
             display: flex;
             flex-direction: column;
-            width: 90%;
+            width: 60%;
             margin: 0 0 40px 20px;
             border: 1px solid lightgrey;
             cursor: pointer;

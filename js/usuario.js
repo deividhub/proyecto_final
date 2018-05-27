@@ -51,10 +51,10 @@ $(document).ready(function(){
 						$(".form_client #form_telefono_cliente").val(datos_usuario[0].telefono);
 						$(".form_client #id_usuario").val(datos_usuario[0].id_usuario);
 						document.getElementById("form_provincia_cliente").value = datos_usuario[0].provincia;
-
-						carga_localidades();
 					}
 				}
+				carga_localidades();
+
 		});
 
 
@@ -97,7 +97,8 @@ $(document).ready(function(){
 
 		/*Carga las localidades de la provincia elegida*/
 		function carga_localidades(){
-						var datos_usuario = JSON.parse(localStorage.user)
+			if(localStorage.user){
+									var datos_usuario = JSON.parse(localStorage.user)
 
 			 ajaxQuery("Principal/cargar_localidades",{"provincia":$("#form_provincia_cliente").val()})
 			.then(function(devuelto){
@@ -109,7 +110,9 @@ $(document).ready(function(){
 				
 				document.getElementById("form_localidad_cliente").value = datos_usuario[0].localidad;
 
-			});			
+			});	
+			}
+			
 		}
 
 	/*FIN COMPROBACIÓN INICIO DE SESIÓN*/
@@ -158,6 +161,7 @@ $(document).ready(function(){
 
 	/*CERRAR SESIÓN*/
 
+
 		$(".cerrar_sesion").click(function(){
 
 		  ajaxQuery("Principal/cerrar_sesion")
@@ -186,6 +190,8 @@ $(document).ready(function(){
 
 						 sessionStorage.setItem("conexion",true)
 					     sessionStorage.setItem("primeravez",true);
+
+					     if(window.location.pathname != "/proyecto_final/index.php/Administracion/iniciar_sesion"){
 							swal({
 						  	  title: "!Bienvenido¡",
 							  type: 'info',
@@ -204,6 +210,7 @@ $(document).ready(function(){
 							  	location.href=base_url+"Principal/login_registro"
 							  }
 							})
+						}
 					 }
 				});
 			}
@@ -311,10 +318,11 @@ $(document).ready(function(){
 					mensaje += "<p>El domicilio tiene que tener una dirección completa. </p>";
 				}	
 
-				if(datos_usuario[6].value.length < 6){
+				var x = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i;
+			    if(!x.test(datos_usuario[6].value)){
 					error = true;
 					mensaje += "<p>El correo tiene que tener un formato correcto (ejemplo@ejemplo.com). </p>";
-				}
+			    }
 
 				if(datos_usuario[7].value.length < 9){
 					error = true;
@@ -452,19 +460,31 @@ $(document).ready(function(){
 		$(document).on("click",".btn_tabla_pedidos",function(){
 				
 
+
+			var numero = this.value
 			ajaxQuery("Usuario/productos_del_pedido",{"id_pedido":this.value})
 
 			.then(function(devuelto){
 
 				var array_productos=JSON.parse(devuelto);
 				$("body").append("<article id='productos_pedido_cliente'></article>")
+				$("#productos_pedido_cliente").append("<article id='productos_pedido_cliente3'></article>")
+				$("#productos_pedido_cliente3").append("<button id='cerrar_detalles'>X</button>")
+				$("#productos_pedido_cliente3").append("<h1>Estos son los detalles de tu pedido nº "+numero+"</h1>")
+				$("#productos_pedido_cliente3").append("<article id='productos_dentro'></article>")
 
 				for (var i = 0; i < array_productos.length; i++) {
 
-					$("#productos_pedido_cliente").append("<article id='productos_pedido_cliente2'><img src='"+array_productos[i].imagen+"'><article id='informacion_pedido'><p><b>Nombre: </b>"+array_productos[i].nombre_producto+"</p><p><b>Precio: </b>"+array_productos[i].precio+"</p></article></article>")
+					$("#productos_dentro").append("<article id='productos_pedido_cliente2'><a href='"+base_url+"/Productos/mostrar_producto/"+array_productos[i].id_producto+"'><img src='"+array_productos[i].imagen+"'></a><article id='informacion_pedido'><p><b>Nombre: </b>"+array_productos[i].nombre_producto+"</p><p><b>Cantidad: </b>"+array_productos[i].cantidad+"</p><p><b>Precio: </b>"+array_productos[i].precio+" €</p></article></article>")
 										
 				}
 			});
+		})
+
+
+		$(document).on("click","#cerrar_detalles",function(){
+
+			$("#productos_pedido_cliente").remove();
 		})
 
 	/*FIN PEDIDOS*/

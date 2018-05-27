@@ -3,11 +3,11 @@
 
 $(document).ready(function(){
 
+
 /*Login admin*/
 $("#acceso_admin").click(function(e){
 	e.preventDefault()
 	x=$("#acceso_admin_form").serializeArray();
-	console.log(x[0].value)
 	ajaxQuery("Administracion/login",{"correo":x[0].value,"pass":x[1].value})
 	.then(function(devuelto){
 		if(devuelto==1){
@@ -350,23 +350,48 @@ $(".deleteproduct").click(function(){
 
 /*FORMULARIO EDITAR USUARIO*/
 $("button#edituser").click(function(){
-	$("#form_editar_usuario").slideDown(2000);
+	$("#form_editar_usuario").slideDown();
+//	$(window).scrollTop(100);
+
+	ajaxQuery("Principal/cargar_provincias")
+		.then(function(devuelto){
+			$("select[name='provincia']").empty()
+			$("select[name='provincia']").append("<option value='abc'>Selecciona una provincia</option>")
+			var array=JSON.parse(devuelto)
+			for (var i = 0; i < array.length; i++) {
+				$("select[name='provincia']").append("<option value="+array[i].id+">"+array[i].provincia+"</option>")
+				
+			}
+	});
 	ajaxQuery("Administracion/obtener_usuario",{"id_usuario":$(this).val()})
 		.then(function(devuelto){
 		var array=JSON.parse(devuelto);
-		for(var i=0;i<array.length;i++){
 			$("input[name='nombre']").val(array[0].nombre)
 			$("input[name='apellidos']").val(array[0].apellidos)
 			$("input[name='correo']").val(array[0].correo)
 			$("input[name='fecha_nac']").val(array[0].fecha_nac)
 			$("input[name='telefono']").val(array[0].telefono)
 			$("input[name='domicilio']").val(array[0].domicilio)
-			$("input[name='provincia']").val(array[0].provincia)
-			$("input[name='localidad']").val(array[0].localidad)
+			$("select[name='provincia']").val(array[0].provincia)
 			$("input[name='id_usuario']").val(array[0].id_usuario)
-		}
+			localStorage.setItem("localidad",array[0].localidad)
+		ajaxQuery("Principal/cargar_localidades",{"provincia":$("select[name='provincia']").val()})
+		.then(function(devuelto){
+			$("select[name='localidad']").empty()
+			var array=JSON.parse(devuelto)
+			for (var i = 0; i < array.length; i++) {
+				$("select[name='localidad']").append("<option value="+array[i].id+">"+array[i].municipio+"</option>")
+			}
 			
+			if($("select[name='localidad']").length > 0){
+				$("select[name='localidad']").val(localStorage.localidad);
+				localStorage.removeItem("localidad");
+			}
+
+		});	
 	});
+
+
 })
 
 $("#guardar_cambios_usuario").click(function(){
@@ -480,9 +505,63 @@ $(".restore_pass").click(function(){
 /*FIN RECUPERAR CONTRASEÑA*/
 /*FORMULARIO AÑADIR USUARIO*/
 
-$("#btn_crear_usuario").click(function(){
-	var x=$("#form_crear_usuario").serializeArray()
-		ajaxQuery("Administracion/crear_usuario",x)
+$("#btn_crear_usuario").click(function(e){
+
+	e.preventDefault();
+
+	var error = false;
+	var mensaje = "";
+	var datos_usuario = $("#form_crear_usuario").serializeArray()
+
+	if(datos_usuario[0].value.length == 0){
+		error = true;
+		mensaje = "<p>El nombre no puede estar vacío. </p>";
+	}	
+
+	if(datos_usuario[1].value.length == 0){
+		error = true;
+		mensaje += "<p>Los apellidos no pueden estar vacíos. </p>";
+	}
+	else if(datos_usuario[1].value.trim().split(" ").length<2){
+		error = true;
+		mensaje += '<p>Introduce 2 apellidos. </p>'
+	}
+
+	var x = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i;
+    if(!x.test(datos_usuario[2].value)){
+		error = true;
+		mensaje += "<p>El correo tiene que tener un formato correcto (ejemplo@ejemplo.com). </p>";
+    }
+
+	if(datos_usuario[3].value == ""){
+		error = true;
+		mensaje += "<p>La fecha no puede estar vacía. </p>";
+	}	
+
+	if(datos_usuario[4].value.length < 9){
+		error = true;
+		mensaje += "<p>El teléfono tiene que tener 9 números. </p>";
+	}
+
+	if(datos_usuario[5].value.length < 6){
+		error = true;
+		mensaje += "<p>El domicilio tiene que tener una dirección completa. </p>";
+	}	
+
+	if(datos_usuario[6].value=="abc"){
+		error = true;
+		mensaje += "<p>Selecciona una provincia. </p>";
+	}
+
+	if(error){
+		swal({
+			type: 'error',
+			title: 'Oops...',
+			html: mensaje,
+		})
+	}
+	else{
+	ajaxQuery("Administracion/crear_usuario",datos_usuario)
 		.then(function(devuelto){
 		swal("Operación correcta!", "Usuario "+devuelto+" creado.", "success")
 			.then((value) => {
@@ -490,6 +569,8 @@ $("#btn_crear_usuario").click(function(){
 		});
 
 	});
+	}
+
 })
 /*FIN FORMULARIO AÑADIR USUARIO*/
 
@@ -754,6 +835,19 @@ function form_anterior(form){
 
 if(localStorage.actual_form){
 	$(localStorage.actual_form).removeClass('form_oculto')
+	if(localStorage.actual_form=='.crear_user'){
+		ajaxQuery("Principal/cargar_provincias")
+			.then(function(devuelto){
+				$("select[name='provincia']").empty()
+				$("select[name='provincia']").append("<option value='abc'>Selecciona una provincia</option>")
+				var array=JSON.parse(devuelto)
+				for (var i = 0; i < array.length; i++) {
+					$("select[name='provincia']").append("<option value="+array[i].id+">"+array[i].provincia+"</option>")
+					
+				}
+
+		});
+	}
 }
 
 
@@ -763,6 +857,19 @@ $("#aside_panel_admin ul li").click(function(e){
 		$(".show-options").removeClass("show-options")
 		$(".admin_seleccionado").removeClass("admin_seleccionado")
 		$(this).addClass("show-options admin_seleccionado")
+		if(this.id=='crear_user'){
+			ajaxQuery("Principal/cargar_provincias")
+			.then(function(devuelto){
+				$("select[name='provincia']").empty()
+				$("select[name='provincia']").append("<option value='abc'>Selecciona una provincia</option>")
+				var array=JSON.parse(devuelto)
+				for (var i = 0; i < array.length; i++) {
+					$("select[name='provincia']").append("<option value="+array[i].id+">"+array[i].provincia+"</option>")
+					
+				}
+
+		});
+		}
 })
 
 $(document).on('click', '.mostrar', function() {
@@ -776,6 +883,18 @@ $(document).on('click', '.mostrar', function() {
 
 
 
+// al cambiar la provincia al crear un usuario
+$("select[name='provincia']").change(function(){
+	ajaxQuery("Principal/cargar_localidades",{"provincia":$("select[name='provincia']").val()})
+	.then(function(devuelto){
+		$("select[name='localidad']").empty()
+		var array=JSON.parse(devuelto)
+		for (var i = 0; i < array.length; i++) {
+			$("select[name='localidad']").append("<option value="+array[i].id+">"+array[i].municipio+"</option>")
+		}
+		
 
+	});	
+})
 
 });

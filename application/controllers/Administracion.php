@@ -56,7 +56,8 @@ class Administracion extends CI_Controller {
 	}
 	public function login()
 	{
-		$usuario=$this->Principal_model->obtener_usuario($this->input->post("correo"),$this->input->post("pass"));
+
+		$usuario=$this->Principal_model->obtener_usuario_admin($this->input->post("correo"),$this->input->post("pass"));
 		if ($usuario!='ERROR'){
 				foreach ($usuario as $usuario2) {
 					if ($usuario2->id_tipo_usuario==2) {
@@ -178,7 +179,7 @@ class Administracion extends CI_Controller {
 	        'nombre' => $this->input->post('nombre'),
 	        'apellidos'  => $this->input->post('apellidos'),
 	        'correo'  => $this->input->post('correo'),
-	        'contraseña'  => "nuevousuario",
+	        'contraseña'  => md5("nuevousuario"),
 	        'fecha_nac'  => $this->input->post('fecha_nac'),
 	        'telefono'  => $this->input->post('telefono'),
 	        'domicilio'  => $this->input->post('domicilio'),

@@ -16,22 +16,30 @@ class Contacto extends CI_Controller {
 	    parent::__construct();
 		$this->load->helper('url');
 		$this->load->model('Contacto_model');
+		$this->load->library('Email');
 	}
 
 
 	/*ENVIAR MENSAJE*/
 	public function enviar_mensaje(){
-
-		$mensaje = array(
-	        'nombre_contacto' => $this->input->post('nombre_contacto'),
-
-	        'correo_contacto' => $this->input->post('correo_contacto'),
-
-	        'select_contacto'  => $this->input->post('select_contacto'),
-	        
-	        'mensaje_contacto'  => $this->input->post('mensaje_contacto')
-		);
-		
-		$result=$this->Contacto_model->enviar_mensaje($mensaje);			
+	         	         
+		$confing =array(
+		    'protocol'=>'smtp',
+		    'smtp_host'=>"smtp.gmail.com",
+		    'smtp_port'=>'465',
+		    'smtp_user'=>"dwnpdshop@gmail.com",
+		    'smtp_pass'=>"dwnpd2018",
+		    'smtp_crypto'=>'ssl',              
+		    'mailtype'=>'html', 
+		     'validate' => true
+		 
+		    );
+		    $this->email->initialize($confing);
+		    $this->email->set_newline("\r\n");
+		    $this->email->from($this->input->post('correo_contacto'));
+		    $this->email->to("dwnpd2018@gmail.com");
+		    $this->email->subject($this->input->post('select_contacto'));
+		    $this->email->message($this->input->post('nombre_contacto').":<br>".$this->input->post('mensaje_contacto'));
+		    $this->email->send();
 	}
 }
