@@ -6,9 +6,9 @@
 	<ul>
 	    <li><a href="#" class="footer_titulo">Nosotros</a></li>
 	    <li><a href="#">Trabaja con nosotros</a></li>
-	    <li><a href="#">Quienes somos</a></li>
-	    <li><a href="">Politica de cookies</a></li>
-	    <li><a href="">Terminos y condiciones</a></li>
+	    <li><a href="<?php echo base_url();?>index.php/Empresa">Quienes somos</a></li>
+	    <li><a href="<?php echo base_url();?>index.php/Empresa/LOPD2018">Politica de cookies</a></li>
+	    <li><a href="<?php echo base_url();?>index.php/Empresa/tus_datos">Terminos y condiciones</a></li>
 	</ul>
 	<ul>
 	    <li><a href="#" class="footer_titulo">Redes Sociales</a></li>
@@ -20,7 +20,7 @@
 	</ul>
 	<ul>
 	    <li><a href="#" class="footer_titulo">Descarga la APP</a></li>
-	    <li><a  class="fa fa-android" href="<?php echo base_url();?>downloads/DWNPD_android_app.apk" download> Android APP</a></li>
+	    <li><a  class="fa fa-android" href="https://devdavid.000webhostapp.com/proyecto_final/downloads/DWNPD_android_app.zip" download> Android APP</a></li>
 	    <li><a  class="fa fa-apple apple-not-allowed" > iOS APP</a></li>
 	</ul>
 

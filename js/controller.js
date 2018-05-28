@@ -21,7 +21,7 @@
 
 
 $(document).ready(function(){
-var base_url="http://localhost:8080/proyecto_final/";
+var base_url="/proyecto_final/";
 var carrito_vacio="<p class='carrito_sin_productos'>El carrito está vacio, recuerda que para realizar una compra debes iniciar sesion si no lo has hecho todavía.</p>"
 $("#btn_añadir_carrito").click(añadir_elemento);
 
@@ -182,7 +182,7 @@ $("#btn_pasar_a_caja").click(function(){
 			        if(array==0){
 			 			swal("¡Perfecto!", "Te estamos redirigiendo a la plataforma de pago Online.", "success")
 							.then((value) => {
-								window.location.assign(base_url+"Index.php/Compra")
+								window.location.assign(base_url+"index.php/Compra")
 						});
 			        }
 			        else{

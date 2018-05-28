@@ -17,6 +17,7 @@ class Administracion extends CI_Controller {
 		$this->load->model('Productos_model');
 		$this->load->model('Principal_model');
 		$this->load->model('Usuario_model');
+		$this->load->library('Email');
 		$this->load->model('Administracion_model');
 	}
 
@@ -174,6 +175,114 @@ class Administracion extends CI_Controller {
 	}
 
 	public function crear_usuario(){
+	    $mensaje="";
+		$mensaje .="<!DOCTYPE html>
+				<html>
+				<head>
+					<meta charset='utf-8'>
+					<title></title>
+					<style>
+				ul{
+					list-style: none;
+				}
+
+				footer{
+					width: 100%;
+					background: black;
+					color: white;
+					display: flex;
+				}
+				*{
+					margin: 0;
+					padding: 0;
+				}
+				
+				header{
+					border-bottom: 1px solid lightgrey;
+					font-size: 24px;
+					background: black;
+					color: white;
+				}
+
+
+				.titulo{
+					font-size: 24px;
+					font-weight: bold;
+				}
+
+
+
+				footer ul{
+					width: 100%;
+					text-align: center;
+				}
+
+				.logo {
+					color: #c1b497;
+					font-size: 34px!important;
+					text-align: center;
+					text-decoration: underline overline;
+				}
+			    #download_image{
+					width: 100px;
+					cursor: pointer;
+
+				}
+				.saludo{
+					font-size: 20px;
+					text-align: center;
+					width: 90%;
+					margin: 20px auto 20px auto;
+				}</style>
+				</head>
+				<body>
+					<header id='header' class=''>
+						<p class='logo'>DWNPD-SHOP</p>
+					</header><!-- /header -->";
+
+
+			$mensaje .="<section>
+		<p class='saludo'>Hola ".$this->input->post('nombre').", <br>Te hemos creado una cuenta en nuestra tienda para que te unas  a las muchas personas que ya compran en nuestra web</p>";
+			
+			$mensaje .="<p class='saludo'>Tus datos de acceso a nuestra tienda son los siguiente: <br>
+		Usuario: ".$this->input->post('correo')."
+		Contraseña: nuevousuario <br><br>
+		¡RECUERDA MODIFICAR ESTA CONTRASEÑA AL ACCEDER!
+
+		</p>
+	</section>
+	<footer>
+		<ul>
+		    <li>¡Traemos nueva App!</li>
+		    <li>¡Descargala aqui abajo!</li>
+		    <li><a href='https://devdavid.000webhostapp.com/proyecto_final/downloads/DWNPD_android_app.zip'><img src='https://devdavid.000webhostapp.com/proyecto_final/img/icon.png' id='download_image'></a></li>
+		</ul>
+		<ul>
+		    <li>&copy DWNPD-SHOP 2018</li>
+		    <li class='logo'>DWNPD</li>
+		</ul>
+		
+	</footer>
+</body>
+</html>";
+		   $confing =array(
+		    'protocol'=>'smtp',
+		    'smtp_host'=>"smtp.gmail.com",
+		    'smtp_port'=>'465',
+		    'smtp_user'=>"dwnpdshop@gmail.com",
+		    'smtp_pass'=>"dwnpd2018",
+		    'smtp_crypto'=>'ssl',              
+		    'mailtype'=>'html', 
+		     'validate' => true
+		 
+		    );
+		    $this->email->initialize($confing);
+		    $this->email->set_newline("\r\n");
+		    $this->email->from('dwnpdshop@gmail.com');
+		    $this->email->to($this->input->post('correo'));
+		    $this->email->subject('Bienvenido a DWNPD-SHOP');
+		    $this->email->message($mensaje);
+		    $this->email->send();
 		$usuario = array(
 	        'id_tipo_usuario' => 2,
 	        'nombre' => $this->input->post('nombre'),
@@ -203,7 +312,116 @@ class Administracion extends CI_Controller {
 
 
 	public function actualizar_pedido(){
-		$this->Administracion_model->actualizar_pedido($this->input->post("pedido"),$this->input->post("state"));
+		$a=$this->Administracion_model->actualizar_pedido($this->input->post("pedido"),$this->input->post("state"));
+		$estado=$this->Administracion_model->state_adm($this->input->post("state"));
+		$correo=$this->Administracion_model->user_adm($this->input->post("pedido"));
+			    
+			    
+			    $mensaje="";
+		$mensaje .="<!DOCTYPE html>
+				<html>
+				<head>
+					<meta charset='utf-8'>
+					<title></title>
+					<style>
+				ul{
+					list-style: none;
+				}
+
+				footer{
+					width: 100%;
+					background: black;
+					color: white;
+					display: flex;
+				}
+				*{
+					margin: 0;
+					padding: 0;
+				}
+				
+				header{
+					border-bottom: 1px solid lightgrey;
+					font-size: 24px;
+					background: black;
+					color: white;
+				}
+
+
+				.titulo{
+					font-size: 24px;
+					font-weight: bold;
+				}
+
+
+
+				footer ul{
+					width: 100%;
+					text-align: center;
+				}
+
+				.logo {
+					color: #c1b497;
+					font-size: 34px!important;
+					text-align: center;
+					text-decoration: underline overline;
+				}
+			    #download_image{
+					width: 100px;
+					cursor: pointer;
+
+				}
+				.saludo{
+					font-size: 20px;
+					text-align: center;
+					width: 90%;
+					margin: 20px auto 20px auto;
+				}</style>
+				</head>
+				<body>
+					<header id='header' class=''>
+						<p class='logo'>DWNPD-SHOP</p>
+					</header><!-- /header -->";
+
+
+			$mensaje .="<section>
+		<p class='saludo'>Hola, se ha actualizado el estado del pedido asociado al correo electronico $correo</p>";
+			
+			$mensaje .="<p class='saludo'>Su nuevo estado es $estado
+
+		</p>
+	</section>
+	<footer>
+		<ul>
+		    <li>¡Traemos nueva App!</li>
+		    <li>¡Descargala aqui abajo!</li>
+		    <li><a href='https://devdavid.000webhostapp.com/proyecto_final/downloads/DWNPD_android_app.zip'><img src='https://devdavid.000webhostapp.com/proyecto_final/img/icon.png' id='download_image'></a></li>
+		</ul>
+		<ul>
+		    <li>&copy DWNPD-SHOP 2018</li>
+		    <li class='logo'>DWNPD</li>
+		</ul>
+		
+	</footer>
+</body>
+</html>";
+		   $confing =array(
+		    'protocol'=>'smtp',
+		    'smtp_host'=>"smtp.gmail.com",
+		    'smtp_port'=>'465',
+		    'smtp_user'=>"dwnpdshop@gmail.com",
+		    'smtp_pass'=>"dwnpd2018",
+		    'smtp_crypto'=>'ssl',              
+		    'mailtype'=>'html', 
+		     'validate' => true
+		 
+		    );
+		    $this->email->initialize($confing);
+		    $this->email->set_newline("\r\n");
+		    $this->email->from('dwnpdshop@gmail.com');
+		    $this->email->to($correo);
+		    $this->email->subject('Actualización de tu pedido');
+		    $this->email->message($mensaje);
+		    $this->email->send();
 	}
 
 	public function actualizar_stock(){

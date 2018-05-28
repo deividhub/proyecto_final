@@ -1,6 +1,6 @@
 
 
-var base_url="http://localhost:8080/proyecto_final/index.php/";
+var base_url="/proyecto_final/index.php/";
 
 
 

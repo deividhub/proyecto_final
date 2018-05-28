@@ -297,10 +297,10 @@
 					<label>Domicilio:</label> <input type="text" name="domicilio">
 				</div>
 				<div class="input_group">
-					<label>Provincia:</label> <select name="provincia"></select>
+					<label>Provincia:</label> <select id="provini" name="provincia"></select>
 				</div>
 				<div class="input_group">
-					<label>Localidad:</label><select id="probando" name="localidad"></select>
+					<label>Localidad:</label><select id="loquini" name="localidad"></select>
 					
 				</div>
 				<input type="hidden" name="id_usuario" value="">
@@ -338,10 +338,10 @@
 					<label>Domicilio:</label> <input type="text" name="domicilio" placeholder="C/Kalea Nº20 1ºA">
 				</div>
 				<div class="input_group">
-					<label>Provincia:</label><select name="provincia"></select>
+					<label>Provincia:</label><select name="provincia" id="prove"></select>
 				</div>
 				<div class="input_group">
-					<label>Localidad:</label><select name="localidad"></select>
+					<label>Localidad:</label><select name="localidad" id="loque"></select>
 				</div>
 
 				<button type="button" name="" value="" id="btn_crear_usuario">Añadir usuario</button>

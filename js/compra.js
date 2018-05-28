@@ -1,6 +1,6 @@
 
 $(document).ready(function(){
-var base_url="http://localhost:8080/proyecto_final/";
+var base_url="/proyecto_final/";
 	var objetos=JSON.parse(localStorage.getItem('productos'))
 	var total=0;
 	var parseint=0;
@@ -95,9 +95,8 @@ $(".comprar_final").click(function(){
 	        link.click();    
 	        swal("Pedido realizado!", "En breves momentos tu pedido será empaquetado, ya te hemos mandado un correo electronico con los datos. Puedes ver su estado en tu perfil y también te hemos generado un documento con datos sobre tu pedido mira en tu carpeta de descargas.")
 				.then((value) => {
-					//localStorage.removeItem("productos")
-
-			 		//location.href="Principal"
+					localStorage.removeItem("productos")
+			 		window.location.assign(base_url+"index.php/Principal")
 
 			});   
 	      }

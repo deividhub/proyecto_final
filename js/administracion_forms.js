@@ -355,11 +355,11 @@ $("button#edituser").click(function(){
 
 	ajaxQuery("Principal/cargar_provincias")
 		.then(function(devuelto){
-			$("select[name='provincia']").empty()
-			$("select[name='provincia']").append("<option value='abc'>Selecciona una provincia</option>")
+			$("#provini").empty()
+			$("#provini").append("<option value='abc'>Selecciona una provincia</option>")
 			var array=JSON.parse(devuelto)
 			for (var i = 0; i < array.length; i++) {
-				$("select[name='provincia']").append("<option value="+array[i].id+">"+array[i].provincia+"</option>")
+				$("#provini").append("<option value="+array[i].id+">"+array[i].provincia+"</option>")
 				
 			}
 	});
@@ -372,19 +372,19 @@ $("button#edituser").click(function(){
 			$("input[name='fecha_nac']").val(array[0].fecha_nac)
 			$("input[name='telefono']").val(array[0].telefono)
 			$("input[name='domicilio']").val(array[0].domicilio)
-			$("select[name='provincia']").val(array[0].provincia)
+			$("#provini").val(array[0].provincia)
 			$("input[name='id_usuario']").val(array[0].id_usuario)
 			localStorage.setItem("localidad",array[0].localidad)
-		ajaxQuery("Principal/cargar_localidades",{"provincia":$("select[name='provincia']").val()})
+		ajaxQuery("Principal/cargar_localidades",{"provincia":$("#provini").val()})
 		.then(function(devuelto){
-			$("select[name='localidad']").empty()
+			$("#loquini").empty()
 			var array=JSON.parse(devuelto)
 			for (var i = 0; i < array.length; i++) {
-				$("select[name='localidad']").append("<option value="+array[i].id+">"+array[i].municipio+"</option>")
+				$("#loquini").append("<option value="+array[i].id+">"+array[i].municipio+"</option>")
 			}
 			
-			if($("select[name='localidad']").length > 0){
-				$("select[name='localidad']").val(localStorage.localidad);
+			if($("#loquini").length > 0){
+				$("#loquini").val(localStorage.localidad);
 				localStorage.removeItem("localidad");
 			}
 
@@ -644,14 +644,16 @@ $(".icon_actualizar_estado").click(function() {
 
 	else{
 		var estado_nuevo=parseInt($(id+" select").val())+1;
-		ajaxQuery("Administracion/actualizar_pedido",{"pedido":id.substr(-1),"state":estado_nuevo})
-			.then(function(devuelto){			
-		});
-		$(id+" select").css("color","lightgreen")
+        $(id+" select").css("color","lightgreen")
 		$(id+" select").val(estado_nuevo)
 		grados=grados+360;
    		$(this).css({'transition' : '1s'});
     	$(this).css({'transform' : 'rotate('+grados+'deg)'});
+    	id=id.replace(".td_pedido_","");
+	ajaxQuery("Administracion/actualizar_pedido",{"pedido":id,"state":estado_nuevo})
+			.then(function(devuelto){	
+		});
+		
 	}
 
 
@@ -675,7 +677,9 @@ $(".icon_bloquear_estado").click(function() {
 		})
 		.then((cancelar) => {
 		  if (cancelar) {
-			ajaxQuery("Administracion/actualizar_pedido",{"pedido":id.substr(-1),"state":5})
+		          var	id_ped=id.replace(".td_pedido_","");
+
+			ajaxQuery("Administracion/actualizar_pedido",{"pedido":id_ped,"state":5})
 				.then(function(devuelto){			
 			});
 			$(id+" select").val(5)
@@ -701,7 +705,9 @@ $(".icon_bloquear_estado").click(function() {
 		  reverseButtons: true
 		}).then((eliminar) => {
 		  if (eliminar.value) {
-		  	ajaxQuery("Administracion/actualizar_pedido",{"pedido":id.substr(-1),"state":5})
+		      		          	 var id_ped=id.replace(".td_pedido_","");
+            alert(id)
+		  	ajaxQuery("Administracion/actualizar_pedido",{"pedido":id_ped,"state":5})
 				.then(function(devuelto){			
 			});
 			$(id+" select").val(5)
@@ -838,11 +844,11 @@ if(localStorage.actual_form){
 	if(localStorage.actual_form=='.crear_user'){
 		ajaxQuery("Principal/cargar_provincias")
 			.then(function(devuelto){
-				$("select[name='provincia']").empty()
-				$("select[name='provincia']").append("<option value='abc'>Selecciona una provincia</option>")
+				$("#prove").empty()
+				$("#prove").append("<option value='abc'>Selecciona una provincia</option>")
 				var array=JSON.parse(devuelto)
 				for (var i = 0; i < array.length; i++) {
-					$("select[name='provincia']").append("<option value="+array[i].id+">"+array[i].provincia+"</option>")
+					$("#prove").append("<option value="+array[i].id+">"+array[i].provincia+"</option>")
 					
 				}
 
@@ -860,11 +866,11 @@ $("#aside_panel_admin ul li").click(function(e){
 		if(this.id=='crear_user'){
 			ajaxQuery("Principal/cargar_provincias")
 			.then(function(devuelto){
-				$("select[name='provincia']").empty()
-				$("select[name='provincia']").append("<option value='abc'>Selecciona una provincia</option>")
+				$("#prove").empty()
+				$("#prove").append("<option value='abc'>Selecciona una provincia</option>")
 				var array=JSON.parse(devuelto)
 				for (var i = 0; i < array.length; i++) {
-					$("select[name='provincia']").append("<option value="+array[i].id+">"+array[i].provincia+"</option>")
+					$("#prove").append("<option value="+array[i].id+">"+array[i].provincia+"</option>")
 					
 				}
 
@@ -884,17 +890,29 @@ $(document).on('click', '.mostrar', function() {
 
 
 // al cambiar la provincia al crear un usuario
-$("select[name='provincia']").change(function(){
-	ajaxQuery("Principal/cargar_localidades",{"provincia":$("select[name='provincia']").val()})
+$("#prove").change(function(){
+	ajaxQuery("Principal/cargar_localidades",{"provincia":$("#prove").val()})
 	.then(function(devuelto){
-		$("select[name='localidad']").empty()
+		$("#loque").empty()
 		var array=JSON.parse(devuelto)
 		for (var i = 0; i < array.length; i++) {
-			$("select[name='localidad']").append("<option value="+array[i].id+">"+array[i].municipio+"</option>")
+			$("#loque").append("<option value="+array[i].id+">"+array[i].municipio+"</option>")
 		}
 		
 
 	});	
 })
 
+$("#provini").change(function(){
+	ajaxQuery("Principal/cargar_localidades",{"provincia":$("#provini").val()})
+	.then(function(devuelto){
+		$("#loquini").empty()
+		var array=JSON.parse(devuelto)
+		for (var i = 0; i < array.length; i++) {
+			$("#loquini").append("<option value="+array[i].id+">"+array[i].municipio+"</option>")
+		}
+		
+
+	});	
+})
 });

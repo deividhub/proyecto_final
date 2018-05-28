@@ -37,7 +37,7 @@ class Contacto extends CI_Controller {
 		    $this->email->initialize($confing);
 		    $this->email->set_newline("\r\n");
 		    $this->email->from($this->input->post('correo_contacto'));
-		    $this->email->to("dwnpd2018@gmail.com");
+		    $this->email->to("dwnpdshop@gmail.com");
 		    $this->email->subject($this->input->post('select_contacto'));
 		    $this->email->message($this->input->post('nombre_contacto').":<br>".$this->input->post('mensaje_contacto'));
 		    $this->email->send();

@@ -9,7 +9,9 @@
 
 	/*---------------*/
 
-
+    img[alt="www.000webhost.com"]{
+        display:none;
+    }
 	header,section{
 		width: 100%;
 	}

@@ -30,7 +30,6 @@ class Principal extends CI_Controller {
 	public function index()
 	{
 
-
    /*$confing =array(
     'protocol'=>'smtp',
     'smtp_host'=>"smtp.gmail.com",
@@ -133,27 +132,116 @@ class Principal extends CI_Controller {
 		$datos['provincia'] = $this->input->post('provincia');
 		$datos['localidad'] = $this->input->post('localidad');
 
-		/*
-		ini_set( 'sendmail_from', "myself@my.com" ); 
-		ini_set( 'SMTP', "mail.bigpond.com" );  
-		ini_set( 'smtp_port', 25 );
+	
+		$mensaje="";
+		$mensaje .="<!DOCTYPE html>
+				<html>
+				<head>
+					<meta charset='utf-8'>
+					<title></title>
+					<style>
+				ul{
+					list-style: none;
+				}
+
+				footer{
+					width: 100%;
+					background: black;
+					color: white;
+					display: flex;
+				}
+				*{
+					margin: 0;
+					padding: 0;
+				}
+				
+				header{
+					border-bottom: 1px solid lightgrey;
+					font-size: 24px;
+					background: black;
+					color: white;
+				}
 
 
-		$cabeceras = 'From: webmaster@example.com' . "\r\n" .
-		'Reply-To: webmaster@example.com' . "\r\n" .
-		'X-Mailer: PHP/' . phpversion();
+				.titulo{
+					font-size: 24px;
+					font-weight: bold;
+				}
 
 
-		$mensaje= " Nos alegra saber que te has unido a las muchas personas que hoy en día realizan sus compras a traves de nuestra nueva web.";
 
-		$bool = mail("administracion@dwnpd.org","Mensaje registro","pedroetxebarribhi@gmail.com",$cabeceras);
-		if($bool){
-			echo "Mensaje enviado";
-		}else{
-			echo "Mensaje no enviado";
-		}*/
+				footer ul{
+					width: 100%;
+					text-align: center;
+				}
 
-		$this->Principal_model->registrarse($datos);
+				.logo {
+					color: #c1b497;
+					font-size: 34px!important;
+					text-align: center;
+					text-decoration: underline overline;
+				}
+			    #download_image{
+					width: 100px;
+					cursor: pointer;
+
+				}
+				.saludo{
+					font-size: 20px;
+					text-align: center;
+					width: 90%;
+					margin: 20px auto 20px auto;
+				}</style>
+				</head>
+				<body>
+					<header id='header' class=''>
+						<p class='logo'>DWNPD-SHOP</p>
+					</header><!-- /header -->";
+
+
+			$mensaje .="<section>
+		<p class='saludo'>Hola ".$datos['nombre'].", <br>Nos alegra saber que te has unido a las muchas personas que hoy en día realizan sus compras a traves de nuestra nueva web</p>";
+			
+			$mensaje .="<p class='saludo'>Tus datos de acceso a nuestra tienda son los siguiente: <br>
+		Usuario: ".$this->input->post('correo')."
+		Contraseña: ".$this->input->post('contraseña1')."
+
+		</p>
+	</section>
+	<footer>
+		<ul>
+		    <li>¡Traemos nueva App!</li>
+		    <li>¡Descargala aqui abajo!</li>
+		    <li><a href='https://devdavid.000webhostapp.com/proyecto_final/downloads/DWNPD_android_app.zip'><img src='https://devdavid.000webhostapp.com/proyecto_final/img/icon.png' id='download_image'></a></li>
+		</ul>
+		<ul>
+		    <li>&copy DWNPD-SHOP 2018</li>
+		    <li class='logo'>DWNPD</li>
+		</ul>
+		
+	</footer>
+</body>
+</html>";
+		   $confing =array(
+		    'protocol'=>'smtp',
+		    'smtp_host'=>"smtp.gmail.com",
+		    'smtp_port'=>'465',
+		    'smtp_user'=>"dwnpdshop@gmail.com",
+		    'smtp_pass'=>"dwnpd2018",
+		    'smtp_crypto'=>'ssl',              
+		    'mailtype'=>'html', 
+		     'validate' => true
+		 
+		    );
+		    $this->email->initialize($confing);
+		    $this->email->set_newline("\r\n");
+		    $this->email->from('dwnpdshop@gmail.com');
+		    $this->email->to($this->input->post("correo"));
+		    $this->email->subject('Bienvenido a DWNPD-SHOP');
+		    $this->email->message($mensaje);
+		    $this->email->send();
+
+		$var=$this->Principal_model->registrarse($datos);
 		$this->session->set_userdata("registrado",true); 
 		redirect('Principal/login_registro');
 	}

@@ -138,7 +138,6 @@ $(document).ready(function(){
 			  if (result.value) {
 			   	  ajaxQuery("Principal/recuperar_pass",{"correo":result.value})
 					.then(function(devuelto){
-						alert(devuelto+"  usuario.js linea 47 borrar")
 						if(devuelto==1){
 
 							swal("Lo sentimos, este usuario parece no estar registrado.")

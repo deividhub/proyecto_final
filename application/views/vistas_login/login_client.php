@@ -31,7 +31,6 @@
 	$correo = array(	
 		'name' => 'correo',
 		'id' => 'correo',
-		'maxlength' => 20,
 		'size' => 20,
 		'required' => 1,
 		'placeholder' => 'ejemplo@ejemplo.com'
